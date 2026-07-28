@@ -55,13 +55,13 @@ export default function HeroSection() {
               </div>
 
               {/* Full Collection Render Image */}
-              <div className="h-[240px] flex items-center justify-center relative my-4 overflow-hidden rounded-2xl bg-gradient-to-br from-[#F7F8F6] to-[#E9ECE8] p-4">
+              <div className="h-[250px] flex items-center justify-center relative my-4 overflow-hidden rounded-2xl bg-gradient-to-br from-[#F7F8F6] to-[#E9ECE8] p-4">
                 <Image
                   src="/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/Collection/Collection.png"
                   alt="Bye Bye Narcissist Collection"
                   width={340}
                   height={240}
-                  className="w-full h-auto object-contain max-h-[210px] drop-shadow-xl group-hover:scale-105 transition-transform duration-500"
+                  className="w-full h-auto object-contain max-h-[220px] drop-shadow-xl group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
             </div>
@@ -79,7 +79,7 @@ export default function HeroSection() {
             </div>
           </Link>
 
-          {/* Module 2: Watch & Learn Video (Deep Green Visual Anchor) */}
+          {/* Module 2: Watch & Learn Video (Vertical Video Reel Frame) */}
           <Link
             href="/watch-learn"
             className="md:col-span-4 group relative bg-deep-green text-editorial-white border border-deep-green rounded-3xl p-8 flex flex-col justify-between hover:-translate-y-2 transition-all duration-500 shadow-md hover:shadow-2xl overflow-hidden"
@@ -96,20 +96,19 @@ export default function HeroSection() {
                 </span>
               </div>
 
-              {/* Video Thumbnail Frame */}
-              <div className="h-[240px] rounded-2xl relative flex items-center justify-center my-4 overflow-hidden shadow-xl border border-editorial-white/10 group-hover:border-cream-logo/30 transition-colors">
-                <Image
-                  src="/assets/Video Thumbnails/How Emotionally Intelligent People Handle Hurt.jpeg"
+              {/* Vertical Reel Video Preview Frame */}
+              <div className="h-[250px] rounded-2xl relative flex items-center justify-center my-4 overflow-hidden shadow-xl border border-editorial-white/10 group-hover:border-cream-logo/30 transition-colors bg-ink-black/40">
+                <img
+                  src={encodeURI("/assets/Video Thumbnails/How Emotionally Intelligent People Handle Hurt.jpeg")}
                   alt="Understanding Boundaries Video"
-                  fill
-                  className="object-cover opacity-70 group-hover:opacity-90 group-hover:scale-105 transition-all duration-500"
+                  className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
                 />
                 <div className="w-16 h-16 bg-cream-logo text-deep-green rounded-full flex items-center justify-center shadow-2xl relative z-10 transform group-hover:scale-110 transition-transform">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <polygon points="9,6 18,12 9,18" fill="currentColor" />
                   </svg>
                 </div>
-                <div className="absolute bottom-3 left-3 right-3 flex justify-between items-center text-[10px] font-bold text-cream-logo z-10 bg-ink-black/60 px-3 py-1.5 rounded-lg backdrop-blur-sm">
+                <div className="absolute bottom-3 left-3 right-3 flex justify-between items-center text-[10px] font-bold text-cream-logo z-10 bg-ink-black/75 px-3 py-1.5 rounded-lg backdrop-blur-sm">
                   <span>EMOTIONAL INTELLIGENCE</span>
                   <span>1:30 min</span>
                 </div>
@@ -147,7 +146,7 @@ export default function HeroSection() {
               </div>
 
               {/* Large Crisp Phone Display */}
-              <div className="h-[240px] flex items-center justify-center my-4 relative overflow-hidden">
+              <div className="h-[250px] flex items-center justify-center my-4 relative overflow-hidden">
                 <img
                   src="/assets/Chat Conversation.png?v=3"
                   alt="MANI App Chat Conversation"
