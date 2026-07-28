@@ -29,7 +29,7 @@ export const VIDEOS_DATA: VideoItem[] = [
     duration: "1:15 min",
     summary: "Discover the psychological root patterns behind perpetual overthinking and how to break the mental loop.",
     keywords: ["Overthinking", "Anxiety", "Mental Patterns", "Psychology"],
-    thumbnailUrl: "/assets/Video Thumbnails/ 4 Behaviors Linked to Chronic Overthinking.jpeg",
+    thumbnailUrl: "/assets/Video Thumbnails/4 Behaviors Linked to Chronic Overthinking.jpeg",
     driveVideoUrl: "https://drive.google.com/file/d/1_demo_sample_id_1/preview",
   },
   {
@@ -69,7 +69,7 @@ export const VIDEOS_DATA: VideoItem[] = [
     duration: "1:10 min",
     summary: "Uncover hidden self-sabotaging traps that trigger fear of failure or success in daily life.",
     keywords: ["Self Sabotage", "Subconscious", "Behavior"],
-    thumbnailUrl: "/assets/Video Thumbnails/Are you Secretly Sabotaging Your Own Happiness?.jpeg",
+    thumbnailUrl: "/assets/Video Thumbnails/Are you Secretly Sabotaging Your Own Happiness.jpeg",
     driveVideoUrl: "https://drive.google.com/file/d/1_demo_sample_id_5/preview",
   },
   {
