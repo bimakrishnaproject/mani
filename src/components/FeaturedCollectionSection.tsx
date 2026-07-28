@@ -53,13 +53,13 @@ export default function FeaturedCollectionSection() {
 
             <div className="flex flex-wrap items-center gap-6">
               <Link
-                href="#community"
+                href="/collections/bye-bye-narcissist"
                 className="px-8 py-4 bg-deep-green text-editorial-white font-semibold rounded-md hover:bg-[#143d28] transition-colors"
               >
                 Shop Collection — $119.99
               </Link>
               <Link
-                href="#collections"
+                href="/collections/bye-bye-narcissist"
                 className="text-sm font-semibold text-deep-green underline underline-offset-4 hover:opacity-80"
               >
                 Explore What's Included &rarr;

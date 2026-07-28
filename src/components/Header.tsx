@@ -37,7 +37,7 @@ export default function Header() {
             <Link href="/" className="text-sm font-medium text-ink-black hover:text-deep-green transition-colors">
               Home
             </Link>
-            <Link href="/#collections" className="text-sm font-medium text-ink-black hover:text-deep-green transition-colors">
+            <Link href="/collections" className="text-sm font-medium text-ink-black hover:text-deep-green transition-colors">
               Collections
             </Link>
             <Link href="/watch-learn" className="text-sm font-medium text-ink-black hover:text-deep-green transition-colors">
@@ -79,7 +79,7 @@ export default function Header() {
         <div className="fixed inset-0 z-40 bg-editorial-white flex flex-col justify-center px-8 md:hidden">
           <nav className="flex flex-col gap-6 text-2xl font-serif-heading text-deep-green">
             <Link href="/" onClick={() => setMobileMenuOpen(false)}>Home</Link>
-            <Link href="/#collections" onClick={() => setMobileMenuOpen(false)}>Collections</Link>
+            <Link href="/collections" onClick={() => setMobileMenuOpen(false)}>Collections</Link>
             <Link href="/watch-learn" onClick={() => setMobileMenuOpen(false)}>Watch & Learn</Link>
             <Link href="/#app" onClick={() => setMobileMenuOpen(false)}>The MANI App</Link>
             <Link href="/#why-mani" onClick={() => setMobileMenuOpen(false)}>Why MANI</Link>
