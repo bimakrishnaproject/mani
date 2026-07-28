@@ -26,37 +26,32 @@ Current Collections:
 • Love Done Right (Coming Soon)
 Access Product and Collection Images & Mockups
 Click Here to Access Product and Collection Images & Mockups
-Inside this drop box folder, you will find:
-• Product Mockups
-• Product Images
+Local Download Path: `public/assets/Product Collections/` (`src/app/assets/Product Collections/`)
+Inside this folder, you will find:
+• Product Mockups (`public/assets/Product Collections/Product Mockups/`)
+• Product Images (`public/assets/Product Collections/Product Images/`)
 Important Notes:
 • The Collection Information tab should be used as the primary reference for all collection and product information.
-
 • The Product Mockups folder contains the product images intended for website use.
-
 • The Product Images folder contains flat product designs that can be used to create additional mockups if needed.
-
 • If additional mockups or product renders are needed, please let us know.
 
 Images & Videos (4TH tab)
 Access Team Photos 
 Click Here to Access Team Photos
-Inside this drop box folder, you will find photos of:
-• Lolly Daskal
-• Manasa Reddy
-• Michaela Katz
-• Michelle Falanga
-• Stephen CogHill
+Local Download Path: `public/assets/Team Photos/` (`src/app/assets/Team Photos/`)
+Inside this folder, you will find photos of:
+• Lolly Daskal (`Lolly Daskal.png`)
+• Manasa Reddy (`Manasa Reddy.png`)
+• Michaela Katz (`Michaela Katz.png`)
+• Michelle Falanga (`Michelle Falanga.png`)
+• Stephen CogHill (`Stephen CogHill.png`)
 Important Notes:
 • The Team Photos tab contains the corresponding team biographies for each team member.
-
 • We do not plan to use traditional lifestyle photography on the website.
-
 • We would like the website to feel modern, immersive, and visually distinct from a typical wellness or self-help brand.
 • If you have ideas for how to elevate the visual experience beyond standard photography, we would love your recommendations.
-
 • All team photos use the background color #0e2e1e.
-
 • If you need transparent PNG files or additional image assets, please let us know.
 
 Watch and Learn (5th tab) 
@@ -69,13 +64,12 @@ The Watch & Learn tab contains:
 • Featured video order and priorities
 Access to Watch and Learn video files 
 Click Here to Access to Watch and Learn Attachments
-Inside this drop box folder, you will find:
-• Video Files
-
-• Video Thumbnails
-Video Thumbnails
+Local Download Path (Thumbnails): `public/assets/Video Thumbnails/` (`src/app/assets/Video Thumbnails/`)
+*Note on Video Files*: All 272+ thumbnail images are downloaded locally. The heavy video files (.mp4) remain hosted in Dropbox due to memory size.
+Inside this folder, you will find:
+• Video Files (Dropbox)
+• Video Thumbnails (`public/assets/Video Thumbnails/` - 272 thumbnail images)
 Important Notes:
-•The Video Files folder contains all Watch & Learn video files.
 • The Video Thumbnails folder contains the thumbnail image for each video.
 • Video titles in Dropbox correspond to the titles listed in the Watch & Learn tab.
 • Please use the Watch & Learn tab as the primary reference for video organization, categories, featured content, and display order.
@@ -106,25 +100,19 @@ Important Notes:
 
 Important Notes:
 • Please review all yellow highlighted notes throughout the Website Copy tab. These notes contain design feedback, layout suggestions, content clarification, and website direction.
-
 • The Website Copy tab should be used together with the Brand Guidelines tab when designing the website.
-
 • We are looking for a website that feels modern, sophisticated, immersive, calm, and emotionally intelligent.
-
 • We want the experience to feel different from a typical wellness, therapy, healthcare, or self-help website.
-
 • Animation, movement, and interactive elements should feel thoughtful and intentional, not distracting.
-
 • Our primary brand color (#0e2e1e) should be treated as a foundational color throughout the experience. But we don’t want to feel like a wellness typical company. We want something different. Not typical.
-
 • If you have ideas that improve the user experience, visual experience, or presentation of the content, we welcome your recommendations.
-
 • If additional information or assets are needed at any point, please let us know.
 
 App Mockup
 Click here to Access the App Mockup Image
-Inside this drop box folder, you will find:
-• One PNG image showing a conversation inside the Mani app.
+Local Download Path: `public/assets/Chat Conversation.png` (`src/app/assets/Chat Conversation.png`)
+Inside this folder, you will find:
+• One PNG image showing a conversation inside the Mani app (`Chat Conversation.png`)
 • Mani Circle Gradient
 • Mani Circle Logo (PNG and SVG)
 • Mani Cream Logo (PNG and SVG)
@@ -177,6 +165,7 @@ We would like to track:
 • App page visits
 • Traffic sources and conversion paths
 Please let us know what account access or information is needed to complete the setup.
+
 
 
 
