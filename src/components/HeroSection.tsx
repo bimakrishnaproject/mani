@@ -136,12 +136,10 @@ export default function HeroSection() {
               </div>
 
               <div className="h-[220px] flex items-center justify-center my-2 relative overflow-hidden">
-                <Image
-                  src="/assets/Chat Conversation.png"
+                <img
+                  src="/assets/Chat Conversation.png?v=3"
                   alt="MANI App Chat Conversation"
-                  width={200}
-                  height={400}
-                  className="w-auto h-[210px] object-contain drop-shadow-md group-hover:scale-105 transition-transform duration-500"
+                  className="w-auto h-[210px] object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
             </div>

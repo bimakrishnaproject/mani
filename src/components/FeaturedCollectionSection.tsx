@@ -67,15 +67,15 @@ export default function FeaturedCollectionSection() {
             </div>
           </div>
 
-          {/* Professional Editorial Image Display without nested box borders */}
+          {/* Professional Image Frame with Rounded Radius & Smooth Shadow */}
           <div className="md:col-span-7 flex justify-center items-center">
-            <div className="relative w-full overflow-hidden rounded-2xl bg-gradient-to-br from-[#F4F5F2] to-[#E9ECE8] p-4 sm:p-8 flex justify-center items-center group shadow-xs">
+            <div className="relative w-full rounded-2xl overflow-hidden shadow-lg border border-mist-grey/80 group hover:shadow-2xl transition-all duration-500">
               <Image
                 src="/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/Collection/Collection.png"
                 alt="Bye Bye Narcissist Collection Mockup"
                 width={680}
                 height={480}
-                className="w-full h-auto object-contain max-h-[460px] drop-shadow-xl group-hover:scale-[1.02] transition-transform duration-500"
+                className="w-full h-auto object-cover rounded-2xl group-hover:scale-[1.02] transition-transform duration-500"
                 priority
               />
             </div>

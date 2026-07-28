@@ -40,14 +40,14 @@ export default function ByeByeNarcissistPage() {
               </div>
             </div>
 
-            {/* Seamless Bleed Image Presentation without white background card */}
-            <div className="relative w-full flex justify-center items-center py-4">
+            {/* Premium Rounded Radius Image Display */}
+            <div className="relative w-full rounded-2xl overflow-hidden shadow-lg border border-mist-grey/80 group hover:shadow-2xl transition-all duration-500">
               <Image
                 src="/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/Collection/Collection.png"
                 alt="Bye Bye Narcissist Collection Full System"
-                width={620}
-                height={460}
-                className="w-full h-auto object-contain max-h-[460px] drop-shadow-2xl hover:scale-[1.02] transition-transform duration-500"
+                width={560}
+                height={400}
+                className="w-full h-auto object-cover rounded-2xl group-hover:scale-[1.02] transition-transform duration-500"
                 priority
               />
             </div>
@@ -119,14 +119,14 @@ export default function ByeByeNarcissistPage() {
                 </button>
               </div>
 
-              {/* Seamless Studio Image Container */}
-              <div className="relative w-full flex justify-center items-center p-4">
+              {/* Rounded Radius Image Container */}
+              <div className="relative w-full rounded-2xl overflow-hidden shadow-md border border-mist-grey/80 group hover:shadow-xl transition-all duration-500">
                 <Image
                   src={prod.mockupImage}
                   alt={prod.name}
                   width={400}
                   height={300}
-                  className="w-full h-auto object-contain max-h-[300px] drop-shadow-xl hover:scale-105 transition-transform duration-500"
+                  className="w-full h-auto object-cover rounded-2xl group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
             </div>

@@ -49,13 +49,13 @@ export default function CollectionsPage() {
                 </p>
               </div>
             </div>
-            <div className="relative w-full rounded-2xl bg-gradient-to-br from-[#F4F5F2] to-[#E9ECE8] p-6 flex items-center justify-center">
+            <div className="relative w-full rounded-2xl overflow-hidden shadow-lg border border-mist-grey/80">
               <Image
                 src="/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/Collection/Book Trio.png"
                 alt="MANI Connected Learning System"
                 width={520}
                 height={360}
-                className="w-full h-auto object-contain max-h-[360px] drop-shadow-xl"
+                className="w-full h-auto object-cover rounded-2xl"
               />
             </div>
           </div>
@@ -142,13 +142,13 @@ export default function CollectionsPage() {
                   Explore Bye Bye Narcissist &rarr;
                 </Link>
               </div>
-              <div className="relative w-full rounded-2xl bg-gradient-to-br from-[#F4F5F2] to-[#E9ECE8] p-6 flex justify-center items-center">
+              <div className="relative w-full rounded-2xl overflow-hidden shadow-lg border border-mist-grey/80">
                 <Image
                   src="/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/Collection/Collection.png"
                   alt="Bye Bye Narcissist Collection"
                   width={560}
                   height={400}
-                  className="w-full h-auto object-contain max-h-[400px] drop-shadow-xl"
+                  className="w-full h-auto object-cover rounded-2xl"
                 />
               </div>
             </div>

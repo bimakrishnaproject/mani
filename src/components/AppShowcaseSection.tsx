@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 
 export default function AppShowcaseSection() {
   const [email, setEmail] = useState("");
@@ -62,16 +61,13 @@ export default function AppShowcaseSection() {
             )}
           </div>
 
-          {/* Transparent Phone Image without white background box */}
+          {/* Clean Phone Image with Cache Buster & Mix-Blend-Multiply */}
           <div className="flex justify-center items-center">
-            <div className="relative max-w-[310px] w-full hover:scale-[1.03] transition-transform duration-500">
-              <Image
-                src="/assets/Chat Conversation.png"
+            <div className="relative max-w-[290px] w-full hover:scale-[1.03] transition-transform duration-500">
+              <img
+                src="/assets/Chat Conversation.png?v=3"
                 alt="MANI App Conversation"
-                width={310}
-                height={620}
-                className="w-full h-auto object-contain drop-shadow-2xl"
-                priority
+                className="w-full h-auto object-contain mix-blend-multiply"
               />
             </div>
           </div>
