@@ -1,0 +1,145 @@
+export interface VideoItem {
+  id: string;
+  title: string;
+  category: string;
+  duration: string;
+  summary: string;
+  keywords: string[];
+  thumbnailUrl: string;
+  driveVideoUrl: string;
+}
+
+export const CATEGORIES = [
+  "All Categories",
+  "Psychology",
+  "Emotional Intelligence",
+  "Childhood & Inner Child",
+  "Relationships & Attachment",
+  "Overthinking & Anxiety",
+  "Self-Sabotage",
+  "Shadow Work",
+  "Healthy & Narcissistic Relationships",
+];
+
+export const VIDEOS_DATA: VideoItem[] = [
+  {
+    id: "v1",
+    title: "4 Behaviors Linked to Chronic Overthinking",
+    category: "Overthinking & Anxiety",
+    duration: "1:15 min",
+    summary: "Discover the psychological root patterns behind perpetual overthinking and how to break the mental loop.",
+    keywords: ["Overthinking", "Anxiety", "Mental Patterns", "Psychology"],
+    thumbnailUrl: "/assets/Video Thumbnails/ 4 Behaviors Linked to Chronic Overthinking.jpeg",
+    driveVideoUrl: "https://drive.google.com/file/d/1_demo_sample_id_1/preview",
+  },
+  {
+    id: "v2",
+    title: "How Emotionally Intelligent People Handle Hurt",
+    category: "Emotional Intelligence",
+    duration: "1:30 min",
+    summary: "Explore how high emotional intelligence allows individuals to process pain without absorbing toxic blame.",
+    keywords: ["Emotional Intelligence", "Healing", "Boundaries"],
+    thumbnailUrl: "/assets/Video Thumbnails/How Emotionally Intelligent People Handle Hurt.jpeg",
+    driveVideoUrl: "https://drive.google.com/file/d/1_demo_sample_id_2/preview",
+  },
+  {
+    id: "v3",
+    title: "What No Contact Really Does To A Narcissist",
+    category: "Healthy & Narcissistic Relationships",
+    duration: "1:20 min",
+    summary: "Understand the psychological dynamic of silent withdrawal and why boundaries trigger narcissists.",
+    keywords: ["Narcissism", "No Contact", "Boundaries", "Relationships"],
+    thumbnailUrl: "/assets/Video Thumbnails/What No Contact Really Does To A Narcissist.jpeg",
+    driveVideoUrl: "https://drive.google.com/file/d/1_demo_sample_id_3/preview",
+  },
+  {
+    id: "v4",
+    title: "Why Your Inner Child Still Needs You",
+    category: "Childhood & Inner Child",
+    duration: "1:40 min",
+    summary: "How unhealed childhood experiences manifest in adult decision-making and relationship patterns.",
+    keywords: ["Inner Child", "Childhood", "Healing", "Self Care"],
+    thumbnailUrl: "/assets/Video Thumbnails/Why Your Inner Child Still Needs You.jpeg",
+    driveVideoUrl: "https://drive.google.com/file/d/1_demo_sample_id_4/preview",
+  },
+  {
+    id: "v5",
+    title: "Are You Secretly Sabotaging Your Own Happiness?",
+    category: "Self-Sabotage",
+    duration: "1:10 min",
+    summary: "Uncover hidden self-sabotaging traps that trigger fear of failure or success in daily life.",
+    keywords: ["Self Sabotage", "Subconscious", "Behavior"],
+    thumbnailUrl: "/assets/Video Thumbnails/Are you Secretly Sabotaging Your Own Happiness?.jpeg",
+    driveVideoUrl: "https://drive.google.com/file/d/1_demo_sample_id_5/preview",
+  },
+  {
+    id: "v6",
+    title: "How Childhood Criticism Replays in Adulthood",
+    category: "Childhood & Inner Child",
+    duration: "1:25 min",
+    summary: "Learn why early critical voices become the harsh internal dialogue of adulthood.",
+    keywords: ["Childhood", "Self Talk", "Psychology"],
+    thumbnailUrl: "/assets/Video Thumbnails/How Childhood Criticism Replays in Adulthood.jpeg",
+    driveVideoUrl: "https://drive.google.com/file/d/1_demo_sample_id_6/preview",
+  },
+  {
+    id: "v7",
+    title: "Gaslighting: How To Spot It as It Happens",
+    category: "Healthy & Narcissistic Relationships",
+    duration: "1:35 min",
+    summary: "Clear behavioral signals to identify psychological manipulation before it distorts your reality.",
+    keywords: ["Gaslighting", "Manipulation", "Awareness"],
+    thumbnailUrl: "/assets/Video Thumbnails/Gaslighting How To Spot It as It Happens.jpeg",
+    driveVideoUrl: "https://drive.google.com/file/d/1_demo_sample_id_7/preview",
+  },
+  {
+    id: "v8",
+    title: "The Barnum Effect: Why Vague Statements Feel Personal",
+    category: "Psychology",
+    duration: "1:15 min",
+    summary: "The psychological bias that causes people to believe generalized descriptions apply uniquely to them.",
+    keywords: ["Psychology", "Cognitive Bias", "Mind"],
+    thumbnailUrl: "/assets/Video Thumbnails/The Barnum Effect Why Vague Statements Feel Deeply Personal.jpeg",
+    driveVideoUrl: "https://drive.google.com/file/d/1_demo_sample_id_8/preview",
+  },
+  {
+    id: "v9",
+    title: "Why Anxious Attachment Chases Love",
+    category: "Relationships & Attachment",
+    duration: "1:45 min",
+    summary: "Anxious attachment style mechanisms and practical steps toward secure attachment.",
+    keywords: ["Attachment", "Relationships", "Anxiety"],
+    thumbnailUrl: "/assets/Video Thumbnails/Why Anxious Attachment Chases Love.jpeg",
+    driveVideoUrl: "https://drive.google.com/file/d/1_demo_sample_id_9/preview",
+  },
+  {
+    id: "v10",
+    title: "Why Your Brain Chooses Repetition Over Change",
+    category: "Psychology",
+    duration: "1:30 min",
+    summary: "Why neurobiology prefers familiar discomfort over unfamiliar healing.",
+    keywords: ["Brain", "Neuroscience", "Habits"],
+    thumbnailUrl: "/assets/Video Thumbnails/Why Your Brain Chooses Repetition Over Change.jpeg",
+    driveVideoUrl: "https://drive.google.com/file/d/1_demo_sample_id_10/preview",
+  },
+  {
+    id: "v11",
+    title: "The Hidden Curse Of Being Emotionally Intelligent",
+    category: "Emotional Intelligence",
+    duration: "1:20 min",
+    summary: "The emotional fatigue that comes with over-empathizing and carrying others' moods.",
+    keywords: ["Empathy", "Emotional Intelligence", "Boundaries"],
+    thumbnailUrl: "/assets/Video Thumbnails/The Hidden Curse Of Being Emotionally Intelligent.jpeg",
+    driveVideoUrl: "https://drive.google.com/file/d/1_demo_sample_id_11/preview",
+  },
+  {
+    id: "v12",
+    title: "Why Fawning Is Never Kindness",
+    category: "Shadow Work",
+    duration: "1:25 min",
+    summary: "Unpacking the trauma response of people-pleasing and how to reclaim authentic self-expression.",
+    keywords: ["Fawning", "Trauma Response", "Shadow Work"],
+    thumbnailUrl: "/assets/Video Thumbnails/Why Fawning Is Never Kindness.jpeg",
+    driveVideoUrl: "https://drive.google.com/file/d/1_demo_sample_id_12/preview",
+  },
+];
