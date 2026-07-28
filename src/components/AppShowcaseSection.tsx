@@ -16,7 +16,7 @@ export default function AppShowcaseSection() {
   };
 
   return (
-    <section className="py-28 md:py-36 bg-soft-white" id="app">
+    <section className="py-28 md:py-36 bg-soft-white overflow-hidden" id="app">
       <div className="max-w-[1360px] mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
           <div>
@@ -62,15 +62,15 @@ export default function AppShowcaseSection() {
             )}
           </div>
 
-          {/* Clean App Device Screenshot without double outer border */}
-          <div className="flex justify-center">
-            <div className="relative max-w-[340px] w-full hover:scale-[1.02] transition-transform duration-500 drop-shadow-2xl">
+          {/* Pure Phone Image without white background box using mix-blend-multiply */}
+          <div className="flex justify-center items-center">
+            <div className="relative max-w-[320px] w-full hover:scale-[1.03] transition-transform duration-500">
               <Image
                 src="/assets/Chat Conversation.png"
                 alt="MANI App Conversation"
-                width={340}
-                height={680}
-                className="w-full h-auto object-contain rounded-[38px]"
+                width={320}
+                height={640}
+                className="w-full h-auto object-contain mix-blend-multiply filter drop-shadow-xl"
                 priority
               />
             </div>

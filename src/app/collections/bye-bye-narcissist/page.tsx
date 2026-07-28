@@ -26,27 +26,28 @@ export default function ByeByeNarcissistPage() {
                 A 5-part connected system designed to help you understand toxic dynamics, reclaim your boundaries, and rebuild self-trust after narcissistic abuse.
               </p>
 
-              <div className="p-4 bg-soft-white border border-mist-grey rounded-xl mb-8 flex items-center justify-between">
+              <div className="p-5 bg-soft-white border border-mist-grey rounded-2xl mb-8 flex items-center justify-between shadow-xs">
                 <div>
                   <span className="text-xs text-sage-grey uppercase font-bold tracking-wider block">Complete Collection Bundle</span>
                   <span className="text-3xl font-bold text-deep-green">$119.99</span>
                 </div>
                 <Link
                   href="#bundles"
-                  className="px-6 py-3 bg-deep-green text-editorial-white text-sm font-semibold rounded-md hover:bg-[#143d28] transition-colors"
+                  className="px-6 py-3.5 bg-deep-green text-editorial-white text-sm font-semibold rounded-md hover:bg-[#143d28] transition-colors"
                 >
                   Shop the Collection
                 </Link>
               </div>
             </div>
 
-            <div className="relative w-full rounded-3xl bg-gradient-to-br from-[#F4F5F2] to-[#E9ECE8] p-8 flex justify-center items-center shadow-xs">
+            {/* Seamless Bleed Image Presentation without white background card */}
+            <div className="relative w-full flex justify-center items-center py-4">
               <Image
                 src="/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/Collection/Collection.png"
                 alt="Bye Bye Narcissist Collection Full System"
-                width={560}
-                height={400}
-                className="w-full h-auto object-contain max-h-[420px] drop-shadow-2xl"
+                width={620}
+                height={460}
+                className="w-full h-auto object-contain max-h-[460px] drop-shadow-2xl hover:scale-[1.02] transition-transform duration-500"
                 priority
               />
             </div>
@@ -82,7 +83,7 @@ export default function ByeByeNarcissistPage() {
           {BYE_BYE_NARCISSIST_PRODUCTS.map((prod, idx) => (
             <div
               key={prod.slug}
-              className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center bg-soft-white border border-mist-grey rounded-3xl p-8 md:p-12 ${
+              className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center bg-editorial-white border border-mist-grey/80 rounded-3xl p-8 md:p-12 shadow-xs ${
                 idx % 2 === 1 ? "lg:flex-row-reverse" : ""
               }`}
             >
@@ -118,13 +119,14 @@ export default function ByeByeNarcissistPage() {
                 </button>
               </div>
 
-              <div className="relative w-full rounded-2xl bg-gradient-to-br from-[#F4F5F2] to-[#E9ECE8] p-6 flex justify-center items-center h-80">
+              {/* Seamless Studio Image Container */}
+              <div className="relative w-full flex justify-center items-center p-4">
                 <Image
                   src={prod.mockupImage}
                   alt={prod.name}
-                  width={360}
-                  height={280}
-                  className="w-full h-auto object-contain max-h-[280px] drop-shadow-xl hover:scale-105 transition-transform duration-500"
+                  width={400}
+                  height={300}
+                  className="w-full h-auto object-contain max-h-[300px] drop-shadow-xl hover:scale-105 transition-transform duration-500"
                 />
               </div>
             </div>
