@@ -9,8 +9,8 @@ export default function FeaturedCollectionSection() {
           FEATURED COLLECTION
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
-          <div>
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+          <div className="md:col-span-5">
             <h2 className="font-serif-heading text-4xl md:text-6xl text-deep-green mb-4">
               Bye Bye Narcissist
             </h2>
@@ -54,7 +54,7 @@ export default function FeaturedCollectionSection() {
             <div className="flex flex-wrap items-center gap-6">
               <Link
                 href="/collections/bye-bye-narcissist"
-                className="px-8 py-4 bg-deep-green text-editorial-white font-semibold rounded-md hover:bg-[#143d28] transition-colors"
+                className="px-8 py-4 bg-deep-green text-editorial-white font-semibold rounded-md hover:bg-[#143d28] transition-colors shadow-sm"
               >
                 Shop Collection — $119.99
               </Link>
@@ -67,14 +67,18 @@ export default function FeaturedCollectionSection() {
             </div>
           </div>
 
-          <div className="bg-soft-white border border-mist-grey rounded-2xl h-[460px] relative flex items-center justify-center p-6 overflow-hidden shadow-sm">
-            <Image
-              src="/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/Collection/Collection.png"
-              alt="Bye Bye Narcissist Collection Mockup"
-              width={520}
-              height={400}
-              className="object-contain max-h-[400px] hover:scale-105 transition-transform duration-500"
-            />
+          {/* Professional Editorial Image Display without nested box borders */}
+          <div className="md:col-span-7 flex justify-center items-center">
+            <div className="relative w-full overflow-hidden rounded-2xl bg-gradient-to-br from-[#F4F5F2] to-[#E9ECE8] p-4 sm:p-8 flex justify-center items-center group shadow-xs">
+              <Image
+                src="/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/Collection/Collection.png"
+                alt="Bye Bye Narcissist Collection Mockup"
+                width={680}
+                height={480}
+                className="w-full h-auto object-contain max-h-[460px] drop-shadow-xl group-hover:scale-[1.02] transition-transform duration-500"
+                priority
+              />
+            </div>
           </div>
         </div>
       </div>

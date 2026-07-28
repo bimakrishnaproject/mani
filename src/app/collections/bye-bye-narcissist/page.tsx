@@ -40,13 +40,14 @@ export default function ByeByeNarcissistPage() {
               </div>
             </div>
 
-            <div className="bg-soft-white border border-mist-grey rounded-3xl p-6 flex justify-center items-center shadow-xs">
+            <div className="relative w-full rounded-3xl bg-gradient-to-br from-[#F4F5F2] to-[#E9ECE8] p-8 flex justify-center items-center shadow-xs">
               <Image
                 src="/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/Collection/Collection.png"
                 alt="Bye Bye Narcissist Collection Full System"
-                width={540}
+                width={560}
                 height={400}
-                className="object-contain"
+                className="w-full h-auto object-contain max-h-[420px] drop-shadow-2xl"
+                priority
               />
             </div>
           </div>
@@ -117,13 +118,13 @@ export default function ByeByeNarcissistPage() {
                 </button>
               </div>
 
-              <div className="bg-editorial-white border border-mist-grey rounded-2xl p-6 flex justify-center items-center h-80">
+              <div className="relative w-full rounded-2xl bg-gradient-to-br from-[#F4F5F2] to-[#E9ECE8] p-6 flex justify-center items-center h-80">
                 <Image
                   src={prod.mockupImage}
                   alt={prod.name}
-                  width={340}
-                  height={260}
-                  className="object-contain max-h-[260px]"
+                  width={360}
+                  height={280}
+                  className="w-full h-auto object-contain max-h-[280px] drop-shadow-xl hover:scale-105 transition-transform duration-500"
                 />
               </div>
             </div>

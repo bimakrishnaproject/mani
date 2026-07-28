@@ -62,16 +62,16 @@ export default function AppShowcaseSection() {
             )}
           </div>
 
-          {/* Real App Device Mockup Image */}
+          {/* Clean App Device Screenshot without double outer border */}
           <div className="flex justify-center">
-            <div className="w-[320px] h-[580px] bg-editorial-white border-[10px] border-deep-green rounded-[44px] p-3 shadow-2xl overflow-hidden relative flex flex-col items-center justify-center">
-              <div className="absolute top-3 w-20 h-4 bg-deep-green rounded-full z-10"></div>
+            <div className="relative max-w-[340px] w-full hover:scale-[1.02] transition-transform duration-500 drop-shadow-2xl">
               <Image
                 src="/assets/Chat Conversation.png"
-                alt="MANI App Conversation Screenshot"
-                width={300}
-                height={550}
-                className="object-cover rounded-[32px] w-full h-full"
+                alt="MANI App Conversation"
+                width={340}
+                height={680}
+                className="w-full h-auto object-contain rounded-[38px]"
+                priority
               />
             </div>
           </div>
