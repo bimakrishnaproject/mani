@@ -36,7 +36,7 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* Professional Editorial Spatial Composition (No Basic Rectangles) */}
+        {/* Spatial Composition Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mt-12">
           {/* Card 1: Featured Collection Object — Links to /collections/bye-bye-narcissist */}
           <Link
@@ -55,7 +55,6 @@ export default function HeroSection() {
                 </span>
               </div>
 
-              {/* Real Book Mockup without basic grey container */}
               <div className="h-[220px] flex items-center justify-center relative my-2 overflow-hidden">
                 <Image
                   src="/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/Book.png"
@@ -136,14 +135,13 @@ export default function HeroSection() {
                 </span>
               </div>
 
-              {/* Clean App Conversation Image without white background card */}
               <div className="h-[220px] flex items-center justify-center my-2 relative overflow-hidden">
                 <Image
                   src="/assets/Chat Conversation.png"
                   alt="MANI App Chat Conversation"
                   width={200}
                   height={400}
-                  className="w-auto h-[210px] object-contain mix-blend-multiply filter drop-shadow-md group-hover:scale-105 transition-transform duration-500"
+                  className="w-auto h-[210px] object-contain drop-shadow-md group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
             </div>

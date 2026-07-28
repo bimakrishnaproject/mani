@@ -62,15 +62,15 @@ export default function AppShowcaseSection() {
             )}
           </div>
 
-          {/* Pure Phone Image without white background box using mix-blend-multiply */}
+          {/* Transparent Phone Image without white background box */}
           <div className="flex justify-center items-center">
-            <div className="relative max-w-[320px] w-full hover:scale-[1.03] transition-transform duration-500">
+            <div className="relative max-w-[310px] w-full hover:scale-[1.03] transition-transform duration-500">
               <Image
                 src="/assets/Chat Conversation.png"
                 alt="MANI App Conversation"
-                width={320}
-                height={640}
-                className="w-full h-auto object-contain mix-blend-multiply filter drop-shadow-xl"
+                width={310}
+                height={620}
+                className="w-full h-auto object-contain drop-shadow-2xl"
                 priority
               />
             </div>
