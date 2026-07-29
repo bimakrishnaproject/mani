@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
+import Image from "next/image";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import TiltCard3D from "./TiltCard3D";
 
@@ -159,7 +160,7 @@ export default function AppShowcaseSection() {
                 {/* 3-STEP REAL-TIME CONVERSATION SEQUENCE */}
                 <div className="space-y-3.5 pt-3 border-t border-editorial-white/15 text-sm relative z-10 [transform:translateZ(45px)] min-h-[140px]">
                   
-                  {/* Step 1: User Message Typing Character by Character via String Slicing */}
+                  {/* Step 1: User Message Typing Character by Character */}
                   <div className="p-4 bg-editorial-white/10 backdrop-blur-md rounded-2xl text-editorial-white flex items-start gap-3 border border-editorial-white/15 shadow-lg min-h-[52px]">
                     <span className="font-bold text-cream-logo text-xs uppercase pt-0.5">YOU:</span>
                     <span>
@@ -248,7 +249,7 @@ export default function AppShowcaseSection() {
             </motion.div>
           </div>
 
-          {/* Right Column: CRISP LIGHT STUDIO 3D IPHONE SHOWCASE STAGE */}
+          {/* Right Column: EXACTLY MATCHING THREEWAYSSECTION HIGH-QUALITY DISPLAY */}
           <div className="lg:col-span-6 flex justify-center items-center relative py-8">
             
             {/* Soft Ambient Radial Glow */}
@@ -271,7 +272,7 @@ export default function AppShowcaseSection() {
               <span>⚡ Real-Time Reflection AI</span>
             </motion.div>
 
-            {/* 3D Scroll Perspective Floating Phone Device (100% Crisp & Bright Quality) */}
+            {/* High-Quality Phone Image Display (Matching ThreeWaysSection exactly) */}
             <motion.div
               style={{
                 rotateY,
@@ -280,10 +281,14 @@ export default function AppShowcaseSection() {
               }}
               className="relative w-full flex justify-center items-center z-20 [transform-style:preserve-3d]"
             >
-              <img
-                src="/assets/Chat Conversation.png?v=3"
+              <Image
+                src="/assets/Chat Conversation.png"
                 alt="MANI App Chat Conversation"
-                className="w-auto h-[520px] sm:h-[600px] md:h-[650px] object-contain drop-shadow-[0_40px_70px_rgba(0,0,0,0.22)] animate-float"
+                width={460}
+                height={920}
+                quality={100}
+                priority
+                className="w-auto h-[480px] sm:h-[580px] md:h-[640px] object-contain drop-shadow-2xl animate-float"
               />
             </motion.div>
 

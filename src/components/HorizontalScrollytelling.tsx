@@ -27,6 +27,7 @@ export default function HorizontalScrollytelling() {
       ctaLink: "/collections/bye-bye-narcissist",
       image: "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/Collection/Collection.png",
       bgColor: "bg-deep-green text-editorial-white",
+      textColor: "text-cream-logo",
     },
     {
       num: "02",
@@ -38,6 +39,7 @@ export default function HorizontalScrollytelling() {
       ctaLink: "/watch-learn",
       image: "/assets/Video Thumbnails/How Emotionally Intelligent People Handle Hurt.jpeg",
       bgColor: "bg-[#081F14] text-cream-logo",
+      textColor: "text-cream-logo",
     },
     {
       num: "03",
@@ -47,19 +49,20 @@ export default function HorizontalScrollytelling() {
       description: "Beyond passive listening, MANI guides you toward understanding and practical next steps when you need emotional clarity most.",
       ctaText: "Join Private Beta Access",
       ctaLink: "/#app",
-      image: "/assets/Chat Conversation.png?v=3",
-      bgColor: "bg-[#05150D] text-editorial-white",
+      image: "/assets/Chat Conversation.png",
+      bgColor: "bg-editorial-white text-ink-black",
+      textColor: "text-deep-green",
     },
   ];
 
   return (
-    <section ref={containerRef} className="relative h-[300vh] bg-deep-green w-full">
+    <section ref={containerRef} className="relative h-[300vh] bg-deep-green w-full border-t border-mist-grey">
       {/* Sticky Full-Screen Viewport for Horizontal Sliding */}
       <div className="sticky top-0 h-screen overflow-hidden flex items-center">
         
         {/* Top Header Badge & Navigation Indicator */}
         <div className="absolute top-8 left-8 right-8 z-30 flex items-center justify-between pointer-events-none">
-          <div className="text-xs font-bold tracking-widest uppercase text-cream-logo bg-editorial-white/10 px-4 py-2 rounded-full backdrop-blur-md">
+          <div className="text-xs font-bold tracking-widest uppercase text-cream-logo bg-deep-green px-4 py-2 rounded-full shadow-md">
             THE MANI ECOSYSTEM
           </div>
           <div className="text-xs font-bold tracking-widest text-sage-grey">
@@ -79,30 +82,32 @@ export default function HorizontalScrollytelling() {
                 {/* Text Content */}
                 <div className="lg:col-span-6 space-y-6">
                   <div className="flex items-center gap-3">
-                    <span className="text-sm font-extrabold text-cream-logo bg-editorial-white/15 px-3.5 py-1.5 rounded-full">
+                    <span className={`text-sm font-extrabold px-3.5 py-1.5 rounded-full ${idx === 2 ? "bg-deep-green text-editorial-white" : "bg-editorial-white/15 text-cream-logo"}`}>
                       {panel.num}
                     </span>
-                    <span className="text-xs font-bold tracking-widest uppercase text-sage-grey">
+                    <span className={`text-xs font-bold tracking-widest uppercase ${idx === 2 ? "text-deep-green" : "text-sage-grey"}`}>
                       {panel.badge}
                     </span>
                   </div>
 
-                  <h2 className="font-serif-heading text-5xl sm:text-7xl md:text-8xl text-cream-logo leading-[0.95]">
+                  <h2 className={`font-serif-heading text-5xl sm:text-7xl md:text-8xl leading-[0.95] ${panel.textColor}`}>
                     {panel.title}
                   </h2>
 
-                  <p className="font-serif-italic text-2xl sm:text-3xl text-[#E5EBE7] leading-snug">
+                  <p className={`font-serif-italic text-2xl sm:text-3xl leading-snug ${idx === 2 ? "text-[#4A524D]" : "text-[#E5EBE7]"}`}>
                     "{panel.subtitle}"
                   </p>
 
-                  <p className="text-base sm:text-lg text-[#C3CDC6] font-light leading-relaxed max-w-xl">
+                  <p className={`text-base sm:text-lg font-light leading-relaxed max-w-xl ${idx === 2 ? "text-[#626A64]" : "text-[#C3CDC6]"}`}>
                     {panel.description}
                   </p>
 
                   <div className="pt-4">
                     <Link
                       href={panel.ctaLink}
-                      className="inline-flex px-10 py-5 bg-cream-logo text-deep-green font-semibold rounded-md hover:bg-[#f2e1bd] transition-all transform hover:scale-105 shadow-2xl text-base"
+                      className={`inline-flex px-10 py-5 font-semibold rounded-md transition-all transform hover:scale-105 shadow-2xl text-base ${
+                        idx === 2 ? "bg-deep-green text-editorial-white hover:bg-[#143d28]" : "bg-cream-logo text-deep-green hover:bg-[#f2e1bd]"
+                      }`}
                     >
                       {panel.ctaText} &rarr;
                     </Link>
@@ -111,7 +116,7 @@ export default function HorizontalScrollytelling() {
 
                 {/* Visual Asset Stage */}
                 <div className="lg:col-span-6 flex justify-center items-center">
-                  <div className="relative w-full max-w-[600px] h-[460px] sm:h-[500px] flex items-center justify-center">
+                  <div className="relative w-full max-w-[600px] h-[460px] sm:h-[520px] flex items-center justify-center">
                     
                     {/* Panel 01: Physical Collection Mockup */}
                     {idx === 0 && (
@@ -147,15 +152,17 @@ export default function HorizontalScrollytelling() {
                       </div>
                     )}
 
-                    {/* Panel 03: High-Contrast Light Studio Frame Display (HD Sharp Quality) */}
+                    {/* Panel 03: EXACT MATCH TO THREEWAYSSECTION (HIGH-DPI RETINA IMAGE ON EDITORIAL WHITE STAGE) */}
                     {idx === 2 && (
-                      <div className="relative w-[320px] sm:w-[360px] h-[480px] rounded-3xl bg-editorial-white border-2 border-cream-logo/30 shadow-2xl p-6 flex items-center justify-center overflow-hidden">
-                        <img
-                          src="/assets/Chat Conversation.png?v=3"
-                          alt={panel.title}
-                          className="w-auto h-[440px] object-contain drop-shadow-2xl animate-float"
-                        />
-                      </div>
+                      <Image
+                        src="/assets/Chat Conversation.png"
+                        alt={panel.title}
+                        width={460}
+                        height={920}
+                        quality={100}
+                        priority
+                        className="w-auto h-[460px] sm:h-[520px] md:h-[580px] object-contain drop-shadow-2xl animate-float"
+                      />
                     )}
 
                   </div>

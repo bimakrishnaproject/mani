@@ -53,7 +53,7 @@ export default function ThreeWaysSection() {
       description: "Beyond listening, MANI guides you toward understanding and practical next steps right from your phone when you need clarity most.",
       ctaText: "Join Private Beta Access",
       ctaLink: "/#app",
-      image: "/assets/Chat Conversation.png?v=3",
+      image: "/assets/Chat Conversation.png",
       badge: "MOBILE APP BETA",
     },
   ];
@@ -100,84 +100,81 @@ export default function ThreeWaysSection() {
                   <h3 className={`font-serif-heading text-2xl md:text-3xl ${activeTab === idx ? "text-cream-logo" : "text-deep-green"}`}>
                     {t.title}
                   </h3>
+                  {activeTab === idx && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      transition={{ duration: 0.3 }}
+                      className="mt-3 space-y-3 pt-3 border-t border-editorial-white/20"
+                    >
+                      <p className="text-sm font-light text-[#C3CDC6] leading-relaxed">
+                        {t.subtitle}
+                      </p>
+                      <Link
+                        href={t.ctaLink}
+                        className="inline-flex items-center gap-2 text-xs font-bold text-cream-logo underline hover:opacity-80"
+                      >
+                        {t.ctaText} &rarr;
+                      </Link>
+                    </motion.div>
+                  )}
                 </div>
               ))}
             </div>
 
-            {/* Active Territory Full-Bleed Editorial Stage (Right Column) */}
-            <div className="lg:col-span-7 bg-soft-white border-2 border-mist-grey rounded-3xl p-8 md:p-12 shadow-2xl relative min-h-[440px] flex flex-col justify-between">
-              <motion.div
-                key={activeTab}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                className="space-y-4"
-              >
-                <div>
-                  <span className="text-xs font-bold tracking-widest text-deep-green bg-soft-signal-green px-3.5 py-1 rounded-full inline-block mb-3">
-                    {territories[activeTab].badge}
-                  </span>
-                  <h3 className="font-serif-heading text-3xl sm:text-5xl md:text-6xl text-deep-green mb-2 leading-tight">
-                    {territories[activeTab].title}
-                  </h3>
-                  <p className="font-serif-italic text-lg text-[#4A524D] mb-4">
-                    "{territories[activeTab].subtitle}"
-                  </p>
-                  <p className="text-sm sm:text-base text-[#626A64] leading-relaxed mb-6 font-light max-w-xl">
-                    {territories[activeTab].description}
-                  </p>
-                </div>
+            {/* Interactive Visual Showcase Stage (Right Column) */}
+            <div className="lg:col-span-7 flex justify-center items-center">
+              <div className="relative w-full max-w-[650px] h-[460px] sm:h-[540px] flex items-center justify-center">
+                
+                {/* 100% High-DPI Sharp Image Display */}
+                {activeTab === 0 && (
+                  <Image
+                    key="tab-0"
+                    src={territories[0].image}
+                    alt={territories[0].title}
+                    width={650}
+                    height={480}
+                    quality={100}
+                    priority
+                    className="w-full h-auto object-contain max-h-[460px] drop-shadow-2xl animate-float"
+                  />
+                )}
 
-                {/* Asset Preview Stage */}
-                <div className="relative w-full h-[200px] rounded-2xl overflow-hidden bg-gradient-to-br from-[#F7F8F6] to-[#E9ECE8] border border-mist-grey p-4 flex items-center justify-center">
-                  {activeTab === 0 && (
-                    <Image
-                      src={territories[0].image}
-                      alt={territories[0].title}
-                      width={400}
-                      height={200}
-                      className="w-full h-auto object-contain max-h-[180px] drop-shadow-xl"
+                {activeTab === 1 && (
+                  <div key="tab-1" className="relative w-[300px] sm:w-[340px] h-[460px] sm:h-[500px] rounded-3xl overflow-hidden border-2 border-deep-green shadow-2xl bg-ink-black flex items-center justify-center">
+                    <img
+                      src={encodeURI(territories[1].image)}
+                      alt={territories[1].title}
+                      className="w-full h-full object-contain object-center"
                     />
-                  )}
-                  {activeTab === 1 && (
-                    <div className="relative w-[140px] h-[180px] rounded-2xl overflow-hidden border-2 border-deep-green shadow-xl bg-ink-black flex items-center justify-center">
-                      <img
-                        src={encodeURI(territories[1].image)}
-                        alt={territories[1].title}
-                        className="w-full h-full object-cover object-top opacity-90"
-                      />
-                      <div className="absolute inset-0 bg-ink-black/30 flex items-center justify-center">
-                        <div className="w-12 h-12 bg-cream-logo text-deep-green rounded-full flex items-center justify-center shadow-lg animate-pulse">
-                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                            <polygon points="9,6 18,12 9,18" fill="currentColor" />
-                          </svg>
-                        </div>
+                    <div className="absolute inset-0 bg-ink-black/20 flex items-center justify-center">
+                      <div className="w-20 h-20 bg-deep-green text-cream-logo rounded-full flex items-center justify-center shadow-2xl animate-pulse">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                          <polygon points="9,6 18,12 9,18" fill="currentColor" />
+                        </svg>
                       </div>
                     </div>
-                  )}
-                  {activeTab === 2 && (
-                    <div className="relative w-full h-full bg-editorial-white rounded-xl p-2 flex items-center justify-center shadow-md">
-                      <img
-                        src={territories[2].image}
-                        alt={territories[2].title}
-                        className="w-auto h-[170px] object-contain drop-shadow-lg"
-                      />
-                    </div>
-                  )}
-                </div>
+                  </div>
+                )}
 
-                <div className="pt-2">
-                  <Link
-                    href={territories[activeTab].ctaLink}
-                    className="inline-flex px-8 py-3.5 bg-deep-green text-editorial-white font-semibold rounded-md hover:bg-[#143d28] transition-all transform hover:scale-105 shadow-lg text-sm w-fit"
-                  >
-                    {territories[activeTab].ctaText} &rarr;
-                  </Link>
-                </div>
-              </motion.div>
+                {activeTab === 2 && (
+                  <Image
+                    key="tab-2"
+                    src="/assets/Chat Conversation.png"
+                    alt={territories[2].title}
+                    width={460}
+                    height={920}
+                    quality={100}
+                    priority
+                    className="w-auto h-[460px] sm:h-[520px] md:h-[560px] object-contain drop-shadow-2xl animate-float"
+                  />
+                )}
+
+              </div>
             </div>
 
           </div>
+
         </div>
       </div>
     </section>
