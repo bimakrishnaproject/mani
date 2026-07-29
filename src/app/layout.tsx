@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Instrument_Serif, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
+import PageIntroLoader from "@/components/PageIntroLoader";
+import SmoothScrollProvider from "@/components/SmoothScrollProvider";
 
 const instrumentSerif = Instrument_Serif({
   weight: ["400"],
@@ -31,9 +33,11 @@ export default function RootLayout({
       className={`${instrumentSerif.variable} ${plusJakartaSans.variable} scroll-smooth antialiased`}
     >
       <body className="font-sans bg-editorial-white text-ink-black min-h-screen flex flex-col">
-        {children}
+        <PageIntroLoader />
+        <SmoothScrollProvider>
+          {children}
+        </SmoothScrollProvider>
       </body>
     </html>
   );
 }
-
