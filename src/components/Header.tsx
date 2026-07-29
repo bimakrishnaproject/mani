@@ -33,7 +33,7 @@ export default function Header() {
             <span>MANI</span>
           </Link>
 
-          <nav className="hidden md:flex items-center gap-9">
+          <nav className="hidden md:flex items-center gap-8">
             <Link href="/" className="text-sm font-medium text-ink-black hover:text-deep-green transition-colors">
               Home
             </Link>
@@ -46,11 +46,14 @@ export default function Header() {
             <Link href="/#app" className="text-sm font-medium text-ink-black hover:text-deep-green transition-colors flex items-center gap-1.5">
               App <span className="text-[9px] font-bold uppercase bg-soft-signal-green text-deep-green px-1.5 py-0.5 rounded-sm">Beta</span>
             </Link>
-            <Link href="/#why-mani" className="text-sm font-medium text-ink-black hover:text-deep-green transition-colors">
+            <Link href="/why-mani" className="text-sm font-medium text-ink-black hover:text-deep-green transition-colors">
               Why MANI
             </Link>
-            <Link href="/#about" className="text-sm font-medium text-ink-black hover:text-deep-green transition-colors">
+            <Link href="/about" className="text-sm font-medium text-ink-black hover:text-deep-green transition-colors">
               About
+            </Link>
+            <Link href="/faq" className="text-sm font-medium text-ink-black hover:text-deep-green transition-colors">
+              FAQ
             </Link>
           </nav>
 
@@ -82,8 +85,9 @@ export default function Header() {
             <Link href="/collections" onClick={() => setMobileMenuOpen(false)}>Collections</Link>
             <Link href="/watch-learn" onClick={() => setMobileMenuOpen(false)}>Watch & Learn</Link>
             <Link href="/#app" onClick={() => setMobileMenuOpen(false)}>The MANI App</Link>
-            <Link href="/#why-mani" onClick={() => setMobileMenuOpen(false)}>Why MANI</Link>
-            <Link href="/#about" onClick={() => setMobileMenuOpen(false)}>About Us</Link>
+            <Link href="/why-mani" onClick={() => setMobileMenuOpen(false)}>Why MANI</Link>
+            <Link href="/about" onClick={() => setMobileMenuOpen(false)}>About Us</Link>
+            <Link href="/faq" onClick={() => setMobileMenuOpen(false)}>FAQ</Link>
             <Link href="/#community" className="text-deep-green font-sans text-lg font-bold" onClick={() => setMobileMenuOpen(false)}>
               Join Our Community &rarr;
             </Link>
