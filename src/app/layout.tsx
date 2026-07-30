@@ -3,6 +3,7 @@ import { Instrument_Serif, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import PageIntroLoader from "@/components/PageIntroLoader";
 import SmoothScrollProvider from "@/components/SmoothScrollProvider";
+import TypewriterNavigationProvider from "@/components/TypewriterNavigationProvider";
 
 const instrumentSerif = Instrument_Serif({
   weight: ["400"],
@@ -34,9 +35,11 @@ export default function RootLayout({
     >
       <body className="font-sans bg-editorial-white text-ink-black min-h-screen flex flex-col">
         <PageIntroLoader />
-        <SmoothScrollProvider>
-          {children}
-        </SmoothScrollProvider>
+        <TypewriterNavigationProvider>
+          <SmoothScrollProvider>
+            {children}
+          </SmoothScrollProvider>
+        </TypewriterNavigationProvider>
       </body>
     </html>
   );

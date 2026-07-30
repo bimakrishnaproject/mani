@@ -66,3 +66,35 @@ html {
 .typing-dot:nth-child(1) { animation-delay: 0s; }
 .typing-dot:nth-child(2) { animation-delay: 0.2s; }
 .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+/* GSAP ScrollTrigger Support */
+[data-scroll] {
+  will-change: transform, opacity;
+}
+
+/* Smooth transforms for GPU acceleration */
+.gsap-word {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+}
+
+/* Clip path transitions */
+[style*="clip-path"] {
+  will-change: clip-path;
+}
+
+/* Reduced motion support for all GSAP animations */
+@media (prefers-reduced-motion: reduce) {
+  [data-scroll],
+  .gsap-word,
+  [style*="clip-path"] {
+    animation: none !important;
+    transition: none !important;
+    will-change: auto;
+  }
+}
+
+/* Pinned section styles */
+.pinned-text-item {
+  will-change: transform, opacity;
+}

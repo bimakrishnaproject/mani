@@ -43,7 +43,7 @@ export default function FramerMotionAnimate({
         scale: 1,
         filter: "blur(0px)",
       }}
-      viewport={{ once: true, amount: 0.15 }}
+      viewport={{ once: false, amount: 0.15 }}
       transition={{
         duration,
         delay,
