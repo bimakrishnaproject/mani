@@ -5,6 +5,8 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import UnderProgressPage from "@/components/UnderProgressPage";
+import { SITE_LOCKS } from "@/config/locks";
 import {
   ScrollReveal,
   KineticTextReveal,
@@ -14,9 +16,20 @@ import {
   CountUpOnScroll,
   HorizontalScrollTrack,
 } from "@/components/ScrollAnimations";
+import { trackVideoView } from "@/lib/analytics";
 
 export default function WatchLearnPage() {
+  if (SITE_LOCKS.PAGES_LOCKED) {
+    return (
+      <UnderProgressPage
+        pageName="Watch & Learn Cinema Library"
+        description="This page is currently undergoing milestone updates. Please explore the live homepage."
+      />
+    );
+  }
+
   const [selectedTopic, setSelectedTopic] = useState<string>("All");
+  const [searchQuery, setSearchQuery] = useState<string>("");
   const [activeVideoModal, setActiveVideoModal] = useState<any | null>(null);
   const [activeReelIdx, setActiveReelIdx] = useState<number>(0);
   const [isReelPaused, setIsReelPaused] = useState<boolean>(false);
@@ -121,10 +134,21 @@ export default function WatchLearnPage() {
     return () => clearInterval(timer);
   }, [isReelPaused, videos.length]);
 
-  const filteredVideos =
-    selectedTopic === "All"
-      ? videos
-      : videos.filter((v) => v.category === selectedTopic);
+  // Real-time Search & Filter logic
+  const filteredVideos = videos.filter((v) => {
+    const matchesTopic = selectedTopic === "All" || v.category === selectedTopic;
+    const matchesQuery =
+      searchQuery.trim() === "" ||
+      v.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      v.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      v.description.toLowerCase().includes(searchQuery.toLowerCase());
+    return matchesTopic && matchesQuery;
+  });
+
+  const handleOpenVideo = (video: any) => {
+    setActiveVideoModal(video);
+    trackVideoView(video.title, video.duration);
+  };
 
   const currentReel = videos[activeReelIdx];
 
@@ -134,15 +158,15 @@ export default function WatchLearnPage() {
 
       <main className="flex-grow pt-36 md:pt-48 pb-32">
 
-        {/* HERO BANNER WITH DYNAMIC RIGHT-SIDE MOVING & LOOPING THUMBNAIL ENGINE */}
+        {/* HERO BANNER WITH SEARCH BAR & DYNAMIC RIGHT-SIDE MOVING ANIMATION */}
         <section className="px-6 sm:px-12 md:px-16 lg:px-24 mb-16">
           <CurtainClipExpand className="bg-[#05150D] text-editorial-white rounded-3xl p-8 sm:p-14 border border-editorial-white/10 shadow-2xl relative overflow-hidden">
             {/* Ambient Animated Light Orbs */}
             <div className="absolute top-0 right-0 w-[550px] h-[550px] bg-radial from-[#0E2E1E]/50 via-transparent to-transparent pointer-events-none rounded-full blur-3xl opacity-80 animate-pulse" />
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
-              
-              {/* Left Column (7 cols): Hero Content & Filters */}
+
+              {/* Left Column (7 cols): Hero Content, Search Bar & Topic Filters */}
               <div className="lg:col-span-7 space-y-6">
                 <DiagonalSlideIn from="top-left" distance={30}>
                   <div className="inline-block text-xs font-bold tracking-widest uppercase text-cream-logo bg-editorial-white/10 px-4 py-1.5 rounded-full backdrop-blur-md border border-editorial-white/15">
@@ -162,22 +186,29 @@ export default function WatchLearnPage() {
                   </p>
                 </ScrollReveal>
 
-                {/* Stats Row */}
-                <div className="flex gap-8 pt-2 border-t border-editorial-white/10 max-w-md">
-                  <div>
-                    <div className="text-3xl font-serif-heading text-cream-logo">
-                      <CountUpOnScroll end={500} suffix="+" className="text-3xl font-serif-heading text-cream-logo" />
-                    </div>
-                    <span className="text-[10px] text-sage-grey uppercase tracking-wider">Videos</span>
+                {/* Real-time Search Input Field */}
+                <div className="relative max-w-md pt-2">
+                  <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none text-cream-logo/60">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <circle cx="11" cy="11" r="8" />
+                      <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                    </svg>
                   </div>
-                  <div>
-                    <div className="text-3xl font-serif-heading text-cream-logo">Daily</div>
-                    <span className="text-[10px] text-sage-grey uppercase tracking-wider">New Releases</span>
-                  </div>
-                  <div>
-                    <div className="text-3xl font-serif-heading text-cream-logo">Free</div>
-                    <span className="text-[10px] text-sage-grey uppercase tracking-wider">Access</span>
-                  </div>
+                  <input
+                    type="text"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    placeholder="Search topics (e.g. Narcissist, Boundaries, Overthinking)..."
+                    className="w-full pl-11 pr-10 py-3.5 rounded-xl bg-editorial-white/10 text-cream-logo text-xs placeholder-cream-logo/40 border border-editorial-white/20 focus:outline-none focus:border-cream-logo backdrop-blur-md transition-colors"
+                  />
+                  {searchQuery && (
+                    <button
+                      onClick={() => setSearchQuery("")}
+                      className="absolute inset-y-0 right-3 flex items-center text-xs text-cream-logo/60 hover:text-cream-logo"
+                    >
+                      ✕
+                    </button>
+                  )}
                 </div>
 
                 {/* Topic Filter Pills */}
@@ -186,11 +217,10 @@ export default function WatchLearnPage() {
                     <button
                       key={idx}
                       onClick={() => setSelectedTopic(topic)}
-                      className={`text-xs font-semibold px-4 py-2 rounded-full transition-all ${
-                        selectedTopic === topic
+                      className={`text-xs font-semibold px-4 py-2 rounded-full transition-all ${selectedTopic === topic
                           ? "bg-cream-logo text-[#0E2E1E] shadow-md scale-105"
                           : "bg-editorial-white/10 text-cream-logo border border-editorial-white/15 hover:bg-editorial-white/20"
-                      }`}
+                        }`}
                     >
                       {topic}
                     </button>
@@ -204,7 +234,7 @@ export default function WatchLearnPage() {
                 onMouseLeave={() => setIsReelPaused(false)}
                 className="lg:col-span-5 flex justify-center items-center relative py-6"
               >
-                
+
                 {/* Floating Micro Badge 1 (Top Left) */}
                 <motion.div
                   animate={{ y: [0, -10, 0] }}
@@ -235,12 +265,12 @@ export default function WatchLearnPage() {
                     repeat: Infinity,
                     ease: "easeInOut",
                   }}
-                  onClick={() => setActiveVideoModal(currentReel)}
+                  onClick={() => handleOpenVideo(currentReel)}
                   className="relative w-full max-w-[340px] bg-[#081F14] border-2 border-emerald-500/40 rounded-3xl overflow-hidden shadow-[0_30px_70px_rgba(0,0,0,0.7)] group cursor-pointer"
                 >
                   <div className="relative w-full h-[370px] overflow-hidden">
-                    
-                    {/* FLUID THUMBNAIL & REEL TEXT AUTO-LOOP CROSS-FADE */}
+
+                    {/* FLUID THUMBNAIL AUTO-LOOP CROSS-FADE */}
                     <AnimatePresence mode="wait">
                       <motion.div
                         key={activeReelIdx}
@@ -291,7 +321,7 @@ export default function WatchLearnPage() {
                       </motion.div>
                     </AnimatePresence>
 
-                    {/* Progress Bar Indicator for Loop Timer */}
+                    {/* Loop Progress Bar */}
                     <div className="absolute bottom-0 left-0 right-0 h-1 bg-editorial-white/20 z-20">
                       <motion.div
                         key={activeReelIdx}
@@ -318,66 +348,87 @@ export default function WatchLearnPage() {
               CINEMATIC HORIZONTAL SHOWCASE ({selectedTopic.toUpperCase()})
             </span>
             <h2 className="font-serif-heading text-3xl sm:text-4xl text-[#0E2E1E]">
-              Scroll Down to Explore Video Library →
+              {searchQuery ? `Search Results for "${searchQuery}" (${filteredVideos.length})` : "Scroll Down to Explore Video Library →"}
             </h2>
           </div>
           <span className="text-xs font-bold text-sage-grey hidden sm:inline-block bg-soft-white border border-mist-grey px-4 py-2 rounded-full">
-            SWIPE / SCROLL HORIZONTALLY
+            {filteredVideos.length} {filteredVideos.length === 1 ? "VIDEO" : "VIDEOS"} MATCHED
           </span>
         </section>
 
         {/* PINNED HORIZONTAL SCROLL CINEMA SHOWCASE */}
-        <HorizontalScrollTrack>
-          {filteredVideos.map((video) => (
-            <div
-              key={video.id}
-              onClick={() => setActiveVideoModal(video)}
-              className="w-[320px] sm:w-[380px] md:w-[420px] flex-shrink-0 group cursor-pointer bg-soft-white border-2 border-mist-grey rounded-3xl overflow-hidden hover:border-[#0E2E1E] transition-all hover:shadow-2xl flex flex-col justify-between"
-            >
-              {/* Thumbnail */}
-              <div className="relative w-full h-[380px] sm:h-[440px] bg-ink-black overflow-hidden flex items-center justify-center">
-                <img
-                  src={encodeURI(video.thumbnail)}
-                  alt={video.title}
-                  className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700"
-                />
+        {filteredVideos.length > 0 ? (
+          <HorizontalScrollTrack>
+            {filteredVideos.map((video) => (
+              <div
+                key={video.id}
+                onClick={() => handleOpenVideo(video)}
+                className="w-[320px] sm:w-[380px] md:w-[420px] flex-shrink-0 group cursor-pointer bg-soft-white border-2 border-mist-grey rounded-3xl overflow-hidden hover:border-[#0E2E1E] transition-all hover:shadow-2xl flex flex-col justify-between"
+              >
+                {/* Thumbnail */}
+                <div className="relative w-full h-[380px] sm:h-[440px] bg-ink-black overflow-hidden flex items-center justify-center">
+                  <img
+                    src={encodeURI(video.thumbnail)}
+                    alt={video.title}
+                    className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700"
+                  />
 
-                <div className="absolute inset-0 bg-gradient-to-t from-ink-black/85 via-ink-black/20 to-transparent group-hover:bg-ink-black/20 transition-all flex items-center justify-center">
-                  <div className="w-16 h-16 bg-cream-logo text-[#0E2E1E] rounded-full flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-                      <polygon points="9,6 18,12 9,18" fill="currentColor" />
-                    </svg>
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink-black/85 via-ink-black/20 to-transparent group-hover:bg-ink-black/20 transition-all flex items-center justify-center">
+                    <div className="w-16 h-16 bg-cream-logo text-[#0E2E1E] rounded-full flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform">
+                      <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                        <polygon points="9,6 18,12 9,18" fill="currentColor" />
+                      </svg>
+                    </div>
+                  </div>
+
+                  <div className="absolute top-4 left-4 right-4 flex justify-between items-center z-10">
+                    <span className="text-[10px] font-bold tracking-widest uppercase bg-[#0E2E1E] text-cream-logo px-3 py-1 rounded-full shadow-md">
+                      {video.category}
+                    </span>
+                    <span className="bg-ink-black/80 text-cream-logo text-[11px] font-bold px-3 py-1 rounded-full backdrop-blur-md border border-editorial-white/20">
+                      ⏱ {video.duration}
+                    </span>
                   </div>
                 </div>
 
-                <div className="absolute top-4 left-4 right-4 flex justify-between items-center z-10">
-                  <span className="text-[10px] font-bold tracking-widest uppercase bg-[#0E2E1E] text-cream-logo px-3 py-1 rounded-full shadow-md">
-                    {video.category}
-                  </span>
-                  <span className="bg-ink-black/80 text-cream-logo text-[11px] font-bold px-3 py-1 rounded-full backdrop-blur-md border border-editorial-white/20">
-                    ⏱ {video.duration}
-                  </span>
+                {/* Card Body */}
+                <div className="p-6 space-y-3">
+                  <h3 className="font-serif-heading text-2xl text-[#0E2E1E] leading-snug group-hover:text-[#1c5c3b] transition-colors">
+                    {video.title}
+                  </h3>
+                  <p className="text-xs text-[#626A64] font-light leading-relaxed line-clamp-2">
+                    {video.description}
+                  </p>
+                  <div className="pt-3 border-t border-mist-grey flex items-center justify-between text-xs text-sage-grey font-medium">
+                    <span>{video.views}</span>
+                    <span className="text-[#0E2E1E] font-bold group-hover:underline">
+                      Watch Cinema &rarr;
+                    </span>
+                  </div>
                 </div>
               </div>
-
-              {/* Card Body */}
-              <div className="p-6 space-y-3">
-                <h3 className="font-serif-heading text-2xl text-[#0E2E1E] leading-snug group-hover:text-[#1c5c3b] transition-colors">
-                  {video.title}
-                </h3>
-                <p className="text-xs text-[#626A64] font-light leading-relaxed line-clamp-2">
-                  {video.description}
-                </p>
-                <div className="pt-3 border-t border-mist-grey flex items-center justify-between text-xs text-sage-grey font-medium">
-                  <span>{video.views}</span>
-                  <span className="text-[#0E2E1E] font-bold group-hover:underline">
-                    Watch Cinema &rarr;
-                  </span>
-                </div>
-              </div>
+            ))}
+          </HorizontalScrollTrack>
+        ) : (
+          <div className="max-w-[1360px] mx-auto px-6 py-16 text-center space-y-4">
+            <div className="w-16 h-16 rounded-full bg-soft-white border border-mist-grey flex items-center justify-center mx-auto text-2xl">
+              🔍
             </div>
-          ))}
-        </HorizontalScrollTrack>
+            <h3 className="font-serif-heading text-3xl text-[#0E2E1E]">No videos found matching &ldquo;{searchQuery}&rdquo;</h3>
+            <p className="text-sm text-[#626A64] max-w-md mx-auto font-light">
+              Try searching for different keywords or select &ldquo;All&rdquo; topics to view our full cinematic library.
+            </p>
+            <button
+              onClick={() => {
+                setSearchQuery("");
+                setSelectedTopic("All");
+              }}
+              className="px-6 py-2.5 bg-[#0E2E1E] text-cream-logo font-semibold rounded-full text-xs hover:bg-[#143d28] transition-colors"
+            >
+              Reset Search &amp; Filters
+            </button>
+          </div>
+        )}
 
         {/* DEEPER SUPPORT CTA */}
         <section className="px-6 sm:px-12 md:px-16 lg:px-24 mt-20">

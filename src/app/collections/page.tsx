@@ -5,6 +5,9 @@ import Link from "next/link";
 import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import UnderProgressPage from "@/components/UnderProgressPage";
+import { SITE_LOCKS } from "@/config/locks";
+import { useCart } from "@/context/CartContext";
 import {
   ScrollReveal,
   KineticTextReveal,
@@ -18,6 +21,16 @@ import {
 } from "@/components/ScrollAnimations";
 
 export default function CollectionsDirectoryPage() {
+  if (SITE_LOCKS.PAGES_LOCKED) {
+    return (
+      <UnderProgressPage
+        pageName="Collections Directory"
+        description="This page is currently undergoing milestone updates. Please explore the live homepage."
+      />
+    );
+  }
+
+  const { addToCart } = useCart();
   const [cartAdded, setCartAdded] = useState<boolean>(false);
 
   const systemParts = [
@@ -29,6 +42,7 @@ export default function CollectionsDirectoryPage() {
       subtitle: "The Psychological Foundation of Recovery",
       description: "A comprehensive 240-page hardcover guide dissecting covert manipulation, gaslighting dynamics, trauma bonds, and boundary rebuilding strategies.",
       price: "$24.99",
+      numericPrice: 24.99,
       image: "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/Book.png",
       highlights: [
         "Anatomy of Covert Manipulation & Gaslighting",
@@ -45,6 +59,7 @@ export default function CollectionsDirectoryPage() {
       subtitle: "Turn Awareness into Daily Behavioral Action",
       description: "Step-by-step practical exercises, script templates for setting boundaries, emotional processing worksheets, and self-trust progress trackers.",
       price: "$29.99",
+      numericPrice: 29.99,
       image: "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/Workbook.png",
       highlights: [
         "Boundary Scripting Fill-in Templates",
@@ -61,6 +76,7 @@ export default function CollectionsDirectoryPage() {
       subtitle: "Somatic Grounding & Daily Reflection",
       description: "Art therapy grounding prompts combined with structured daily journaling to calm your nervous system during overthinking spirals.",
       price: "$14.99",
+      numericPrice: 14.99,
       image: "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/Coloring Book.png",
       highlights: [
         "Somatic Nervous System Art Mandalas",
@@ -77,6 +93,7 @@ export default function CollectionsDirectoryPage() {
       subtitle: "Keep Your Sanctuary Grounded Every Single Day",
       description: "10 high-resolution frameable posters featuring core emotional reminders, boundary rules, and self-compassion affirmations for your home.",
       price: "$29.99",
+      numericPrice: 29.99,
       image: "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/Posters/1 Framed.png",
       highlights: [
         "10 Premium Frameable 8x10 Art Prints",
@@ -93,6 +110,7 @@ export default function CollectionsDirectoryPage() {
       subtitle: "Instant Emotional Clarity Right in Your Hands",
       description: "52 premium micro-reflection cards providing immediate grounded perspective whenever you experience self-doubt or emotional triggers.",
       price: "$19.99",
+      numericPrice: 19.99,
       image: "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/Affirmation Cards/Box Display.png",
       highlights: [
         "52 Weekly Micro-Action Cards",
@@ -130,9 +148,26 @@ export default function CollectionsDirectoryPage() {
     },
   ];
 
-  const handleAddToCart = () => {
+  const handleAddBundleToCart = () => {
+    addToCart({
+      id: "bye-bye-narcissist-bundle",
+      title: "Bye Bye Narcissist — Complete 5-Tool Collection",
+      price: 119.99,
+      subtitle: "Includes Book, Workbook, Colouring Book & Journal, Posters, Card Deck",
+      image: "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/Collection/Collection.png",
+    });
     setCartAdded(true);
-    setTimeout(() => setCartAdded(false), 3000);
+    setTimeout(() => setCartAdded(false), 2500);
+  };
+
+  const handleAddSingleToCart = (part: any) => {
+    addToCart({
+      id: part.id,
+      title: part.title,
+      price: part.numericPrice,
+      subtitle: part.subtitle,
+      image: part.image,
+    });
   };
 
   return (
@@ -175,7 +210,7 @@ export default function CollectionsDirectoryPage() {
           </div>
         </section>
 
-        {/* PINNED SCROLL SEQUENCE (Scroll-Driven Auto-Switch 01 -> 02 -> 03) */}
+        {/* PINNED SCROLL SEQUENCE */}
         <PinnedScrollSequence
           items={[
             {
@@ -216,8 +251,8 @@ export default function CollectionsDirectoryPage() {
               </div>
               <MagneticElement strength={0.15}>
                 <button
-                  onClick={handleAddToCart}
-                  className="px-8 py-4 bg-[#0E2E1E] text-cream-logo font-semibold rounded-xl hover:bg-[#143d28] transition-all shadow-xl text-sm"
+                  onClick={handleAddBundleToCart}
+                  className="px-8 py-4 bg-[#0E2E1E] text-cream-logo font-semibold rounded-xl hover:bg-[#143d28] transition-all shadow-xl text-sm cursor-pointer"
                 >
                   {cartAdded ? "✓ Added to Cart!" : "Add Bundle to Cart — $119.99 →"}
                 </button>
@@ -226,7 +261,7 @@ export default function CollectionsDirectoryPage() {
           </div>
         </section>
 
-        {/* 5 SEQUENTIAL LUXURY EDITORIAL TOOL SHOWCASE ROWS (SCROLL-DRIVEN, ZERO CLICKS REQUIRED!) */}
+        {/* 5 SEQUENTIAL LUXURY EDITORIAL TOOL SHOWCASE ROWS */}
         <section className="max-w-[1360px] mx-auto px-6 sm:px-12 md:px-16 mb-32 space-y-24">
           {systemParts.map((part, pIdx) => (
             <SplitSlideCombine
@@ -295,19 +330,27 @@ export default function CollectionsDirectoryPage() {
                       {part.price}
                     </span>
                   </div>
-                  <Link
-                    href="/collections/bye-bye-narcissist"
-                    className="px-6 py-3 bg-[#0E2E1E] text-editorial-white font-semibold rounded-xl hover:bg-[#143d28] transition-all text-xs shadow-md"
-                  >
-                    View Details &rarr;
-                  </Link>
+                  <div className="flex gap-3">
+                    <button
+                      onClick={() => handleAddSingleToCart(part)}
+                      className="px-5 py-3 bg-[#0E2E1E] text-editorial-white font-semibold rounded-xl hover:bg-[#143d28] transition-all text-xs shadow-md cursor-pointer"
+                    >
+                      Add to Cart — {part.price} &rarr;
+                    </button>
+                    <Link
+                      href={`/products/${part.id}`}
+                      className="px-4 py-3 bg-editorial-white text-[#0E2E1E] border border-mist-grey font-semibold rounded-xl hover:bg-mist-grey/50 transition-all text-xs"
+                    >
+                      Details &rarr;
+                    </Link>
+                  </div>
                 </div>
               </div>
             </SplitSlideCombine>
           ))}
         </section>
 
-        {/* WHY THEY WORK TOGETHER — Cascading Zoom Stagger */}
+        {/* WHY THEY WORK TOGETHER */}
         <section className="max-w-[1360px] mx-auto px-6 sm:px-12 md:px-16 mb-32">
           <ScrollReveal direction="up" className="max-w-4xl mx-auto text-center mb-16 space-y-4">
             <span className="text-xs font-bold tracking-widest uppercase text-[#0E2E1E]">
@@ -338,7 +381,7 @@ export default function CollectionsDirectoryPage() {
           </CascadingZoomStagger>
         </section>
 
-        {/* UPCOMING COLLECTIONS — 3D Perspective Flip In */}
+        {/* UPCOMING COLLECTIONS */}
         <section className="max-w-[1360px] mx-auto px-6 sm:px-12 md:px-16 mb-32">
           <ScrollReveal direction="up" className="mb-12 flex items-center justify-between">
             <div>
@@ -382,7 +425,7 @@ export default function CollectionsDirectoryPage() {
           </PerspectiveFlipIn>
         </section>
 
-        {/* COMMUNITY CTA — Curtain Clip Expand */}
+        {/* COMMUNITY CTA */}
         <section className="max-w-[1360px] mx-auto px-6 sm:px-12 md:px-16 pb-32">
           <CurtainClipExpand>
             <div className="bg-[#0E2E1E] text-editorial-white rounded-2xl p-10 sm:p-16 text-center space-y-6 shadow-2xl">

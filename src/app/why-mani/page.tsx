@@ -4,6 +4,8 @@ import React from "react";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import UnderProgressPage from "@/components/UnderProgressPage";
+import { SITE_LOCKS } from "@/config/locks";
 import {
   ScrollReveal,
   KineticTextReveal,
@@ -17,6 +19,15 @@ import {
 } from "@/components/ScrollAnimations";
 
 export default function WhyManiPage() {
+  if (SITE_LOCKS.PAGES_LOCKED) {
+    return (
+      <UnderProgressPage
+        pageName="Why MANI Philosophy & Manifesto"
+        description="This page is currently undergoing milestone updates. Please explore the live homepage."
+      />
+    );
+  }
+
   const corePillars = [
     {
       num: "01",

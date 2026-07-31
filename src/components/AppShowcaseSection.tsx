@@ -4,10 +4,14 @@ import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import TiltCard3D from "./TiltCard3D";
+import UnderProgressModal from "./UnderProgressModal";
+import { SITE_LOCKS } from "@/config/locks";
+import { trackBetaSignup } from "@/lib/analytics";
 
 export default function AppShowcaseSection() {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [showProgressModal, setShowProgressModal] = useState(false);
   const [activePromptTab, setActivePromptTab] = useState<number>(0);
   
   // Animation Phase: 'user-typing' | 'mani-thinking' | 'mani-typing' | 'complete'
@@ -85,10 +89,20 @@ export default function AppShowcaseSection() {
     };
   }, [activePromptTab]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (email) {
       setSubmitted(true);
+      trackBetaSignup(email);
+      try {
+        await fetch("/api/klaviyo/subscribe", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, type: "beta" }),
+        });
+      } catch (err) {
+        console.error("Klaviyo CRM sync error:", err);
+      }
       setEmail("");
     }
   };
@@ -296,6 +310,13 @@ export default function AppShowcaseSection() {
 
         </div>
       </div>
+
+      <UnderProgressModal
+        isOpen={showProgressModal}
+        onClose={() => setShowProgressModal(false)}
+        title="🔒 Beta Registration Under Progress"
+        description="App Beta registration is currently under progress for today's milestone update. Please explore the live homepage presentation."
+      />
     </section>
   );
 }

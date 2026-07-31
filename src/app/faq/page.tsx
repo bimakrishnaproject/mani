@@ -5,6 +5,8 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import UnderProgressPage from "@/components/UnderProgressPage";
+import { SITE_LOCKS } from "@/config/locks";
 import {
   ScrollReveal,
   KineticTextReveal,
@@ -17,6 +19,15 @@ import {
 } from "@/components/ScrollAnimations";
 
 export default function FAQPage() {
+  if (SITE_LOCKS.PAGES_LOCKED) {
+    return (
+      <UnderProgressPage
+        pageName="Sanctuary FAQ"
+        description="This page is currently undergoing milestone updates. Please explore the live homepage."
+      />
+    );
+  }
+
   const [openIndex, setOpenIndex] = useState<number | null>(0);
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [activeCategory, setActiveCategory] = useState<string>("All");
@@ -105,7 +116,7 @@ export default function FAQPage() {
     const matchesCategory = activeCategory === "All" || f.category === activeCategory;
     const matchesSearch = searchQuery
       ? f.question.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        f.answer.toLowerCase().includes(searchQuery.toLowerCase())
+      f.answer.toLowerCase().includes(searchQuery.toLowerCase())
       : true;
     return matchesCategory && matchesSearch;
   });
@@ -124,7 +135,7 @@ export default function FAQPage() {
         {/* FULL WIDTH HERO SECTION */}
         <section className="max-w-[1360px] mx-auto px-6 sm:px-12 md:px-16 mb-20">
           <SplitSlideCombine className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
+
             {/* Left Column: Search & Intro */}
             <div className="lg:col-span-7 space-y-6">
               <DiagonalSlideIn from="top-left" distance={30}>
@@ -168,11 +179,10 @@ export default function FAQPage() {
                     <button
                       key={idx}
                       onClick={() => setActiveCategory(cat)}
-                      className={`text-xs font-semibold px-4 py-2 rounded-full transition-all flex items-center gap-1.5 ${
-                        activeCategory === cat
+                      className={`text-xs font-semibold px-4 py-2 rounded-full transition-all flex items-center gap-1.5 ${activeCategory === cat
                           ? "bg-[#0E2E1E] text-editorial-white shadow-md scale-105"
                           : "bg-soft-white text-ink-black border border-mist-grey hover:border-[#0E2E1E]"
-                      }`}
+                        }`}
                     >
                       <span>{cat}</span>
                       <span className={`text-[10px] px-1.5 py-0.2 rounded-full ${activeCategory === cat ? "bg-cream-logo/30 text-cream-logo" : "bg-mist-grey text-sage-grey"}`}>
@@ -238,11 +248,10 @@ export default function FAQPage() {
                       <button
                         key={idx}
                         onClick={() => setActiveCategory(cat)}
-                        className={`w-full text-left p-3 rounded-xl text-xs font-semibold flex items-center justify-between transition-all ${
-                          activeCategory === cat
+                        className={`w-full text-left p-3 rounded-xl text-xs font-semibold flex items-center justify-between transition-all ${activeCategory === cat
                             ? "bg-[#0E2E1E] text-cream-logo shadow-md"
                             : "bg-editorial-white text-ink-black border border-mist-grey hover:border-[#0E2E1E]"
-                        }`}
+                          }`}
                       >
                         <span>{cat}</span>
                         <span className={`text-[10px] px-2 py-0.5 rounded-full ${activeCategory === cat ? "bg-cream-logo/20 text-cream-logo" : "bg-mist-grey text-sage-grey"}`}>

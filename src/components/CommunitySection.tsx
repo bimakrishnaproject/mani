@@ -1,15 +1,26 @@
 "use client";
 
 import { useState } from "react";
+import { trackCommunitySignup } from "@/lib/analytics";
 
 export default function CommunitySection() {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (email) {
       setSubmitted(true);
+      trackCommunitySignup(email);
+      try {
+        await fetch("/api/klaviyo/subscribe", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, type: "community" }),
+        });
+      } catch (err) {
+        console.error("Klaviyo CRM sync error:", err);
+      }
       setEmail("");
     }
   };

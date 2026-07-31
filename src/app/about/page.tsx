@@ -6,6 +6,8 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import UnderProgressPage from "@/components/UnderProgressPage";
+import { SITE_LOCKS } from "@/config/locks";
 import {
   ScrollReveal,
   KineticTextReveal,
@@ -23,6 +25,15 @@ if (typeof window !== "undefined") {
 }
 
 export default function AboutPage() {
+  if (SITE_LOCKS.PAGES_LOCKED) {
+    return (
+      <UnderProgressPage
+        pageName="About & Clinical Team Dossier"
+        description="This page is currently undergoing milestone updates. Please explore the live homepage."
+      />
+    );
+  }
+
   const founders = [
     {
       name: "Manasa Reddy",
@@ -77,7 +88,7 @@ export default function AboutPage() {
       <Header />
 
       <main className="flex-grow pt-36 md:pt-48 pb-32">
-        
+
         {/* HERO SECTION */}
         <section className="px-6 sm:px-12 md:px-16 lg:px-24 mb-28">
           <div className="max-w-4xl space-y-6">

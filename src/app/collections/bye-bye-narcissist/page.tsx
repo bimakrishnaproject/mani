@@ -5,6 +5,9 @@ import Link from "next/link";
 import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import UnderProgressPage from "@/components/UnderProgressPage";
+import { SITE_LOCKS } from "@/config/locks";
+import { useCart } from "@/context/CartContext";
 import {
   ScrollReveal,
   KineticTextReveal,
@@ -18,6 +21,16 @@ import {
 } from "@/components/ScrollAnimations";
 
 export default function ByeByeNarcissistCollectionPage() {
+  if (SITE_LOCKS.PAGES_LOCKED) {
+    return (
+      <UnderProgressPage
+        pageName="Bye Bye Narcissist Flagship Collection"
+        description="This page is currently undergoing milestone updates. Please explore the live homepage."
+      />
+    );
+  }
+
+  const { addToCart } = useCart();
   const [cartAdded, setCartAdded] = useState<boolean>(false);
 
   const products = [
@@ -29,6 +42,7 @@ export default function ByeByeNarcissistCollectionPage() {
       subtitle: "The Psychological Foundation of Recovery",
       description: "A comprehensive 240-page hardcover guide dissecting covert manipulation, gaslighting dynamics, trauma bonds, and boundary rebuilding strategies.",
       price: "$24.99",
+      numericPrice: 24.99,
       image: "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/Book.png",
       highlights: [
         "Anatomy of Covert Manipulation & Gaslighting",
@@ -45,6 +59,7 @@ export default function ByeByeNarcissistCollectionPage() {
       subtitle: "Turn Awareness into Daily Behavioral Action",
       description: "Step-by-step practical exercises, script templates for setting boundaries, emotional processing worksheets, and self-trust progress trackers.",
       price: "$29.99",
+      numericPrice: 29.99,
       image: "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/Workbook.png",
       highlights: [
         "Boundary Scripting Fill-in Templates",
@@ -61,6 +76,7 @@ export default function ByeByeNarcissistCollectionPage() {
       subtitle: "Somatic Grounding & Daily Reflection",
       description: "Art therapy grounding prompts combined with structured daily journaling to calm your nervous system during overthinking spirals.",
       price: "$14.99",
+      numericPrice: 14.99,
       image: "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/Coloring Book.png",
       highlights: [
         "Somatic Nervous System Art Mandalas",
@@ -77,6 +93,7 @@ export default function ByeByeNarcissistCollectionPage() {
       subtitle: "Keep Your Sanctuary Grounded Every Single Day",
       description: "10 high-resolution frameable posters featuring core emotional reminders, boundary rules, and self-compassion affirmations for your space.",
       price: "$29.99",
+      numericPrice: 29.99,
       image: "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/Posters/1 Framed.png",
       highlights: [
         "10 Premium Frameable 8x10 Art Prints",
@@ -93,6 +110,7 @@ export default function ByeByeNarcissistCollectionPage() {
       subtitle: "Instant Emotional Clarity Right in Your Hands",
       description: "52 premium micro-reflection cards providing immediate grounded perspective whenever you experience self-doubt or emotional triggers.",
       price: "$19.99",
+      numericPrice: 19.99,
       image: "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/Affirmation Cards/Box Display.png",
       highlights: [
         "52 Weekly Micro-Action Cards",
@@ -103,9 +121,26 @@ export default function ByeByeNarcissistCollectionPage() {
     },
   ];
 
-  const handleAddToCart = () => {
+  const handleAddBundleToCart = () => {
+    addToCart({
+      id: "bye-bye-narcissist-bundle",
+      title: "Bye Bye Narcissist — Complete 5-Tool Collection",
+      price: 119.99,
+      subtitle: "Includes Book, Workbook, Colouring Book & Journal, Posters, Card Deck",
+      image: "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/Collection/Collection.png",
+    });
     setCartAdded(true);
-    setTimeout(() => setCartAdded(false), 3000);
+    setTimeout(() => setCartAdded(false), 2500);
+  };
+
+  const handleAddSingleToCart = (prod: any) => {
+    addToCart({
+      id: prod.id,
+      title: prod.title,
+      price: prod.numericPrice,
+      subtitle: prod.subtitle,
+      image: prod.image,
+    });
   };
 
   return (
@@ -162,8 +197,8 @@ export default function ByeByeNarcissistCollectionPage() {
 
                   <MagneticElement strength={0.15}>
                     <button
-                      onClick={handleAddToCart}
-                      className="w-full py-5 bg-[#0E2E1E] text-editorial-white font-semibold rounded-xl hover:bg-[#143d28] transition-all transform hover:scale-[1.02] shadow-xl text-base flex items-center justify-center gap-2"
+                      onClick={handleAddBundleToCart}
+                      className="w-full py-5 bg-[#0E2E1E] text-editorial-white font-semibold rounded-xl hover:bg-[#143d28] transition-all transform hover:scale-[1.02] shadow-xl text-base flex items-center justify-center gap-2 cursor-pointer"
                     >
                       {cartAdded ? "✓ Added to Cart!" : "Shop the Collection — $119.99 →"}
                     </button>
@@ -220,7 +255,7 @@ export default function ByeByeNarcissistCollectionPage() {
           textColor="text-cream-logo"
         />
 
-        {/* 5 SEQUENTIAL LUXURY EDITORIAL TOOL SHOWCASE ROWS (SCROLL-DRIVEN, ZERO CLICKS REQUIRED!) */}
+        {/* 5 SEQUENTIAL LUXURY EDITORIAL TOOL SHOWCASE ROWS */}
         <section id="whats-included" className="max-w-[1360px] mx-auto px-6 sm:px-12 md:px-16 py-32 space-y-24">
           <ScrollReveal direction="up" className="max-w-4xl mx-auto text-center mb-16 space-y-4">
             <span className="text-xs font-bold tracking-widest uppercase text-[#0E2E1E]">
@@ -303,8 +338,8 @@ export default function ByeByeNarcissistCollectionPage() {
                   </div>
                   <MagneticElement strength={0.15}>
                     <button
-                      onClick={handleAddToCart}
-                      className="px-6 py-3 bg-[#0E2E1E] text-editorial-white font-semibold rounded-xl hover:bg-[#143d28] transition-all text-xs shadow-md"
+                      onClick={() => handleAddSingleToCart(prod)}
+                      className="px-6 py-3 bg-[#0E2E1E] text-editorial-white font-semibold rounded-xl hover:bg-[#143d28] transition-all text-xs shadow-md cursor-pointer"
                     >
                       Add Individual Tool — {prod.price} &rarr;
                     </button>
@@ -315,7 +350,7 @@ export default function ByeByeNarcissistCollectionPage() {
           ))}
         </section>
 
-        {/* BUNDLE COMPARISON — Perspective Flip In */}
+        {/* BUNDLE COMPARISON */}
         <section className="max-w-[1360px] mx-auto px-6 sm:px-12 md:px-16 mb-32">
           <ScrollReveal direction="up" className="text-center mb-12">
             <span className="text-xs font-bold tracking-widest uppercase text-[#0E2E1E] block mb-1">
@@ -334,10 +369,18 @@ export default function ByeByeNarcissistCollectionPage() {
               <span className="text-3xl font-serif-heading text-[#0E2E1E] block">$49.99</span>
               <MagneticElement strength={0.12}>
                 <button
-                  onClick={handleAddToCart}
-                  className="w-full py-3 bg-[#0E2E1E] text-editorial-white font-semibold rounded-xl hover:bg-[#143d28] transition-all text-sm"
+                  onClick={() =>
+                    addToCart({
+                      id: "starter-bundle",
+                      title: "Starter Bundle — Book + Workbook",
+                      price: 49.99,
+                      subtitle: "Foundation understanding plus practical exercises",
+                      image: "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/Book.png",
+                    })
+                  }
+                  className="w-full py-3 bg-[#0E2E1E] text-editorial-white font-semibold rounded-xl hover:bg-[#143d28] transition-all text-sm cursor-pointer"
                 >
-                  Add to Cart &rarr;
+                  Add Starter Bundle — $49.99 &rarr;
                 </button>
               </MagneticElement>
             </div>
@@ -356,21 +399,21 @@ export default function ByeByeNarcissistCollectionPage() {
               <p className="text-xs text-[#C3CDC6]">Includes: Book, Workbook, Colouring Book & Journal, Poster Set, Card Deck</p>
               <MagneticElement strength={0.12}>
                 <button
-                  onClick={handleAddToCart}
-                  className="w-full py-3 bg-cream-logo text-[#0E2E1E] font-semibold rounded-xl hover:bg-[#f2e1bd] transition-all text-sm"
+                  onClick={handleAddBundleToCart}
+                  className="w-full py-3 bg-cream-logo text-[#0E2E1E] font-semibold rounded-xl hover:bg-[#f2e1bd] transition-all text-sm cursor-pointer font-bold"
                 >
-                  Add Complete Bundle &rarr;
+                  Add Complete Bundle — $119.99 &rarr;
                 </button>
               </MagneticElement>
             </div>
           </PerspectiveFlipIn>
         </section>
 
-        {/* RELATED VIDEOS — Cascading Zoom Stagger */}
+        {/* RELATED VIDEOS */}
         <section className="max-w-[1360px] mx-auto px-6 sm:px-12 md:px-16 mb-32">
           <ScrollReveal direction="up" className="mb-10">
             <span className="text-xs font-bold tracking-widest uppercase text-[#0E2E1E] block mb-1">
-              RELATED WATCH & LEARN CONTENT
+              RELATED WATCH &amp; LEARN CONTENT
             </span>
             <h2 className="font-serif-heading text-3xl sm:text-4xl text-[#0E2E1E]">
               Videos That Support This Collection
@@ -400,7 +443,7 @@ export default function ByeByeNarcissistCollectionPage() {
           </CascadingZoomStagger>
         </section>
 
-        {/* GUARANTEE CTA — Curtain Clip Expand */}
+        {/* GUARANTEE CTA */}
         <section className="max-w-[1360px] mx-auto px-6 sm:px-12 md:px-16 pb-32">
           <CurtainClipExpand>
             <div className="bg-[#081F14] text-editorial-white rounded-2xl p-10 sm:p-16 text-center space-y-6 shadow-2xl">
@@ -415,8 +458,8 @@ export default function ByeByeNarcissistCollectionPage() {
               </p>
               <MagneticElement strength={0.2} className="inline-block pt-2">
                 <button
-                  onClick={handleAddToCart}
-                  className="px-10 py-5 bg-cream-logo text-[#0E2E1E] font-semibold rounded-xl hover:bg-[#f2e1bd] transition-all transform hover:scale-105 shadow-xl text-base"
+                  onClick={handleAddBundleToCart}
+                  className="px-10 py-5 bg-cream-logo text-[#0E2E1E] font-semibold rounded-xl hover:bg-[#f2e1bd] transition-all transform hover:scale-105 shadow-xl text-base cursor-pointer"
                 >
                   {cartAdded ? "✓ Added!" : "Get Started Today — $119.99 →"}
                 </button>

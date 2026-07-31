@@ -3,11 +3,13 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useTypewriterNavigation } from "./TypewriterNavigationProvider";
+import { useCart } from "@/context/CartContext";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { navigateTo } = useTypewriterNavigation();
+  const { totalItems, openCart } = useCart();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -62,17 +64,20 @@ export default function Header() {
             </a>
             <a
               href="/watch-learn"
-              onClick={(e) => handleNavClick(e, "/watch-learn", "OPENING WATCH & LEARN CINEMA LIBRARY")}
+              onClick={(e) => handleNavClick(e, "/watch-learn", "LOADING WATCH & LEARN CINEMA")}
               className="text-sm font-medium text-ink-black hover:text-[#0E2E1E] transition-colors cursor-pointer"
             >
-              Watch & Learn
+              Watch &amp; Learn
             </a>
             <a
               href="/#app"
-              onClick={(e) => handleNavClick(e, "/#app", "OPENING MANI APP BETA SECTION")}
-              className="text-sm font-medium text-ink-black hover:text-[#0E2E1E] transition-colors flex items-center gap-1.5 cursor-pointer"
+              onClick={(e) => handleNavClick(e, "/#app", "OPENING MANI BETA APP SHOWCASE")}
+              className="text-sm font-medium text-ink-black hover:text-[#0E2E1E] transition-colors cursor-pointer flex items-center gap-1.5"
             >
-              App <span className="text-[9px] font-bold uppercase bg-soft-signal-green text-[#0E2E1E] px-1.5 py-0.5 rounded-sm">Beta</span>
+              <span>App</span>
+              <span className="text-[10px] font-bold tracking-widest uppercase bg-[#0E2E1E] text-cream-logo px-2 py-0.5 rounded-full">
+                BETA
+              </span>
             </a>
             <a
               href="/why-mani"
@@ -97,7 +102,25 @@ export default function Header() {
             </a>
           </nav>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
+            {/* Cart Drawer Trigger Button */}
+            <button
+              onClick={openCart}
+              className="relative p-2.5 bg-soft-white border border-mist-grey text-[#0E2E1E] rounded-full hover:bg-mist-grey/50 transition-colors flex items-center justify-center cursor-pointer shadow-xs"
+              aria-label="View Shopping Cart"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+                <line x1="3" y1="6" x2="21" y2="6" />
+                <path d="M16 10a4 4 0 0 1-8 0" />
+              </svg>
+              {totalItems > 0 && (
+                <span className="absolute -top-1 -right-1 w-5 h-5 bg-[#0E2E1E] text-cream-logo font-bold text-[10px] rounded-full flex items-center justify-center border-2 border-white shadow-md animate-pulse">
+                  {totalItems}
+                </span>
+              )}
+            </button>
+
             <a
               href="/#community"
               onClick={(e) => handleNavClick(e, "/#community", "JOINING MANI COMMUNITY")}
@@ -118,38 +141,79 @@ export default function Header() {
         </div>
       </header>
 
-      {/* Mobile Nav Overlay */}
+      {/* MOBILE MENU OVERLAY */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-40 bg-[#0E2E1E] text-editorial-white pt-28 px-8 flex flex-col justify-between pb-12">
+        <div className="fixed inset-0 z-40 bg-editorial-white flex flex-col justify-between p-8 pt-28 md:hidden">
           <nav className="flex flex-col gap-6 text-2xl font-serif-heading">
-            <a href="/" onClick={(e) => handleNavClick(e, "/", "INITIALIZING MANI HOME")} className="text-cream-logo">
+            <a
+              href="/"
+              onClick={(e) => handleNavClick(e, "/", "INITIALIZING MANI HOME")}
+              className="text-[#0E2E1E]"
+            >
               Home
             </a>
-            <a href="/collections" onClick={(e) => handleNavClick(e, "/collections", "CONNECTING TO MANI COLLECTIONS")} className="hover:text-cream-logo">
+            <a
+              href="/collections"
+              onClick={(e) => handleNavClick(e, "/collections", "CONNECTING TO MANI COLLECTIONS")}
+              className="text-[#0E2E1E]"
+            >
               Collections
             </a>
-            <a href="/watch-learn" onClick={(e) => handleNavClick(e, "/watch-learn", "OPENING WATCH & LEARN CINEMA LIBRARY")} className="hover:text-cream-logo">
-              Watch & Learn
+            <a
+              href="/watch-learn"
+              onClick={(e) => handleNavClick(e, "/watch-learn", "LOADING WATCH & LEARN CINEMA")}
+              className="text-[#0E2E1E]"
+            >
+              Watch &amp; Learn
             </a>
-            <a href="/#app" onClick={(e) => handleNavClick(e, "/#app", "OPENING MANI APP BETA SECTION")} className="hover:text-cream-logo">
-              App Beta
+            <a
+              href="/#app"
+              onClick={(e) => handleNavClick(e, "/#app", "OPENING MANI BETA APP SHOWCASE")}
+              className="text-[#0E2E1E] flex items-center gap-2"
+            >
+              <span>App</span>
+              <span className="text-xs font-sans font-bold bg-[#0E2E1E] text-cream-logo px-2 py-0.5 rounded-full">
+                BETA
+              </span>
             </a>
-            <a href="/why-mani" onClick={(e) => handleNavClick(e, "/why-mani", "LOADING WHY MANI PHILOSOPHY")} className="hover:text-cream-logo">
+            <a
+              href="/why-mani"
+              onClick={(e) => handleNavClick(e, "/why-mani", "LOADING WHY MANI PHILOSOPHY")}
+              className="text-[#0E2E1E]"
+            >
               Why MANI
             </a>
-            <a href="/about" onClick={(e) => handleNavClick(e, "/about", "LOADING CLINICAL DOSSIER")} className="hover:text-cream-logo">
+            <a
+              href="/about"
+              onClick={(e) => handleNavClick(e, "/about", "LOADING CLINICAL DOSSIER & FOUNDERS")}
+              className="text-[#0E2E1E]"
+            >
               About
             </a>
-            <a href="/faq" onClick={(e) => handleNavClick(e, "/faq", "CONNECTING TO SANCTUARY FAQ")} className="hover:text-cream-logo">
+            <a
+              href="/faq"
+              onClick={(e) => handleNavClick(e, "/faq", "CONNECTING TO SANCTUARY FAQ")}
+              className="text-[#0E2E1E]"
+            >
               FAQ
             </a>
           </nav>
 
-          <div className="pt-8 border-t border-editorial-white/20 space-y-4">
+          <div className="space-y-4 pt-6 border-t border-mist-grey">
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false);
+                openCart();
+              }}
+              className="w-full py-4 bg-editorial-white text-[#0E2E1E] border border-[#0E2E1E] font-semibold rounded-md text-center text-sm flex items-center justify-center gap-2"
+            >
+              🛍 View Cart ({totalItems})
+            </button>
+
             <a
               href="/#community"
               onClick={(e) => handleNavClick(e, "/#community", "JOINING MANI COMMUNITY")}
-              className="block w-full py-4 text-center bg-cream-logo text-[#0E2E1E] font-semibold rounded-md text-base"
+              className="block w-full py-4 bg-[#0E2E1E] text-cream-logo font-semibold rounded-md text-center text-sm"
             >
               Join Our Community
             </a>
