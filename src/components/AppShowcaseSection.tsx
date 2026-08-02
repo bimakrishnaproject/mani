@@ -127,13 +127,13 @@ export default function AppShowcaseSection() {
               viewport={{ once: false }}
               transition={{ duration: 0.8 }}
             >
-              <div className="inline-block text-[11px] font-bold tracking-widest uppercase text-deep-green bg-soft-signal-green px-4 py-1.5 rounded-full mb-4 shadow-xs">
+              <div className="inline-block text-[10px] sm:text-[11px] font-bold tracking-widest uppercase text-deep-green bg-soft-signal-green px-3.5 py-1.5 rounded-full mb-3 shadow-xs">
                 THE MANI APP • BETA ACCESS
               </div>
-              <h2 className="font-serif-heading text-5xl sm:text-7xl text-deep-green leading-[0.98]">
+              <h2 className="font-serif-heading text-3xl xs:text-4xl sm:text-6xl md:text-7xl text-deep-green leading-[0.98]">
                 Support Wherever You Are
               </h2>
-              <p className="text-lg sm:text-xl text-[#4A524D] font-light leading-relaxed mt-4">
+              <p className="text-base sm:text-xl text-[#4A524D] font-light leading-relaxed mt-3">
                 Beyond listening, MANI guides you toward understanding and practical next steps. Designed for private, calm, real-time support right from your phone.
               </p>
             </motion.div>

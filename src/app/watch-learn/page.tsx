@@ -177,7 +177,7 @@ export default function WatchLearnPage() {
                 <KineticTextReveal
                   text="Support in Minutes."
                   tag="h1"
-                  className="font-serif-heading text-5xl sm:text-7xl lg:text-8xl text-cream-logo leading-tight"
+                  className="font-serif-heading text-4xl xs:text-5xl sm:text-7xl lg:text-8xl text-cream-logo leading-tight"
                 />
 
                 <ScrollReveal direction="up" distance={30} delay={0.2}>
@@ -484,34 +484,34 @@ export default function WatchLearnPage() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 30 }}
               transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              className="relative w-full max-w-md bg-[#081F14] text-editorial-white rounded-2xl border border-editorial-white/20 p-6 shadow-2xl z-10 space-y-4"
+              className="relative w-full max-w-md bg-[#081F14] text-editorial-white rounded-2xl border border-editorial-white/20 p-5 sm:p-6 shadow-2xl z-10 space-y-4 max-h-[90vh] overflow-y-auto"
             >
               <div className="flex items-center justify-between">
                 <div>
                   <span className="text-xs font-bold text-cream-logo uppercase tracking-widest block">
                     {activeVideoModal.category} • {activeVideoModal.duration}
                   </span>
-                  <h3 className="font-serif-heading text-2xl text-cream-logo mt-0.5">
+                  <h3 className="font-serif-heading text-xl sm:text-2xl text-cream-logo mt-0.5">
                     {activeVideoModal.title}
                   </h3>
                 </div>
                 <button
                   onClick={() => setActiveVideoModal(null)}
-                  className="w-9 h-9 rounded-full bg-editorial-white/10 text-cream-logo flex items-center justify-center hover:bg-editorial-white/20 text-sm font-bold"
+                  className="w-9 h-9 rounded-full bg-editorial-white/10 text-cream-logo flex items-center justify-center hover:bg-editorial-white/20 text-sm font-bold flex-shrink-0"
                 >
                   ✕
                 </button>
               </div>
 
-              <div className="relative w-full h-[480px] bg-ink-black rounded-xl overflow-hidden flex items-center justify-center border border-editorial-white/15">
+              <div className="relative w-full h-[320px] sm:h-[420px] bg-ink-black rounded-xl overflow-hidden flex items-center justify-center border border-editorial-white/15">
                 <img
                   src={encodeURI(activeVideoModal.thumbnail)}
                   alt={activeVideoModal.title}
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-ink-black/30 flex flex-col items-center justify-center space-y-4">
-                  <div className="w-20 h-20 bg-cream-logo text-[#0E2E1E] rounded-full flex items-center justify-center shadow-2xl animate-pulse cursor-pointer">
-                    <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-cream-logo text-[#0E2E1E] rounded-full flex items-center justify-center shadow-2xl animate-pulse cursor-pointer">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
                       <polygon points="9,6 18,12 9,18" fill="currentColor" />
                     </svg>
                   </div>

@@ -164,7 +164,7 @@ export default function ByeByeNarcissistCollectionPage() {
               <KineticTextReveal
                 text="Bye Bye Narcissist."
                 tag="h1"
-                className="font-serif-heading text-6xl sm:text-8xl text-[#0E2E1E] leading-[0.94] tracking-tight"
+                className="font-serif-heading text-4xl xs:text-5xl sm:text-7xl md:text-8xl text-[#0E2E1E] leading-[0.96] sm:leading-[0.94] tracking-tight"
               />
 
               <ScrollReveal direction="up" distance={30} delay={0.2}>

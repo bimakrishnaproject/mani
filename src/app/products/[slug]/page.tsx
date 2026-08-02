@@ -170,7 +170,7 @@ export default function ProductDetailPage({ params }: { params: Promise<{ slug: 
               <KineticTextReveal
                 text={product.title}
                 tag="h1"
-                className="font-serif-heading text-4xl sm:text-6xl text-[#0E2E1E] leading-tight"
+                className="font-serif-heading text-3xl xs:text-4xl sm:text-6xl text-[#0E2E1E] leading-tight"
               />
 
               <p className="font-serif-italic text-2xl text-[#4A524D]">

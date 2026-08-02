@@ -568,7 +568,7 @@ export function PinnedScrollSequence({
                   </span>
                 )}
 
-                <h2 className="font-serif-heading text-3xl sm:text-6xl md:text-7xl text-cream-logo leading-[1.08] tracking-tight">
+                <h2 className="font-serif-heading text-2xl xs:text-3xl sm:text-5xl md:text-7xl text-cream-logo leading-[1.1] sm:leading-[1.08] tracking-tight">
                   {currentItem.text}
                 </h2>
 

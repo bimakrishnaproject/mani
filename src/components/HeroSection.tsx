@@ -28,7 +28,7 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="pt-40 pb-36 md:pt-52 md:pb-44 bg-gradient-to-b from-editorial-white via-soft-white/60 to-soft-white min-h-[92vh] flex items-center justify-center overflow-hidden w-full relative [perspective:1400px]">
+    <section className="pt-28 pb-16 sm:pt-40 sm:pb-36 md:pt-52 md:pb-44 bg-gradient-to-b from-editorial-white via-soft-white/60 to-soft-white min-h-[92vh] flex items-center justify-center overflow-hidden w-full relative [perspective:1400px]">
       
       {/* Dynamic 3D Parallax Lighting Ambient Orbs */}
       <motion.div
@@ -43,10 +43,10 @@ export default function HeroSection() {
         className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[850px] h-[550px] bg-radial from-soft-signal-green/40 via-cream-logo/20 to-transparent pointer-events-none rounded-full blur-3xl"
       />
 
-      <div className="w-full px-6 sm:px-12 md:px-16 lg:px-24 relative z-10">
+      <div className="w-full px-4 sm:px-12 md:px-16 lg:px-24 relative z-10">
         
         {/* Floating 3D Micro-Badges Surrounding Hero (Always Animated & Levitating) */}
-        <div className="relative text-center max-w-5xl mx-auto space-y-8">
+        <div className="relative text-center max-w-5xl mx-auto space-y-6 sm:space-y-8">
           
           {/* Floating Pill Badge Left */}
           <motion.div
@@ -74,7 +74,7 @@ export default function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="inline-block text-[11px] font-bold tracking-widest uppercase text-deep-green bg-soft-signal-green px-4 py-2 rounded-full shadow-xs">
+            <div className="inline-block text-[10px] sm:text-[11px] font-bold tracking-widest uppercase text-deep-green bg-soft-signal-green px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full shadow-xs">
               THE LIVING EDITORIAL SYSTEM
             </div>
           </motion.div>
@@ -84,7 +84,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 40, filter: "blur(10px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="font-serif-heading text-6xl sm:text-8xl md:text-9xl text-deep-green leading-[0.92] tracking-tight"
+            className="font-serif-heading text-4xl xs:text-5xl sm:text-7xl md:text-8xl lg:text-9xl text-deep-green leading-[0.96] sm:leading-[0.92] tracking-tight"
           >
             Emotional Support<br />
             <span className="font-serif-italic bg-gradient-to-r from-deep-green via-[#1c5c3b] to-deep-green bg-clip-text text-transparent">
@@ -97,12 +97,12 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="h-12 flex items-center justify-center"
+            className="min-h-12 flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-0"
           >
-            <span className="text-lg md:text-2xl font-serif-italic text-sage-grey mr-3">Core Belief:</span>
+            <span className="text-base sm:text-lg md:text-2xl font-serif-italic text-sage-grey sm:mr-3">Core Belief:</span>
             <TypewriterStory
               phrases={narrativePhrases}
-              className="text-lg md:text-3xl font-serif-italic text-deep-green font-semibold"
+              className="text-base sm:text-lg md:text-3xl font-serif-italic text-deep-green font-semibold"
             />
           </motion.div>
 
@@ -110,7 +110,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xl sm:text-2xl md:text-3xl text-[#4A524D] leading-relaxed max-w-4xl mx-auto font-light"
+            className="text-base sm:text-xl md:text-3xl text-[#4A524D] leading-relaxed max-w-4xl mx-auto font-light px-2"
           >
             MANI brings together expert-guided collections, daily videos and a new app in development to help you better understand yourself and navigate life's challenges.
           </motion.p>

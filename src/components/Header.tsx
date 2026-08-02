@@ -131,11 +131,20 @@ export default function Header() {
 
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 text-ink-black focus:outline-none"
+              className="md:hidden p-2.5 text-ink-black focus:outline-none z-50 relative"
               aria-label="Toggle Navigation Menu"
             >
-              <div className="w-6 h-0.5 bg-ink-black mb-1.5 transition-all"></div>
-              <div className="w-6 h-0.5 bg-ink-black"></div>
+              {mobileMenuOpen ? (
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+              ) : (
+                <div className="space-y-1.5">
+                  <div className="w-6 h-0.5 bg-ink-black transition-all"></div>
+                  <div className="w-6 h-0.5 bg-ink-black transition-all"></div>
+                </div>
+              )}
             </button>
           </div>
         </div>
@@ -143,7 +152,7 @@ export default function Header() {
 
       {/* MOBILE MENU OVERLAY */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-40 bg-editorial-white flex flex-col justify-between p-8 pt-28 md:hidden">
+        <div className="fixed inset-0 z-40 bg-editorial-white flex flex-col justify-between p-8 pt-28 md:hidden overflow-y-auto max-h-screen">
           <nav className="flex flex-col gap-6 text-2xl font-serif-heading">
             <a
               href="/"

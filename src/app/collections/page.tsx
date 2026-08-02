@@ -188,7 +188,7 @@ export default function CollectionsDirectoryPage() {
             <KineticTextReveal
               text="Because Life Doesn't Come With Instructions."
               tag="h1"
-              className="font-serif-heading text-6xl sm:text-8xl text-[#0E2E1E] leading-[0.94] tracking-tight"
+              className="font-serif-heading text-4xl xs:text-5xl sm:text-7xl md:text-8xl text-[#0E2E1E] leading-[0.96] sm:leading-[0.94] tracking-tight"
             />
 
             <ScrollReveal direction="up" distance={40} delay={0.2}>
@@ -323,23 +323,23 @@ export default function CollectionsDirectoryPage() {
                   </ul>
                 </div>
 
-                <div className="pt-4 border-t border-mist-grey flex items-center justify-between">
+                <div className="pt-4 border-t border-mist-grey flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                   <div>
                     <span className="text-xs text-sage-grey block font-medium">INDIVIDUAL TOOL PRICE</span>
                     <span className="text-3xl font-serif-heading text-[#0E2E1E]">
                       {part.price}
                     </span>
                   </div>
-                  <div className="flex gap-3">
+                  <div className="flex flex-wrap gap-2.5 w-full sm:w-auto">
                     <button
                       onClick={() => handleAddSingleToCart(part)}
-                      className="px-5 py-3 bg-[#0E2E1E] text-editorial-white font-semibold rounded-xl hover:bg-[#143d28] transition-all text-xs shadow-md cursor-pointer"
+                      className="flex-grow sm:flex-grow-0 px-5 py-3 bg-[#0E2E1E] text-editorial-white font-semibold rounded-xl hover:bg-[#143d28] transition-all text-xs shadow-md cursor-pointer text-center"
                     >
                       Add to Cart — {part.price} &rarr;
                     </button>
                     <Link
                       href={`/products/${part.id}`}
-                      className="px-4 py-3 bg-editorial-white text-[#0E2E1E] border border-mist-grey font-semibold rounded-xl hover:bg-mist-grey/50 transition-all text-xs"
+                      className="px-4 py-3 bg-editorial-white text-[#0E2E1E] border border-mist-grey font-semibold rounded-xl hover:bg-mist-grey/50 transition-all text-xs text-center"
                     >
                       Details &rarr;
                     </Link>
