@@ -1,93 +1,83 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
-import Image from "next/image";
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
-import TiltCard3D from "./TiltCard3D";
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import UnderProgressModal from "./UnderProgressModal";
-import { SITE_LOCKS } from "@/config/locks";
 import { trackBetaSignup } from "@/lib/analytics";
+
+const chatScenarios = [
+  {
+    user: "I'm feeling anxious today. Everything felt like it was going wrong and I never felt like I could catch up.",
+    mani: "That sounds like a lot for one day. Do you think it was the amount you had to do, or the pressure you were putting on yourself?",
+  },
+  {
+    user: "I feel like I'm walking on eggshells around my partner and second-guessing everything I say.",
+    mani: "Walking on eggshells is a common sign of unpredictable emotional dynamics. Let's explore when this pattern usually triggers for you.",
+  },
+  {
+    user: "I don't know how to set a boundary without feeling guilty.",
+    mani: "Guilt is often just your brain misinterpreting self-protection as selfishness. Let's look at what boundary you actually need right now.",
+  },
+];
 
 export default function AppShowcaseSection() {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [showProgressModal, setShowProgressModal] = useState(false);
-  const [activePromptTab, setActivePromptTab] = useState<number>(0);
-  
-  // Animation Phase: 'user-typing' | 'mani-thinking' | 'mani-typing' | 'complete'
-  const [animPhase, setAnimPhase] = useState<string>("user-typing");
-  const [userTextIndex, setUserTextIndex] = useState<number>(0);
-  const [maniTextIndex, setManiTextIndex] = useState<number>(0);
 
-  const containerRef = useRef<HTMLDivElement>(null);
+  // Multi-dialogue scenario index and animation state
+  const [scenarioIndex, setScenarioIndex] = useState(0);
+  const [animPhase, setAnimPhase] = useState<"user" | "thinking" | "mani" | "pause">("user");
+  const [userTextIndex, setUserTextIndex] = useState(0);
+  const [maniTextIndex, setManiTextIndex] = useState(0);
 
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"],
-  });
-
-  const rotateY = useTransform(scrollYProgress, [0, 0.5, 1], [-25, 0, 25]);
-  const rotateX = useTransform(scrollYProgress, [0, 0.5, 1], [15, 0, -15]);
-  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.88, 1.08, 0.88]);
-
-  const promptUseCases = [
-    {
-      title: "Anxiety & Overwhelm",
-      userMessage: "I'm feeling completely drained and anxious today.",
-      maniReply: "I hear you. Let's take a slow breath together. What is weighing on your mind most right now?",
-    },
-    {
-      title: "Boundary Setting",
-      userMessage: "How do I say no without feeling guilty?",
-      maniReply: "Guilt often misinterprets self-protection as selfishness. Let's clarify what boundary you need right now.",
-    },
-    {
-      title: "Relationship Clarity",
-      userMessage: "I feel like I'm walking on eggshells with my partner.",
-      maniReply: "Walking on eggshells is a common sign of unpredictable emotional dynamics. Let's explore when this pattern starts.",
-    },
-  ];
-
-  // Deterministic String Slicing Typewriter Logic (Prevents any text shuffling!)
   useEffect(() => {
-    setAnimPhase("user-typing");
+    setAnimPhase("user");
     setUserTextIndex(0);
     setManiTextIndex(0);
 
-    const currentUserMsg = promptUseCases[activePromptTab].userMessage;
-    const currentManiReply = promptUseCases[activePromptTab].maniReply;
+    const currentScenario = chatScenarios[scenarioIndex];
+    let uIdx = 0;
 
-    // Step 1: Type out User Message
-    let userIndex = 0;
+    // Step 1: Type User Message
     const userInterval = setInterval(() => {
-      userIndex++;
-      setUserTextIndex(userIndex);
-      if (userIndex >= currentUserMsg.length) {
+      uIdx++;
+      setUserTextIndex(uIdx);
+      if (uIdx >= currentScenario.user.length) {
         clearInterval(userInterval);
-        
-        // Step 2: MANI Thinking Delay (1.5 seconds)
-        setAnimPhase("mani-thinking");
-        setTimeout(() => {
-          
-          // Step 3: Type out MANI Reply
-          setAnimPhase("mani-typing");
-          let maniIndex = 0;
+
+        // Step 2: MANI Thinking Delay (1.2s)
+        setAnimPhase("thinking");
+        const thinkTimeout = setTimeout(() => {
+
+          // Step 3: Type MANI Response
+          setAnimPhase("mani");
+          let mIdx = 0;
           const maniInterval = setInterval(() => {
-            maniIndex++;
-            setManiTextIndex(maniIndex);
-            if (maniIndex >= currentManiReply.length) {
+            mIdx++;
+            setManiTextIndex(mIdx);
+            if (mIdx >= currentScenario.mani.length) {
               clearInterval(maniInterval);
-              setAnimPhase("complete");
+
+              // Step 4: Pause & Cycle to Next Scenario after 4s
+              setAnimPhase("pause");
+              const nextTimeout = setTimeout(() => {
+                setScenarioIndex((prev) => (prev + 1) % chatScenarios.length);
+              }, 4000);
+
+              return () => clearTimeout(nextTimeout);
             }
-          }, 20);
-        }, 1500);
+          }, 22);
+
+          return () => clearInterval(maniInterval);
+        }, 1200);
+
+        return () => clearTimeout(thinkTimeout);
       }
     }, 25);
 
-    return () => {
-      clearInterval(userInterval);
-    };
-  }, [activePromptTab]);
+    return () => clearInterval(userInterval);
+  }, [scenarioIndex]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -107,206 +97,165 @@ export default function AppShowcaseSection() {
     }
   };
 
-  const currentUserText = promptUseCases[activePromptTab].userMessage.slice(0, userTextIndex);
-  const currentManiText = promptUseCases[activePromptTab].maniReply.slice(0, maniTextIndex);
+  const currentScenario = chatScenarios[scenarioIndex];
+  const currentUserText = currentScenario.user.slice(0, userTextIndex);
+  const currentManiText = currentScenario.mani.slice(0, maniTextIndex);
 
   return (
     <section
-      ref={containerRef}
-      className="py-28 md:py-44 bg-editorial-white text-ink-black overflow-hidden w-full border-t border-mist-grey [perspective:1600px]"
+      className="py-24 sm:py-36 bg-editorial-white text-ink-black overflow-hidden w-full border-t border-mist-grey"
       id="app"
     >
-      <div className="w-full px-6 sm:px-12 md:px-16 lg:px-24">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center w-full">
-          
-          {/* Left Column: Editorial Overview & 3D Interactive Gyroscopic Holographic Card */}
-          <div className="lg:col-span-6 space-y-8">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false }}
-              transition={{ duration: 0.8 }}
-            >
-              <div className="inline-block text-[10px] sm:text-[11px] font-bold tracking-widest uppercase text-deep-green bg-soft-signal-green px-3.5 py-1.5 rounded-full mb-3 shadow-xs">
-                THE MANI APP • BETA ACCESS
+      <div className="max-w-[1360px] mx-auto px-6 md:px-12">
+        <div className="max-w-4xl mx-auto text-center space-y-12 sm:space-y-16">
+
+          {/* Section Headline */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="space-y-4"
+          >
+            <h2 className="font-serif-heading text-4xl sm:text-6xl md:text-7xl text-deep-green leading-[1.05] tracking-tight">
+              Support Wherever You Are
+            </h2>
+            <p className="text-lg sm:text-xl text-[#4A524D] font-light leading-relaxed max-w-2xl mx-auto">
+              Beyond listening, MANI guides you toward understanding and practical next steps right from your phone.
+            </p>
+          </motion.div>
+
+          {/* Single Centered Showcase Frame with Automated Multi-Dialogue Stream */}
+          <motion.div
+            initial={{ opacity: 0, y: 35 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+            className="bg-[#0E2E1E] text-editorial-white rounded-3xl p-6 sm:p-10 border border-editorial-white/15 shadow-2xl max-w-2xl mx-auto text-left space-y-5 relative overflow-hidden min-h-[360px]"
+          >
+            {/* Ambient Inner Glow */}
+            <div className="absolute -top-20 -right-20 w-72 h-72 bg-radial from-cream-logo/15 to-transparent blur-3xl pointer-events-none" />
+
+            {/* Frame Top Notch Header with Scenario Indicator */}
+            <div className="flex items-center justify-between border-b border-editorial-white/10 pb-4 mb-2">
+              <div className="flex items-center gap-3">
+                <img
+                  src="/assets/Mani Logos/mani cream logo.png"
+                  alt="MANI Logo"
+                  className="h-5 w-auto object-contain"
+                />
+                <span className="text-xs font-semibold text-cream-logo tracking-wider">
+                  MANI Reflection Companion
+                </span>
               </div>
-              <h2 className="font-serif-heading text-3xl xs:text-4xl sm:text-6xl md:text-7xl text-deep-green leading-[0.98]">
-                Support Wherever You Are
-              </h2>
-              <p className="text-base sm:text-xl text-[#4A524D] font-light leading-relaxed mt-3">
-                Beyond listening, MANI guides you toward understanding and practical next steps. Designed for private, calm, real-time support right from your phone.
-              </p>
-            </motion.div>
+              <span className="text-[10px] font-bold text-cream-logo bg-editorial-white/10 px-3 py-1 rounded-full uppercase tracking-widest">
+                SCENARIO 0{scenarioIndex + 1} / 03
+              </span>
+            </div>
 
-            {/* 3D INTERACTIVE GYROSCOPIC TILT CARD WITH DETERMINISTIC LIVE TYPING SIMULATION */}
-            <TiltCard3D maxDegree={12} scale={1.02} className="w-full">
-              <div className="p-8 bg-[#081F14] text-editorial-white border-2 border-emerald-500/40 rounded-3xl shadow-[0_30px_70px_rgba(14,46,30,0.35)] space-y-5 relative overflow-hidden [transform-style:preserve-3d]">
-                
-                {/* Specular Light & Radial Glow */}
-                <div className="absolute top-0 right-0 w-60 h-60 bg-radial from-cream-logo/20 via-soft-signal-green/10 to-transparent pointer-events-none rounded-full blur-2xl" />
+            {/* Conversation Flow */}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={scenarioIndex}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.4 }}
+                className="space-y-4 text-sm sm:text-base min-h-[220px] flex flex-col justify-center"
+              >
 
-                <div className="flex items-center justify-between relative z-10 [transform:translateZ(20px)]">
-                  <span className="text-xs font-bold text-cream-logo uppercase tracking-widest block">
-                    ✨ 3D LIVE CHAT SIMULATOR (CLICK TO TEST)
-                  </span>
-                  <span className="text-[10px] font-bold text-emerald-400 bg-emerald-950/80 border border-emerald-500/30 px-3 py-1 rounded-full animate-pulse">
-                    LIVE CONVERSATION ENGINE
-                  </span>
+                {/* User Reflection Bubble */}
+                <div className="p-4 sm:p-5 bg-editorial-white text-ink-black rounded-2xl rounded-tr-xs shadow-md space-y-1 ml-auto max-w-[92%] border border-mist-grey">
+                  <span className="text-[10px] font-bold text-sage-grey uppercase tracking-wider block">YOU</span>
+                  <p className="leading-relaxed font-light">
+                    &ldquo;{currentUserText}&rdquo;
+                    {animPhase === "user" && (
+                      <span className="inline-block w-1.5 h-4 bg-deep-green ml-1 animate-pulse" />
+                    )}
+                  </p>
                 </div>
 
-                {/* Category Buttons */}
-                <div className="flex flex-wrap gap-2.5 relative z-10 [transform:translateZ(30px)]">
-                  {promptUseCases.map((tab, idx) => (
-                    <button
-                      key={idx}
-                      onClick={() => setActivePromptTab(idx)}
-                      className={`text-xs md:text-sm font-semibold px-4 py-2 rounded-full transition-all ${
-                        activePromptTab === idx
-                          ? "bg-cream-logo text-deep-green shadow-md scale-105"
-                          : "bg-editorial-white/10 text-cream-logo border border-editorial-white/15 hover:bg-editorial-white/20"
-                      }`}
-                    >
-                      {tab.title}
-                    </button>
-                  ))}
-                </div>
+                {/* Thinking Indicator */}
+                {animPhase === "thinking" && (
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="p-4 bg-[#05150D] text-cream-logo rounded-2xl rounded-tl-xs flex items-center gap-3 border border-editorial-white/10 w-fit max-w-[90%]"
+                  >
+                    <img src="/assets/Mani Logos/mani cream logo.png" alt="MANI" className="h-4 w-auto" />
+                    <div className="flex items-center gap-1.5">
+                      <span className="w-2 h-2 bg-cream-logo rounded-full animate-bounce" />
+                      <span className="w-2 h-2 bg-cream-logo rounded-full animate-bounce [animation-delay:0.2s]" />
+                      <span className="w-2 h-2 bg-cream-logo rounded-full animate-bounce [animation-delay:0.4s]" />
+                      <span className="text-xs italic text-cream-logo/80 ml-2">MANI is reflecting...</span>
+                    </div>
+                  </motion.div>
+                )}
 
-                {/* 3-STEP REAL-TIME CONVERSATION SEQUENCE */}
-                <div className="space-y-3.5 pt-3 border-t border-editorial-white/15 text-sm relative z-10 [transform:translateZ(45px)] min-h-[140px]">
-                  
-                  {/* Step 1: User Message Typing Character by Character */}
-                  <div className="p-4 bg-editorial-white/10 backdrop-blur-md rounded-2xl text-editorial-white flex items-start gap-3 border border-editorial-white/15 shadow-lg min-h-[52px]">
-                    <span className="font-bold text-cream-logo text-xs uppercase pt-0.5">YOU:</span>
-                    <span>
-                      "{currentUserText}"
-                      {animPhase === "user-typing" && (
+                {/* AI Response Bubble */}
+                {(animPhase === "mani" || animPhase === "pause") && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5 }}
+                    className="p-4 sm:p-5 bg-[#05150D] text-editorial-white rounded-2xl rounded-tl-xs border border-editorial-white/15 shadow-xl space-y-1 max-w-[92%]"
+                  >
+                    <div className="flex items-center gap-2 mb-1">
+                      <img src="/assets/Mani Logos/mani cream logo.png" alt="MANI" className="h-4 w-auto" />
+                      <span className="text-[10px] font-bold text-cream-logo uppercase tracking-wider">MANI</span>
+                    </div>
+                    <p className="leading-relaxed font-light text-editorial-white/90">
+                      &ldquo;{currentManiText}&rdquo;
+                      {animPhase === "mani" && (
                         <span className="inline-block w-1.5 h-4 bg-cream-logo ml-1 animate-pulse" />
                       )}
-                    </span>
-                  </div>
+                    </p>
+                  </motion.div>
+                )}
 
-                  {/* Step 2: MANI Thinking Delay (1.5s) OR Step 3: MANI Live Typing Reply */}
-                  {animPhase === "mani-thinking" && (
-                    <motion.div
-                      initial={{ opacity: 0, scale: 0.95 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      className="p-4 bg-soft-signal-green/20 backdrop-blur-md rounded-2xl text-cream-logo font-medium flex items-center gap-3 border border-soft-signal-green/30 shadow-lg"
-                    >
-                      <span className="font-bold text-cream-logo text-xs uppercase">MANI:</span>
-                      <div className="flex items-center gap-1.5 text-cream-logo">
-                        <span className="w-2 h-2 bg-cream-logo rounded-full animate-bounce" />
-                        <span className="w-2 h-2 bg-cream-logo rounded-full animate-bounce [animation-delay:0.2s]" />
-                        <span className="w-2 h-2 bg-cream-logo rounded-full animate-bounce [animation-delay:0.4s]" />
-                        <span className="text-xs font-semibold ml-2 italic text-emerald-300">MANI is analyzing and reflecting...</span>
-                      </div>
-                    </motion.div>
-                  )}
+              </motion.div>
+            </AnimatePresence>
+          </motion.div>
 
-                  {(animPhase === "mani-typing" || animPhase === "complete") && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      className="p-4 bg-soft-signal-green/25 backdrop-blur-md rounded-2xl text-cream-logo font-medium flex items-start gap-3 border border-soft-signal-green/40 shadow-lg"
-                    >
-                      <span className="font-bold text-cream-logo text-xs uppercase pt-0.5">MANI:</span>
-                      <span>
-                        "{currentManiText}"
-                        {animPhase === "mani-typing" && (
-                          <span className="inline-block w-1.5 h-4 bg-cream-logo ml-1 animate-pulse" />
-                        )}
-                      </span>
-                    </motion.div>
-                  )}
+          {/* Supporting Messaging & Early Access CTA Form */}
+          <motion.div
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="max-w-xl mx-auto space-y-6 pt-4"
+          >
+            <blockquote className="font-serif-italic text-xl sm:text-2xl text-deep-green leading-snug">
+              &ldquo;Private, real-time reflection right from your phone.&rdquo;
+            </blockquote>
 
-                </div>
+            <p className="text-base text-[#4A524D] font-light leading-relaxed">
+              An intelligent supportive companion designed to help you process feelings in the moment, reframe overwhelming thoughts, and track emotional clarity.
+            </p>
+
+            {submitted ? (
+              <div className="p-5 bg-[#0E2E1E] text-cream-logo rounded-2xl font-semibold text-base shadow-lg border border-editorial-white/10">
+                ✓ Thank you! You have been added to the MANI early access list.
               </div>
-            </TiltCard3D>
-
-            {/* Beta Access Form */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="pt-2"
-            >
-              <div className="inline-flex items-center gap-2.5 text-xs font-semibold text-deep-green mb-4">
-                <span className="w-2.5 h-2.5 bg-emerald-500 rounded-full animate-pulse" />
-                Currently in Private Beta
-              </div>
-
-              {submitted ? (
-                <div className="p-5 bg-soft-signal-green text-deep-green rounded-xl font-semibold text-base shadow-md">
-                  ✓ Thank you! You have been added to the MANI Beta access list.
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-3">
-                  <div className="flex flex-col sm:flex-row gap-3">
-                    <input
-                      type="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder="Enter your email address"
-                      required
-                      className="flex-grow px-5 py-4 border border-mist-grey rounded-xl text-base bg-editorial-white text-ink-black focus:outline-none focus:border-deep-green shadow-xs"
-                    />
-                    <button
-                      type="submit"
-                      className="px-8 py-4 bg-deep-green text-editorial-white font-semibold rounded-xl hover:bg-[#143d28] transition-all transform hover:scale-105 shadow-xl text-base"
-                    >
-                      Join Beta Access &rarr;
-                    </button>
-                  </div>
-                  <p className="text-xs text-sage-grey">We respect your privacy. Unsubscribe at any time.</p>
-                </form>
-              )}
-            </motion.div>
-          </div>
-
-          {/* Right Column: EXACTLY MATCHING THREEWAYSSECTION HIGH-QUALITY DISPLAY */}
-          <div className="lg:col-span-6 flex justify-center items-center relative py-8">
-            
-            {/* Soft Ambient Radial Glow */}
-            <div className="absolute inset-0 bg-radial from-soft-signal-green/40 via-transparent to-transparent pointer-events-none rounded-full blur-3xl" />
-
-            {/* Floating 3D Micro-Badges Surrounding Phone */}
-            <motion.div
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute top-0 left-0 z-30 hidden sm:flex items-center gap-2 bg-deep-green text-editorial-white px-4 py-2 rounded-full shadow-2xl text-xs font-bold"
-            >
-              <span>🔒 100% Private & Encrypted</span>
-            </motion.div>
-
-            <motion.div
-              animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-              className="absolute bottom-0 right-0 z-30 hidden sm:flex items-center gap-2 bg-editorial-white text-deep-green px-4 py-2 rounded-full shadow-2xl text-xs font-bold border border-mist-grey"
-            >
-              <span>⚡ Real-Time Reflection AI</span>
-            </motion.div>
-
-            {/* High-Quality Phone Image Display (Matching ThreeWaysSection exactly) */}
-            <motion.div
-              style={{
-                rotateY,
-                rotateX,
-                scale,
-              }}
-              className="relative w-full flex justify-center items-center z-20 [transform-style:preserve-3d]"
-            >
-              <Image
-                src="/assets/Chat Conversation.png"
-                alt="MANI App Chat Conversation"
-                width={460}
-                height={920}
-                quality={100}
-                priority
-                className="w-auto h-[480px] sm:h-[580px] md:h-[640px] object-contain drop-shadow-2xl animate-float"
-              />
-            </motion.div>
-
-          </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 pt-2">
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Enter your email address"
+                  required
+                  className="flex-grow px-5 py-4 border border-mist-grey rounded-xl text-base bg-white text-ink-black focus:outline-none focus:border-deep-green shadow-xs"
+                />
+                <button
+                  type="submit"
+                  className="px-8 py-4 bg-deep-green text-editorial-white font-semibold rounded-xl hover:bg-[#143d28] transition-all shadow-md text-base tracking-wide whitespace-nowrap"
+                >
+                  Request Early Access &rarr;
+                </button>
+              </form>
+            )}
+          </motion.div>
 
         </div>
       </div>
@@ -314,8 +263,8 @@ export default function AppShowcaseSection() {
       <UnderProgressModal
         isOpen={showProgressModal}
         onClose={() => setShowProgressModal(false)}
-        title="🔒 Beta Registration Under Progress"
-        description="App Beta registration is currently under progress for today's milestone update. Please explore the live homepage presentation."
+        title="🔒 Early Access Under Progress"
+        description="App Early Access registration is currently under progress for today's milestone update. Please explore the live homepage presentation."
       />
     </section>
   );

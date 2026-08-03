@@ -1,9 +1,9 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import HeroSection from "@/components/HeroSection";
-import HorizontalScrollytelling from "@/components/HorizontalScrollytelling";
-import ThreeWaysSection from "@/components/ThreeWaysSection";
+import EcosystemSection from "@/components/EcosystemSection";
 import ChallengePauseSection from "@/components/ChallengePauseSection";
+import WatchLearnSpotlight from "@/components/WatchLearnSpotlight";
 import FeaturedCollectionSection from "@/components/FeaturedCollectionSection";
 import AppShowcaseSection from "@/components/AppShowcaseSection";
 import CommunitySection from "@/components/CommunitySection";
@@ -16,9 +16,9 @@ export default function Home() {
       <Header />
       <main className="flex-grow">
         <HeroSection />
-        <HorizontalScrollytelling />
-        <ThreeWaysSection />
+        <EcosystemSection />
         <ChallengePauseSection />
+        <WatchLearnSpotlight />
         <FeaturedCollectionSection />
         <AppShowcaseSection />
         <CommunitySection />

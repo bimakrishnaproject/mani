@@ -10,8 +10,8 @@
 
 export const SITE_LOCKS = {
   /** Toggle true/false to lock/unlock all subpages across the site */
-  PAGES_LOCKED: true,
+  PAGES_LOCKED: false,
 
   /** Toggle true/false to lock/unlock action button modals (Subscribe, Join Beta, Checkout) */
-  ACTIONS_LOCKED: true,
+  ACTIONS_LOCKED: false,
 };

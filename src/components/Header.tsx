@@ -28,23 +28,22 @@ export default function Header() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-          scrolled
-            ? "bg-white/90 backdrop-blur-md border-b border-mist-grey py-3 shadow-xs"
-            : "bg-transparent py-5"
-        }`}
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled
+          ? "bg-white/95 backdrop-blur-md border-b border-mist-grey/80 py-2.5 shadow-sm"
+          : "bg-transparent py-4 sm:py-5"
+          }`}
       >
         <div className="max-w-[1360px] mx-auto px-6 md:px-12 flex items-center justify-between">
           <a
             href="/"
             onClick={(e) => handleNavClick(e, "/", "INITIALIZING MANI HOME")}
-            className="flex items-center gap-2.5 text-[#0E2E1E] font-bold text-xl tracking-widest cursor-pointer"
+            className="flex items-center cursor-pointer"
           >
-            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-              <circle cx="16" cy="16" r="14" stroke="currentColor" strokeWidth="2.5" />
-              <circle cx="16" cy="16" r="5" fill="currentColor" />
-            </svg>
-            <span>MANI</span>
+            <img
+              src="/assets/Mani Logos/mani green logo.png"
+              alt="MANI Logo"
+              className="h-5 md:h-8 w-auto object-contain transition-all duration-300"
+            />
           </a>
 
           <nav className="hidden md:flex items-center gap-8">

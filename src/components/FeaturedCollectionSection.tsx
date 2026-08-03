@@ -6,6 +6,7 @@ import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-
 
 export default function FeaturedCollectionSection() {
   const [activeTab, setActiveTab] = useState<number>(0);
+  const [scrollProgressVal, setScrollProgressVal] = useState<number>(0);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({
@@ -13,8 +14,9 @@ export default function FeaturedCollectionSection() {
     offset: ["start start", "end end"],
   });
 
-  // Automatically switch active tab 0 -> 1 -> 2 -> 3 -> 4 as user scrolls through the pinned viewport
+  // Track progress (0.0 to 1.0) and dynamically set active item
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    setScrollProgressVal(latest);
     if (latest < 0.2) {
       setActiveTab(0);
     } else if (latest >= 0.2 && latest < 0.4) {
@@ -27,6 +29,17 @@ export default function FeaturedCollectionSection() {
       setActiveTab(4);
     }
   });
+
+  // Direct click to scroll smoothly to that item's pinned viewport position
+  const handlePillClick = (idx: number) => {
+    setActiveTab(idx);
+    if (containerRef.current) {
+      const containerTop = containerRef.current.offsetTop;
+      const containerHeight = containerRef.current.offsetHeight;
+      const targetY = containerTop + (idx / 4) * (containerHeight - window.innerHeight);
+      window.scrollTo({ top: targetY, behavior: "smooth" });
+    }
+  };
 
   const items = [
     {
@@ -87,50 +100,62 @@ export default function FeaturedCollectionSection() {
       className="relative bg-[#F4EFE6] w-full border-t border-mist-grey"
       id="collections"
     >
-      {/* DESKTOP VIEW: 400vh Pinned Viewport (100% Intact & Unchanged for Laptop/Desktop) */}
+      {/* DESKTOP VIEW: 400vh Pinned Viewport */}
       <div className="hidden lg:block relative h-[400vh]">
         <div className="sticky top-0 h-screen overflow-hidden flex w-full">
-          
-          {/* LEFT COLUMN (45% Width): Editorial Narrative Header */}
-          <div className="w-full lg:w-[45%] h-full bg-[#F4EFE6] p-8 sm:p-12 md:p-16 lg:p-20 flex flex-col justify-between z-10 border-r border-mist-grey">
-            
-            {/* Top Badge & Progress Indicator */}
-            <div>
-              <div className="flex items-center gap-2.5 mb-8">
-                <span className="w-2.5 h-2.5 rounded-full bg-red-600 animate-pulse" />
-                <span className="text-xs font-bold tracking-widest uppercase text-[#8C7659]">
-                  FEATURED COLLECTION • 0{activeTab + 1} / 05
-                </span>
-              </div>
 
-              <h2 className="font-serif-heading text-5xl sm:text-7xl md:text-8xl text-deep-green leading-[0.95] mb-6">
+          {/* LEFT COLUMN (45% Width): Editorial Narrative Header & Step Indicators */}
+          <div className="w-full lg:w-[45%] h-full bg-[#F4EFE6] p-8 sm:p-12 md:p-16 lg:p-20 flex flex-col justify-between z-10 border-r border-mist-grey">
+
+            {/* Top Header */}
+            <div>
+              <span className="text-xs font-bold tracking-widest uppercase text-[#8C7659] block mb-4">
+                FLAGSHIP COLLECTION • BYE BYE NARCISSIST
+              </span>
+
+              <h2 className="font-serif-heading text-3xl sm:text-5xl md:text-6xl text-deep-green leading-[1.08] mb-6">
                 Bye Bye<br />Narcissist.
               </h2>
 
-              <p className="text-lg sm:text-xl text-[#626A64] font-light leading-relaxed max-w-lg mb-8">
+              <p className="text-base sm:text-lg text-[#626A64] font-light leading-relaxed max-w-lg mb-8">
                 A 5-part connected recovery system designed to help you understand toxic dynamics, reclaim your boundaries, and rebuild self-trust step by step.
               </p>
             </div>
 
-            {/* Numbered Quick Selector & Bundle CTA */}
+            {/* Step Pills & Progress Fill */}
             <div className="space-y-6">
-              {/* Quick Number Selector Chips */}
-              <div className="flex flex-wrap gap-2">
-                {items.map((item, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => setActiveTab(idx)}
-                    className={`px-4 py-2 rounded-full text-xs font-bold transition-all ${
-                      activeTab === idx
-                        ? "bg-deep-green text-editorial-white shadow-md scale-105"
-                        : "bg-editorial-white text-ink-black border border-mist-grey hover:border-deep-green opacity-70"
-                    }`}
-                  >
-                    {item.num}. {item.badge}
-                  </button>
-                ))}
+              <div className="flex flex-wrap gap-2.5">
+                {items.map((item, idx) => {
+                  const isActive = activeTab === idx;
+                  const itemStart = idx * 0.2;
+                  const itemProgress = Math.max(0, Math.min(1, (scrollProgressVal - itemStart) / 0.2));
+
+                  return (
+                    <button
+                      key={idx}
+                      onClick={() => handlePillClick(idx)}
+                      className={`relative overflow-hidden px-4 py-2.5 rounded-xl text-xs font-semibold transition-all duration-300 ${
+                        isActive
+                          ? "bg-deep-green text-editorial-white shadow-md border border-editorial-white/20"
+                          : "bg-editorial-white text-ink-black border border-mist-grey hover:border-deep-green opacity-85"
+                      }`}
+                    >
+                      <span className="relative z-10">{item.num}. {item.title}</span>
+
+                      {/* Animated Progress Line for Active Item */}
+                      {isActive && (
+                        <motion.span
+                          className="absolute bottom-0 left-0 h-1 bg-cream-logo rounded-full"
+                          style={{ width: `${itemProgress * 100}%` }}
+                          transition={{ duration: 0.1 }}
+                        />
+                      )}
+                    </button>
+                  );
+                })}
               </div>
 
+              {/* Complete System Bundle CTA */}
               <div className="pt-6 border-t border-[#D8C7AD] flex items-center justify-between">
                 <div>
                   <span className="text-xs text-sage-grey block font-medium">COMPLETE 5-PART BUNDLE</span>
@@ -138,7 +163,7 @@ export default function FeaturedCollectionSection() {
                 </div>
                 <Link
                   href="/collections/bye-bye-narcissist"
-                  className="px-8 py-4 bg-deep-green text-editorial-white font-semibold rounded-md hover:bg-[#143d28] transition-all transform hover:scale-105 shadow-xl text-xs"
+                  className="px-7 py-3 bg-deep-green text-editorial-white font-semibold rounded-xl hover:bg-[#143d28] transition-all shadow-md text-xs"
                 >
                   Shop Full System &rarr;
                 </Link>
@@ -147,81 +172,77 @@ export default function FeaturedCollectionSection() {
 
           </div>
 
-          {/* RIGHT COLUMN (55% Width): Full-Bleed Imagery with Dark Glassmorphism Overlay */}
-          <div className="hidden lg:block lg:w-[55%] h-full relative overflow-hidden bg-ink-black">
-            
-            {/* Full-Bleed Background Image */}
-            <AnimatePresence mode="wait">
-              <motion.img
-                key={activeTab}
-                initial={{ opacity: 0, scale: 1.08, filter: "blur(8px)" }}
-                animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-                exit={{ opacity: 0, scale: 1.04, filter: "blur(8px)" }}
-                transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                src={encodeURI(items[activeTab].image)}
-                alt={items[activeTab].title}
-                className="w-full h-full object-cover object-center"
-              />
-            </AnimatePresence>
+          {/* RIGHT COLUMN: Luxury Studio Stage with Fixed Bottom Details Card */}
+          <div className="hidden lg:block lg:w-[55%] h-full relative overflow-hidden bg-[#EBE5DB] border-l border-mist-grey">
 
-            {/* Dark Glassmorphism Overlay Card */}
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeTab}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                className="absolute bottom-10 left-10 right-10 bg-[#05150D]/85 backdrop-blur-xl border border-editorial-white/15 p-8 sm:p-10 rounded-2xl text-editorial-white shadow-2xl z-20 space-y-4"
-              >
-                <div className="flex items-center justify-between">
-                  <span className="font-serif-heading text-4xl sm:text-5xl text-cream-logo font-light">
-                    {items[activeTab].num}
-                  </span>
-                  <span className="text-xs font-bold tracking-widest uppercase bg-soft-signal-green text-deep-green px-3.5 py-1 rounded-full">
-                    {items[activeTab].badge}
-                  </span>
-                </div>
+            {/* Studio Ambient Stage Lighting */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] bg-radial from-editorial-white/80 via-cream-logo/40 to-transparent pointer-events-none rounded-full blur-2xl" />
 
-                <h3 className="font-serif-heading text-3xl sm:text-4xl text-editorial-white leading-tight">
-                  {items[activeTab].title}
-                </h3>
+            {/* Product Mockup Stage (Centered in Upper Stage) */}
+            <div className="absolute top-8 left-8 right-8 bottom-[240px] flex items-center justify-center z-10 p-4">
+              <AnimatePresence mode="wait">
+                <motion.img
+                  key={activeTab}
+                  initial={{ opacity: 0, scale: 0.96 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.96 }}
+                  transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                  src={encodeURI(items[activeTab].image)}
+                  alt={items[activeTab].title}
+                  className="max-h-full max-w-full w-auto h-auto object-contain drop-shadow-[0_25px_35px_rgba(0,0,0,0.18)]"
+                />
+              </AnimatePresence>
+            </div>
 
-                <p className="text-sm text-[#C3CDC6] font-light leading-relaxed max-w-xl">
-                  {items[activeTab].description}
-                </p>
-
-                {/* Feature Chips & Buy Button */}
-                <div className="pt-4 border-t border-editorial-white/15 flex items-center justify-between">
-                  <div className="flex flex-wrap gap-2">
-                    {items[activeTab].details.map((detail, dIdx) => (
-                      <span
-                        key={dIdx}
-                        className="text-[11px] font-semibold text-cream-logo bg-editorial-white/10 px-3 py-1 rounded-full border border-editorial-white/15"
-                      >
-                        ✓ {detail}
+            {/* Bottom Details Card (PERFECTLY FIXED AT BOTTOM OF STAGE) */}
+            <div className="absolute bottom-8 left-8 right-8 z-20">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeTab}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                  className="w-full bg-[#05150D]/95 backdrop-blur-xl border border-editorial-white/15 p-6 sm:p-7 rounded-2xl text-editorial-white shadow-2xl h-[190px] flex flex-col justify-between"
+                >
+                  <div>
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="font-serif-heading text-2xl sm:text-3xl text-cream-logo font-light truncate max-w-[80%]">
+                        {items[activeTab].num} / {items[activeTab].title}
                       </span>
-                    ))}
+                      <span className="text-xs font-semibold text-cream-logo whitespace-nowrap">
+                        {items[activeTab].price}
+                      </span>
+                    </div>
+
+                    <p className="text-xs sm:text-sm text-editorial-white/80 font-light leading-relaxed line-clamp-2">
+                      {items[activeTab].description}
+                    </p>
                   </div>
 
-                  <Link
-                    href="/collections/bye-bye-narcissist"
-                    className="px-6 py-2.5 bg-cream-logo text-deep-green font-semibold rounded-md hover:bg-[#f2e1bd] transition-all text-xs shadow-md"
-                  >
-                    Buy {items[activeTab].price} &rarr;
-                  </Link>
-                </div>
-              </motion.div>
-            </AnimatePresence>
+                  <div className="pt-3 border-t border-editorial-white/15 flex items-center justify-between">
+                    <span className="text-[11px] text-cream-logo/70 truncate max-w-[70%]">
+                      Includes: {items[activeTab].details.join(" • ")}
+                    </span>
+                    <Link
+                      href="/collections/bye-bye-narcissist"
+                      className="px-5 py-2 bg-cream-logo text-deep-green font-semibold rounded-xl hover:bg-white transition-all text-xs shadow-sm whitespace-nowrap"
+                    >
+                      View Item &rarr;
+                    </Link>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
 
           </div>
 
         </div>
       </div>
 
-      {/* MOBILE VIEW: Full-Featured Interactive Mobile Presentation */}
+      {/* MOBILE VIEW: Clean Responsive Stack */}
       <div className="block lg:hidden py-16 px-6 space-y-10">
-        
+
         {/* Mobile Section Header */}
         <div className="space-y-4">
           <div className="flex items-center gap-2">
@@ -240,7 +261,7 @@ export default function FeaturedCollectionSection() {
           </p>
         </div>
 
-        {/* Quick Item Selector Chips */}
+        {/* Item Selector Chips */}
         <div className="flex flex-wrap gap-2">
           {items.map((item, idx) => (
             <button
@@ -257,7 +278,7 @@ export default function FeaturedCollectionSection() {
           ))}
         </div>
 
-        {/* Active Product Showcase Mobile Card */}
+        {/* Mobile Active Product Card */}
         <div className="p-6 bg-[#05150D] text-editorial-white rounded-3xl border border-editorial-white/15 shadow-2xl space-y-5">
           <div className="flex items-center justify-between">
             <span className="font-serif-heading text-3xl text-cream-logo font-light">
@@ -268,7 +289,6 @@ export default function FeaturedCollectionSection() {
             </span>
           </div>
 
-          {/* Product Image */}
           <div className="w-full h-[220px] rounded-2xl bg-ink-black/40 overflow-hidden flex items-center justify-center p-4">
             <img
               src={encodeURI(items[activeTab].image)}
@@ -311,7 +331,7 @@ export default function FeaturedCollectionSection() {
           </div>
         </div>
 
-        {/* Full Bundle CTA Card */}
+        {/* Bundle CTA Card */}
         <div className="p-6 bg-editorial-white rounded-3xl border-2 border-deep-green flex flex-col sm:flex-row items-center justify-between gap-4 shadow-lg">
           <div>
             <span className="text-[10px] text-sage-grey block font-bold uppercase tracking-wider">COMPLETE 5-PART BUNDLE</span>
@@ -329,4 +349,3 @@ export default function FeaturedCollectionSection() {
     </section>
   );
 }
-

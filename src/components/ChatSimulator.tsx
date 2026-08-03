@@ -78,10 +78,11 @@ export default function ChatSimulator() {
           >
             {msg.sender === "mani" && (
               <div className="shrink-0 mt-0.5">
-                <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-                  <circle cx="8" cy="8" r="7" stroke="#F7ECD6" strokeWidth="1.5" />
-                  <circle cx="8" cy="8" r="3" fill="#F7ECD6" />
-                </svg>
+                <img
+                  src="/assets/Mani Logos/mani cream logo.svg"
+                  alt="MANI"
+                  className="h-4 w-auto object-contain"
+                />
               </div>
             )}
             <div>{msg.text}</div>

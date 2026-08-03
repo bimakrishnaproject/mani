@@ -232,12 +232,12 @@ export default function AboutPage() {
           items={[
             {
               label: "OUR COMMITMENT",
-              text: "Understanding comes before change.",
+              text: "Clarity Comes Before Action.",
               subtext: "We create tools that help people see clearly before they act.",
             },
             {
               label: "OUR PRINCIPLE",
-              text: "Support comes before solutions.",
+              text: "Empathy Comes Before Guidance.",
               subtext: "People need to feel understood before they can move forward.",
             },
             {

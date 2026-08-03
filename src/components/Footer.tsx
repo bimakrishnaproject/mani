@@ -7,15 +7,15 @@ export default function Footer() {
     <footer className="bg-[#0E2E1E] text-editorial-white pt-20 pb-12 border-t border-[#183B29]">
       <div className="max-w-[1360px] mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b border-editorial-white/10">
-          
+
           {/* Brand Info */}
           <div className="md:col-span-5 space-y-4">
-            <Link href="/" className="flex items-center gap-2.5 text-cream-logo font-bold text-2xl tracking-widest">
-              <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                <circle cx="16" cy="16" r="14" stroke="currentColor" strokeWidth="2.5" />
-                <circle cx="16" cy="16" r="5" fill="currentColor" />
-              </svg>
-              <span>MANI</span>
+            <Link href="/" className="inline-block">
+              <img
+                src="/assets/Mani Logos/mani cream logo.png"
+                alt="MANI Logo"
+                className="h-5 md:h-8 w-auto object-contain"
+              />
             </Link>
             <p className="text-sm text-[#C3CDC6] max-w-sm leading-relaxed font-light">
               Emotional Support Made Simple™. Bringing together expert-guided collections, daily educational videos, and a guided app to help you better understand yourself.

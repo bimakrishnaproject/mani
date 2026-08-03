@@ -7,7 +7,7 @@ export default function PageIntroLoader() {
   const [visible, setVisible] = useState(true);
   const [fadingOut, setFadingOut] = useState(false);
 
-  const fullText = "Understanding comes before change.";
+  const fullText = "A calm space for emotional growth.";
 
   useEffect(() => {
     let index = 0;
@@ -32,16 +32,15 @@ export default function PageIntroLoader() {
 
   return (
     <div
-      className={`fixed inset-0 z-[100] bg-deep-green text-cream-logo flex flex-col items-center justify-center px-6 transition-all duration-700 ${
-        fadingOut ? "opacity-0 pointer-events-none -translate-y-4" : "opacity-100"
-      }`}
+      className={`fixed inset-0 z-[100] bg-deep-green text-cream-logo flex flex-col items-center justify-center px-6 transition-all duration-700 ${fadingOut ? "opacity-0 pointer-events-none -translate-y-4" : "opacity-100"
+        }`}
     >
-      <div className="flex items-center gap-3 mb-6">
-        <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
-          <circle cx="16" cy="16" r="14" stroke="currentColor" strokeWidth="2.5" />
-          <circle cx="16" cy="16" r="5" fill="currentColor" />
-        </svg>
-        <span className="text-sm font-bold tracking-widest uppercase">MANI</span>
+      <div className="flex items-center justify-center mb-6">
+        <img
+          src="/assets/Mani Logos/mani cream logo.png"
+          alt="MANI Logo"
+          className="h-5 wuto object-contain"
+        />
       </div>
 
       <div className="font-serif-heading text-2xl sm:text-4xl md:text-5xl text-center max-w-2xl leading-tight">
