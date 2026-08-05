@@ -13,5 +13,5 @@ export const SITE_LOCKS = {
   PAGES_LOCKED: false,
 
   /** Toggle true/false to lock/unlock action button modals (Subscribe, Join Beta, Checkout) */
-  ACTIONS_LOCKED: true,
+  ACTIONS_LOCKED: false,
 };
