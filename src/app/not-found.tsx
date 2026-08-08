@@ -32,7 +32,7 @@ export default function NotFoundPage() {
             </p>
 
             <p className="text-sm text-[#626A64] font-light max-w-md mx-auto leading-relaxed">
-              The page you are looking for may have been moved, renamed, or is currently under development in our sanctuary roadmap.
+              The page you are looking for may have been moved, renamed, or is currently under development.
             </p>
 
             <div className="pt-6 flex flex-wrap justify-center gap-4">

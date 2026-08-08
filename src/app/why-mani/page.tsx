@@ -22,7 +22,7 @@ export default function WhyManiPage() {
   if (SITE_LOCKS.PAGES_LOCKED) {
     return (
       <UnderProgressPage
-        pageName="Why MANI Philosophy & Manifesto"
+        pageName="Why MANI"
         description="This page is currently undergoing milestone updates. Please explore the live homepage."
       />
     );
@@ -65,7 +65,7 @@ export default function WhyManiPage() {
 
       <main className="flex-grow pt-36 md:pt-48 pb-0">
 
-        {/* HERO MANIFESTO */}
+        {/* HERO PHILOSOPHY */}
         <section className="px-6 sm:px-12 md:px-16 lg:px-24 mb-28">
           <div className="max-w-4xl space-y-6">
             <DiagonalSlideIn from="top-left" distance={40}>

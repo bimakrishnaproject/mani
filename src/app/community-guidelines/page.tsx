@@ -33,7 +33,7 @@ export default function CommunityGuidelinesPage() {
             className="space-y-4"
           >
             <div className="inline-block text-xs font-bold tracking-widest uppercase text-[#0E2E1E] bg-soft-signal-green px-4 py-2 rounded-full">
-              COMMUNITY SANCTUARY RULES
+              COMMUNITY RULES
             </div>
             <h1 className="font-serif-heading text-5xl sm:text-7xl text-[#0E2E1E]">
               Community Guidelines
@@ -62,7 +62,7 @@ export default function CommunityGuidelinesPage() {
             <div className="space-y-4">
               <h3 className="font-serif-heading text-2xl text-[#0E2E1E]">1. Respect Privacy & Confidentiality</h3>
               <p>
-                What is shared in the community stays in the community. Respect the privacy of fellow members and never share personal experiences or names outside the sanctuary.
+                What is shared in the community stays in the community. Respect the privacy of fellow members and never share personal experiences or names outside the platform.
               </p>
             </div>
 

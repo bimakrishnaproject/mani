@@ -79,7 +79,7 @@ export default function JoinBetaPage() {
                   Help Shape What’s Next
                 </h1>
                 <p className="text-sm text-[#C3CDC6] font-light leading-relaxed">
-                  Join our private beta program to test guided chat experience, daily reflection prompts, and encrypted sanctuary features before public release.
+                  Join our private beta program to test guided chat experience, daily reflection prompts, and privacy-first features before public release.
                 </p>
               </div>
 

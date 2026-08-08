@@ -3,30 +3,17 @@
 import React, { useRef, useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { VIDEOS_DATA } from "@/data/videos";
 
-const sampleVideos = [
-  {
-    id: "v1",
-    title: "Recognizing Covert Manipulation Patterns",
-    category: "RELATIONSHIP DYNAMICS",
-    duration: "4 MIN READ & WATCH",
-    thumbnail: "/assets/Video Thumbnails/4 Behaviors Linked to Chronic Overthinking.jpeg",
-  },
-  {
-    id: "v2",
-    title: "Grounding Exercises When Overwhelmed",
-    category: "EMOTIONAL REGULATION",
-    duration: "3 MIN PRACTICE",
-    thumbnail: "/assets/Video Thumbnails/How Emotionally Intelligent People Handle Hurt.jpeg",
-  },
-  {
-    id: "v3",
-    title: "Setting Boundaries Without Guilt",
-    category: "BOUNDARY WORK",
-    duration: "5 MIN PRACTICE",
-    thumbnail: "/assets/Video Thumbnails/Gaslighting How To Spot It as It Happens.jpeg",
-  },
-];
+// Use the newest 3 videos from the data (newest first)
+const newestVideos = VIDEOS_DATA.slice(0, 3).map((v, idx) => ({
+  id: v.id,
+  title: v.title,
+  category: v.category.toUpperCase(),
+  duration: v.duration,
+  summary: v.summary,
+  thumbnail: v.thumbnailUrl,
+}));
 
 export default function WatchLearnSpotlight() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -68,13 +55,13 @@ export default function WatchLearnSpotlight() {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-6">
           <div className="max-w-2xl">
             <span className="text-xs font-bold tracking-widest text-[#0E2E1E] uppercase block mb-3">
-              EXPERT GUIDANCE & CINEMA
+              WATCH &amp; LEARN
             </span>
             <h2 className="font-serif-heading text-3xl xs:text-4xl sm:text-5xl lg:text-6xl text-[#0E2E1E] leading-[1.1] tracking-tight">
-              Watch &amp; Learn Library
+              Support In Minutes
             </h2>
             <p className="mt-4 text-base sm:text-lg text-sage-grey font-light leading-relaxed">
-              Practical video guidance, clinical breakdowns, and daily micro-tools designed to support your personal growth beyond literature.
+              Some days you need perspective. Some days you need clarity. Some days you just need a reminder that you&apos;re not alone.
             </p>
           </div>
 
@@ -90,7 +77,7 @@ export default function WatchLearnSpotlight() {
 
         {/* Scroll-Driven Deck Unstack / Fan-Out Video Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-[1180px] mx-auto relative">
-          {sampleVideos.map((video, idx) => {
+          {newestVideos.map((video, idx) => {
             let motionStyles = {};
 
             if (!isMobile) {
@@ -141,11 +128,14 @@ export default function WatchLearnSpotlight() {
                   </div>
                 </div>
 
-                {/* Bottom Caption & Title */}
+                {/* Bottom Caption & Title + Summary */}
                 <div className="relative z-10 p-6 bg-gradient-to-t from-[#0E2E1E] via-[#0E2E1E]/90 to-transparent">
                   <h3 className="font-serif-heading text-xl sm:text-2xl text-editorial-white leading-snug drop-shadow-sm group-hover:text-cream-logo transition-colors">
                     {video.title}
                   </h3>
+                  <p className="text-[11px] text-editorial-white/70 font-light leading-relaxed mt-2 line-clamp-2">
+                    {video.summary}
+                  </p>
                 </div>
               </motion.div>
             );

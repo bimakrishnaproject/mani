@@ -36,10 +36,10 @@ export default function RefundPolicyPage() {
               CUSTOMER COMMITMENT
             </div>
             <h1 className="font-serif-heading text-5xl sm:text-7xl text-[#0E2E1E]">
-              Refund & Sanctuary Guarantee Policy
+              Refund Policy
             </h1>
             <p className="text-sm text-sage-grey uppercase tracking-wider font-semibold">
-              30-DAY RISK-FREE SANCTUARY COMMITMENT
+              30-DAY RISK-FREE REFUND GUARANTEE
             </p>
           </motion.div>
 
@@ -52,7 +52,7 @@ export default function RefundPolicyPage() {
           >
             <div className="p-8 bg-soft-white border-2 border-mist-grey rounded-3xl space-y-4 shadow-md">
               <h2 className="font-serif-heading text-3xl text-[#0E2E1E]">
-                The 30-Day Sanctuary Guarantee
+                The 30-Day Refund Guarantee
               </h2>
               <p className="text-sm text-[#626A64]">
                 We stand fully behind the transformational quality of MANI Collections. If any collection or individual tool does not provide you with immediate emotional clarity and practical boundary tools, you may request a 100% refund within 30 days of purchase.
@@ -69,7 +69,7 @@ export default function RefundPolicyPage() {
             <div className="space-y-4">
               <h3 className="font-serif-heading text-2xl text-[#0E2E1E]">2. Digital Products & Downloads</h3>
               <p>
-                All digital PDFs and instant download products included in MANI bundles are covered under our 30-Day Sanctuary Guarantee. If you are unsatisfied with your digital access, contact support within 30 days for a complete refund.
+                All digital PDFs and instant download products included in MANI bundles are covered under our 30-Day Refund Guarantee. If you are unsatisfied with your digital access, contact support within 30 days for a complete refund.
               </p>
             </div>
 
@@ -86,7 +86,7 @@ export default function RefundPolicyPage() {
                 NOTE FOR MANI TEAM / CLIENT COPY UPDATE
               </span>
               <p className="text-xs text-[#626A64] italic">
-                This page reflects the 30-Day Sanctuary Guarantee specified in the blueprint. If you would like to append specific legal return address details or custom region clauses from your legal advisor, please provide the text to be updated here.
+                This page reflects the 30-Day Refund Guarantee specified in the blueprint. If you would like to append specific legal return address details or custom region clauses from your legal advisor, please provide the text to be updated here.
               </p>
             </div>
 

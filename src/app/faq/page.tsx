@@ -22,7 +22,7 @@ export default function FAQPage() {
   if (SITE_LOCKS.PAGES_LOCKED) {
     return (
       <UnderProgressPage
-        pageName="Sanctuary FAQ"
+        pageName="FAQ"
         description="This page is currently undergoing milestone updates. Please explore the live homepage."
       />
     );
@@ -140,7 +140,7 @@ export default function FAQPage() {
             <div className="lg:col-span-7 space-y-6">
               <DiagonalSlideIn from="top-left" distance={30}>
                 <div className="inline-block text-xs font-bold tracking-widest uppercase text-deep-green bg-soft-signal-green px-4 py-2 rounded-full shadow-xs">
-                  SANCTUARY HELP CENTER • FREQUENTLY ASKED QUESTIONS
+                  HELP CENTER • FREQUENTLY ASKED QUESTIONS
                 </div>
               </DiagonalSlideIn>
 
@@ -202,7 +202,7 @@ export default function FAQPage() {
 
                   <div className="flex items-center justify-between">
                     <span className="text-xs font-bold text-cream-logo uppercase tracking-widest">
-                      ✨ QUICK SANCTUARY KNOWLEDGE
+                      ✨ QUICK KNOWLEDGE
                     </span>
                     <span className="text-[10px] font-bold text-emerald-400 bg-emerald-950 px-3 py-1 rounded-full border border-emerald-500/30">
                       {filteredFaqs.length} ANSWERS FOUND
@@ -270,7 +270,7 @@ export default function FAQPage() {
                   </span>
                   <h4 className="font-serif-heading text-xl text-cream-logo">Need Additional Assistance?</h4>
                   <p className="text-xs text-[#C3CDC6] font-light leading-relaxed">
-                    Our sanctuary team is dedicated to supporting your experience.
+                    Our team is dedicated to supporting your experience.
                   </p>
                   <Link
                     href="/#community"

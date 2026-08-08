@@ -28,7 +28,7 @@ export default function AboutPage() {
   if (SITE_LOCKS.PAGES_LOCKED) {
     return (
       <UnderProgressPage
-        pageName="About & Clinical Team Dossier"
+        pageName="About"
         description="This page is currently undergoing milestone updates. Please explore the live homepage."
       />
     );
@@ -120,7 +120,7 @@ export default function AboutPage() {
                 THE PEOPLE BEHIND MANI
               </span>
               <h2 className="font-serif-heading text-4xl sm:text-6xl text-[#0E2E1E]">
-                Meet Our Founders
+                The People Behind MANI
               </h2>
             </div>
           </ScrollReveal>

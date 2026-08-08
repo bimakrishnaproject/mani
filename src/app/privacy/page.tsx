@@ -33,7 +33,7 @@ export default function PrivacyPolicyPage() {
             className="space-y-4"
           >
             <div className="inline-block text-xs font-bold tracking-widest uppercase text-[#0E2E1E] bg-soft-signal-green px-4 py-2 rounded-full">
-              DATA SANCTUARY & PRIVACY
+              PRIVACY & DATA PROTECTION
             </div>
             <h1 className="font-serif-heading text-5xl sm:text-7xl text-[#0E2E1E]">
               Privacy Policy
@@ -52,7 +52,7 @@ export default function PrivacyPolicyPage() {
           >
             <div className="p-8 bg-[#0E2E1E] text-editorial-white rounded-3xl space-y-4 shadow-xl border border-emerald-500/20">
               <h2 className="font-serif-heading text-3xl text-cream-logo">
-                Private Sanctuary Assurance
+                Privacy Assurance
               </h2>
               <p className="text-sm text-[#C3CDC6] leading-relaxed">
                 At MANI, we believe your emotional processing, boundary work, and reflection belong exclusively to you. We do not sell your personal data, run invasive third-party ad trackers, or exploit sensitive reflection entries.
@@ -69,7 +69,7 @@ export default function PrivacyPolicyPage() {
             <div className="space-y-4">
               <h3 className="font-serif-heading text-2xl text-[#0E2E1E]">2. Mobile App Reflection Privacy</h3>
               <p>
-                As specified in our architecture blueprint, the MANI mobile app experience is engineered around end-to-end privacy and encrypted sanctuary standards. Your chat entries and guided reflections are stored privately.
+                As specified in our architecture blueprint, the MANI mobile app experience is engineered around end-to-end privacy standards. Your chat entries and guided reflections are stored privately.
               </p>
             </div>
 

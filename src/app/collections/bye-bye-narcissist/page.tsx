@@ -24,7 +24,7 @@ export default function ByeByeNarcissistCollectionPage() {
   if (SITE_LOCKS.PAGES_LOCKED) {
     return (
       <UnderProgressPage
-        pageName="Bye Bye Narcissist Flagship Collection"
+        pageName="Bye Bye Narcissist Collection"
         description="This page is currently undergoing milestone updates. Please explore the live homepage."
       />
     );
@@ -90,7 +90,7 @@ export default function ByeByeNarcissistCollectionPage() {
       num: "04",
       badge: "REINFORCEMENT",
       title: "4. Poster Set — Visual Boundary Reminders",
-      subtitle: "Keep Your Sanctuary Grounded Every Single Day",
+      subtitle: "Keep Your Space Grounded Every Single Day",
       description: "10 high-resolution frameable posters featuring core emotional reminders, boundary rules, and self-compassion affirmations for your space.",
       price: "$29.99",
       numericPrice: 29.99,
@@ -99,7 +99,7 @@ export default function ByeByeNarcissistCollectionPage() {
         "10 Premium Frameable 8x10 Art Prints",
         "'My Guilt Is Not Evidence of Wrongdoing'",
         "'No Is a Complete Sentence'",
-        "Daily Sanctuary Reminders",
+        "Daily Reminders",
       ],
     },
     {
@@ -116,7 +116,7 @@ export default function ByeByeNarcissistCollectionPage() {
         "52 Weekly Micro-Action Cards",
         "Luxe Rigid Display Box",
         "Quick-Draw Trigger Guidance",
-        "Pocket-Sized Sanctuary Cards",
+        "Pocket-Sized Cards",
       ],
     },
   ];

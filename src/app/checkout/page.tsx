@@ -93,7 +93,7 @@ export default function CheckoutPage() {
             <div className="max-w-2xl mx-auto text-center py-16 p-8 bg-soft-white border border-mist-grey rounded-3xl space-y-6">
               <h2 className="font-serif-heading text-3xl text-[#0E2E1E]">Your Cart is Currently Empty</h2>
               <p className="text-sm text-[#626A64]">
-                Explore the Bye Bye Narcissist collection or individual tools to add items to your sanctuary order.
+                Explore the Bye Bye Narcissist collection or individual tools to add items to your order.
               </p>
               <Link
                 href="/collections/bye-bye-narcissist"

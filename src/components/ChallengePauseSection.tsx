@@ -29,16 +29,15 @@ export default function ChallengePauseSection() {
 
         <div className="text-center max-w-4xl mx-auto relative z-10 space-y-6 sm:space-y-8">
           <span className="text-xs font-bold tracking-widest uppercase text-cream-logo/60 block">
-            BRAND PHILOSOPHY
+            THE CHALLENGE
           </span>
 
           <h2 className="font-serif-heading text-3xl xs:text-4xl sm:text-5xl md:text-6xl text-cream-logo leading-[1.15] tracking-tight">
-            &ldquo;Understanding comes before change.<br />
-            <span className="font-serif-italic">Support comes before solutions.&rdquo;</span>
+            No One Should Have to Struggle Alone
           </h2>
 
           <p className="text-base sm:text-xl text-editorial-white/80 max-w-2xl mx-auto leading-relaxed font-light">
-            You do not need to fix everything today. Emotional growth happens in quiet, consistent moments of self-reflection.
+            Understanding comes before change. Support comes before solutions. People are not problems to be fixed.
           </p>
 
           <div className="pt-2">

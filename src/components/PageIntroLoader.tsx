@@ -7,7 +7,7 @@ export default function PageIntroLoader() {
   const [visible, setVisible] = useState(true);
   const [fadingOut, setFadingOut] = useState(false);
 
-  const fullText = "A calm space for emotional growth.";
+  const fullText = "Emotional Support Made Simple.";
 
   useEffect(() => {
     let index = 0;
@@ -39,7 +39,7 @@ export default function PageIntroLoader() {
         <img
           src="/assets/Mani Logos/mani cream logo.png"
           alt="MANI Logo"
-          className="h-5 wuto object-contain"
+          className="h-5 w-auto object-contain"
         />
       </div>
 

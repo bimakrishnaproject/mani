@@ -78,15 +78,15 @@ export default function TypewriterNavigationProvider({
     }
 
     const routeLabels: Record<string, string> = {
-      "/": "INITIALIZING MANI ECOSYSTEM",
-      "/#app": "OPENING MANI APP BETA SECTION",
-      "/#community": "JOINING MANI COMMUNITY SANCTUARY",
-      "/collections": "CONNECTING TO MANI COLLECTIONS",
-      "/collections/bye-bye-narcissist": "LOADING BYE BYE NARCISSIST SYSTEM",
-      "/watch-learn": "OPENING WATCH & LEARN CINEMA LIBRARY",
-      "/why-mani": "LOADING WHY MANI PHILOSOPHY & MANIFESTO",
-      "/about": "LOADING CLINICAL DOSSIER & FOUNDERS",
-      "/faq": "CONNECTING TO SANCTUARY FAQ",
+      "/": "LOADING MANI HOME",
+      "/#app": "OPENING MANI APP BETA",
+      "/#community": "JOINING MANI COMMUNITY",
+      "/collections": "LOADING MANI COLLECTIONS",
+      "/collections/bye-bye-narcissist": "LOADING BYE BYE NARCISSIST COLLECTION",
+      "/watch-learn": "OPENING WATCH & LEARN",
+      "/why-mani": "LOADING WHY MANI",
+      "/about": "LOADING ABOUT MANI",
+      "/faq": "LOADING FAQ",
     };
 
     const targetText = label || routeLabels[href] || `NAVIGATING TO ${href.toUpperCase()}`;

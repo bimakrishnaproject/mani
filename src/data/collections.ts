@@ -89,9 +89,121 @@ export const BYE_BYE_NARCISSIST_PRODUCTS: ProductItem[] = [
   },
 ];
 
+export const EMOTIONAL_INTELLIGENCE_PRODUCTS: ProductItem[] = [
+  {
+    slug: "emotional-intelligence-book",
+    name: "Emotional Intelligence — Book",
+    role: "Foundation",
+    price: 24.99,
+    format: "Physical",
+    description: "Master emotional self-regulation, deep self-awareness, and high-EQ interpersonal communication skills.",
+    helpsWith: [
+      "Understanding emotional triggers and responses",
+      "Developing empathetic listening skills",
+      "Building calm self-regulation under pressure",
+    ],
+    mockupImage: "/assets/Product Collections/Product Mockups/Emotional Intelligence Collection/Emotional Intelligence Book.png",
+  },
+  {
+    slug: "emotional-intelligence-workbook",
+    name: "Emotional Intelligence — Workbook",
+    role: "Action",
+    price: 29.99,
+    format: "Physical",
+    description: "Practical EQ exercises, conflict resolution templates, and emotional audits for everyday interactions.",
+    helpsWith: [
+      "Navigating difficult conversations with clarity",
+      "Replacing knee-jerk reactions with intentional responses",
+      "Strengthening emotional boundaries",
+    ],
+    mockupImage: "/assets/Product Collections/Product Mockups/Emotional Intelligence Collection/Workbook.png",
+  },
+  {
+    slug: "emotional-intelligence-system",
+    name: "Emotional Intelligence — Collection System",
+    role: "Set",
+    price: 69.99,
+    format: "Set",
+    description: "The complete Emotional Intelligence physical system featuring the Book, Workbook, and Poster set.",
+    helpsWith: [
+      "Comprehensive EQ mastery and daily habit integration",
+    ],
+    mockupImage: "/assets/Product Collections/Product Mockups/Emotional Intelligence Collection/Book Trio.png",
+  },
+];
+
+export const LOVE_DONE_RIGHT_PRODUCTS: ProductItem[] = [
+  {
+    slug: "love-done-right-book",
+    name: "Love Done Right — Book",
+    role: "Foundation",
+    price: 24.99,
+    format: "Physical",
+    description: "Deconstruct anxious and avoidant attachment patterns to build healthy, secure romantic partnerships.",
+    helpsWith: [
+      "Recognizing healthy vs toxic relationship dynamics",
+      "Breaking repetitive heartbreak cycles",
+      "Cultivating secure attachment and emotional safety",
+    ],
+    mockupImage: "/assets/Product Collections/Product Mockups/Love Done Right Collection/Book.png",
+  },
+  {
+    slug: "love-done-right-workbook",
+    name: "Love Done Right — Workbook",
+    role: "Action",
+    price: 29.99,
+    format: "Physical",
+    description: "Relationship audit exercises, vulnerability prompts, and communication frameworks for couples and singles.",
+    helpsWith: [
+      "Communicating core relationship needs without anxiety",
+      "Healing relational trust wounds",
+      "Setting loving relational boundaries",
+    ],
+    mockupImage: "/assets/Product Collections/Product Mockups/Love Done Right Collection/Workbook.png",
+  },
+  {
+    slug: "love-done-right-journal",
+    name: "Love Done Right — Colouring Book & Journal",
+    role: "Calm",
+    price: 14.99,
+    format: "Physical",
+    description: "Somatic reflection prompts and calming art exercises designed to soothe relationship anxiety.",
+    helpsWith: [
+      "Calming relationship panic & overthinking",
+      "Daily self-love and self-soothing rituals",
+    ],
+    mockupImage: "/assets/Product Collections/Product Mockups/Love Done Right Collection/Coloring Book.png",
+  },
+];
+
+export const ALL_COLLECTIONS: CollectionItem[] = [
+  {
+    slug: "bye-bye-narcissist",
+    title: "Bye Bye Narcissist",
+    status: "Available",
+    positioning: "Recovery from covert manipulation, gaslighting, and toxic dynamics.",
+    bundlePrice: 119.99,
+    products: BYE_BYE_NARCISSIST_PRODUCTS,
+  },
+  {
+    slug: "emotional-intelligence",
+    title: "Emotional Intelligence",
+    status: "Available",
+    positioning: "Master emotional self-regulation and develop high-EQ communication skills.",
+    bundlePrice: 69.99,
+    products: EMOTIONAL_INTELLIGENCE_PRODUCTS,
+  },
+  {
+    slug: "love-done-right",
+    title: "Love Done Right",
+    status: "Available",
+    positioning: "Build healthy partnership patterns and understand attachment dynamics.",
+    bundlePrice: 59.99,
+    products: LOVE_DONE_RIGHT_PRODUCTS,
+  },
+];
+
 export const FUTURE_COLLECTIONS = [
-  { title: "Love Done Right", status: "Coming Soon" },
-  { title: "Emotional Intelligence", status: "Coming Soon" },
   { title: "Boundaries That Stick", status: "In Development" },
   { title: "Purpose Starts Here", status: "In Development" },
   { title: "Beyond the Anxiety", status: "In Development" },
@@ -102,3 +214,4 @@ export const FUTURE_COLLECTIONS = [
   { title: "Own Your Worth", status: "In Development" },
   { title: "When Panic Hits", status: "In Development" },
 ];
+

@@ -48,7 +48,7 @@ export default function ThreeWaysSection() {
     },
     {
       num: "03",
-      title: "Guided Mobile Technology",
+      title: "App",
       subtitle: "Private, real-time reflection technology currently in closed beta.",
       description: "Beyond listening, MANI guides you toward understanding and practical next steps right from your phone when you need clarity most.",
       ctaText: "Join Private Beta Access",

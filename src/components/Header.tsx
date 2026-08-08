@@ -63,7 +63,7 @@ export default function Header() {
             </a>
             <a
               href="/watch-learn"
-              onClick={(e) => handleNavClick(e, "/watch-learn", "LOADING WATCH & LEARN CINEMA")}
+              onClick={(e) => handleNavClick(e, "/watch-learn", "LOADING WATCH & LEARN")}
               className="text-sm font-medium text-ink-black hover:text-[#0E2E1E] transition-colors cursor-pointer"
             >
               Watch &amp; Learn
@@ -87,14 +87,14 @@ export default function Header() {
             </a>
             <a
               href="/about"
-              onClick={(e) => handleNavClick(e, "/about", "LOADING CLINICAL DOSSIER & FOUNDERS")}
+              onClick={(e) => handleNavClick(e, "/about", "LOADING ABOUT MANI")}
               className="text-sm font-medium text-ink-black hover:text-[#0E2E1E] transition-colors cursor-pointer"
             >
               About
             </a>
             <a
               href="/faq"
-              onClick={(e) => handleNavClick(e, "/faq", "CONNECTING TO SANCTUARY FAQ")}
+              onClick={(e) => handleNavClick(e, "/faq", "LOADING FAQ")}
               className="text-sm font-medium text-ink-black hover:text-[#0E2E1E] transition-colors cursor-pointer"
             >
               FAQ
@@ -169,7 +169,7 @@ export default function Header() {
             </a>
             <a
               href="/watch-learn"
-              onClick={(e) => handleNavClick(e, "/watch-learn", "LOADING WATCH & LEARN CINEMA")}
+              onClick={(e) => handleNavClick(e, "/watch-learn", "LOADING WATCH & LEARN")}
               className="text-[#0E2E1E]"
             >
               Watch &amp; Learn
@@ -193,14 +193,14 @@ export default function Header() {
             </a>
             <a
               href="/about"
-              onClick={(e) => handleNavClick(e, "/about", "LOADING CLINICAL DOSSIER & FOUNDERS")}
+              onClick={(e) => handleNavClick(e, "/about", "LOADING ABOUT MANI")}
               className="text-[#0E2E1E]"
             >
               About
             </a>
             <a
               href="/faq"
-              onClick={(e) => handleNavClick(e, "/faq", "CONNECTING TO SANCTUARY FAQ")}
+              onClick={(e) => handleNavClick(e, "/faq", "LOADING FAQ")}
               className="text-[#0E2E1E]"
             >
               FAQ

@@ -80,7 +80,7 @@ export default function FeaturedCollectionSection() {
       description: "10 high-resolution frameable posters featuring core emotional reminders, boundary rules, and self-compassion affirmations.",
       price: "$29.99",
       image: "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/Posters/1 Framed.png",
-      details: ["10 Premium Art Prints", "Frameable 8x10 Design", "Daily Sanctuary Reminders"],
+      details: ["10 Premium Art Prints", "Frameable 8x10 Design", "Daily Reminders"],
     },
     {
       num: "05",
@@ -110,7 +110,7 @@ export default function FeaturedCollectionSection() {
             {/* Top Header */}
             <div>
               <span className="text-xs font-bold tracking-widest uppercase text-[#8C7659] block mb-4">
-                FLAGSHIP COLLECTION • BYE BYE NARCISSIST
+                FEATURED COLLECTION • BYE BYE NARCISSIST
               </span>
 
               <h2 className="font-serif-heading text-3xl sm:text-5xl md:text-6xl text-deep-green leading-[1.08] mb-6">

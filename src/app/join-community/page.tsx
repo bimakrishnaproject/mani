@@ -50,7 +50,7 @@ export default function JoinCommunityPage() {
                 Support Doesn’t End Here
               </h1>
               <p className="text-base sm:text-lg text-[#C3CDC6] font-light max-w-xl mx-auto leading-relaxed">
-                Be the first to hear about new collections, daily educational videos, app updates, and exclusive sanctuary resources.
+                Be the first to hear about new collections, daily educational videos, app updates, and exclusive resources.
               </p>
             </div>
 
@@ -115,7 +115,7 @@ export default function JoinCommunityPage() {
             )}
 
             <div className="pt-4 border-t border-editorial-white/10 flex justify-center gap-6 text-xs text-[#C3CDC6]">
-              <span>🔒 Managed via Klaviyo Sanctuary CRM</span>
+              <span>🔒 Managed via Klaviyo CRM</span>
               <span>•</span>
               <Link href="/privacy" className="underline hover:text-cream-logo">
                 Privacy Policy

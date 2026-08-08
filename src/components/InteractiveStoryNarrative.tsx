@@ -33,7 +33,7 @@ export default function InteractiveStoryNarrative() {
     },
     {
       act: "ACT 03",
-      title: "Guided Mobile Technology",
+      title: "App",
       subtitle: "Private, real-time reflection and support right from your phone.",
       description: "Beyond passive listening, MANI guides you toward understanding and practical next steps when you need clarity most.",
       badge: "MANI APP • PRIVATE BETA",

@@ -94,7 +94,7 @@ export default function DisclaimerPage() {
 
             <div className="pt-8 border-t border-mist-grey flex justify-between items-center text-xs">
               <Link href="/faq" className="text-[#0E2E1E] font-bold underline hover:text-emerald-700">
-                &larr; Return to Sanctuary FAQ
+                &larr; Return to FAQ
               </Link>
               <Link href="/terms" className="text-[#0E2E1E] font-bold underline hover:text-emerald-700">
                 View Terms of Use &rarr;

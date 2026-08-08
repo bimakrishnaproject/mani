@@ -90,7 +90,7 @@ export default function CollectionsDirectoryPage() {
       num: "04",
       badge: "REINFORCEMENT",
       title: "4. Poster Set — Visual Boundary Reminders",
-      subtitle: "Keep Your Sanctuary Grounded Every Single Day",
+      subtitle: "Keep Your Space Grounded Every Single Day",
       description: "10 high-resolution frameable posters featuring core emotional reminders, boundary rules, and self-compassion affirmations for your home.",
       price: "$29.99",
       numericPrice: 29.99,
@@ -99,7 +99,7 @@ export default function CollectionsDirectoryPage() {
         "10 Premium Frameable 8x10 Art Prints",
         "'My Guilt Is Not Evidence of Wrongdoing'",
         "'No Is a Complete Sentence'",
-        "Daily Sanctuary Reminders",
+        "Daily Reminders",
       ],
     },
     {
@@ -116,7 +116,7 @@ export default function CollectionsDirectoryPage() {
         "52 Weekly Micro-Action Cards",
         "Luxe Rigid Display Box",
         "Quick-Draw Trigger Guidance",
-        "Pocket-Sized Sanctuary Cards",
+        "Pocket-Sized Cards",
       ],
     },
   ];
@@ -203,7 +203,7 @@ export default function CollectionsDirectoryPage() {
                   href="/collections/bye-bye-narcissist"
                   className="inline-flex px-8 py-4 bg-[#0E2E1E] text-cream-logo font-semibold rounded-md hover:bg-[#143d28] transition-all shadow-lg text-sm"
                 >
-                  Explore Flagship Collection &rarr;
+                  Explore Collections &rarr;
                 </Link>
               </MagneticElement>
             </ScrollReveal>
@@ -238,7 +238,7 @@ export default function CollectionsDirectoryPage() {
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b-2 border-mist-grey">
             <div>
               <span className="text-xs font-bold text-[#0E2E1E] tracking-widest uppercase block mb-2">
-                FLAGSHIP COLLECTION • COMPLETE 5-PART SYSTEM
+                FEATURED COLLECTION • COMPLETE 5-PART SYSTEM
               </span>
               <h2 className="font-serif-heading text-5xl sm:text-7xl text-[#0E2E1E] leading-tight">
                 Bye Bye Narcissist
@@ -349,6 +349,8 @@ export default function CollectionsDirectoryPage() {
             </SplitSlideCombine>
           ))}
         </section>
+
+
 
         {/* WHY THEY WORK TOGETHER */}
         <section className="max-w-[1360px] mx-auto px-6 sm:px-12 md:px-16 mb-32">

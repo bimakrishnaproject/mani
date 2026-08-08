@@ -14,7 +14,7 @@ export default function ProductDetailPage({ params }: { params: Promise<{ slug: 
   if (SITE_LOCKS.PAGES_LOCKED) {
     return (
       <UnderProgressPage
-        pageName="Product Sanctuary Details"
+        pageName="Product Details"
         description="This product page is currently undergoing milestone updates. Please explore the live homepage."
       />
     );
@@ -80,7 +80,7 @@ export default function ProductDetailPage({ params }: { params: Promise<{ slug: 
     posters: {
       id: "posters",
       title: "Poster Set — Visual Boundary Reminders",
-      subtitle: "Keep Your Sanctuary Grounded Every Single Day",
+      subtitle: "Keep Your Space Grounded Every Single Day",
       numericPrice: 29.99,
       price: "$29.99",
       badge: "10 PREMIUM FRAMEABLE ART PRINTS",
@@ -91,7 +91,7 @@ export default function ProductDetailPage({ params }: { params: Promise<{ slug: 
         "10 Premium Frameable 8x10 Art Prints",
         "'My Guilt Is Not Evidence of Wrongdoing'",
         "'No Is a Complete Sentence'",
-        "Daily Sanctuary Reminders",
+        "Daily Reminders",
       ],
     },
     "affirmation-cards": {
@@ -108,7 +108,7 @@ export default function ProductDetailPage({ params }: { params: Promise<{ slug: 
         "52 Weekly Micro-Action Cards",
         "Luxe Rigid Display Box",
         "Quick-Draw Trigger Guidance",
-        "Pocket-Sized Sanctuary Cards",
+        "Pocket-Sized Cards",
       ],
     },
   };

@@ -16,113 +16,40 @@ import {
   CountUpOnScroll,
   HorizontalScrollTrack,
 } from "@/components/ScrollAnimations";
+import { VIDEOS_DATA, CATEGORIES, getStreamableVideoUrl } from "@/data/videos";
 import { trackVideoView } from "@/lib/analytics";
 
 export default function WatchLearnPage() {
   if (SITE_LOCKS.PAGES_LOCKED) {
     return (
       <UnderProgressPage
-        pageName="Watch & Learn Cinema Library"
+        pageName="Watch & Learn"
         description="This page is currently undergoing milestone updates. Please explore the live homepage."
       />
     );
   }
 
-  const [selectedTopic, setSelectedTopic] = useState<string>("All");
+  const [selectedTopic, setSelectedTopic] = useState<string>("All Categories");
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [activeVideoModal, setActiveVideoModal] = useState<any | null>(null);
   const [activeReelIdx, setActiveReelIdx] = useState<number>(0);
   const [isReelPaused, setIsReelPaused] = useState<boolean>(false);
 
-  const topics = [
-    "All",
-    "Psychology",
-    "Emotional Intelligence",
-    "Childhood",
-    "Paradoxes & Effects",
-    "Relationships",
-    "Life & Motivation",
-    "Inner Child",
-    "Overthinking",
-    "Self-Sabotage",
-    "Shadow Work",
-    "Stress",
-  ];
+  const [visibleCount, setVisibleCount] = useState<number>(24);
 
-  const videos = [
-    {
-      id: "1",
-      title: "How Emotionally Intelligent People Handle Hurt",
-      category: "Emotional Intelligence",
-      duration: "3:12 min",
-      thumbnail: "/assets/Video Thumbnails/How Emotionally Intelligent People Handle Hurt.jpeg",
-      views: "14.2k views",
-      description: "Learn how high-EQ individuals process emotional injury without reacting impulsively or internalizing toxic blame.",
-    },
-    {
-      id: "2",
-      title: "5 Signs You Struggle to Say What You Need",
-      category: "Relationships",
-      duration: "2:45 min",
-      thumbnail: "/assets/Video Thumbnails/5 Signs You Struggle to Say What You Need.jpeg",
-      views: "18.9k views",
-      description: "Guilt often misinterprets self-protection as selfishness. Here is the psychological breakdown of boundary guilt.",
-    },
-    {
-      id: "3",
-      title: "How To Recognize A Narcissist",
-      category: "Psychology",
-      duration: "3:40 min",
-      thumbnail: "/assets/Video Thumbnails/How To Recognize A Narcissist.jpeg",
-      views: "24.5k views",
-      description: "Covert manipulation does not look like overt aggression. Here are the subtle behavioral shifts to watch for.",
-    },
-    {
-      id: "4",
-      title: "How Self-Trust Actually Looks",
-      category: "Emotional Intelligence",
-      duration: "3:05 min",
-      thumbnail: "/assets/Video Thumbnails/How Self-Trust Actually Looks.jpg",
-      views: "19.1k views",
-      description: "Practice this daily micro-validation routine to reclaim your reality and rebuild inner confidence.",
-    },
-    {
-      id: "5",
-      title: "4 Behaviors Linked to Chronic Overthinking",
-      category: "Overthinking",
-      duration: "1:58 min",
-      thumbnail: "/assets/Video Thumbnails/4 Behaviors Linked to Chronic Overthinking.jpeg",
-      views: "21.3k views",
-      description: "A fast nervous system reset technique to stop overthinking loops right when they start.",
-    },
-    {
-      id: "6",
-      title: "Why You Repeat Toxic Cycles",
-      category: "Psychology",
-      duration: "3:50 min",
-      thumbnail: "/assets/Video Thumbnails/Why You Repeat Toxic Cycles.jpg",
-      views: "31.0k views",
-      description: "Understand the patterns behind trauma bonds and how to safely break repetitive emotional cycles.",
-    },
-    {
-      id: "7",
-      title: "Overcoming Trauma Bond Dynamics",
-      category: "Childhood",
-      duration: "4:15 min",
-      thumbnail: "/assets/Video Thumbnails/How To Recognize A Narcissist.jpeg",
-      views: "16.8k views",
-      description: "Deep dive into breaking trauma loops and establishing nervous system safety.",
-    },
-    {
-      id: "8",
-      title: "The Psychology of Unapologetic Boundaries",
-      category: "Relationships",
-      duration: "3:30 min",
-      thumbnail: "/assets/Video Thumbnails/5 Signs You Struggle to Say What You Need.jpeg",
-      views: "22.4k views",
-      description: "Setting clear boundaries without anxiety, fear of abandonment, or guilt.",
-    },
-  ];
+  const topics = CATEGORIES;
+
+  // Videos ordered newest to oldest directly from VIDEOS_DATA (271 total)
+  const videos = VIDEOS_DATA.map((v) => ({
+    id: v.id,
+    title: v.title,
+    category: v.category,
+    duration: v.duration,
+    thumbnail: v.thumbnailUrl,
+    description: v.summary,
+    driveVideoUrl: v.driveVideoUrl,
+    views: "500+ views",
+  }));
 
   // Auto-looping featured reel thumbnail engine (cycles every 3.5 seconds)
   useEffect(() => {
@@ -134,9 +61,14 @@ export default function WatchLearnPage() {
     return () => clearInterval(timer);
   }, [isReelPaused, videos.length]);
 
+  // Reset pagination count on search or topic change
+  useEffect(() => {
+    setVisibleCount(24);
+  }, [selectedTopic, searchQuery]);
+
   // Real-time Search & Filter logic
   const filteredVideos = videos.filter((v) => {
-    const matchesTopic = selectedTopic === "All" || v.category === selectedTopic;
+    const matchesTopic = selectedTopic === "All Categories" || selectedTopic === "All" || v.category === selectedTopic;
     const matchesQuery =
       searchQuery.trim() === "" ||
       v.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -145,12 +77,14 @@ export default function WatchLearnPage() {
     return matchesTopic && matchesQuery;
   });
 
+  const visibleVideos = filteredVideos.slice(0, visibleCount);
+
   const handleOpenVideo = (video: any) => {
     setActiveVideoModal(video);
     trackVideoView(video.title, video.duration);
   };
 
-  const currentReel = videos[activeReelIdx];
+  const currentReel = videos[activeReelIdx % videos.length] || videos[0];
 
   return (
     <div className="min-h-screen bg-editorial-white text-ink-black flex flex-col justify-between overflow-x-hidden">
@@ -170,7 +104,7 @@ export default function WatchLearnPage() {
               <div className="lg:col-span-7 space-y-6">
                 <DiagonalSlideIn from="top-left" distance={30}>
                   <div className="inline-block text-xs font-bold tracking-widest uppercase text-cream-logo bg-editorial-white/10 px-4 py-1.5 rounded-full backdrop-blur-md border border-editorial-white/15">
-                    WATCH &amp; LEARN CINEMA
+                    WATCH &amp; LEARN
                   </div>
                 </DiagonalSlideIn>
 
@@ -182,7 +116,7 @@ export default function WatchLearnPage() {
 
                 <ScrollReveal direction="up" distance={30} delay={0.2}>
                   <p className="text-lg sm:text-xl text-[#C3CDC6] font-light leading-relaxed max-w-2xl">
-                    Short, cinematic videos designed to help you better understand your emotions, relationships, and the experiences shaping your life.
+                    Short videos designed to help you better understand your emotions, relationships, and the experiences shaping your life.
                   </p>
                 </ScrollReveal>
 
@@ -217,10 +151,11 @@ export default function WatchLearnPage() {
                     <button
                       key={idx}
                       onClick={() => setSelectedTopic(topic)}
-                      className={`text-xs font-semibold px-4 py-2 rounded-full transition-all ${selectedTopic === topic
+                      className={`text-xs font-semibold px-4 py-2 rounded-full transition-all ${
+                        selectedTopic === topic
                           ? "bg-cream-logo text-[#0E2E1E] shadow-md scale-105"
                           : "bg-editorial-white/10 text-cream-logo border border-editorial-white/15 hover:bg-editorial-white/20"
-                        }`}
+                      }`}
                     >
                       {topic}
                     </button>
@@ -254,7 +189,7 @@ export default function WatchLearnPage() {
                   <span>⏱ 3-Min Daily Lessons</span>
                 </motion.div>
 
-                {/* Main Floating 3D Video Cinema Stage Card */}
+                {/* Main Floating 3D Video Stage Card */}
                 <motion.div
                   animate={{
                     y: [0, -14, 0],
@@ -270,56 +205,48 @@ export default function WatchLearnPage() {
                 >
                   <div className="relative w-full h-[370px] overflow-hidden">
 
-                    {/* FLUID THUMBNAIL AUTO-LOOP CROSS-FADE */}
-                    <AnimatePresence mode="wait">
-                      <motion.div
-                        key={activeReelIdx}
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        exit={{ opacity: 0, scale: 1.05 }}
-                        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                        className="absolute inset-0 w-full h-full"
-                      >
-                        <img
-                          src={encodeURI(currentReel.thumbnail)}
-                          alt={currentReel.title}
-                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                        />
+                    {/* FLUID THUMBNAIL AUTO-LOOP IMAGE */}
+                    <div className="absolute inset-0 w-full h-full">
+                      <img
+                        key={currentReel.id}
+                        src={encodeURI(currentReel.thumbnail)}
+                        alt={currentReel.title}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      />
 
-                        {/* Gradient Overlay */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#081F14] via-[#081F14]/40 to-black/40 flex flex-col justify-between p-6">
-                          <div className="flex justify-between items-center z-10">
-                            <span className="text-[10px] font-bold tracking-widest uppercase bg-[#0E2E1E] text-cream-logo px-3 py-1 rounded-full border border-emerald-500/30">
-                              {currentReel.category}
-                            </span>
-                            <span className="text-xs font-bold text-cream-logo bg-black/60 px-3 py-1 rounded-full backdrop-blur-md">
-                              ⏱ {currentReel.duration}
-                            </span>
-                          </div>
+                      {/* Gradient Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#081F14] via-[#081F14]/40 to-black/40 flex flex-col justify-between p-6">
+                        <div className="flex justify-between items-center z-10">
+                          <span className="text-[10px] font-bold tracking-widest uppercase bg-[#0E2E1E] text-cream-logo px-3 py-1 rounded-full border border-emerald-500/30">
+                            {currentReel.category}
+                          </span>
+                          <span className="text-xs font-bold text-cream-logo bg-black/60 px-3 py-1 rounded-full backdrop-blur-md">
+                            ⏱ {currentReel.duration}
+                          </span>
+                        </div>
 
-                          {/* Pulsing Big Play Button */}
-                          <div className="flex justify-center items-center my-auto z-10">
-                            <div className="relative flex items-center justify-center">
-                              <div className="absolute w-20 h-20 bg-cream-logo/30 rounded-full animate-ping" />
-                              <div className="w-16 h-16 bg-cream-logo text-[#0E2E1E] rounded-full flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform relative z-10">
-                                <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-                                  <polygon points="9,6 18,12 9,18" fill="currentColor" />
-                                </svg>
-                              </div>
+                        {/* Pulsing Big Play Button */}
+                        <div className="flex justify-center items-center my-auto z-10">
+                          <div className="relative flex items-center justify-center">
+                            <div className="absolute w-20 h-20 bg-cream-logo/30 rounded-full animate-ping" />
+                            <div className="w-16 h-16 bg-cream-logo text-[#0E2E1E] rounded-full flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform relative z-10">
+                              <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                                <polygon points="9,6 18,12 9,18" fill="currentColor" />
+                              </svg>
                             </div>
                           </div>
-
-                          <div className="z-10">
-                            <h3 className="font-serif-heading text-xl text-cream-logo leading-snug group-hover:text-emerald-300 transition-colors line-clamp-2">
-                              {currentReel.title}
-                            </h3>
-                            <span className="text-[11px] font-semibold text-emerald-400 mt-1 block">
-                              Click to play this video &rarr;
-                            </span>
-                          </div>
                         </div>
-                      </motion.div>
-                    </AnimatePresence>
+
+                        <div className="z-10">
+                          <h3 className="font-serif-heading text-xl text-cream-logo leading-snug group-hover:text-emerald-300 transition-colors line-clamp-2">
+                            {currentReel.title}
+                          </h3>
+                          <span className="text-[11px] font-semibold text-emerald-400 mt-1 block">
+                            Click to play this video &rarr;
+                          </span>
+                        </div>
+                      </div>
+                    </div>
 
                     {/* Loop Progress Bar */}
                     <div className="absolute bottom-0 left-0 right-0 h-1 bg-editorial-white/20 z-20">
@@ -341,14 +268,14 @@ export default function WatchLearnPage() {
           </CurtainClipExpand>
         </section>
 
-        {/* SECTION HEADER FOR HORIZONTAL CINEMA */}
+        {/* SECTION HEADER FOR VIDEO GRID */}
         <section className="px-6 sm:px-12 md:px-16 lg:px-24 mb-4 flex items-center justify-between">
           <div>
             <span className="text-xs font-bold text-[#0E2E1E] tracking-widest uppercase block mb-1">
-              CINEMATIC HORIZONTAL SHOWCASE ({selectedTopic.toUpperCase()})
+              WATCH &amp; LEARN ({selectedTopic.toUpperCase()})
             </span>
             <h2 className="font-serif-heading text-3xl sm:text-4xl text-[#0E2E1E]">
-              {searchQuery ? `Search Results for "${searchQuery}" (${filteredVideos.length})` : "Scroll Down to Explore Video Library →"}
+              {searchQuery ? `Search Results for "${searchQuery}" (${filteredVideos.length})` : "Explore the Video Library"}
             </h2>
           </div>
           <span className="text-xs font-bold text-sage-grey hidden sm:inline-block bg-soft-white border border-mist-grey px-4 py-2 rounded-full">
@@ -356,59 +283,77 @@ export default function WatchLearnPage() {
           </span>
         </section>
 
-        {/* PINNED HORIZONTAL SCROLL CINEMA SHOWCASE */}
+        {/* CLEAN RESPONSIVE VIDEO GRID */}
         {filteredVideos.length > 0 ? (
-          <HorizontalScrollTrack>
-            {filteredVideos.map((video) => (
-              <div
-                key={video.id}
-                onClick={() => handleOpenVideo(video)}
-                className="w-[320px] sm:w-[380px] md:w-[420px] flex-shrink-0 group cursor-pointer bg-soft-white border-2 border-mist-grey rounded-3xl overflow-hidden hover:border-[#0E2E1E] transition-all hover:shadow-2xl flex flex-col justify-between"
-              >
-                {/* Thumbnail */}
-                <div className="relative w-full h-[380px] sm:h-[440px] bg-ink-black overflow-hidden flex items-center justify-center">
+          <section className="max-w-[1360px] mx-auto px-6 sm:px-12 md:px-16 lg:px-24 mb-24">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {visibleVideos.map((video) => (
+                <div
+                  key={video.id}
+                  onClick={() => handleOpenVideo(video)}
+                  className="group relative cursor-pointer rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl border border-editorial-white/15 transition-all hover:scale-[1.02] aspect-[9/15] flex flex-col justify-between p-6 bg-[#05150D]"
+                >
+                  {/* Full Background Thumbnail Image */}
                   <img
                     src={encodeURI(video.thumbnail)}
                     alt={video.title}
-                    className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700"
+                    className="absolute inset-0 w-full h-full object-cover object-top rounded-3xl group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100"
                   />
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-ink-black/85 via-ink-black/20 to-transparent group-hover:bg-ink-black/20 transition-all flex items-center justify-center">
-                    <div className="w-16 h-16 bg-cream-logo text-[#0E2E1E] rounded-full flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform">
-                      <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                  {/* Soft Dark Gradient Overlay for High Text Readability */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-black/25 group-hover:from-black/90 transition-all rounded-3xl" />
+
+                  {/* Top Bar: Category & Duration Pills */}
+                  <div className="relative z-10 flex items-center justify-between">
+                    <span className="text-[10px] font-bold tracking-widest uppercase bg-[#0E2E1E]/90 text-cream-logo px-3 py-1 rounded-full border border-emerald-500/30 backdrop-blur-md shadow-md">
+                      {video.category}
+                    </span>
+                    <span className="text-[10px] font-bold text-cream-logo bg-black/75 px-2.5 py-1 rounded-full backdrop-blur-md border border-editorial-white/20 shadow-md">
+                      ⏱ {video.duration}
+                    </span>
+                  </div>
+
+                  {/* Center Play Button Overlay */}
+                  <div className="relative z-10 flex items-center justify-center my-auto">
+                    <div className="w-14 h-14 rounded-full bg-cream-logo text-[#0E2E1E] flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                         <polygon points="9,6 18,12 9,18" fill="currentColor" />
                       </svg>
                     </div>
                   </div>
 
-                  <div className="absolute top-4 left-4 right-4 flex justify-between items-center z-10">
-                    <span className="text-[10px] font-bold tracking-widest uppercase bg-[#0E2E1E] text-cream-logo px-3 py-1 rounded-full shadow-md">
-                      {video.category}
-                    </span>
-                    <span className="bg-ink-black/80 text-cream-logo text-[11px] font-bold px-3 py-1 rounded-full backdrop-blur-md border border-editorial-white/20">
-                      ⏱ {video.duration}
-                    </span>
+                  {/* Bottom Text Overlay: Approved Title, Summary & CTA */}
+                  <div className="relative z-10 space-y-2">
+                    <h3 className="font-serif-heading text-xl sm:text-2xl text-cream-logo leading-snug group-hover:text-white transition-colors line-clamp-2">
+                      {video.title}
+                    </h3>
+                    <p className="text-xs text-editorial-white/80 font-light leading-relaxed line-clamp-2">
+                      {video.description}
+                    </p>
+                    <div className="pt-2.5 border-t border-editorial-white/20 flex items-center justify-between text-xs text-cream-logo/80 font-semibold">
+                      <span>{video.views}</span>
+                      <span className="text-cream-logo font-bold group-hover:underline flex items-center gap-1">
+                        Watch Video &rarr;
+                      </span>
+                    </div>
                   </div>
                 </div>
+              ))}
+            </div>
 
-                {/* Card Body */}
-                <div className="p-6 space-y-3">
-                  <h3 className="font-serif-heading text-2xl text-[#0E2E1E] leading-snug group-hover:text-[#1c5c3b] transition-colors">
-                    {video.title}
-                  </h3>
-                  <p className="text-xs text-[#626A64] font-light leading-relaxed line-clamp-2">
-                    {video.description}
-                  </p>
-                  <div className="pt-3 border-t border-mist-grey flex items-center justify-between text-xs text-sage-grey font-medium">
-                    <span>{video.views}</span>
-                    <span className="text-[#0E2E1E] font-bold group-hover:underline">
-                      Watch Cinema &rarr;
-                    </span>
-                  </div>
-                </div>
+            {/* Load More Button */}
+            {visibleCount < filteredVideos.length && (
+              <div className="mt-16 text-center">
+                <button
+                  onClick={() => setVisibleCount((prev) => prev + 24)}
+                  className="px-10 py-4 bg-[#0E2E1E] text-cream-logo font-semibold rounded-xl hover:bg-[#143d28] transition-all shadow-xl text-sm cursor-pointer inline-flex items-center gap-2"
+                >
+                  <span>Load More Videos ({visibleCount} of {filteredVideos.length})</span>
+                  <span>&rarr;</span>
+                </button>
               </div>
-            ))}
-          </HorizontalScrollTrack>
+            )}
+          </section>
         ) : (
           <div className="max-w-[1360px] mx-auto px-6 py-16 text-center space-y-4">
             <div className="w-16 h-16 rounded-full bg-soft-white border border-mist-grey flex items-center justify-center mx-auto text-2xl">
@@ -416,7 +361,7 @@ export default function WatchLearnPage() {
             </div>
             <h3 className="font-serif-heading text-3xl text-[#0E2E1E]">No videos found matching &ldquo;{searchQuery}&rdquo;</h3>
             <p className="text-sm text-[#626A64] max-w-md mx-auto font-light">
-              Try searching for different keywords or select &ldquo;All&rdquo; topics to view our full cinematic library.
+              Try searching for different keywords or select &ldquo;All&rdquo; topics to view our full video library.
             </p>
             <button
               onClick={() => {
@@ -503,40 +448,42 @@ export default function WatchLearnPage() {
                 </button>
               </div>
 
-              <div className="relative w-full h-[320px] sm:h-[420px] bg-ink-black rounded-xl overflow-hidden flex items-center justify-center border border-editorial-white/15">
-                <img
-                  src={encodeURI(activeVideoModal.thumbnail)}
-                  alt={activeVideoModal.title}
-                  className="w-full h-full object-cover"
+              <div className="relative w-full aspect-[9/15] max-h-[460px] bg-ink-black rounded-xl overflow-hidden flex flex-col items-center justify-center border border-editorial-white/15">
+                <video
+                  controls
+                  autoPlay
+                  playsInline
+                  poster={encodeURI(activeVideoModal.thumbnail)}
+                  src={getStreamableVideoUrl(activeVideoModal)}
+                  className="w-full h-full object-contain rounded-xl"
                 />
-                <div className="absolute inset-0 bg-ink-black/30 flex flex-col items-center justify-center space-y-4">
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-cream-logo text-[#0E2E1E] rounded-full flex items-center justify-center shadow-2xl animate-pulse cursor-pointer">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
-                      <polygon points="9,6 18,12 9,18" fill="currentColor" />
-                    </svg>
-                  </div>
-                  <span className="text-xs font-bold text-cream-logo uppercase tracking-wider bg-ink-black/85 px-4 py-1.5 rounded-full border border-editorial-white/20">
-                    ▶ PLAY VIDEO
-                  </span>
-                </div>
               </div>
 
               <p className="text-xs text-[#C3CDC6] font-light leading-relaxed">
                 {activeVideoModal.description}
               </p>
 
-              <div className="flex gap-3 pt-2">
+              <div className="flex flex-wrap gap-2.5 pt-2">
+                <a
+                  href={getStreamableVideoUrl(activeVideoModal).replace("raw=1", "dl=0")}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs font-semibold text-cream-logo bg-[#0E2E1E] border border-editorial-white/20 px-4 py-2 rounded-full hover:bg-[#143d28] transition-colors inline-flex items-center gap-1.5"
+                >
+                  <span>▶ Stream Video on Dropbox</span>
+                  <span>&rarr;</span>
+                </a>
                 <Link
                   href="/collections"
                   className="text-xs font-semibold text-cream-logo bg-editorial-white/10 px-4 py-2 rounded-full hover:bg-editorial-white/20 transition-colors inline-block"
                 >
-                  Explore Collections →
+                  Explore Collections &rarr;
                 </Link>
                 <Link
                   href="/#app"
                   className="text-xs font-semibold text-cream-logo bg-editorial-white/10 px-4 py-2 rounded-full hover:bg-editorial-white/20 transition-colors inline-block"
                 >
-                  Join Beta →
+                  Join Beta &rarr;
                 </Link>
               </div>
             </motion.div>

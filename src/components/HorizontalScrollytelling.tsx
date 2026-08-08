@@ -43,7 +43,7 @@ export default function HorizontalScrollytelling() {
     },
     {
       num: "03",
-      badge: "GUIDED MOBILE TECHNOLOGY",
+      badge: "MANI APP BETA",
       title: "Private MANI App Beta",
       subtitle: "Real-time reflection technology right from your phone.",
       description: "Beyond passive listening, MANI guides you toward understanding and practical next steps when you need emotional clarity most.",

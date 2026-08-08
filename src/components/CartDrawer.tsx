@@ -99,9 +99,9 @@ export default function CartDrawer() {
                   <div className="w-16 h-16 rounded-full bg-editorial-white/5 border border-editorial-white/10 flex items-center justify-center mx-auto text-sage-grey text-2xl">
                     🛍️
                   </div>
-                  <h3 className="font-serif-heading text-2xl text-cream-logo">Your Sanctuary Cart is Empty</h3>
+                  <h3 className="font-serif-heading text-2xl text-cream-logo">Your Cart is Empty</h3>
                   <p className="text-xs text-sage-grey max-w-xs mx-auto leading-relaxed">
-                    Explore our Flagship Bye Bye Narcissist collection system to start your emotional growth journey.
+                    Explore our Bye Bye Narcissist collection to start your journey.
                   </p>
                 </div>
               ) : (
@@ -217,7 +217,7 @@ export default function CartDrawer() {
         isOpen={showProgressModal}
         onClose={() => setShowProgressModal(false)}
         title="🔒 Checkout Action Under Progress"
-        description="Checkout functionality is currently under progress for today's milestone update. Please explore the live flagship presentation."
+        description="Checkout functionality is currently under development. Please explore the homepage."
       />
     </AnimatePresence>
   );
