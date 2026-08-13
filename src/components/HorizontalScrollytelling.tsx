@@ -23,7 +23,7 @@ export default function HorizontalScrollytelling() {
       title: "Bye Bye Narcissist Collection",
       subtitle: "Reading creates understanding. Workbooks create action. Journals create calm.",
       description: "A 5-part connected physical ecosystem designed to guide you through emotional dynamics, boundary work, and daily habit integration.",
-      ctaText: "Explore Collection System — $119.99",
+      ctaText: "Explore Collection System ($119.99)",
       ctaLink: "/collections/bye-bye-narcissist",
       image: "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/Collection/Collection.png",
       bgColor: "bg-deep-green text-editorial-white",
@@ -67,7 +67,7 @@ export default function HorizontalScrollytelling() {
               THE MANI ECOSYSTEM
             </div>
             <div className="text-xs font-bold tracking-widest text-sage-grey">
-              ACT 01 — 03
+              ACT 01 / 03
             </div>
           </div>
 
@@ -186,7 +186,7 @@ export default function HorizontalScrollytelling() {
             THE MANI ECOSYSTEM
           </span>
           <span className="text-xs font-bold tracking-widest text-sage-grey">
-            ACT 01 — 03
+            ACT 01 / 03
           </span>
         </div>
 

@@ -99,7 +99,7 @@ export default function CheckoutPage() {
                 href="/collections/bye-bye-narcissist"
                 className="inline-block px-8 py-4 bg-[#0E2E1E] text-editorial-white font-semibold rounded-xl hover:bg-[#143d28] transition-all text-sm"
               >
-                Shop Flagship Collection — $119.99 &rarr;
+                Shop Flagship Collection ($119.99) &rarr;
               </Link>
             </div>
           ) : (

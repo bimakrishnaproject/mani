@@ -14,7 +14,6 @@ const pillars = [
     number: "01",
     subtitle: "COLLECTIONS",
     title: "Collections",
-    tagline: "Reading creates understanding. Workbooks create action. Journals create calm.",
     description: "Complete collections designed to help you better understand and navigate specific life challenges.",
     ctaText: "Explore Collections",
     ctaLink: "/collections",
@@ -22,27 +21,25 @@ const pillars = [
     type: "image",
   },
   {
-    id: "watch-learn",
+    id: "app",
     number: "02",
-    subtitle: "VIDEO LIBRARY",
+    subtitle: "THE MANI APP",
+    title: "App",
+    description: "Guided conversations, breathwork, meditations, stories, and expert-created resources designed to support you whenever you need it.",
+    ctaText: "Join Beta",
+    ctaLink: "/join-beta",
+    type: "app",
+  },
+  {
+    id: "watch-learn",
+    number: "03",
+    subtitle: "WATCH & LEARN",
     title: "Watch & Learn",
-    tagline: "Bite-sized expert guidance when you need immediate perspective.",
     description: "Daily videos that turn psychology, relationships, and personal growth into practical insights you can use every day.",
-    ctaText: "Explore Video Library",
+    ctaText: "Watch Videos",
     ctaLink: "/watch-learn",
     image: newestVideo.thumbnailUrl,
     type: "video",
-  },
-  {
-    id: "app",
-    number: "03",
-    subtitle: "APP BETA",
-    title: "App",
-    tagline: "Private, real-time support right from your phone.",
-    description: "Guided conversations, breathwork, meditations, stories, and expert-created resources designed to support you whenever you need it.",
-    ctaText: "Request Early Access",
-    ctaLink: "/join-beta",
-    type: "app",
   },
 ];
 
@@ -62,9 +59,6 @@ export default function EcosystemSection() {
           <h2 className="font-serif-heading text-3xl xs:text-4xl sm:text-5xl md:text-6xl text-cream-logo leading-[1.1] tracking-tight">
             Three Ways We Can Help
           </h2>
-          <p className="mt-4 text-base sm:text-lg text-editorial-white/80 font-light leading-relaxed">
-            MANI integrates physical collections, educational video guidance, and mobile support tools into one connected experience.
-          </p>
         </div>
 
         {/* 3-Pillar Side-by-Side Grid */}
@@ -179,10 +173,6 @@ export default function EcosystemSection() {
                       />
                     </div>
                   )}
-
-                  <blockquote className="font-serif-italic text-sm sm:text-base text-cream-logo mb-3 leading-snug">
-                    &ldquo;{pillar.tagline}&rdquo;
-                  </blockquote>
 
                   <p className="text-xs sm:text-sm text-editorial-white/80 font-light leading-relaxed mb-6">
                     {pillar.description}

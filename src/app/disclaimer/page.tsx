@@ -55,7 +55,7 @@ export default function DisclaimerPage() {
                 IMPORTANT MEDICAL & CLINICAL NOTICE
               </span>
               <h2 className="font-serif-heading text-3xl text-cream-logo">
-                MANI Is Educational & Supportive — Not Clinical Therapy
+                MANI Is Educational &amp; Supportive, Not Clinical Therapy
               </h2>
               <p className="text-sm text-[#C3CDC6] leading-relaxed">
                 MANI does not diagnose, treat, or position itself as a substitute for professional mental health care, clinical psychotherapy, or psychiatric medical intervention. Its role is strictly educational, informational, and supportive.
@@ -65,7 +65,7 @@ export default function DisclaimerPage() {
             <div className="space-y-4">
               <h3 className="font-serif-heading text-2xl text-[#0E2E1E]">1. Scope of Support</h3>
               <p>
-                All resources provided by MANI—including physical collections, workbooks, journals, affirmation decks, daily educational videos, and our guided technology app—are designed to assist individuals in understanding emotional dynamics, establishing personal boundaries, and building self-trust.
+                All resources provided by MANI, including physical collections, workbooks, journals, affirmation decks, daily educational videos, and our guided technology app, are designed to assist individuals in understanding emotional dynamics, establishing personal boundaries, and building self-trust.
               </p>
               <p>
                 MANI resources are intended for educational self-reflection and may be used alongside formal therapy or executive coaching, but should never replace professional medical evaluation.

@@ -72,21 +72,26 @@ export default function HeroSection() {
             transition={{ duration: 0.9, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             className={`text-lg sm:text-xl md:text-2xl text-[#4A524D] leading-relaxed max-w-2xl mx-auto font-light px-2 ${!typingDone ? 'opacity-0' : ''}`}
           >
-            MANI brings together expert-guided collections, daily videos, and an app in development to help you better understand yourself and navigate life&apos;s challenges.
+            MANI brings together expert-guided collections, daily videos, and a new app in development to help you better understand yourself and navigate life&apos;s challenges.
           </motion.p>
 
-          {/* Single Focused CTA Button — fades in after typing completes */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={typingDone ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className={`pt-2 flex justify-center ${!typingDone ? 'opacity-0' : ''}`}
+            className={`pt-2 flex flex-wrap justify-center gap-4 ${!typingDone ? 'opacity-0' : ''}`}
           >
             <Link
               href="/collections"
               className="px-9 py-4 bg-deep-green text-editorial-white font-semibold rounded-md hover:bg-[#143d28] transition-all shadow-md text-sm sm:text-base tracking-wide"
             >
               Explore Collections &rarr;
+            </Link>
+            <Link
+              href="/join-beta"
+              className="px-9 py-4 bg-editorial-white text-deep-green border-2 border-deep-green font-semibold rounded-md hover:bg-soft-white transition-all shadow-sm text-sm sm:text-base tracking-wide"
+            >
+              Get Early Access &rarr;
             </Link>
           </motion.div>
 

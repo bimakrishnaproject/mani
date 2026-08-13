@@ -38,9 +38,9 @@ export default function ByeByeNarcissistCollectionPage() {
       id: "book",
       num: "01",
       badge: "FOUNDATION",
-      title: "1. The Book — Name It. Face It. Own It.",
-      subtitle: "The Psychological Foundation of Recovery",
-      description: "A comprehensive 240-page hardcover guide dissecting covert manipulation, gaslighting dynamics, trauma bonds, and boundary rebuilding strategies.",
+      title: "The Bye Bye Narcissist Book",
+      subtitle: "Foundation",
+      description: "Understand manipulation, gaslighting, and unhealthy patterns.",
       price: "$24.99",
       numericPrice: 24.99,
       image: "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/Book.png",
@@ -55,9 +55,9 @@ export default function ByeByeNarcissistCollectionPage() {
       id: "workbook",
       num: "02",
       badge: "ACTION",
-      title: "2. The Workbook — Practical Recovery Exercises",
-      subtitle: "Turn Awareness into Daily Behavioral Action",
-      description: "Step-by-step practical exercises, script templates for setting boundaries, emotional processing worksheets, and self-trust progress trackers.",
+      title: "The Bye Bye Narcissist Workbook",
+      subtitle: "Action",
+      description: "Turn insight into practical change.",
       price: "$29.99",
       numericPrice: 29.99,
       image: "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/Workbook.png",
@@ -72,9 +72,9 @@ export default function ByeByeNarcissistCollectionPage() {
       id: "coloring-book",
       num: "03",
       badge: "CALM",
-      title: "3. Colouring Book & Daily Journal",
-      subtitle: "Somatic Grounding & Daily Reflection",
-      description: "Art therapy grounding prompts combined with structured daily journaling to calm your nervous system during overthinking spirals.",
+      title: "The Bye Bye Narcissist Coloring Book & Journal",
+      subtitle: "Calm",
+      description: "Slow down, process emotions, and reconnect with yourself.",
       price: "$14.99",
       numericPrice: 14.99,
       image: "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/Coloring Book.png",
@@ -89,9 +89,9 @@ export default function ByeByeNarcissistCollectionPage() {
       id: "posters",
       num: "04",
       badge: "REINFORCEMENT",
-      title: "4. Poster Set — Visual Boundary Reminders",
-      subtitle: "Keep Your Space Grounded Every Single Day",
-      description: "10 high-resolution frameable posters featuring core emotional reminders, boundary rules, and self-compassion affirmations for your space.",
+      title: "Bye Bye Narcissist Poster Collection",
+      subtitle: "Reinforcement",
+      description: "Daily reminders that strengthen boundaries and self-worth.",
       price: "$29.99",
       numericPrice: 29.99,
       image: "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/Posters/1 Framed.png",
@@ -106,9 +106,9 @@ export default function ByeByeNarcissistCollectionPage() {
       id: "cards",
       num: "05",
       badge: "DAILY PRACTICE",
-      title: "5. Affirmation Card Deck — Micro-Actions",
-      subtitle: "Instant Emotional Clarity Right in Your Hands",
-      description: "52 premium micro-reflection cards providing immediate grounded perspective whenever you experience self-doubt or emotional triggers.",
+      title: "Bye Bye Narcissist Card Deck",
+      subtitle: "Daily Practice",
+      description: "Build confidence and trust in yourself one day at a time.",
       price: "$19.99",
       numericPrice: 19.99,
       image: "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/Affirmation Cards/Box Display.png",
@@ -124,9 +124,9 @@ export default function ByeByeNarcissistCollectionPage() {
   const handleAddBundleToCart = () => {
     addToCart({
       id: "bye-bye-narcissist-bundle",
-      title: "Bye Bye Narcissist — Complete 5-Tool Collection",
+      title: "Bye Bye Narcissist (Complete Collection)",
       price: 119.99,
-      subtitle: "Includes Book, Workbook, Colouring Book & Journal, Posters, Card Deck",
+      subtitle: "Includes Book, Workbook, Coloring Book & Journal, Posters, Card Deck",
       image: "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/Collection/Collection.png",
     });
     setCartAdded(true);
@@ -200,7 +200,7 @@ export default function ByeByeNarcissistCollectionPage() {
                       onClick={handleAddBundleToCart}
                       className="w-full py-5 bg-[#0E2E1E] text-editorial-white font-semibold rounded-xl hover:bg-[#143d28] transition-all transform hover:scale-[1.02] shadow-xl text-base flex items-center justify-center gap-2 cursor-pointer"
                     >
-                      {cartAdded ? "✓ Added to Cart!" : "Shop the Collection — $119.99 →"}
+                      {cartAdded ? "✓ Added to Cart!" : "Shop the Collection ($119.99) →"}
                     </button>
                   </MagneticElement>
                 </div>
@@ -277,7 +277,7 @@ export default function ByeByeNarcissistCollectionPage() {
               {/* Product Mockup Image */}
               <div className={`lg:col-span-6 flex justify-center items-center ${pIdx % 2 === 1 ? "lg:order-2" : ""}`}>
                 <CurtainClipExpand className="w-full flex justify-center">
-                  <div className="relative w-full max-w-[480px] h-[380px] sm:h-[440px] bg-editorial-white rounded-2xl p-8 border border-mist-grey flex items-center justify-center shadow-md group">
+                  <div className="relative w-full max-w-[480px] h-[360px] sm:h-[400px] flex items-center justify-center group py-4">
                     <Image
                       src={prod.image}
                       alt={prod.title}
@@ -341,7 +341,7 @@ export default function ByeByeNarcissistCollectionPage() {
                       onClick={() => handleAddSingleToCart(prod)}
                       className="px-6 py-3 bg-[#0E2E1E] text-editorial-white font-semibold rounded-xl hover:bg-[#143d28] transition-all text-xs shadow-md cursor-pointer"
                     >
-                      Add Individual Tool — {prod.price} &rarr;
+                      Add to Cart ({prod.price}) &rarr;
                     </button>
                   </MagneticElement>
                 </div>
@@ -372,7 +372,7 @@ export default function ByeByeNarcissistCollectionPage() {
                   onClick={() =>
                     addToCart({
                       id: "starter-bundle",
-                      title: "Starter Bundle — Book + Workbook",
+                      title: "Starter Bundle (Book + Workbook)",
                       price: 49.99,
                       subtitle: "Foundation understanding plus practical exercises",
                       image: "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/Book.png",
@@ -380,7 +380,7 @@ export default function ByeByeNarcissistCollectionPage() {
                   }
                   className="w-full py-3 bg-[#0E2E1E] text-editorial-white font-semibold rounded-xl hover:bg-[#143d28] transition-all text-sm cursor-pointer"
                 >
-                  Add Starter Bundle — $49.99 &rarr;
+                  Add Starter Bundle ($49.99) &rarr;
                 </button>
               </MagneticElement>
             </div>
@@ -396,13 +396,13 @@ export default function ByeByeNarcissistCollectionPage() {
                 <span className="text-3xl font-serif-heading text-cream-logo">$119.99</span>
                 <span className="text-sm text-sage-grey line-through">$129.95</span>
               </div>
-              <p className="text-xs text-[#C3CDC6]">Includes: Book, Workbook, Colouring Book & Journal, Poster Set, Card Deck</p>
+              <p className="text-xs text-[#C3CDC6]">Includes: Book, Workbook, Coloring Book & Journal, Poster Set, Card Deck</p>
               <MagneticElement strength={0.12}>
                 <button
                   onClick={handleAddBundleToCart}
                   className="w-full py-3 bg-cream-logo text-[#0E2E1E] font-semibold rounded-xl hover:bg-[#f2e1bd] transition-all text-sm cursor-pointer font-bold"
                 >
-                  Add Complete Bundle — $119.99 &rarr;
+                  Add Complete Bundle ($119.99) &rarr;
                 </button>
               </MagneticElement>
             </div>
@@ -461,7 +461,7 @@ export default function ByeByeNarcissistCollectionPage() {
                   onClick={handleAddBundleToCart}
                   className="px-10 py-5 bg-cream-logo text-[#0E2E1E] font-semibold rounded-xl hover:bg-[#f2e1bd] transition-all transform hover:scale-105 shadow-xl text-base cursor-pointer"
                 >
-                  {cartAdded ? "✓ Added!" : "Get Started Today — $119.99 →"}
+                  {cartAdded ? "✓ Added!" : "Get Started Today ($119.99) →"}
                 </button>
               </MagneticElement>
             </div>

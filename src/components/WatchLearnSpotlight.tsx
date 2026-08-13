@@ -1,12 +1,12 @@
 "use client";
 
-import React, { useRef, useState, useEffect } from "react";
+import React from "react";
 import Link from "next/link";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { VIDEOS_DATA } from "@/data/videos";
 
-// Use the newest 3 videos from the data (newest first)
-const newestVideos = VIDEOS_DATA.slice(0, 3).map((v, idx) => ({
+// Use the newest 5 videos from the data (newest first)
+const newestVideos = VIDEOS_DATA.slice(0, 5).map((v) => ({
   id: v.id,
   title: v.title,
   category: v.category.toUpperCase(),
@@ -16,37 +16,8 @@ const newestVideos = VIDEOS_DATA.slice(0, 3).map((v, idx) => ({
 }));
 
 export default function WatchLearnSpotlight() {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
-
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "center center"],
-  });
-
-  // Card 1 (Left): Starts shifted right behind center card with negative rotation, fans out to x: 0
-  const card1X = useTransform(scrollYProgress, [0, 1], [100, 0]);
-  const card1Rotate = useTransform(scrollYProgress, [0, 1], [-5, 0]);
-
-  // Card 2 (Center): Elevated z-index, subtle scale from 0.95 to 1.0
-  const card2Scale = useTransform(scrollYProgress, [0, 1], [0.95, 1]);
-
-  // Card 3 (Right): Starts shifted left behind center card with positive rotation, fans out to x: 0
-  const card3X = useTransform(scrollYProgress, [0, 1], [-100, 0]);
-  const card3Rotate = useTransform(scrollYProgress, [0, 1], [5, 0]);
-
   return (
     <section
-      ref={sectionRef}
       className="py-20 sm:py-28 bg-[#FBF9F5] text-ink-black w-full relative overflow-hidden border-t border-b border-mist-grey/60"
     >
       <div className="max-w-[1360px] mx-auto px-6 md:px-12">
@@ -60,8 +31,14 @@ export default function WatchLearnSpotlight() {
             <h2 className="font-serif-heading text-3xl xs:text-4xl sm:text-5xl lg:text-6xl text-[#0E2E1E] leading-[1.1] tracking-tight">
               Support In Minutes
             </h2>
-            <p className="mt-4 text-base sm:text-lg text-sage-grey font-light leading-relaxed">
+            <p className="mt-4 text-base sm:text-lg text-[#4A524D] font-light leading-relaxed">
               Some days you need perspective. Some days you need clarity. Some days you just need a reminder that you&apos;re not alone.
+            </p>
+            <p className="mt-3 text-sm text-[#4A524D] font-light leading-relaxed">
+              Our daily videos bring clarity to the emotions, patterns, and experiences shaping your life.
+            </p>
+            <p className="mt-2 text-xs text-[#626A64] font-light leading-relaxed">
+              Psychology. Relationships. Emotional Intelligence. Shadow Work. Self-Sabotage. Stress and Overwhelm. Inner Child. Narcissistic Abuse. And more.
             </p>
           </div>
 
@@ -70,76 +47,62 @@ export default function WatchLearnSpotlight() {
               href="/watch-learn"
               className="inline-flex items-center gap-2 px-6 py-3 bg-[#0E2E1E] text-editorial-white font-semibold rounded-xl hover:bg-[#143d28] transition-all text-xs sm:text-sm shadow-sm whitespace-nowrap"
             >
-              Explore Video Library &rarr;
+              Watch Videos &rarr;
             </Link>
           </div>
         </div>
 
-        {/* Scroll-Driven Deck Unstack / Fan-Out Video Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-[1180px] mx-auto relative">
-          {newestVideos.map((video, idx) => {
-            let motionStyles = {};
+        {/* Clean Video Grid (no fan-out, no rotation) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5 max-w-[1360px] mx-auto">
+          {newestVideos.map((video, idx) => (
+            <motion.div
+              key={video.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
+              className="group relative bg-[#0E2E1E] rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all border border-editorial-white/10 flex flex-col justify-between aspect-[9/14] w-full"
+            >
+              {/* Thumbnail */}
+              <div className="absolute inset-0 w-full h-full">
+                <img
+                  src={encodeURI(video.thumbnail)}
+                  alt={video.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0E2E1E] via-transparent to-[#0E2E1E]/30 opacity-80" />
+              </div>
 
-            if (!isMobile) {
-              if (idx === 0) {
-                motionStyles = { x: card1X, rotate: card1Rotate, zIndex: 10 };
-              } else if (idx === 1) {
-                motionStyles = { scale: card2Scale, zIndex: 20 };
-              } else if (idx === 2) {
-                motionStyles = { x: card3X, rotate: card3Rotate, zIndex: 10 };
-              }
-            }
+              {/* Top: Category & Duration */}
+              <div className="relative z-10 p-4 flex items-center justify-between">
+                <span className="text-[9px] font-bold text-cream-logo bg-[#0E2E1E]/80 backdrop-blur-md px-2.5 py-0.5 rounded-full uppercase tracking-wider border border-editorial-white/15">
+                  {video.category}
+                </span>
+                <span className="text-[9px] font-bold text-editorial-white bg-ink-black/60 backdrop-blur-md px-2 py-0.5 rounded-full tracking-wider">
+                  {video.duration}
+                </span>
+              </div>
 
-            return (
-              <motion.div
-                key={video.id}
-                style={motionStyles}
-                whileHover={{ y: -8, scale: 1.02 }}
-                transition={{ duration: 0.3 }}
-                className="group relative bg-[#0E2E1E] rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all border border-editorial-white/10 flex flex-col justify-between aspect-[9/15] sm:aspect-[9/16] w-full min-h-[460px] sm:min-h-[500px]"
-              >
-                {/* Full-Height Vertical 9:16 Reel Cover Image */}
-                <div className="absolute inset-0 w-full h-full">
-                  <img
-                    src={encodeURI(video.thumbnail)}
-                    alt={video.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                  />
-                  {/* Subtle Gradient Overlays for Ambient Lighting & Contrast */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0E2E1E] via-transparent to-[#0E2E1E]/40 opacity-80" />
+              {/* Center Play Button */}
+              <div className="relative z-10 flex items-center justify-center my-auto">
+                <div className="w-11 h-11 rounded-full bg-cream-logo text-[#0E2E1E] flex items-center justify-center shadow-xl group-hover:scale-110 transition-all duration-300">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" className="ml-0.5">
+                    <polygon points="8,5 19,12 8,19" fill="currentColor" />
+                  </svg>
                 </div>
+              </div>
 
-                {/* Top Tag & Category Badge */}
-                <div className="relative z-10 p-5 flex items-center justify-between">
-                  <span className="text-[10px] font-bold text-cream-logo bg-[#0E2E1E]/80 backdrop-blur-md px-3 py-1 rounded-full uppercase tracking-wider border border-editorial-white/15">
-                    {video.category}
-                  </span>
-                  <span className="text-[10px] font-bold text-editorial-white bg-ink-black/60 backdrop-blur-md px-2.5 py-1 rounded-full tracking-wider">
-                    {video.duration}
-                  </span>
-                </div>
-
-                {/* Center Play Button Overlay */}
-                <div className="relative z-10 flex items-center justify-center my-auto">
-                  <div className="w-14 h-14 rounded-full bg-cream-logo text-[#0E2E1E] backdrop-blur-md flex items-center justify-center shadow-2xl group-hover:scale-110 transition-all duration-300">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" className="ml-0.5">
-                      <polygon points="8,5 19,12 8,19" fill="currentColor" />
-                    </svg>
-                  </div>
-                </div>
-
-                {/* Bottom Caption & Title + Summary */}
-                <div className="relative z-10 p-6 bg-gradient-to-t from-[#0E2E1E] via-[#0E2E1E]/90 to-transparent">
-                  <h3 className="font-serif-heading text-xl sm:text-2xl text-editorial-white leading-snug drop-shadow-sm group-hover:text-cream-logo transition-colors">
-                    {video.title}
-                  </h3>
-                  <p className="text-[11px] text-editorial-white/70 font-light leading-relaxed mt-2 line-clamp-2">
-                    {video.summary}
-                  </p>
-                </div>
-              </motion.div>
-            );
-          })}
+              {/* Bottom: Title & Summary */}
+              <div className="relative z-10 p-4 bg-gradient-to-t from-[#0E2E1E] via-[#0E2E1E]/90 to-transparent">
+                <h3 className="font-serif-heading text-sm sm:text-base text-editorial-white leading-snug group-hover:text-cream-logo transition-colors line-clamp-2">
+                  {video.title}
+                </h3>
+                <p className="text-[10px] text-editorial-white/70 font-light leading-relaxed mt-1.5 line-clamp-2">
+                  {video.summary}
+                </p>
+              </div>
+            </motion.div>
+          ))}
         </div>
 
       </div>

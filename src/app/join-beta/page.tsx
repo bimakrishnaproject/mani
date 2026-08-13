@@ -88,7 +88,7 @@ export default function JoinBetaPage() {
                   <span className="text-4xl">✨</span>
                   <h3 className="font-serif-heading text-3xl">Beta Application Received</h3>
                   <p className="text-sm text-[#C3CDC6] max-w-md mx-auto">
-                    We’ve reserved your spot for <strong className="text-cream-logo">{formData.email}</strong> in our live Klaviyo Beta list (<code className="text-emerald-300 font-mono">WKUVRm</code>). As soon as a testing slot opens, you’ll receive an invitation.
+                    We have reserved your spot for <strong className="text-cream-logo">{formData.email}</strong>. As soon as a testing slot opens, you will receive an invitation.
                   </p>
                 </div>
               ) : (
@@ -173,7 +173,7 @@ export default function JoinBetaPage() {
                     disabled={isSubmitting}
                     className="w-full py-4 bg-cream-logo text-[#0E2E1E] font-semibold rounded-xl hover:bg-[#f2e1bd] transition-all transform hover:scale-105 shadow-xl text-base"
                   >
-                    {isSubmitting ? "Submitting to Live Klaviyo Beta List..." : "Submit Beta Access Application →"}
+                    {isSubmitting ? "Submitting..." : "Join Beta →"}
                   </button>
                 </form>
               )}
@@ -182,7 +182,7 @@ export default function JoinBetaPage() {
                 <Link href="/beta-terms" className="underline hover:text-cream-logo">
                   Read Beta Program Terms
                 </Link>
-                <span>🔒 Live Sync to Klaviyo List (WKUVRm)</span>
+                <span>Your data is kept private and secure.</span>
               </div>
             </motion.div>
 
@@ -193,19 +193,15 @@ export default function JoinBetaPage() {
               transition={{ duration: 0.8 }}
               className="lg:col-span-5 flex flex-col justify-center items-center text-center space-y-6"
             >
-              <div className="bg-editorial-white p-6 rounded-3xl border-2 border-mist-grey shadow-xl max-w-[340px]">
-                <Image
+              <div className="relative max-w-[340px] flex justify-center items-center">
+                <img
                   src="/assets/Chat Conversation.png"
                   alt="MANI App Guided Chat Experience"
-                  width={340}
-                  height={560}
-                  quality={100}
-                  priority
-                  className="w-full h-auto object-contain rounded-2xl"
+                  className="w-full h-auto object-contain drop-shadow-2xl hover:scale-[1.02] transition-transform duration-500"
                 />
               </div>
               <p className="text-xs text-sage-grey italic max-w-xs">
-                "For the moments you need it most — accessible guided support right in your hands."
+                "For the moments you need it most. Accessible guided support right in your hands."
               </p>
             </motion.div>
 

@@ -62,7 +62,7 @@ export default function RefundPolicyPage() {
             <div className="space-y-4">
               <h3 className="font-serif-heading text-2xl text-[#0E2E1E]">1. Physical Products Return Process</h3>
               <p>
-                To initiate a return for physical products (Books, Workbooks, Colouring Books, Poster Sets, or Card Decks), please contact our support team with your order number. Returned physical items must be sent back in reasonable condition. Return shipping costs are covered for damaged or defective shipments.
+                To initiate a return for physical products (Books, Workbooks, Coloring Books, Poster Sets, or Card Decks), please contact our support team with your order number. Returned physical items must be sent back in reasonable condition. Return shipping costs are covered for damaged or defective shipments.
               </p>
             </div>
 

@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import UnderProgressModal from "./UnderProgressModal";
 import { trackBetaSignup } from "@/lib/analytics";
@@ -30,107 +32,72 @@ export default function AppShowcaseSection() {
 
   return (
     <section
-      className="py-24 sm:py-36 bg-editorial-white text-ink-black overflow-hidden w-full border-t border-mist-grey"
+      className="py-24 sm:py-32 bg-editorial-white text-ink-black overflow-hidden w-full"
       id="app"
     >
       <div className="max-w-[1360px] mx-auto px-6 md:px-12">
-        <div className="max-w-4xl mx-auto text-center space-y-12 sm:space-y-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 rounded-3xl overflow-hidden shadow-2xl border border-mist-grey">
 
-          {/* Section Headline */}
+          {/* Left Column: Deep Green side with copy & form */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="space-y-4"
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-7 bg-[#0E2E1E] text-editorial-white p-8 sm:p-14 lg:p-20 space-y-6 flex flex-col justify-center"
           >
-            <h2 className="font-serif-heading text-4xl sm:text-6xl md:text-7xl text-deep-green leading-[1.05] tracking-tight">
+            <span className="text-xs font-bold tracking-widest uppercase text-cream-logo/70">
+              THE MANI APP
+            </span>
+            <h2 className="font-serif-heading text-4xl sm:text-6xl md:text-7xl text-cream-logo leading-[1.05] tracking-tight">
               Support Wherever You Are
             </h2>
-            <p className="text-lg sm:text-xl text-[#4A524D] font-light leading-relaxed max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl text-editorial-white/80 font-light leading-relaxed max-w-2xl">
               Guided conversations, breathwork, meditations, visualizations, stories, and practical tools designed to support you wherever you are.
             </p>
-          </motion.div>
+            <p className="text-sm text-editorial-white/60 font-light leading-relaxed max-w-2xl">
+              We&apos;re currently inviting beta testers to experience the app before launch and help shape future features.
+            </p>
 
-          {/* Clean App Preview Frame */}
-          <motion.div
-            initial={{ opacity: 0, y: 35 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-            className="bg-[#0E2E1E] text-editorial-white rounded-3xl p-6 sm:p-10 border border-editorial-white/15 shadow-2xl max-w-2xl mx-auto text-left space-y-5 relative overflow-hidden min-h-[300px]"
-          >
-            {/* Ambient Inner Glow */}
-            <div className="absolute -top-20 -right-20 w-72 h-72 bg-radial from-cream-logo/15 to-transparent blur-3xl pointer-events-none" />
-
-            {/* Frame Top Notch Header */}
-            <div className="flex items-center justify-between border-b border-editorial-white/10 pb-4 mb-2">
-              <div className="flex items-center gap-3">
-                <img
-                  src="/assets/Mani Logos/mani cream logo.png"
-                  alt="MANI Logo"
-                  className="h-5 w-auto object-contain"
-                />
-                <span className="text-xs font-semibold text-cream-logo tracking-wider">
-                  MANI App
-                </span>
-              </div>
-              <span className="text-[10px] font-bold text-cream-logo bg-editorial-white/10 px-3 py-1 rounded-full uppercase tracking-widest">
-                BETA
-              </span>
-            </div>
-
-            {/* Clean Placeholder — Awaiting approved transcripts */}
-            <div className="flex flex-col items-center justify-center py-12 space-y-4 text-center">
-              <div className="w-16 h-16 rounded-full bg-[#05150D] border border-editorial-white/15 flex items-center justify-center">
-                <img
-                  src="/assets/Mani Logos/mani cream logo.png"
-                  alt="MANI"
-                  className="h-6 w-auto object-contain"
-                />
-              </div>
-              <div className="space-y-2">
-                <p className="text-sm font-semibold text-cream-logo">
-                  Your private support companion
-                </p>
-                <p className="text-xs text-editorial-white/60 font-light max-w-sm">
-                  Guided conversations designed to help you process, reflect, and move forward — right from your phone.
-                </p>
-              </div>
-            </div>
-
-          </motion.div>
-
-          {/* Supporting Messaging & Early Access CTA Form */}
-          <motion.div
-            initial={{ opacity: 0, y: 25 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="max-w-xl mx-auto space-y-6 pt-4"
-          >
             {submitted ? (
-              <div className="p-5 bg-[#0E2E1E] text-cream-logo rounded-2xl font-semibold text-base shadow-lg border border-editorial-white/10">
-                ✓ Thank you! You have been added to the MANI early access list.
+              <div className="p-5 bg-[#05150D] text-cream-logo rounded-2xl font-semibold text-base shadow-lg border border-editorial-white/10">
+                Thank you! You have been added to the MANI early access list.
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 pt-2">
+              <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 pt-2 max-w-lg">
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your email address"
                   required
-                  className="flex-grow px-5 py-4 border border-mist-grey rounded-xl text-base bg-white text-ink-black focus:outline-none focus:border-deep-green shadow-xs"
+                  className="flex-grow px-5 py-4 border border-editorial-white/20 rounded-xl text-base bg-editorial-white/10 text-cream-logo placeholder-cream-logo/40 focus:outline-none focus:border-cream-logo shadow-xs"
                 />
-                <button
-                  type="submit"
-                  className="px-8 py-4 bg-deep-green text-editorial-white font-semibold rounded-xl hover:bg-[#143d28] transition-all shadow-md text-base tracking-wide whitespace-nowrap"
+                <Link
+                  href="/join-beta"
+                  className="px-8 py-4 bg-cream-logo text-[#0E2E1E] font-semibold rounded-xl hover:bg-white transition-all shadow-md text-base tracking-wide whitespace-nowrap text-center"
                 >
-                  Request Early Access &rarr;
-                </button>
+                  Join Beta &rarr;
+                </Link>
               </form>
             )}
+          </motion.div>
+
+          {/* Right Column: Editorial White side with floating phone showcase */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-5 bg-editorial-white p-8 sm:p-14 flex justify-center items-center border-t lg:border-t-0 lg:border-l border-mist-grey"
+          >
+            <div className="relative max-w-[340px] w-full flex justify-center items-center py-4">
+              <img
+                src="/assets/Chat Conversation.png"
+                alt="MANI App Guided Chat Experience"
+                className="w-full h-auto object-contain drop-shadow-2xl hover:scale-[1.03] transition-transform duration-500"
+              />
+            </div>
           </motion.div>
 
         </div>
@@ -139,7 +106,7 @@ export default function AppShowcaseSection() {
       <UnderProgressModal
         isOpen={showProgressModal}
         onClose={() => setShowProgressModal(false)}
-        title="🔒 Early Access Under Progress"
+        title="Early Access Under Progress"
         description="App Early Access registration is currently under progress for today's milestone update. Please explore the live homepage presentation."
       />
     </section>

@@ -22,7 +22,7 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "MANI — Emotional Support Made Simple™",
+  title: "MANI | Emotional Support Made Simple™",
   description: "MANI brings together expert-guided collections, daily educational videos, and a guided app to help you better understand yourself and navigate life's challenges.",
   verification: {
     google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || "",

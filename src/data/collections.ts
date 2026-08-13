@@ -21,7 +21,7 @@ export interface CollectionItem {
 export const BYE_BYE_NARCISSIST_PRODUCTS: ProductItem[] = [
   {
     slug: "bye-bye-narcissist-book",
-    name: "Bye Bye Narcissist — Book",
+    name: "Bye Bye Narcissist Book",
     role: "Foundation",
     price: 24.99,
     format: "Physical",
@@ -35,7 +35,7 @@ export const BYE_BYE_NARCISSIST_PRODUCTS: ProductItem[] = [
   },
   {
     slug: "bye-bye-narcissist-workbook",
-    name: "Bye Bye Narcissist — Workbook",
+    name: "Bye Bye Narcissist Workbook",
     role: "Action",
     price: 29.99,
     format: "Physical",
@@ -49,7 +49,7 @@ export const BYE_BYE_NARCISSIST_PRODUCTS: ProductItem[] = [
   },
   {
     slug: "bye-bye-narcissist-journal",
-    name: "Bye Bye Narcissist — Colouring Book & Journal",
+    name: "Bye Bye Narcissist Coloring Book & Journal",
     role: "Calm",
     price: 14.99,
     format: "Physical",
@@ -63,7 +63,7 @@ export const BYE_BYE_NARCISSIST_PRODUCTS: ProductItem[] = [
   },
   {
     slug: "bye-bye-narcissist-poster-set",
-    name: "Bye Bye Narcissist — Poster Set",
+    name: "Bye Bye Narcissist Poster Set",
     role: "Reinforcement",
     price: 29.99,
     format: "Physical",
@@ -76,7 +76,7 @@ export const BYE_BYE_NARCISSIST_PRODUCTS: ProductItem[] = [
   },
   {
     slug: "bye-bye-narcissist-card-deck",
-    name: "Bye Bye Narcissist — Affirmation Card Deck",
+    name: "Bye Bye Narcissist Affirmation Card Deck",
     role: "Daily Practice",
     price: 19.99,
     format: "Physical",
@@ -92,7 +92,7 @@ export const BYE_BYE_NARCISSIST_PRODUCTS: ProductItem[] = [
 export const EMOTIONAL_INTELLIGENCE_PRODUCTS: ProductItem[] = [
   {
     slug: "emotional-intelligence-book",
-    name: "Emotional Intelligence — Book",
+    name: "Emotional Intelligence Book",
     role: "Foundation",
     price: 24.99,
     format: "Physical",
@@ -106,7 +106,7 @@ export const EMOTIONAL_INTELLIGENCE_PRODUCTS: ProductItem[] = [
   },
   {
     slug: "emotional-intelligence-workbook",
-    name: "Emotional Intelligence — Workbook",
+    name: "Emotional Intelligence Workbook",
     role: "Action",
     price: 29.99,
     format: "Physical",
@@ -120,7 +120,7 @@ export const EMOTIONAL_INTELLIGENCE_PRODUCTS: ProductItem[] = [
   },
   {
     slug: "emotional-intelligence-system",
-    name: "Emotional Intelligence — Collection System",
+    name: "Emotional Intelligence Collection System",
     role: "Set",
     price: 69.99,
     format: "Set",
@@ -135,7 +135,7 @@ export const EMOTIONAL_INTELLIGENCE_PRODUCTS: ProductItem[] = [
 export const LOVE_DONE_RIGHT_PRODUCTS: ProductItem[] = [
   {
     slug: "love-done-right-book",
-    name: "Love Done Right — Book",
+    name: "Love Done Right Book",
     role: "Foundation",
     price: 24.99,
     format: "Physical",
@@ -149,7 +149,7 @@ export const LOVE_DONE_RIGHT_PRODUCTS: ProductItem[] = [
   },
   {
     slug: "love-done-right-workbook",
-    name: "Love Done Right — Workbook",
+    name: "Love Done Right Workbook",
     role: "Action",
     price: 29.99,
     format: "Physical",
@@ -163,7 +163,7 @@ export const LOVE_DONE_RIGHT_PRODUCTS: ProductItem[] = [
   },
   {
     slug: "love-done-right-journal",
-    name: "Love Done Right — Colouring Book & Journal",
+    name: "Love Done Right Coloring Book & Journal",
     role: "Calm",
     price: 14.99,
     format: "Physical",
@@ -214,4 +214,3 @@ export const FUTURE_COLLECTIONS = [
   { title: "Own Your Worth", status: "In Development" },
   { title: "When Panic Hits", status: "In Development" },
 ];
-

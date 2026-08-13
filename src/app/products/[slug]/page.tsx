@@ -28,12 +28,12 @@ export default function ProductDetailPage({ params }: { params: Promise<{ slug: 
   const productCatalog: Record<string, any> = {
     book: {
       id: "book",
-      title: "The Book — Name It. Face It. Own It.",
-      subtitle: "The Psychological Foundation of Recovery",
+      title: "The Bye Bye Narcissist Book",
+      subtitle: "Foundation",
       numericPrice: 24.99,
       price: "$24.99",
-      badge: "HARDCOVER & DIGITAL PDF • 240 PAGES",
-      description: "A 240-page comprehensive guide dissecting covert manipulation, gaslighting dynamics, trauma bonds, and step-by-step boundary rebuilding strategies.",
+      badge: "FOUNDATION",
+      description: "Understand manipulation, gaslighting, and unhealthy patterns.",
       image: "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/Book.png",
       specs: ["240 Pages", "Premium Linen Hardcover", "High-Resolution Typography", "Digital PDF Included"],
       features: [
@@ -45,12 +45,12 @@ export default function ProductDetailPage({ params }: { params: Promise<{ slug: 
     },
     workbook: {
       id: "workbook",
-      title: "The Workbook — Practical Recovery Exercises",
-      subtitle: "Turn Awareness into Daily Behavioral Action",
+      title: "The Bye Bye Narcissist Workbook",
+      subtitle: "Action",
       numericPrice: 29.99,
       price: "$29.99",
-      badge: "INTERACTIVE WORKBOOK • 180 WORKSHEETS",
-      description: "180 worksheets, boundary script fill-in templates, emotional processing audits, and daily self-trust tracking grids.",
+      badge: "ACTION",
+      description: "Turn insight into practical change.",
       image: "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/Workbook.png",
       specs: ["180 Practical Worksheets", "Fill-in Boundary Scripts", "Self-Trust Trackers", "Spiral Bound Flat Lay"],
       features: [
@@ -60,14 +60,14 @@ export default function ProductDetailPage({ params }: { params: Promise<{ slug: 
         "Emergency No-Contact Action Protocol",
       ],
     },
-    "colouring-book": {
-      id: "colouring-book",
-      title: "Colouring Book & Daily Journal",
-      subtitle: "Somatic Grounding & Daily Reflection",
+    "coloring-book": {
+      id: "coloring-book",
+      title: "The Bye Bye Narcissist Coloring Book & Journal",
+      subtitle: "Calm",
       numericPrice: 14.99,
       price: "$14.99",
-      badge: "SOMATIC ART THERAPY • DAILY JOURNAL",
-      description: "Art therapy grounding prompts combined with structured daily journaling to quiet nervous system spirals during emotional triggers.",
+      badge: "CALM",
+      description: "Slow down, process emotions, and reconnect with yourself.",
       image: "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/Coloring Book.png",
       specs: ["Somatic Art Therapy Mandalas", "Overthinking De-escalation", "Daily Reflection Grid", "Thick Non-Bleed Paper"],
       features: [
@@ -79,12 +79,12 @@ export default function ProductDetailPage({ params }: { params: Promise<{ slug: 
     },
     posters: {
       id: "posters",
-      title: "Poster Set — Visual Boundary Reminders",
-      subtitle: "Keep Your Space Grounded Every Single Day",
+      title: "Bye Bye Narcissist Poster Collection",
+      subtitle: "Reinforcement",
       numericPrice: 29.99,
       price: "$29.99",
-      badge: "10 PREMIUM FRAMEABLE ART PRINTS",
-      description: "10 high-resolution frameable 8x10 art prints featuring core emotional boundary rules and daily self-compassion affirmations.",
+      badge: "REINFORCEMENT",
+      description: "Daily reminders that strengthen boundaries and self-worth.",
       image: "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/Posters/1 Framed.png",
       specs: ["10 Art Prints", "Frameable 8x10 Format", "300 GSM Heavy Cardstock", "Matte Protective Finish"],
       features: [
@@ -96,12 +96,12 @@ export default function ProductDetailPage({ params }: { params: Promise<{ slug: 
     },
     "affirmation-cards": {
       id: "affirmation-cards",
-      title: "Affirmation Card Deck — Micro-Actions",
-      subtitle: "Instant Emotional Clarity Right in Your Hands",
+      title: "Bye Bye Narcissist Card Deck",
+      subtitle: "Daily Practice",
       numericPrice: 19.99,
       price: "$19.99",
-      badge: "52 LUXE CARDS IN DISPLAY BOX",
-      description: "52 premium micro-reflection cards providing immediate grounded perspective whenever you experience self-doubt or emotional triggers.",
+      badge: "DAILY PRACTICE",
+      description: "Build confidence and trust in yourself one day at a time.",
       image: "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/Affirmation Cards/Box Display.png",
       specs: ["52 Micro-Action Cards", "Luxe Rigid Display Box", "Instant Trigger Grounding", "Gold Foil Accents"],
       features: [
@@ -246,7 +246,7 @@ export default function ProductDetailPage({ params }: { params: Promise<{ slug: 
                     onClick={handleAddToCart}
                     className="w-full py-4 bg-[#0E2E1E] text-cream-logo font-semibold rounded-xl hover:bg-[#143d28] transition-all transform hover:scale-[1.02] shadow-xl text-base flex items-center justify-center gap-2"
                   >
-                    {addedToCart ? "✓ Added to Cart!" : `Add to Cart — $${(product.numericPrice * quantity).toFixed(2)} →`}
+                    {addedToCart ? "✓ Added to Cart!" : `Add to Cart ($${(product.numericPrice * quantity).toFixed(2)}) →`}
                   </button>
                 </MagneticElement>
               </div>

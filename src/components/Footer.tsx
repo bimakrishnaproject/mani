@@ -30,7 +30,7 @@ export default function Footer() {
               <li><Link href="/why-mani" className="hover:text-cream-logo transition-colors">Why MANI</Link></li>
               <li><Link href="/collections" className="hover:text-cream-logo transition-colors">Collections</Link></li>
               <li><Link href="/watch-learn" className="hover:text-cream-logo transition-colors">Watch &amp; Learn</Link></li>
-              <li><Link href="/join-beta" className="hover:text-cream-logo transition-colors">App</Link></li>
+              <li><Link href="/app" className="hover:text-cream-logo transition-colors">App</Link></li>
               <li><Link href="/about" className="hover:text-cream-logo transition-colors">About</Link></li>
               <li><Link href="/faq" className="hover:text-cream-logo transition-colors">FAQ</Link></li>
             </ul>
@@ -41,8 +41,8 @@ export default function Footer() {
             <h4 className="text-xs font-bold uppercase tracking-widest text-cream-logo">Collections</h4>
             <ul className="space-y-2 text-xs text-[#C3CDC6]">
               <li><Link href="/collections/bye-bye-narcissist" className="hover:text-cream-logo transition-colors">Bye Bye Narcissist</Link></li>
-              <li><span className="text-[#C3CDC6]/60">Love Done Right — Coming Soon</span></li>
-              <li><span className="text-[#C3CDC6]/60">Emotional Intelligence — Coming Soon</span></li>
+              <li><span className="text-[#C3CDC6]/60">Love Done Right (Coming Soon)</span></li>
+              <li><span className="text-[#C3CDC6]/60">Emotional Intelligence (Coming Soon)</span></li>
             </ul>
 
             <h4 className="text-xs font-bold uppercase tracking-widest text-cream-logo pt-4">Get Involved</h4>
