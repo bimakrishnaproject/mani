@@ -39,7 +39,7 @@ export default function UnderProgressPage({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-lg sm:text-xl text-[#4A524D] font-light leading-relaxed max-w-xl mx-auto"
+            className="text-lg sm:text-xl text-[#1C2826] font-normal leading-relaxed max-w-xl mx-auto"
           >
             {description}
           </motion.p>
@@ -54,7 +54,7 @@ export default function UnderProgressPage({
               <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping" />
               Today's Demo Status:
             </div>
-            <p className="text-sage-grey text-xs leading-relaxed">
+            <p className="text-[#22332A] text-xs leading-relaxed">
               • Homepage 3D Motion & Collections: <strong>100% Live & Ready</strong><br />
               • {pageName} Sub-Page Release: <strong>Scheduled Next Sprint</strong>
             </p>

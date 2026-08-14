@@ -92,7 +92,7 @@ export default function CheckoutPage() {
           {cart.length === 0 ? (
             <div className="max-w-2xl mx-auto text-center py-16 p-8 bg-soft-white border border-mist-grey rounded-3xl space-y-6">
               <h2 className="font-serif-heading text-3xl text-[#0E2E1E]">Your Cart is Currently Empty</h2>
-              <p className="text-sm text-[#626A64]">
+              <p className="text-sm text-[#1C2826] font-normal">
                 Explore the Bye Bye Narcissist collection or individual tools to add items to your order.
               </p>
               <Link
@@ -229,7 +229,7 @@ export default function CheckoutPage() {
                   </h3>
                   <div className="p-4 bg-editorial-white border border-mist-grey rounded-xl flex items-center justify-between">
                     <span className="text-sm font-semibold text-[#0E2E1E]">🔒 Secure 256-Bit Encrypted Checkout</span>
-                    <span className="text-xs text-sage-grey">Credit Card • Apple Pay • PayPal</span>
+                    <span className="text-xs text-[#22332A] font-medium">Credit Card • Apple Pay • PayPal</span>
                   </div>
                 </div>
 
@@ -238,7 +238,7 @@ export default function CheckoutPage() {
                   disabled={isSubmitting}
                   className="w-full py-5 bg-[#0E2E1E] text-editorial-white font-semibold rounded-xl hover:bg-[#143d28] transition-all shadow-xl text-base flex items-center justify-center gap-2"
                 >
-                  {isSubmitting ? "Syncing Order to Klaviyo CRM..." : `Pay $${grandTotal.toFixed(2)} & Place Order →`}
+                  {isSubmitting ? "Processing Order..." : `Pay $${grandTotal.toFixed(2)} & Place Order →`}
                 </button>
               </form>
 
@@ -253,7 +253,7 @@ export default function CheckoutPage() {
                     <div key={item.id} className="flex items-center justify-between text-sm py-2 border-b border-editorial-white/10">
                       <div>
                         <p className="font-semibold text-cream-logo">{item.title}</p>
-                        <p className="text-xs text-[#C3CDC6]">Qty: {item.quantity}</p>
+                        <p className="text-xs text-[#E8F0EC]">Qty: {item.quantity}</p>
                       </div>
                       <span className="font-mono text-cream-logo font-bold">
                         ${(item.price * item.quantity).toFixed(2)}
@@ -263,11 +263,11 @@ export default function CheckoutPage() {
                 </div>
 
                 <div className="space-y-2 text-sm pt-4 border-t border-editorial-white/15">
-                  <div className="flex justify-between text-[#C3CDC6]">
+                  <div className="flex justify-between text-[#E8F0EC]">
                     <span>Subtotal</span>
                     <span>${subtotal.toFixed(2)}</span>
                   </div>
-                  <div className="flex justify-between text-[#C3CDC6]">
+                  <div className="flex justify-between text-[#E8F0EC]">
                     <span>Worldwide Shipping</span>
                     <span>{shippingFee === 0 ? "FREE" : `$${shippingFee.toFixed(2)}`}</span>
                   </div>
@@ -277,9 +277,9 @@ export default function CheckoutPage() {
                   </div>
                 </div>
 
-                <div className="p-4 bg-editorial-white/10 rounded-2xl text-xs text-[#C3CDC6] space-y-1">
-                  <p className="font-semibold text-cream-logo">✓ Live Item & Order Details Synced</p>
-                  <p>Book details and quantity count synced to Klaviyo profile.</p>
+                <div className="p-4 bg-editorial-white/10 rounded-2xl text-xs text-[#E8F0EC] space-y-1">
+                  <p className="font-semibold text-cream-logo">✓ Secure Encrypted Checkout</p>
+                  <p>Order confirmation and shipping tracking will be sent to your email.</p>
                 </div>
               </div>
 

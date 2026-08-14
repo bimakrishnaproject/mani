@@ -5,13 +5,16 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 
 export default function HeroSection() {
-  const fullText = "Emotional Support Made Simple.";
-  const [displayedText, setDisplayedText] = useState("");
-  const [typingDone, setTypingDone] = useState(false);
+  const line1Full = "Emotional Support";
+  const line2Full = "Made Simple.";
+  const fullText = `${line1Full}\n${line2Full}`;
+
+  const [displayedText, setDisplayedText] = useState<string>("");
+  const [typingDone, setTypingDone] = useState<boolean>(false);
 
   useEffect(() => {
     let index = 0;
-    const startTimer = setTimeout(() => {
+    const startTimeout = setTimeout(() => {
       const interval = setInterval(() => {
         if (index <= fullText.length) {
           setDisplayedText(fullText.slice(0, index));
@@ -20,76 +23,72 @@ export default function HeroSection() {
           clearInterval(interval);
           setTypingDone(true);
         }
-      }, 55);
+      }, 45);
 
       return () => clearInterval(interval);
-    }, 1200);
+    }, 300);
 
-    return () => clearTimeout(startTimer);
-  }, []);
+    return () => clearTimeout(startTimeout);
+  }, [fullText]);
 
-  // Split displayed text into two lines at the natural break
-  const line1Full = "Emotional Support";
-  const line2Full = " Made Simple.";
-
-  const line1 = displayedText.slice(0, line1Full.length);
-  const line2 = displayedText.length > line1Full.length
-    ? displayedText.slice(line1Full.length).trimStart()
-    : "";
+  // Parse lines from displayed text
+  const parts = displayedText.split("\n");
+  const line1 = parts[0] || "";
+  const line2 = parts[1] !== undefined ? parts[1] : "";
+  const isTypingLine2 = displayedText.length > line1Full.length;
 
   return (
-    <section className="min-h-screen h-screen pt-24 pb-12 bg-gradient-to-b from-editorial-white via-soft-white/60 to-editorial-white flex items-center justify-center overflow-hidden w-full relative">
+    <section className="min-h-[85vh] sm:min-h-screen pt-32 sm:pt-36 pb-16 bg-gradient-to-b from-editorial-white via-soft-white/60 to-editorial-white flex items-center justify-center overflow-hidden w-full relative">
       
-      {/* Subtle Ambient Lighting Glow */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[450px] bg-radial from-soft-signal-green/25 via-cream-logo/15 to-transparent pointer-events-none rounded-full blur-3xl" />
-
       <div className="w-full px-6 sm:px-12 md:px-16 lg:px-24 relative z-10">
         <div className="text-center max-w-4xl mx-auto space-y-8 sm:space-y-10">
           
-          {/* Main Title with Typing Effect */}
+          {/* Main Title with Smooth Intentional Typing Animation */}
           <h1
-            className="font-serif-heading text-4xl xs:text-5xl sm:text-7xl md:text-8xl lg:text-9xl text-deep-green leading-[0.96] sm:leading-[0.92] tracking-tight"
+            className="font-serif-heading text-4xl xs:text-5xl sm:text-7xl md:text-8xl lg:text-9xl text-deep-green leading-[0.96] sm:leading-[0.92] tracking-tight min-h-[2.1em] flex flex-col items-center justify-center"
           >
-            {line1}
-            {line2 ? (
-              <>
-                <br />
-                <span className="font-serif-italic text-deep-green">
-                  {line2}
-                </span>
-              </>
-            ) : null}
-            {/* Blinking cursor while typing */}
-            {!typingDone && (
-              <span className="inline-block w-[3px] h-[0.8em] bg-deep-green ml-1 animate-pulse align-baseline" />
+            <span>
+              {line1}
+              {!isTypingLine2 && !typingDone && (
+                <span className="inline-block w-[3px] sm:w-[4px] h-[0.8em] bg-deep-green ml-1 animate-pulse align-baseline" />
+              )}
+            </span>
+            {isTypingLine2 && (
+              <span className="font-serif-italic text-deep-green mt-1 sm:mt-2">
+                {line2}
+                {!typingDone && (
+                  <span className="inline-block w-[3px] sm:w-[4px] h-[0.8em] bg-deep-green ml-1 animate-pulse align-baseline not-italic" />
+                )}
+              </span>
             )}
           </h1>
 
-          {/* Calm Supporting Message — fades in after typing completes */}
+          {/* Calm Supporting Message - Fades in smoothly once typing completes */}
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={typingDone ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.9, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className={`text-lg sm:text-xl md:text-2xl text-[#4A524D] leading-relaxed max-w-2xl mx-auto font-light px-2 ${!typingDone ? 'opacity-0' : ''}`}
+            initial={{ opacity: 0, y: 15 }}
+            animate={typingDone ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="text-lg sm:text-xl md:text-2xl text-[#1C2826] leading-relaxed max-w-2xl mx-auto font-normal px-2"
           >
-            MANI brings together expert-guided collections, daily videos, and a new app in development to help you better understand yourself and navigate life&apos;s challenges.
+            Mani brings together expert-guided collections, daily videos, and a new app in development to help you better understand yourself and navigate life&apos;s challenges.
           </motion.p>
 
+          {/* CTA Buttons: Explore Collections | Get Early Access */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={typingDone ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className={`pt-2 flex flex-wrap justify-center gap-4 ${!typingDone ? 'opacity-0' : ''}`}
+            initial={{ opacity: 0, y: 15 }}
+            animate={typingDone ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }}
+            transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+            className="pt-2 flex flex-wrap justify-center gap-4"
           >
             <Link
               href="/collections"
-              className="px-9 py-4 bg-deep-green text-editorial-white font-semibold rounded-md hover:bg-[#143d28] transition-all shadow-md text-sm sm:text-base tracking-wide"
+              className="px-8 sm:px-9 py-3.5 sm:py-4 bg-[#0E2E1E] text-editorial-white font-semibold rounded-xl hover:bg-[#143d28] transition-all shadow-md text-sm sm:text-base tracking-wide"
             >
               Explore Collections &rarr;
             </Link>
             <Link
               href="/join-beta"
-              className="px-9 py-4 bg-editorial-white text-deep-green border-2 border-deep-green font-semibold rounded-md hover:bg-soft-white transition-all shadow-sm text-sm sm:text-base tracking-wide"
+              className="px-8 sm:px-9 py-3.5 sm:py-4 bg-editorial-white text-[#0E2E1E] border-2 border-[#0E2E1E] font-semibold rounded-xl hover:bg-soft-white transition-all shadow-sm text-sm sm:text-base tracking-wide"
             >
               Get Early Access &rarr;
             </Link>

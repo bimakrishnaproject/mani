@@ -37,14 +37,10 @@ export default function InteractiveHeroStage3D() {
     >
       {/* 01. Physical System Exhibition Object */}
       <motion.div variants={itemVariants} className="md:col-span-4 h-full">
-        <motion.div
-          animate={{ y: [0, -10, 0] }}
-          transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
-          className="h-full"
-        >
+        <div className="h-full">
           <Link
             href="/collections/bye-bye-narcissist"
-            className="group block relative bg-gradient-to-br from-[#F7F8F6] via-[#E9ECE8] to-[#DFE3DD] border-2 border-mist-grey rounded-3xl p-8 flex flex-col justify-between h-full shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 overflow-hidden"
+            className="group block relative bg-gradient-to-br from-[#F7F8F6] via-[#E9ECE8] to-[#DFE3DD] border-2 border-mist-grey rounded-3xl p-8 flex flex-col justify-between h-full shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden"
           >
             <div className="absolute top-0 right-0 w-32 h-32 bg-soft-signal-green/40 rounded-bl-full pointer-events-none" />
 
@@ -54,12 +50,14 @@ export default function InteractiveHeroStage3D() {
               </span>
 
               <div className="h-[280px] flex items-center justify-center relative my-4">
+                {/* Surface Ground Shadows */}
+                <div className="absolute bottom-2 w-3/4 h-5 bg-black/15 blur-md rounded-full pointer-events-none" />
                 <Image
                   src="/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/Collection/Collection.png"
                   alt="Bye Bye Narcissist Collection"
                   width={440}
                   height={280}
-                  className="w-full h-auto object-contain max-h-[260px] drop-shadow-[0_25px_35px_rgba(0,0,0,0.18)] group-hover:scale-108 transition-all duration-500"
+                  className="relative z-10 w-full h-auto object-contain max-h-[260px] drop-shadow-[0_20px_25px_rgba(0,0,0,0.2)] group-hover:scale-105 transition-all duration-500"
                 />
               </div>
             </div>
@@ -69,7 +67,7 @@ export default function InteractiveHeroStage3D() {
                 <h3 className="font-serif-heading text-3xl md:text-4xl text-deep-green group-hover:text-[#143d28] transition-colors mb-1">
                   Bye Bye Narcissist
                 </h3>
-                <p className="text-xs text-[#626A64]">
+                <p className="text-xs text-[#1C2826]">
                   5-Resource System • <span className="font-semibold text-deep-green">$119.99</span>
                 </p>
               </div>
@@ -78,19 +76,15 @@ export default function InteractiveHeroStage3D() {
               </span>
             </div>
           </Link>
-        </motion.div>
+        </div>
       </motion.div>
 
       {/* 02. Video Reel Cinema Portal Object */}
       <motion.div variants={itemVariants} className="md:col-span-4 h-full">
-        <motion.div
-          animate={{ y: [0, -10, 0] }}
-          transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
-          className="h-full"
-        >
+        <div className="h-full">
           <Link
             href="/watch-learn"
-            className="group block relative bg-deep-green text-editorial-white border-2 border-deep-green rounded-3xl p-8 flex flex-col justify-between h-full shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 overflow-hidden"
+            className="group block relative bg-deep-green text-editorial-white border-2 border-deep-green rounded-3xl p-8 flex flex-col justify-between h-full shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden"
           >
             <div className="absolute top-0 right-0 w-40 h-40 bg-cream-logo/10 rounded-bl-full pointer-events-none" />
 
@@ -103,9 +97,9 @@ export default function InteractiveHeroStage3D() {
                 <img
                   src={encodeURI("/assets/Video Thumbnails/How Emotionally Intelligent People Handle Hurt.jpeg")}
                   alt="Understanding Boundaries Video"
-                  className="w-full h-full object-cover object-top opacity-90 group-hover:opacity-100 group-hover:scale-108 transition-all duration-500"
+                  className="w-full h-full object-cover object-top opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
                 />
-                <div className="w-20 h-20 bg-cream-logo text-deep-green rounded-full flex items-center justify-center shadow-2xl relative z-10 transform group-hover:scale-115 transition-transform animate-pulse">
+                <div className="w-20 h-20 bg-cream-logo text-deep-green rounded-full flex items-center justify-center shadow-2xl relative z-10 transform group-hover:scale-110 transition-transform">
                   <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
                     <polygon points="9,6 18,12 9,18" fill="currentColor" />
                   </svg>
@@ -122,7 +116,7 @@ export default function InteractiveHeroStage3D() {
                 <h4 className="font-serif-heading text-3xl md:text-4xl text-cream-logo mb-1">
                   Understanding Boundaries
                 </h4>
-                <p className="text-xs text-[#C3CDC6]">
+                <p className="text-xs text-[#E8F0EC]">
                   500+ Videos • <span className="font-semibold text-cream-logo">Free Access</span>
                 </p>
               </div>
@@ -131,19 +125,15 @@ export default function InteractiveHeroStage3D() {
               </span>
             </div>
           </Link>
-        </motion.div>
+        </div>
       </motion.div>
 
       {/* 03. Guided Mobile App Showcase Object */}
       <motion.div variants={itemVariants} className="md:col-span-4 h-full">
-        <motion.div
-          animate={{ y: [0, -10, 0] }}
-          transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 1.2 }}
-          className="h-full"
-        >
+        <div className="h-full">
           <Link
             href="#app"
-            className="group block relative bg-editorial-white border-2 border-mist-grey rounded-3xl p-8 flex flex-col justify-between h-full shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 overflow-hidden"
+            className="group block relative bg-editorial-white border-2 border-mist-grey rounded-3xl p-8 flex flex-col justify-between h-full shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden"
           >
             <div className="absolute inset-0 bg-radial from-soft-signal-green/30 via-transparent to-transparent pointer-events-none" />
 
@@ -167,7 +157,7 @@ export default function InteractiveHeroStage3D() {
                 <h4 className="font-serif-heading text-3xl md:text-4xl text-deep-green group-hover:text-[#143d28] transition-colors mb-1">
                   Guided Support
                 </h4>
-                <p className="text-xs text-[#626A64]">
+                <p className="text-xs text-[#1C2826]">
                   Real-Time Reflection • <span className="font-semibold text-deep-green">Private Beta</span>
                 </p>
               </div>
@@ -176,7 +166,7 @@ export default function InteractiveHeroStage3D() {
               </span>
             </div>
           </Link>
-        </motion.div>
+        </div>
       </motion.div>
     </motion.div>
   );

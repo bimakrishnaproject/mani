@@ -38,7 +38,7 @@ export default function DisclaimerPage() {
             <h1 className="font-serif-heading text-5xl sm:text-7xl text-[#0E2E1E]">
               Disclaimer & Safety Policy
             </h1>
-            <p className="text-sm text-sage-grey uppercase tracking-wider font-semibold">
+            <p className="text-sm text-[#0E2E1E] uppercase tracking-wider font-semibold">
               LAST UPDATED: OFFICIAL BRAND GUIDELINES & SPECIFICATIONS
             </p>
           </motion.div>
@@ -48,34 +48,34 @@ export default function DisclaimerPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="space-y-8 text-base text-[#4A524D] font-light leading-relaxed border-t border-mist-grey pt-8"
+            className="space-y-8 text-base text-[#1C2826] font-normal leading-relaxed border-t border-mist-grey pt-8"
           >
             <div className="p-8 bg-[#0E2E1E] text-editorial-white rounded-3xl space-y-4 shadow-xl border border-emerald-500/20">
               <span className="text-xs font-bold tracking-widest uppercase text-cream-logo bg-editorial-white/10 px-3 py-1 rounded-full inline-block">
                 IMPORTANT MEDICAL & CLINICAL NOTICE
               </span>
               <h2 className="font-serif-heading text-3xl text-cream-logo">
-                MANI Is Educational &amp; Supportive, Not Clinical Therapy
+                MANI&trade; Is Educational &amp; Supportive, Not Clinical Therapy
               </h2>
-              <p className="text-sm text-[#C3CDC6] leading-relaxed">
-                MANI does not diagnose, treat, or position itself as a substitute for professional mental health care, clinical psychotherapy, or psychiatric medical intervention. Its role is strictly educational, informational, and supportive.
+              <p className="text-sm text-[#E8F0EC] font-normal leading-relaxed">
+                MANI&trade; does not diagnose, treat, or position itself as a substitute for professional mental health care, clinical psychotherapy, or psychiatric medical intervention. Its role is strictly educational, informational, and supportive.
               </p>
             </div>
 
             <div className="space-y-4">
               <h3 className="font-serif-heading text-2xl text-[#0E2E1E]">1. Scope of Support</h3>
               <p>
-                All resources provided by MANI, including physical collections, workbooks, journals, affirmation decks, daily educational videos, and our guided technology app, are designed to assist individuals in understanding emotional dynamics, establishing personal boundaries, and building self-trust.
+                All resources provided by MANI&trade;, including physical collections, workbooks, journals, affirmation decks, daily educational videos, and our guided technology app, are designed to assist individuals in understanding emotional dynamics, establishing personal boundaries, and building self-trust.
               </p>
               <p>
-                MANI resources are intended for educational self-reflection and may be used alongside formal therapy or executive coaching, but should never replace professional medical evaluation.
+                MANI&trade; resources are intended for educational self-reflection and may be used alongside formal therapy or executive coaching, but should never replace professional medical evaluation.
               </p>
             </div>
 
             <div className="space-y-4">
               <h3 className="font-serif-heading text-2xl text-[#0E2E1E]">2. Emergency Crisis Intervention Notice</h3>
               <p>
-                If you are experiencing a mental health emergency, domestic safety crisis, or thoughts of self-harm, please do not use MANI digital tools or physical workbooks as emergency intervention. Immediately contact local emergency services or national crisis hotlines:
+                If you are experiencing a mental health emergency, domestic safety crisis, or thoughts of self-harm, please do not use MANI&trade; digital tools or physical workbooks as emergency intervention. Immediately contact local emergency services or national crisis hotlines:
               </p>
               <ul className="list-disc pl-6 space-y-2 text-sm text-ink-black font-medium">
                 <li>US National Suicide & Crisis Lifeline: Call or text 988</li>

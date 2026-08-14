@@ -28,19 +28,16 @@ export default function CommunitySection() {
   return (
     <section className="py-24 sm:py-32 bg-[#F4EFE6] text-[#0E2E1E] text-center border-t border-mist-grey" id="community">
       <div className="max-w-[680px] mx-auto px-6">
-        <span className="text-xs font-bold tracking-widest text-[#8C7659] uppercase block mb-3">
-          STAY CONNECTED
-        </span>
         <h2 className="font-serif-heading text-4xl sm:text-6xl text-[#0E2E1E] mb-4">
           Support Doesn&apos;t End Here
         </h2>
-        <p className="text-base sm:text-lg text-[#626A64] mb-8 leading-relaxed font-light">
-          Be the first to receive new collections, video releases, and app updates directly from the MANI team.
+        <p className="text-base sm:text-lg text-[#1C2826] mb-8 leading-relaxed font-normal">
+          Join our community and be the first to hear about new collections, videos, app updates, and resources.
         </p>
 
         {submitted ? (
           <div className="p-4 bg-[#0E2E1E] text-cream-logo rounded-xl font-semibold text-sm shadow-md">
-            ✓ Welcome to the MANI Community! Updates will be sent to your email.
+            ✓ Welcome to the MANI&trade; Community! Updates will be sent to your email.
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-[500px] mx-auto mb-4">
@@ -48,7 +45,7 @@ export default function CommunitySection() {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="Your email address"
+              placeholder="Enter your email"
               required
               className="flex-grow px-5 py-4 rounded-xl text-sm text-ink-black bg-white border border-mist-grey focus:outline-none focus:border-[#0E2E1E]"
             />
@@ -56,11 +53,11 @@ export default function CommunitySection() {
               type="submit"
               className="px-8 py-4 bg-[#0E2E1E] text-editorial-white font-semibold rounded-xl hover:bg-[#143d28] transition-colors whitespace-nowrap text-sm shadow-md"
             >
-              Join the Community
+              Join The MANI&trade; Community
             </button>
           </form>
         )}
-        <p className="text-xs text-sage-grey">By subscribing, you agree to receive MANI updates. Unsubscribe anytime.</p>
+        <p className="text-xs text-[#22332A] font-medium">By subscribing, you agree to receive MANI&trade; updates. Unsubscribe anytime.</p>
       </div>
     </section>
   );

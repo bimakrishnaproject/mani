@@ -49,7 +49,7 @@ export default function WorkInProgressModal({
               <h3 className="font-serif-heading text-4xl sm:text-5xl text-cream-logo leading-tight">
                 {pageTitle} Page<br />Is Under Construction
               </h3>
-              <p className="text-sm sm:text-base text-[#C3CDC6] font-light leading-relaxed">
+              <p className="text-sm sm:text-base text-[#E8F0EC] font-normal leading-relaxed">
                 This dedicated sub-page is currently being polished for the next release. Today’s client update presentation focuses 100% on the live flagship Homepage experience.
               </p>
             </div>

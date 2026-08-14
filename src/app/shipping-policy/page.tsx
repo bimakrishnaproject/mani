@@ -33,13 +33,13 @@ export default function ShippingPolicyPage() {
             className="space-y-4"
           >
             <div className="inline-block text-xs font-bold tracking-widest uppercase text-[#0E2E1E] bg-soft-signal-green px-4 py-2 rounded-full">
-              ORDER FULFILMENT & DELIVERY
+              ORDER FULFILLMENT & DELIVERY
             </div>
             <h1 className="font-serif-heading text-5xl sm:text-7xl text-[#0E2E1E]">
               Shipping Policy
             </h1>
-            <p className="text-sm text-sage-grey uppercase tracking-wider font-semibold">
-              PHYSICAL FULFILMENT & DIGITAL ACCESS SPECIFICATIONS
+            <p className="text-sm text-[#0E2E1E] uppercase tracking-wider font-semibold">
+              PHYSICAL FULFILLMENT & DIGITAL ACCESS SPECIFICATIONS
             </p>
           </motion.div>
 
@@ -48,12 +48,12 @@ export default function ShippingPolicyPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="space-y-8 text-base text-[#4A524D] font-light leading-relaxed border-t border-mist-grey pt-8"
+            className="space-y-8 text-base text-[#1C2826] font-normal leading-relaxed border-t border-mist-grey pt-8"
           >
             <div className="space-y-4">
               <h3 className="font-serif-heading text-2xl text-[#0E2E1E]">1. Free Worldwide Shipping on Bundles</h3>
               <p>
-                All complete MANI 5-Part Collection Bundles (such as the Bye Bye Narcissist $119.99 system) qualify for **Free Worldwide Express Shipping**. Individual items are shipped using standard domestic and international postal rates calculated at checkout.
+                All complete MANI&trade; 5-Part Collection Bundles (such as the Bye Bye Narcissist $119.99 system) qualify for **Free Worldwide Express Shipping**. Individual items are shipped using standard domestic and international postal rates calculated at checkout.
               </p>
             </div>
 
@@ -68,16 +68,6 @@ export default function ShippingPolicyPage() {
               <h3 className="font-serif-heading text-2xl text-[#0E2E1E]">3. Instant Digital Product Access</h3>
               <p>
                 Digital editions and PDF companions included in your purchase are accessible immediately upon order completion. You will receive an instant download link via email and on your checkout confirmation page.
-              </p>
-            </div>
-
-            {/* Client Action Note if specific carrier details are needed */}
-            <div className="p-6 bg-editorial-white border border-mist-grey rounded-2xl space-y-2">
-              <span className="text-xs font-bold text-sage-grey uppercase tracking-wider block">
-                NOTE FOR MANI TEAM / CLIENT COPY UPDATE
-              </span>
-              <p className="text-xs text-[#626A64] italic">
-                This shipping policy includes the free worldwide shipping terms specified in the docs. If you have specific shipping carrier names (e.g. DHL, FedEx, USPS) or regional delivery timeframes (e.g., 3-5 days US, 7-10 days Europe), please provide them to be updated here.
               </p>
             </div>
 

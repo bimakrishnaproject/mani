@@ -27,6 +27,7 @@ export default function WatchLearnPage() {
 
   const topics = CATEGORIES;
 
+  // Display newest videos first directly from curated order
   const videos = VIDEOS_DATA.map((v) => ({
     id: v.id,
     title: v.title,
@@ -42,12 +43,14 @@ export default function WatchLearnPage() {
   }, [selectedTopic, searchQuery]);
 
   const filteredVideos = videos.filter((v) => {
-    const matchesTopic = selectedTopic === "All Categories" || selectedTopic === "All" || v.category === selectedTopic;
+    const matchesTopic =
+      selectedTopic === "All Categories" || selectedTopic === "All"
+        ? true
+        : v.category.trim().toLowerCase() === selectedTopic.trim().toLowerCase();
     const matchesQuery =
       searchQuery.trim() === "" ||
       v.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      v.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      v.description.toLowerCase().includes(searchQuery.toLowerCase());
+      v.category.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesTopic && matchesQuery;
   });
 
@@ -64,29 +67,29 @@ export default function WatchLearnPage() {
 
       <main className="flex-grow pt-36 md:pt-48 pb-32">
 
-        {/* HERO SECTION */}
-        <section className="px-6 sm:px-12 md:px-16 lg:px-24 mb-16">
-          <div className="bg-[#0E2E1E] text-editorial-white rounded-3xl p-8 sm:p-14 border border-editorial-white/10 shadow-xl">
-            <div className="max-w-3xl space-y-6">
-              <span className="inline-block text-xs font-bold tracking-widest uppercase text-cream-logo/70">
+        {/* HERO & BROWSE BY TOPIC */}
+        <section className="px-6 sm:px-12 md:px-16 lg:px-24 mb-14">
+          <div className="bg-[#0E2E1E] text-editorial-white rounded-3xl p-8 sm:p-12 border border-editorial-white/10 shadow-xl space-y-8">
+            <div className="max-w-3xl space-y-4">
+              <span className="inline-block text-xs font-bold tracking-widest uppercase text-cream-logo">
                 WATCH &amp; LEARN
               </span>
 
-              <h1 className="font-serif-heading text-4xl xs:text-5xl sm:text-7xl lg:text-8xl text-cream-logo leading-tight">
-                Support in Minutes
+              <h1 className="font-serif-heading text-4xl xs:text-5xl sm:text-7xl lg:text-8xl text-cream-logo leading-[0.96] tracking-tight">
+                Watch &amp; Learn
               </h1>
 
-              <p className="text-lg sm:text-xl text-editorial-white/80 font-light leading-relaxed max-w-2xl">
+              <p className="text-lg sm:text-xl text-[#E8F0EC] font-normal leading-relaxed max-w-2xl">
                 Short videos designed to help you better understand your emotions, relationships and experiences shaping your life.
               </p>
 
-              <p className="text-sm text-editorial-white/60 font-light leading-relaxed max-w-2xl">
+              <p className="text-sm text-[#D8E6DE] font-normal leading-relaxed max-w-2xl">
                 500+ videos and growing. New videos added daily.
               </p>
 
-              {/* Search */}
+              {/* Search Bar */}
               <div className="relative max-w-md pt-2">
-                <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none text-cream-logo/60">
+                <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none text-cream-logo/80">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <circle cx="11" cy="11" r="8" />
                     <line x1="21" y1="21" x2="16.65" y2="16.65" />
@@ -96,28 +99,33 @@ export default function WatchLearnPage() {
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Search topics..."
-                  className="w-full pl-11 pr-10 py-3.5 rounded-xl bg-editorial-white/10 text-cream-logo text-xs placeholder-cream-logo/40 border border-editorial-white/20 focus:outline-none focus:border-cream-logo transition-colors"
+                  placeholder="Search topics or titles..."
+                  className="w-full pl-11 pr-10 py-3 rounded-xl bg-editorial-white/10 text-cream-logo text-xs placeholder-cream-logo/70 border border-editorial-white/20 focus:outline-none focus:border-cream-logo transition-colors"
                 />
                 {searchQuery && (
                   <button
                     onClick={() => setSearchQuery("")}
-                    className="absolute inset-y-0 right-3 flex items-center text-xs text-cream-logo/60 hover:text-cream-logo"
+                    className="absolute inset-y-0 right-3 flex items-center text-xs text-cream-logo/80 hover:text-cream-logo"
                   >
                     ✕
                   </button>
                 )}
               </div>
+            </div>
 
-              {/* Topic Filters (stationary, no pulse/animation) */}
-              <div className="pt-2 flex flex-wrap gap-2">
+            {/* Stationary Browse by Topic */}
+            <div className="pt-2 border-t border-editorial-white/15 space-y-3">
+              <span className="text-xs font-bold text-cream-logo uppercase tracking-widest block">
+                Browse by Topic
+              </span>
+              <div className="flex flex-wrap gap-2">
                 {topics.map((topic, idx) => (
                   <button
                     key={idx}
                     onClick={() => setSelectedTopic(topic)}
-                    className={`text-xs font-semibold px-4 py-2 rounded-full transition-colors ${
+                    className={`text-xs font-semibold px-3.5 py-1.5 rounded-full transition-colors cursor-pointer ${
                       selectedTopic === topic
-                        ? "bg-cream-logo text-[#0E2E1E] shadow-sm"
+                        ? "bg-cream-logo text-[#0E2E1E] shadow-sm font-bold"
                         : "bg-editorial-white/10 text-cream-logo border border-editorial-white/15 hover:bg-editorial-white/20"
                     }`}
                   >
@@ -130,13 +138,13 @@ export default function WatchLearnPage() {
         </section>
 
         {/* SECTION HEADER */}
-        <section className="px-6 sm:px-12 md:px-16 lg:px-24 mb-4 flex items-center justify-between">
+        <section className="px-6 sm:px-12 md:px-16 lg:px-24 mb-6 flex items-center justify-between">
           <div>
-            <h2 className="font-serif-heading text-3xl sm:text-4xl text-[#0E2E1E]">
+            <h2 className="font-serif-heading text-2xl sm:text-3xl text-[#0E2E1E]">
               {searchQuery ? `Search Results for "${searchQuery}" (${filteredVideos.length})` : `${selectedTopic === "All Categories" || selectedTopic === "All" ? "All Videos" : selectedTopic}`}
             </h2>
           </div>
-          <span className="text-xs font-bold text-[#626A64] hidden sm:inline-block bg-soft-white border border-mist-grey px-4 py-2 rounded-full">
+          <span className="text-xs font-bold text-[#0E2E1E] hidden sm:inline-block bg-soft-white border border-mist-grey px-3.5 py-1.5 rounded-full">
             {filteredVideos.length} {filteredVideos.length === 1 ? "VIDEO" : "VIDEOS"}
           </span>
         </section>
@@ -158,7 +166,7 @@ export default function WatchLearnPage() {
                   <img
                     src={encodeURI(video.thumbnail)}
                     alt={video.title}
-                    className="absolute inset-0 w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100"
+                    className="absolute inset-0 w-full h-full object-cover rounded-2xl opacity-90 group-hover:opacity-100 transition-opacity duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-black/20 rounded-2xl" />
 
@@ -174,7 +182,7 @@ export default function WatchLearnPage() {
 
                   {/* Center Play */}
                   <div className="relative z-10 flex items-center justify-center my-auto">
-                    <div className="w-10 h-10 rounded-full bg-cream-logo text-[#0E2E1E] flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform">
+                    <div className="w-10 h-10 rounded-full bg-cream-logo text-[#0E2E1E] flex items-center justify-center shadow-md transition-all duration-300">
                       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="ml-0.5">
                         <polygon points="8,5 19,12 8,19" fill="currentColor" />
                       </svg>
@@ -205,7 +213,7 @@ export default function WatchLearnPage() {
         ) : (
           <div className="max-w-[1360px] mx-auto px-6 py-16 text-center space-y-4">
             <h3 className="font-serif-heading text-3xl text-[#0E2E1E]">No videos found matching &ldquo;{searchQuery}&rdquo;</h3>
-            <p className="text-sm text-[#626A64] max-w-md mx-auto font-light">
+            <p className="text-sm text-[#1C2826] max-w-md mx-auto font-normal">
               Try searching for different keywords or select &ldquo;All&rdquo; topics to view our full video library.
             </p>
             <button

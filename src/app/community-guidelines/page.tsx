@@ -38,7 +38,7 @@ export default function CommunityGuidelinesPage() {
             <h1 className="font-serif-heading text-5xl sm:text-7xl text-[#0E2E1E]">
               Community Guidelines
             </h1>
-            <p className="text-sm text-sage-grey uppercase tracking-wider font-semibold">
+            <p className="text-sm text-[#0E2E1E] uppercase tracking-wider font-semibold">
               SAFE & RESPECTFUL SPACE FOR EMOTIONAL GROWTH
             </p>
           </motion.div>
@@ -48,13 +48,13 @@ export default function CommunityGuidelinesPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="space-y-8 text-base text-[#4A524D] font-light leading-relaxed border-t border-mist-grey pt-8"
+            className="space-y-8 text-base text-[#1C2826] font-normal leading-relaxed border-t border-mist-grey pt-8"
           >
             <div className="p-8 bg-[#0E2E1E] text-editorial-white rounded-3xl space-y-4 shadow-xl">
               <h2 className="font-serif-heading text-3xl text-cream-logo">
                 Support Without Judgment
               </h2>
-              <p className="text-sm text-[#C3CDC6] leading-relaxed">
+              <p className="text-sm text-[#E8F0EC] font-normal leading-relaxed">
                 The MANI community exists to provide a calm, respectful, and encouraging environment. We prioritize emotional safety, constructive discussion, and mutual respect.
               </p>
             </div>

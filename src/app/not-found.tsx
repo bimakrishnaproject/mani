@@ -27,11 +27,11 @@ export default function NotFoundPage() {
               404
             </h1>
 
-            <p className="text-2xl font-serif-italic text-[#4A524D]">
+            <p className="text-2xl font-serif-italic text-[#1C2826]">
               "This path doesn’t exist, but your journey continues."
             </p>
 
-            <p className="text-sm text-[#626A64] font-light max-w-md mx-auto leading-relaxed">
+            <p className="text-sm text-[#1C2826] font-normal max-w-md mx-auto leading-relaxed">
               The page you are looking for may have been moved, renamed, or is currently under development.
             </p>
 

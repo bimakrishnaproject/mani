@@ -38,7 +38,7 @@ export default function TermsOfUsePage() {
             <h1 className="font-serif-heading text-5xl sm:text-7xl text-[#0E2E1E]">
               Terms of Use
             </h1>
-            <p className="text-sm text-sage-grey uppercase tracking-wider font-semibold">
+            <p className="text-sm text-[#0E2E1E] uppercase tracking-wider font-semibold">
               PLATFORM & DIGITAL CONTENT TERMS
             </p>
           </motion.div>
@@ -48,35 +48,35 @@ export default function TermsOfUsePage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="space-y-8 text-base text-[#4A524D] font-light leading-relaxed border-t border-mist-grey pt-8"
+            className="space-y-8 text-base text-[#1C2826] font-normal leading-relaxed border-t border-mist-grey pt-8"
           >
             <div className="space-y-4">
               <h3 className="font-serif-heading text-2xl text-[#0E2E1E]">1. Acceptance of Terms</h3>
               <p>
-                By accessing the MANI website, purchasing our physical or digital collections, or participating in our community and beta programs, you agree to comply with these Terms of Use and our accompanying Safety & Disclaimer policies.
+                By accessing the MANI&trade; website, purchasing our physical or digital collections, or participating in our community and beta programs, you agree to comply with these Terms of Use and our accompanying Safety & Disclaimer policies.
               </p>
             </div>
 
             <div className="space-y-4">
               <h3 className="font-serif-heading text-2xl text-[#0E2E1E]">2. Intellectual Property & Copyright</h3>
               <p>
-                All editorial content, book text, workbook exercises, art therapy mandalas, poster designs, affirmation cards, video materials, and technology code are the exclusive intellectual property of MANI and its founders. Unauthorized reproduction or resale is strictly prohibited.
+                All editorial content, book text, workbook exercises, art therapy mandalas, poster designs, affirmation cards, video materials, and technology code are the exclusive intellectual property of MANI&trade; and its founders. Unauthorized reproduction or resale is strictly prohibited.
               </p>
             </div>
 
             <div className="space-y-4">
               <h3 className="font-serif-heading text-2xl text-[#0E2E1E]">3. Non-Clinical Disclaimer</h3>
               <p>
-                As detailed in our Disclaimer, MANI provides educational content and boundary-building tools. MANI does not provide clinical diagnosis, therapy, or medical treatment.
+                As detailed in our Disclaimer, MANI&trade; provides educational content and boundary-building tools. MANI&trade; does not provide clinical diagnosis, therapy, or medical treatment.
               </p>
             </div>
 
             {/* Client Action Note */}
             <div className="p-6 bg-editorial-white border border-mist-grey rounded-2xl space-y-2">
-              <span className="text-xs font-bold text-sage-grey uppercase tracking-wider block">
+              <span className="text-xs font-bold text-[#0E2E1E] uppercase tracking-wider block">
                 CLIENT COPY / ACTION REQUESTED
               </span>
-              <p className="text-xs text-[#626A64] italic">
+              <p className="text-xs text-[#1C2826] italic">
                 If your legal team has specific jurisdiction, arbitration, or commercial terms from your master legal document, please supply the text to be updated here.
               </p>
             </div>

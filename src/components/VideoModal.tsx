@@ -57,7 +57,7 @@ export default function VideoModal({ video, onClose }: VideoModalProps) {
               <h3 className="font-serif-heading text-2xl text-editorial-white max-w-md">
                 {video.title}
               </h3>
-              <p className="text-xs text-sage-grey mt-2">
+              <p className="text-xs text-cream-logo/80 mt-2">
                 Ready for streaming via Google Drive Iframe
               </p>
             </div>
@@ -79,7 +79,7 @@ export default function VideoModal({ video, onClose }: VideoModalProps) {
             <span className="text-xs font-bold tracking-widest uppercase bg-soft-signal-green text-deep-green px-3 py-1 rounded-full">
               {video.category}
             </span>
-            <span className="text-xs font-semibold text-sage-grey">
+            <span className="text-xs font-semibold text-[#22332A]">
               {video.duration}
             </span>
           </div>
@@ -88,7 +88,7 @@ export default function VideoModal({ video, onClose }: VideoModalProps) {
             {video.title}
           </h2>
 
-          <p className="text-base text-[#4A524D] leading-relaxed">
+          <p className="text-base text-[#1C2826] leading-relaxed">
             {video.summary}
           </p>
 
@@ -109,7 +109,7 @@ export default function VideoModal({ video, onClose }: VideoModalProps) {
               <h4 className="font-serif-heading text-xl text-deep-green mb-1">
                 Looking for Deeper Support?
               </h4>
-              <p className="text-xs text-[#626A64]">
+              <p className="text-xs text-[#1C2826]">
                 Explore our guided 5-part collections or get early access to the MANI Beta App.
               </p>
             </div>

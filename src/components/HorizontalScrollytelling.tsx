@@ -43,10 +43,10 @@ export default function HorizontalScrollytelling() {
     },
     {
       num: "03",
-      badge: "MANI APP BETA",
-      title: "Private MANI App Beta",
+      badge: "MANI™ APP BETA",
+      title: "Private MANI™ App Beta",
       subtitle: "Real-time reflection technology right from your phone.",
-      description: "Beyond passive listening, MANI guides you toward understanding and practical next steps when you need emotional clarity most.",
+      description: "Beyond passive listening, MANI™ guides you toward understanding and practical next steps when you need emotional clarity most.",
       ctaText: "Join Private Beta Access",
       ctaLink: "/#app",
       image: "/assets/Chat Conversation.png",
@@ -64,9 +64,9 @@ export default function HorizontalScrollytelling() {
           {/* Top Header Badge & Navigation Indicator */}
           <div className="absolute top-8 left-8 right-8 z-30 flex items-center justify-between pointer-events-none">
             <div className="text-xs font-bold tracking-widest uppercase text-cream-logo bg-deep-green px-4 py-2 rounded-full shadow-md">
-              THE MANI ECOSYSTEM
+              THE MANI&trade; ECOSYSTEM
             </div>
-            <div className="text-xs font-bold tracking-widest text-sage-grey">
+            <div className="text-xs font-bold tracking-widest text-cream-logo/80">
               ACT 01 / 03
             </div>
           </div>
@@ -86,7 +86,7 @@ export default function HorizontalScrollytelling() {
                       <span className={`text-sm font-extrabold px-3.5 py-1.5 rounded-full ${idx === 2 ? "bg-deep-green text-editorial-white" : "bg-editorial-white/15 text-cream-logo"}`}>
                         {panel.num}
                       </span>
-                      <span className={`text-xs font-bold tracking-widest uppercase ${idx === 2 ? "text-deep-green" : "text-sage-grey"}`}>
+                      <span className={`text-xs font-bold tracking-widest uppercase ${idx === 2 ? "text-deep-green" : "text-cream-logo"}`}>
                         {panel.badge}
                       </span>
                     </div>
@@ -95,11 +95,11 @@ export default function HorizontalScrollytelling() {
                       {panel.title}
                     </h2>
 
-                    <p className={`font-serif-italic text-2xl sm:text-3xl leading-snug ${idx === 2 ? "text-[#4A524D]" : "text-[#E5EBE7]"}`}>
+                    <p className={`font-serif-italic text-2xl sm:text-3xl leading-snug ${idx === 2 ? "text-[#1C2826]" : "text-[#E5EBE7]"}`}>
                       "{panel.subtitle}"
                     </p>
 
-                    <p className={`text-base sm:text-lg font-light leading-relaxed max-w-xl ${idx === 2 ? "text-[#626A64]" : "text-[#C3CDC6]"}`}>
+                    <p className={`text-base sm:text-lg font-normal leading-relaxed max-w-xl ${idx === 2 ? "text-[#1C2826]" : "text-[#E8F0EC]"}`}>
                       {panel.description}
                     </p>
 
@@ -183,9 +183,9 @@ export default function HorizontalScrollytelling() {
         {/* Header Badge */}
         <div className="flex items-center justify-between border-b border-editorial-white/20 pb-4">
           <span className="text-[11px] font-bold tracking-widest uppercase text-cream-logo bg-editorial-white/10 px-3.5 py-1.5 rounded-full border border-editorial-white/20">
-            THE MANI ECOSYSTEM
+            THE MANI&trade; ECOSYSTEM
           </span>
-          <span className="text-xs font-bold tracking-widest text-sage-grey">
+          <span className="text-xs font-bold tracking-widest text-cream-logo/80">
             ACT 01 / 03
           </span>
         </div>
@@ -201,7 +201,7 @@ export default function HorizontalScrollytelling() {
                 <span className={`text-xs font-extrabold px-3 py-1 rounded-full ${idx === 2 ? "bg-deep-green text-editorial-white" : "bg-editorial-white/15 text-cream-logo"}`}>
                   {panel.num}
                 </span>
-                <span className={`text-[11px] font-bold tracking-widest uppercase ${idx === 2 ? "text-deep-green" : "text-sage-grey"}`}>
+                <span className={`text-[11px] font-bold tracking-widest uppercase ${idx === 2 ? "text-deep-green" : "text-cream-logo"}`}>
                   {panel.badge}
                 </span>
               </div>
@@ -210,11 +210,11 @@ export default function HorizontalScrollytelling() {
                 {panel.title}
               </h2>
 
-              <p className={`font-serif-italic text-lg sm:text-xl leading-snug ${idx === 2 ? "text-[#4A524D]" : "text-[#E5EBE7]"}`}>
+              <p className={`font-serif-italic text-lg sm:text-xl leading-snug ${idx === 2 ? "text-[#1C2826]" : "text-[#E5EBE7]"}`}>
                 "{panel.subtitle}"
               </p>
 
-              <p className={`text-sm font-light leading-relaxed ${idx === 2 ? "text-[#626A64]" : "text-[#C3CDC6]"}`}>
+              <p className={`text-sm font-normal leading-relaxed ${idx === 2 ? "text-[#1C2826]" : "text-[#E8F0EC]"}`}>
                 {panel.description}
               </p>
 

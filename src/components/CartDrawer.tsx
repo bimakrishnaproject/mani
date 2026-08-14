@@ -41,7 +41,7 @@ export default function CartDrawer() {
             className="absolute inset-0 bg-ink-black/80 backdrop-blur-md"
           />
 
-          {/* Slide-Over Panel — SPACIOUS 580PX */}
+          {/* Slide-Over Panel - SPACIOUS 580PX */}
           <motion.div
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
@@ -74,7 +74,7 @@ export default function CartDrawer() {
             <div className="px-6 sm:px-8 py-3.5 bg-[#081F14]/90 border-b border-editorial-white/10">
               <div className="flex justify-between items-center text-xs mb-2 font-medium">
                 {remainingForFreeShipping > 0 ? (
-                  <span className="text-[#C3CDC6]">
+                  <span className="text-[#E8F0EC]">
                     Add <strong className="text-cream-logo font-serif-heading font-semibold text-sm">${remainingForFreeShipping.toFixed(2)}</strong> more for Free Shipping
                   </span>
                 ) : (
@@ -82,7 +82,7 @@ export default function CartDrawer() {
                     ✓ Unlocked Free Express Shipping!
                   </span>
                 )}
-                <span className="text-sage-grey text-[11px] font-mono">{Math.round(shippingProgress)}%</span>
+                <span className="text-[#D8E6DE] text-[11px] font-mono">{Math.round(shippingProgress)}%</span>
               </div>
               <div className="w-full bg-editorial-white/10 h-2 rounded-full overflow-hidden">
                 <div
@@ -96,11 +96,11 @@ export default function CartDrawer() {
             <div className="p-6 sm:p-8 flex-1 overflow-y-auto space-y-6">
               {cart.length === 0 ? (
                 <div className="text-center py-16 space-y-4">
-                  <div className="w-16 h-16 rounded-full bg-editorial-white/5 border border-editorial-white/10 flex items-center justify-center mx-auto text-sage-grey text-2xl">
+                  <div className="w-16 h-16 rounded-full bg-editorial-white/5 border border-editorial-white/10 flex items-center justify-center mx-auto text-cream-logo/70 text-2xl">
                     🛍️
                   </div>
                   <h3 className="font-serif-heading text-2xl text-cream-logo">Your Cart is Empty</h3>
-                  <p className="text-xs text-sage-grey max-w-xs mx-auto leading-relaxed">
+                  <p className="text-xs text-[#E8F0EC] max-w-xs mx-auto leading-relaxed">
                     Explore our Bye Bye Narcissist collection to start your journey.
                   </p>
                 </div>
@@ -136,14 +136,14 @@ export default function CartDrawer() {
                             {item.title}
                           </h4>
                           {item.subtitle && (
-                            <p className="text-xs text-sage-grey italic line-clamp-1">
+                            <p className="text-xs text-[#D8E6DE] italic line-clamp-1">
                               {item.subtitle}
                             </p>
                           )}
                         </div>
                         <button
                           onClick={() => removeFromCart(item.id)}
-                          className="text-sage-grey hover:text-red-400 transition-colors p-1"
+                          className="text-cream-logo/70 hover:text-red-400 transition-colors p-1"
                           aria-label="Remove item"
                         >
                           ✕
@@ -179,7 +179,7 @@ export default function CartDrawer() {
             {/* Footer Summary & Checkout */}
             {cart.length > 0 && (
               <div className="p-6 sm:p-8 bg-[#081F14] border-t border-editorial-white/15 space-y-5">
-                <div className="space-y-2 text-xs text-[#C3CDC6]">
+                <div className="space-y-2 text-xs text-[#E8F0EC]">
                   <div className="flex justify-between">
                     <span>Subtotal</span>
                     <span className="text-cream-logo font-serif-heading text-lg">${subtotal.toFixed(2)}</span>
@@ -205,7 +205,7 @@ export default function CartDrawer() {
                   Proceed to Checkout →
                 </Link>
 
-                <p className="text-[11px] text-center text-sage-grey">
+                <p className="text-[11px] text-center text-[#D8E6DE]">
                   🔒 256-Bit SSL Encrypted • 30-Day Money-Back Guarantee
                 </p>
               </div>

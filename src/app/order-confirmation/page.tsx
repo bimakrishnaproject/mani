@@ -30,12 +30,12 @@ export default function OrderConfirmationPage() {
               <h1 className="font-serif-heading text-4xl sm:text-6xl text-cream-logo">
                 Thank You for Your Order
               </h1>
-              <p className="text-sm text-[#C3CDC6] font-light max-w-xl mx-auto">
+              <p className="text-sm text-[#E8F0EC] font-normal max-w-xl mx-auto">
                 Thank you for your order. A confirmation email with order tracking and your instant digital collection downloads has been sent to your email.
               </p>
             </div>
 
-            <div className="p-6 bg-[#05150D] rounded-2xl border border-editorial-white/10 text-left space-y-3 text-xs text-[#C3CDC6]">
+            <div className="p-6 bg-[#05150D] rounded-2xl border border-editorial-white/10 text-left space-y-3 text-xs text-[#E8F0EC]">
               <div className="flex justify-between border-b border-editorial-white/10 pb-2">
                 <span className="font-semibold text-cream-logo">Guarantee:</span>
                 <span>30-Day Refund Guarantee Active</span>

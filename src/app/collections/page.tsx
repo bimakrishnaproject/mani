@@ -79,6 +79,25 @@ export default function CollectionsDirectoryPage() {
     },
   ];
 
+  const futureCollections = [
+    {
+      title: "Overthinking & Anxiety",
+      description: "Tools to calm repetitive loops, de-escalate anxiety, and regain clarity.",
+    },
+    {
+      title: "People Pleasing & Boundaries",
+      description: "Practical guidance on expressing needs and breaking patterns of self-abandonment.",
+    },
+    {
+      title: "Self-Sabotage & Imposter Syndrome",
+      description: "Understand internal resistance, dismantle avoidance, and follow through on your goals.",
+    },
+    {
+      title: "Emotional Intelligence & Communication",
+      description: "Frameworks for grounded responses, tough conversations, and deeper connections.",
+    },
+  ];
+
   const handleAddBundle = () => {
     addToCart({
       id: "bbn-bundle",
@@ -97,76 +116,70 @@ export default function CollectionsDirectoryPage() {
 
       <main className="flex-grow pt-36 md:pt-48 pb-32">
 
-        {/* HERO */}
-        <section className="px-6 sm:px-12 md:px-16 lg:px-24 mb-16">
+        {/* COLLECTIONS INTRODUCTION */}
+        <section className="px-6 sm:px-12 md:px-16 lg:px-24 mb-20">
           <motion.div {...fadeIn} className="max-w-4xl space-y-6">
-            <span className="text-xs font-bold tracking-widest uppercase text-[#0E2E1E]/60 block">
-              MANI COLLECTIONS
+            <span className="text-xs font-bold tracking-widest uppercase text-[#0E2E1E] block">
+              WHAT ARE COLLECTIONS?
             </span>
             <h1 className="font-serif-heading text-4xl xs:text-5xl sm:text-7xl md:text-8xl text-[#0E2E1E] leading-[0.96] tracking-tight">
               Because Life Doesn&apos;t Come With Instructions
             </h1>
-            <Link
-              href="#featured"
-              className="inline-flex px-8 py-4 bg-[#0E2E1E] text-cream-logo font-semibold rounded-xl hover:bg-[#143d28] transition-all text-sm shadow-md"
-            >
-              Explore Collections &rarr;
-            </Link>
-          </motion.div>
-        </section>
-
-        {/* WHAT ARE COLLECTIONS */}
-        <section className="px-6 sm:px-12 md:px-16 lg:px-24 mb-24">
-          <motion.div {...fadeIn} className="max-w-4xl space-y-6">
-            <span className="text-xs font-bold tracking-widest uppercase text-[#0E2E1E]/60 block">
-              WHAT ARE COLLECTIONS?
-            </span>
-            <h2 className="font-serif-heading text-4xl sm:text-6xl text-[#0E2E1E] leading-[1.05]">
-              Because Life Doesn&apos;t Come With Instructions
-            </h2>
-            <p className="text-base sm:text-lg text-[#4A524D] font-light leading-relaxed">
+            <p className="text-xl sm:text-2xl text-[#1C2826] font-normal leading-relaxed">
               Life&apos;s challenges rarely come one at a time. Whether you&apos;re healing from a difficult experience, strengthening relationships, or working on personal growth, finding the right support can feel overwhelming.
             </p>
-            <p className="text-base sm:text-lg text-[#4A524D] font-light leading-relaxed">
-              MANI Collections bring together carefully selected resources designed around a specific challenge, topic, or life experience.
+            <p className="text-base sm:text-lg text-[#1C2826] font-normal leading-relaxed">
+              Mani Collections bring together carefully selected resources designed around a specific challenge, topic, or life experience.
             </p>
-            <p className="text-base text-[#626A64] font-light leading-relaxed italic">
+            <p className="text-base sm:text-lg text-[#1C2826] font-medium leading-relaxed italic">
               Because support is most effective when everything works together.
             </p>
+            <div className="pt-2">
+              <Link
+                href="#featured"
+                className="inline-flex px-8 py-4 bg-[#0E2E1E] text-cream-logo font-semibold rounded-xl hover:bg-[#143d28] transition-all text-sm shadow-md"
+              >
+                Explore Collections &rarr;
+              </Link>
+            </div>
           </motion.div>
         </section>
 
         {/* FEATURED COLLECTION */}
         <section id="featured" className="px-6 sm:px-12 md:px-16 lg:px-24 mb-16">
           <motion.div {...fadeIn} className="mb-12">
-            <span className="text-xs font-bold tracking-widest uppercase text-[#8C7659] block mb-3">
+            <span className="text-xs font-bold tracking-widest uppercase text-[#0E2E1E] block mb-3">
               FEATURED COLLECTION
             </span>
             <h2 className="font-serif-heading text-4xl sm:text-6xl text-[#0E2E1E]">
               Start Here
             </h2>
-            <p className="text-lg text-[#4A524D] font-light leading-relaxed mt-4 max-w-3xl">
+            <p className="text-lg text-[#1C2826] font-normal leading-relaxed mt-4 max-w-3xl">
               If you are questioning a relationship, thinking about leaving, or trying to move forward after you have left, start here.
             </p>
           </motion.div>
 
-          {/* Collection Hero Card */}
-          <motion.div {...fadeIn} className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center bg-[#0E2E1E] rounded-3xl p-8 sm:p-12 shadow-xl mb-16">
-            <div className="lg:col-span-5 flex justify-center">
-              <img
-                src="/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/Collection/Collection.png"
-                alt="Bye Bye Narcissist Collection"
-                className="max-h-[400px] w-auto object-contain drop-shadow-2xl"
-              />
+          {/* Collection Hero Card with Grounded Stage */}
+          <motion.div {...fadeIn} className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center bg-[#0E2E1E] rounded-3xl p-8 sm:p-12 shadow-2xl mb-16 border border-emerald-500/20">
+            <div className="lg:col-span-5 flex justify-center relative">
+              <div className="relative w-full max-w-[420px] aspect-[4/3] bg-gradient-to-b from-[#143D28] to-[#081F14] rounded-2xl p-6 flex items-center justify-center border border-emerald-500/20 shadow-inner group">
+                {/* Surface Ground Shadows */}
+                <div className="absolute bottom-4 w-4/5 h-6 bg-black/40 blur-lg rounded-full pointer-events-none" />
+                <img
+                  src="/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/Collection/Collection.png"
+                  alt="Bye Bye Narcissist Collection"
+                  className="relative z-10 max-h-[300px] w-auto object-contain drop-shadow-[0_20px_25px_rgba(0,0,0,0.35)] group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
             </div>
             <div className="lg:col-span-7 text-editorial-white space-y-6">
               <h3 className="font-serif-heading text-4xl sm:text-5xl text-cream-logo">
                 Bye Bye Narcissist
               </h3>
-              <p className="text-base text-editorial-white/80 font-light leading-relaxed">
+              <p className="text-base text-[#E8F0EC] font-normal leading-relaxed">
                 When something feels wrong, it is easy to question yourself. You wonder if you are overreacting, explain away behavior that hurts, and slowly lose trust in your own instincts.
               </p>
-              <p className="text-base text-editorial-white/80 font-light leading-relaxed">
+              <p className="text-base text-[#E8F0EC] font-normal leading-relaxed">
                 The Bye Bye Narcissist Collection was created to help you understand what is happening, recognize unhealthy patterns, and find the confidence to move forward.
               </p>
               <div className="flex items-center gap-6 pt-2">
@@ -192,25 +205,45 @@ export default function CollectionsDirectoryPage() {
                 transition={{ duration: 0.7, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
                 className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-soft-white border border-mist-grey rounded-2xl p-6 sm:p-8 shadow-sm"
               >
+                {/* Product Image Stage with Grounded Depth */}
                 <div className={`lg:col-span-5 ${idx % 2 === 1 ? "lg:order-2" : ""}`}>
                   {part.posterGrid ? (
-                    <div className="grid grid-cols-5 gap-2 p-4">
-                      {posterImages.map((src, pIdx) => (
-                        <img
-                          key={pIdx}
-                          src={encodeURI(src)}
-                          alt={`Poster ${pIdx + 1}`}
-                          className="w-full h-auto object-contain rounded-md shadow-md"
-                        />
-                      ))}
+                    <div className="relative w-full bg-gradient-to-b from-[#F5F2EC] to-[#E5E0D8] rounded-2xl p-4 sm:p-5 border border-[#D5CEC2] shadow-[inset_0_1px_3px_rgba(255,255,255,0.8),0_10px_25px_-8px_rgba(14,46,30,0.15)] overflow-hidden">
+                      <div className="flex items-center justify-between mb-3 px-1">
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-[#0E2E1E] bg-soft-signal-green px-2.5 py-0.5 rounded-full">
+                          Complete 10-Poster Set (8&times;10)
+                        </span>
+                        <span className="text-[10px] text-[#0E2E1E] font-bold">10 Frameable Art Prints</span>
+                      </div>
+                      <div className="grid grid-cols-5 gap-2 relative z-10">
+                        {posterImages.map((src, pIdx) => (
+                          <div key={pIdx} className="group relative rounded-md overflow-hidden bg-white p-1 shadow-[0_4px_10px_rgba(0,0,0,0.12)] hover:shadow-[0_8px_16px_rgba(0,0,0,0.2)] hover:-translate-y-0.5 transition-all">
+                            <img
+                              src={encodeURI(src)}
+                              alt={`Poster ${pIdx + 1} of 10`}
+                              className="w-full h-auto object-contain rounded-xs"
+                            />
+                          </div>
+                        ))}
+                      </div>
+                      {/* Ground shadow beneath gallery frame */}
+                      <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4/5 h-4 bg-black/15 blur-md rounded-full pointer-events-none" />
                     </div>
                   ) : (
-                    <div className="flex items-center justify-center p-2 sm:p-4">
-                      <img
-                        src={encodeURI(part.image!)}
-                        alt={part.title}
-                        className="max-h-[280px] w-auto object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-500"
-                      />
+                    <div className="relative w-full aspect-[4/3] bg-gradient-to-b from-[#F7F5F0] via-[#EFEBE4] to-[#E3DDD4] rounded-2xl p-6 flex items-center justify-center border border-[#D5CEC2] shadow-[inset_0_1px_3px_rgba(255,255,255,0.9),0_10px_25px_-8px_rgba(14,46,30,0.12)] overflow-hidden group">
+                      {/* Ambient Ground Surface Plane */}
+                      <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/[0.04] to-transparent pointer-events-none" />
+
+                      {/* Product & Direct Base Contact Shadow */}
+                      <div className="relative z-10 flex flex-col items-center justify-center max-h-full">
+                        <img
+                          src={encodeURI(part.image!)}
+                          alt={part.title}
+                          className="relative z-10 max-h-[220px] sm:max-h-[240px] w-auto object-contain drop-shadow-[0_10px_16px_rgba(0,0,0,0.18)] group-hover:scale-105 transition-transform duration-500"
+                        />
+                        <div className="w-[85%] h-3.5 bg-black/30 blur-md rounded-[100%] -mt-2 pointer-events-none" />
+                        <div className="w-[55%] h-2 bg-black/40 blur-xs rounded-[100%] -mt-2 pointer-events-none" />
+                      </div>
                     </div>
                   )}
                 </div>
@@ -222,7 +255,7 @@ export default function CollectionsDirectoryPage() {
                   <h3 className="font-serif-heading text-2xl sm:text-3xl text-[#0E2E1E] leading-snug">
                     {part.title}
                   </h3>
-                  <p className="text-base text-[#4A524D] font-light leading-relaxed">
+                  <p className="text-base text-[#1C2826] font-normal leading-relaxed">
                     {part.description}
                   </p>
                   <div className="flex items-center gap-4 pt-2">
@@ -238,11 +271,19 @@ export default function CollectionsDirectoryPage() {
                           price: part.numericPrice,
                           image: part.posterGrid ? encodeURI(posterImages[0]) : encodeURI(part.image!),
                         });
+                        setCartAdded(true);
+                        setTimeout(() => setCartAdded(false), 2000);
                       }}
-                      className="px-6 py-3 bg-[#0E2E1E] text-cream-logo font-semibold rounded-xl hover:bg-[#143d28] transition-all text-xs shadow-md"
+                      className="px-6 py-2.5 bg-[#0E2E1E] text-cream-logo font-semibold rounded-lg hover:bg-[#143d28] transition-all text-xs"
                     >
-                      Add to Cart &rarr;
+                      Add to Cart
                     </button>
+                    <Link
+                      href={`/products/${part.id}`}
+                      className="text-xs font-semibold text-[#0E2E1E] hover:underline"
+                    >
+                      Learn More &rarr;
+                    </Link>
                   </div>
                 </div>
               </motion.div>
@@ -250,64 +291,60 @@ export default function CollectionsDirectoryPage() {
           </div>
         </section>
 
-        {/* FUTURE COLLECTIONS */}
+        {/* COMING SOON COLLECTIONS */}
         <section className="px-6 sm:px-12 md:px-16 lg:px-24 mb-24">
-          <motion.div {...fadeIn} className="mb-12">
-            <span className="text-xs font-bold tracking-widest uppercase text-[#0E2E1E]/60 block mb-3">
-              COMING SOON
+          <motion.div {...fadeIn} className="max-w-4xl mb-12">
+            <span className="text-xs font-bold tracking-widest uppercase text-[#0E2E1E] block mb-3">
+              WHAT&apos;S NEXT
             </span>
             <h2 className="font-serif-heading text-4xl sm:text-6xl text-[#0E2E1E]">
-              More Collections Are Coming
+              Future Collections
             </h2>
+            <p className="text-base sm:text-lg text-[#1C2826] font-normal leading-relaxed mt-4">
+              We are actively developing additional collections to support you through life&apos;s challenges.
+            </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              { title: "Emotional Intelligence", status: "In Development" },
-              { title: "Love Done Right", status: "In Development" },
-              { title: "Boundaries That Stick", status: "Coming Soon" },
-              { title: "Purpose Starts Here", status: "Coming Soon" },
-              { title: "Beyond the Anxiety", status: "Coming Soon" },
-              { title: "Running on Empty", status: "Coming Soon" },
-            ].map((collection, idx) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {futureCollections.map((fc, idx) => (
               <motion.div
                 key={idx}
                 initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: idx * 0.06, ease: [0.16, 1, 0.3, 1] }}
-                className="p-6 bg-soft-white border border-mist-grey rounded-2xl space-y-3 hover:border-[#0E2E1E]/30 transition-all"
+                transition={{ duration: 0.5, delay: idx * 0.04, ease: [0.16, 1, 0.3, 1] }}
+                className="p-6 bg-soft-white border border-mist-grey rounded-2xl space-y-3 flex flex-col justify-between"
               >
-                <h3 className="font-serif-heading text-xl sm:text-2xl text-[#0E2E1E]">{collection.title}</h3>
-                <span className="text-xs font-bold text-[#626A64] uppercase tracking-wider">{collection.status}</span>
+                <div className="space-y-2">
+                  <span className="text-[9px] font-bold tracking-widest uppercase text-emerald-800 bg-emerald-100 px-2.5 py-0.5 rounded-full inline-block">
+                    COMING SOON
+                  </span>
+                  <h3 className="font-serif-heading text-xl text-[#0E2E1E] leading-snug">
+                    {fc.title}
+                  </h3>
+                  <p className="text-xs text-[#1C2826] font-normal leading-relaxed">
+                    {fc.description}
+                  </p>
+                </div>
               </motion.div>
             ))}
           </div>
-
-          <motion.div {...fadeIn} className="mt-8">
-            <Link
-              href="/join-beta"
-              className="inline-flex px-8 py-4 bg-[#0E2E1E] text-cream-logo font-semibold rounded-xl hover:bg-[#143d28] transition-all text-sm shadow-md"
-            >
-              Get Early Access &rarr;
-            </Link>
-          </motion.div>
         </section>
 
-        {/* COMMUNITY CTA */}
+        {/* BOTTOM COMMUNITY CTA */}
         <section className="px-6 sm:px-12 md:px-16 lg:px-24">
           <motion.div {...fadeIn}>
             <div className="bg-[#0E2E1E] text-editorial-white rounded-2xl p-10 sm:p-14 text-center max-w-4xl mx-auto space-y-6 shadow-xl">
               <h2 className="font-serif-heading text-3xl sm:text-5xl text-cream-logo">
                 You Should Not Have to Figure It Out Alone
               </h2>
-              <p className="text-base sm:text-lg text-editorial-white/80 font-light leading-relaxed max-w-2xl mx-auto">
+              <p className="text-base sm:text-lg text-[#E8F0EC] font-normal leading-relaxed max-w-2xl mx-auto">
                 Join our community and be the first to hear about new collections, videos, and resources.
               </p>
               <div className="pt-2">
                 <Link
                   href="/join-community"
-                  className="px-10 py-5 bg-cream-logo text-[#0E2E1E] font-semibold rounded-xl hover:bg-white transition-all shadow-xl text-base"
+                  className="px-10 py-5 bg-cream-logo text-[#0E2E1E] font-semibold rounded-xl hover:bg-white transition-all shadow-xl text-base inline-block"
                 >
                   Join Our Community &rarr;
                 </Link>

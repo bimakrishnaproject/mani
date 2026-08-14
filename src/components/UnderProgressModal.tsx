@@ -50,7 +50,7 @@ export default function UnderProgressModal({
               </h3>
             </div>
 
-            <p className="text-sm text-[#C3CDC6] font-light leading-relaxed">
+            <p className="text-sm text-[#E8F0EC] font-normal leading-relaxed">
               {description}
             </p>
 

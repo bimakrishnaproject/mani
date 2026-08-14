@@ -72,13 +72,10 @@ export default function JoinBetaPage() {
               className="lg:col-span-7 bg-[#081F14] text-editorial-white p-8 sm:p-12 rounded-3xl border border-emerald-500/30 shadow-2xl space-y-8"
             >
               <div className="space-y-3">
-                <span className="text-xs font-bold tracking-widest uppercase text-cream-logo bg-editorial-white/10 px-4 py-1.5 rounded-full inline-block">
-                  MANI APP BETA PROGRAM
-                </span>
                 <h1 className="font-serif-heading text-4xl sm:text-6xl text-cream-logo">
-                  Help Shape What’s Next
+                  Help Shape What&apos;s Next
                 </h1>
-                <p className="text-sm text-[#C3CDC6] font-light leading-relaxed">
+                <p className="text-sm text-[#E8F0EC] font-normal leading-relaxed">
                   Join our private beta program to test guided chat experience, daily reflection prompts, and privacy-first features before public release.
                 </p>
               </div>
@@ -87,7 +84,7 @@ export default function JoinBetaPage() {
                 <div className="p-8 bg-[#05150D] rounded-2xl border border-emerald-500/40 text-cream-logo space-y-4 text-center">
                   <span className="text-4xl">✨</span>
                   <h3 className="font-serif-heading text-3xl">Beta Application Received</h3>
-                  <p className="text-sm text-[#C3CDC6] max-w-md mx-auto">
+                  <p className="text-sm text-[#E8F0EC] max-w-md mx-auto">
                     We have reserved your spot for <strong className="text-cream-logo">{formData.email}</strong>. As soon as a testing slot opens, you will receive an invitation.
                   </p>
                 </div>
@@ -103,7 +100,7 @@ export default function JoinBetaPage() {
                       placeholder="Jane Doe"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-4 py-3.5 bg-editorial-white/10 border border-editorial-white/20 rounded-xl text-sm text-cream-logo placeholder-sage-grey focus:outline-none focus:border-cream-logo"
+                      className="w-full px-4 py-3.5 bg-editorial-white/10 border border-editorial-white/20 rounded-xl text-sm text-cream-logo placeholder-cream-logo/75 focus:outline-none focus:border-cream-logo"
                     />
                   </div>
 
@@ -117,7 +114,7 @@ export default function JoinBetaPage() {
                       placeholder="your.email@domain.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-4 py-3.5 bg-editorial-white/10 border border-editorial-white/20 rounded-xl text-sm text-cream-logo placeholder-sage-grey focus:outline-none focus:border-cream-logo"
+                      className="w-full px-4 py-3.5 bg-editorial-white/10 border border-editorial-white/20 rounded-xl text-sm text-cream-logo placeholder-cream-logo/75 focus:outline-none focus:border-cream-logo"
                     />
                   </div>
 
@@ -163,8 +160,8 @@ export default function JoinBetaPage() {
                       onChange={(e) => setFormData({ ...formData, consent: e.target.checked })}
                       className="mt-1 accent-cream-logo"
                     />
-                    <label htmlFor="betaConsent" className="text-xs text-[#C3CDC6] font-light leading-snug">
-                      I agree to test unreleased beta features and keep early interface flows confidential under MANI Beta Terms.
+                    <label htmlFor="betaConsent" className="text-xs text-[#E8F0EC] font-normal leading-snug">
+                      I agree to test unreleased beta features and keep early interface flows confidential under MANI&trade; Beta Terms.
                     </label>
                   </div>
 
@@ -178,8 +175,8 @@ export default function JoinBetaPage() {
                 </form>
               )}
 
-              <div className="pt-4 border-t border-editorial-white/10 flex justify-between items-center text-xs text-[#C3CDC6]">
-                <Link href="/beta-terms" className="underline hover:text-cream-logo">
+              <div className="pt-4 border-t border-editorial-white/10 flex justify-between items-center text-xs text-[#E8F0EC]">
+                <Link href="/beta-terms" className="underline hover:text-white">
                   Read Beta Program Terms
                 </Link>
                 <span>Your data is kept private and secure.</span>
@@ -200,7 +197,7 @@ export default function JoinBetaPage() {
                   className="w-full h-auto object-contain drop-shadow-2xl hover:scale-[1.02] transition-transform duration-500"
                 />
               </div>
-              <p className="text-xs text-sage-grey italic max-w-xs">
+              <p className="text-xs text-[#22332A] font-medium italic max-w-xs">
                 "For the moments you need it most. Accessible guided support right in your hands."
               </p>
             </motion.div>

@@ -43,20 +43,20 @@ export default function WhyManiPage() {
         {/* 1. WHY MANI EXISTS */}
         <section className="px-6 sm:px-12 md:px-16 lg:px-24 mb-24">
           <motion.div {...fadeIn} className="max-w-4xl space-y-6">
-            <span className="text-xs font-bold tracking-widest uppercase text-[#0E2E1E]/60 block">
-              WHY MANI EXISTS
+            <span className="text-xs font-bold tracking-widest uppercase text-[#0E2E1E] block">
+              THE FOUNDATION
             </span>
             <h1 className="font-serif-heading text-4xl xs:text-5xl sm:text-7xl md:text-8xl text-[#0E2E1E] leading-[0.96] tracking-tight">
-              Why MANI&trade; Exists
+              Why Mani Exists
             </h1>
-            <p className="text-xl sm:text-2xl text-[#4A524D] font-light leading-relaxed">
+            <p className="text-xl sm:text-2xl text-[#1C2826] font-normal leading-relaxed">
               The more we learned about emotional well-being, the more we saw the same challenge.
             </p>
-            <p className="text-base sm:text-lg text-[#4A524D] font-light leading-relaxed">
+            <p className="text-base sm:text-lg text-[#1C2826] font-normal leading-relaxed">
               Support was often difficult to access, difficult to understand, and difficult to apply.
             </p>
-            <p className="text-base sm:text-lg text-[#4A524D] font-light leading-relaxed">
-              MANI&trade; was created to change that.
+            <p className="text-base sm:text-lg text-[#1C2826] font-normal leading-relaxed">
+              Mani was created to change that.
             </p>
           </motion.div>
         </section>
@@ -67,16 +67,16 @@ export default function WhyManiPage() {
             <h2 className="font-serif-heading text-4xl sm:text-6xl text-[#0E2E1E] leading-[1.05]">
               The Problem With Emotional Support Today
             </h2>
-            <p className="text-base sm:text-lg text-[#4A524D] font-light leading-relaxed">
+            <p className="text-base sm:text-lg text-[#1C2826] font-normal leading-relaxed">
               People have access to more information than ever before.
             </p>
-            <p className="text-base sm:text-lg text-[#4A524D] font-light leading-relaxed">
+            <p className="text-base sm:text-lg text-[#1C2826] font-normal leading-relaxed">
               Books. Podcasts. Videos. Experts. Endless advice.
             </p>
-            <p className="text-base sm:text-lg text-[#4A524D] font-light leading-relaxed">
+            <p className="text-base sm:text-lg text-[#1C2826] font-normal leading-relaxed">
               Yet many people still feel confused, overwhelmed, and unsure where to begin.
             </p>
-            <p className="text-base sm:text-lg text-[#4A524D] font-light leading-relaxed">
+            <p className="text-base sm:text-lg text-[#1C2826] font-normal leading-relaxed">
               Knowing what applies to your situation can be harder than finding information in the first place.
             </p>
           </motion.div>
@@ -88,23 +88,23 @@ export default function WhyManiPage() {
             <h2 className="font-serif-heading text-3xl sm:text-5xl text-cream-logo leading-[1.1]">
               People Are Not Problems To Be Fixed
             </h2>
-            <p className="text-base sm:text-lg text-editorial-white/80 font-light leading-relaxed">
+            <p className="text-base sm:text-lg text-[#E8F0EC] font-normal leading-relaxed">
               Too often emotional support focuses on quick answers, advice, and fixing what appears to be wrong.
             </p>
-            <p className="text-base sm:text-lg text-editorial-white/80 font-light leading-relaxed">
+            <p className="text-base sm:text-lg text-[#E8F0EC] font-normal leading-relaxed">
               We believe there is a better place to start.
             </p>
-            <p className="text-base sm:text-lg text-editorial-white/80 font-light leading-relaxed">
+            <p className="text-base sm:text-lg text-[#E8F0EC] font-normal leading-relaxed">
               Before people can move forward they need to understand what they are experiencing.
             </p>
-            <p className="text-base sm:text-lg text-editorial-white/80 font-light leading-relaxed">
+            <p className="text-base sm:text-lg text-[#E8F0EC] font-normal leading-relaxed">
               Not fix it. Not push past it. Understand it.
             </p>
-            <p className="text-base sm:text-lg text-editorial-white/80 font-light leading-relaxed">
+            <p className="text-base sm:text-lg text-[#E8F0EC] font-normal leading-relaxed">
               When people understand what they are going through they are better equipped to make decisions, navigate challenges, and move forward on their own terms.
             </p>
-            <p className="text-base sm:text-lg text-editorial-white/80 font-light leading-relaxed">
-              That belief shapes everything we create at MANI&trade;.
+            <p className="text-base sm:text-lg text-[#E8F0EC] font-normal leading-relaxed">
+              That belief shapes everything we create at Mani.
             </p>
           </motion.div>
         </section>
@@ -121,7 +121,7 @@ export default function WhyManiPage() {
             {[
               {
                 title: "Information Isn\u2019t The Same As Understanding.",
-                body: "Knowing something exists is not the same as knowing what it means for your life. MANI\u2122 helps you make sense of what you are going through.",
+                body: "Knowing something exists is not the same as knowing what it means for your life. Mani helps you make sense of what you are going through.",
               },
               {
                 title: "Learning Matters When It Can Be Applied.",
@@ -143,7 +143,7 @@ export default function WhyManiPage() {
                 <h3 className="font-serif-heading text-2xl sm:text-3xl text-[#0E2E1E] leading-snug">
                   {item.title}
                 </h3>
-                <p className="text-base text-[#4A524D] font-light leading-relaxed">
+                <p className="text-base text-[#1C2826] font-normal leading-relaxed">
                   {item.body}
                 </p>
               </motion.div>
@@ -157,7 +157,7 @@ export default function WhyManiPage() {
             <h2 className="font-serif-heading text-3xl sm:text-5xl text-cream-logo leading-[1.15]">
               Built Around One Belief
             </h2>
-            <p className="text-base sm:text-lg text-editorial-white/80 font-light leading-relaxed max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg text-[#E8F0EC] font-normal leading-relaxed max-w-2xl mx-auto">
               Understanding comes before change. Support comes before solutions. People are not problems to be fixed.
             </p>
           </motion.div>
@@ -167,9 +167,9 @@ export default function WhyManiPage() {
         <section className="px-6 sm:px-12 md:px-16 lg:px-24 mb-24">
           <motion.div {...fadeIn} className="max-w-4xl mx-auto mb-6">
             <h2 className="font-serif-heading text-4xl sm:text-6xl text-[#0E2E1E]">
-              What You&apos;ll Find At MANI&trade;
+              What You&apos;ll Find At Mani
             </h2>
-            <p className="text-base sm:text-lg text-[#4A524D] font-light leading-relaxed mt-4 max-w-3xl">
+            <p className="text-base sm:text-lg text-[#1C2826] font-normal leading-relaxed mt-4 max-w-3xl">
               Support comes in different forms. Explore the resources designed to help you better understand yourself and navigate life&apos;s challenges.
             </p>
           </motion.div>
@@ -207,11 +207,11 @@ export default function WhyManiPage() {
                 className="p-8 bg-soft-white border border-mist-grey rounded-2xl space-y-4 hover:border-[#0E2E1E]/30 transition-all h-full flex flex-col justify-between"
               >
                 <div>
-                  <span className="text-[10px] font-bold tracking-widest uppercase text-[#626A64] block mb-2">
+                  <span className="text-[10px] font-bold tracking-widest uppercase text-[#0E2E1E] block mb-2">
                     {pathway.label}
                   </span>
                   <h3 className="font-serif-heading text-2xl text-[#0E2E1E] mb-3">{pathway.title}</h3>
-                  <p className="text-sm text-[#4A524D] font-light leading-relaxed">{pathway.desc}</p>
+                  <p className="text-sm text-[#1C2826] font-normal leading-relaxed">{pathway.desc}</p>
                 </div>
                 <Link
                   href={pathway.link}
@@ -230,10 +230,10 @@ export default function WhyManiPage() {
             <h2 className="font-serif-heading text-4xl sm:text-6xl text-[#0E2E1E]">
               This Is Only The Beginning
             </h2>
-            <p className="text-base sm:text-lg text-[#4A524D] font-light leading-relaxed">
+            <p className="text-base sm:text-lg text-[#1C2826] font-normal leading-relaxed">
               The need for emotional support doesn&apos;t stop.
             </p>
-            <p className="text-base sm:text-lg text-[#4A524D] font-light leading-relaxed">
+            <p className="text-base sm:text-lg text-[#1C2826] font-normal leading-relaxed">
               Neither does our commitment to creating resources that are practical, accessible, and built for real life.
             </p>
           </motion.div>
@@ -246,12 +246,12 @@ export default function WhyManiPage() {
               <h2 className="font-serif-heading text-3xl sm:text-5xl text-cream-logo">
                 Support Doesn&apos;t End Here
               </h2>
-              <p className="text-base sm:text-lg text-editorial-white/80 font-light leading-relaxed max-w-2xl mx-auto">
+              <p className="text-base sm:text-lg text-[#E8F0EC] font-normal leading-relaxed max-w-2xl mx-auto">
                 Join our community and be the first to hear about new collections, videos, app updates, and resources.
               </p>
               {joined ? (
                 <div className="p-5 bg-[#05150D] text-cream-logo rounded-2xl font-semibold text-base shadow-lg border border-editorial-white/10">
-                  Thank you! You have been added to the MANI&trade; community.
+                  Thank you! You have been added to the Mani community.
                 </div>
               ) : (
                 <form onSubmit={handleJoin} className="flex flex-col sm:flex-row gap-3 pt-2 max-w-lg mx-auto">
@@ -259,15 +259,15 @@ export default function WhyManiPage() {
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Enter your email address"
+                    placeholder="Enter Email"
                     required
-                    className="flex-grow px-5 py-4 border border-editorial-white/20 rounded-xl text-base bg-editorial-white/10 text-cream-logo placeholder-cream-logo/40 focus:outline-none focus:border-cream-logo"
+                    className="flex-grow px-5 py-4 border border-editorial-white/20 rounded-xl text-base bg-editorial-white/10 text-cream-logo placeholder-cream-logo/75 focus:outline-none focus:border-cream-logo"
                   />
                   <button
                     type="submit"
-                    className="px-8 py-4 bg-cream-logo text-[#0E2E1E] font-semibold rounded-xl hover:bg-white transition-all shadow-md text-base whitespace-nowrap"
+                    className="px-8 py-4 bg-cream-logo text-[#0E2E1E] font-semibold rounded-xl hover:bg-white transition-all shadow-md text-base whitespace-nowrap cursor-pointer"
                   >
-                    Join The MANI&trade; Community
+                    Join The Mani Community
                   </button>
                 </form>
               )}

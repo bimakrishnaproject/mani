@@ -50,7 +50,7 @@ export default function ThreeWaysSection() {
       num: "03",
       title: "App",
       subtitle: "Private, real-time reflection technology currently in closed beta.",
-      description: "Beyond listening, MANI guides you toward understanding and practical next steps right from your phone when you need clarity most.",
+      description: "Beyond listening, MANI™ guides you toward understanding and practical next steps right from your phone when you need clarity most.",
       ctaText: "Join Private Beta Access",
       ctaLink: "/#app",
       image: "/assets/Chat Conversation.png",
@@ -68,7 +68,7 @@ export default function ThreeWaysSection() {
             {/* Section Header */}
             <div className="max-w-4xl mb-10">
               <div className="text-xs font-bold tracking-widest uppercase text-deep-green mb-2">
-                THREE WAYS MANI HELPS YOU • SCROLL DRIVEN SEQUENCE
+                THREE WAYS MANI&trade; HELPS YOU • SCROLL DRIVEN SEQUENCE
               </div>
               <h2 className="font-serif-heading text-4xl sm:text-6xl md:text-7xl text-deep-green leading-tight">
                 One System, Multiple Ways of Support
@@ -94,7 +94,7 @@ export default function ThreeWaysSection() {
                       <span className={`text-xs font-bold tracking-widest ${activeTab === idx ? "text-cream-logo" : "text-deep-green"}`}>
                         {t.num} / {t.badge}
                       </span>
-                      <span className={`text-xs font-semibold ${activeTab === idx ? "text-cream-logo" : "text-sage-grey"}`}>
+                      <span className={`text-xs font-semibold ${activeTab === idx ? "text-cream-logo" : "text-[#0E2E1E]"}`}>
                         {activeTab === idx ? "● Active (Scrolled)" : "Scroll to switch"}
                       </span>
                     </div>
@@ -108,7 +108,7 @@ export default function ThreeWaysSection() {
                         transition={{ duration: 0.3 }}
                         className="mt-3 space-y-3 pt-3 border-t border-editorial-white/20"
                       >
-                        <p className="text-sm font-light text-[#C3CDC6] leading-relaxed">
+                        <p className="text-sm font-normal text-[#E8F0EC] leading-relaxed">
                           {t.subtitle}
                         </p>
                         <Link
@@ -185,7 +185,7 @@ export default function ThreeWaysSection() {
         {/* Section Header */}
         <div className="space-y-3">
           <div className="text-[11px] font-bold tracking-widest uppercase text-deep-green bg-soft-signal-green px-3.5 py-1.5 rounded-full inline-block">
-            THREE WAYS MANI HELPS YOU
+            THREE WAYS MANI&trade; HELPS YOU
           </div>
           <h2 className="font-serif-heading text-3xl sm:text-5xl text-deep-green leading-tight">
             One System, Multiple Ways of Support
@@ -209,11 +209,11 @@ export default function ThreeWaysSection() {
                 {t.title}
               </h3>
 
-              <p className="text-sm font-serif-italic text-[#4A524D]">
+              <p className="text-sm font-serif-italic text-[#1C2826]">
                 "{t.subtitle}"
               </p>
 
-              <p className="text-xs text-[#626A64] font-light leading-relaxed">
+              <p className="text-xs text-[#1C2826] font-normal leading-relaxed">
                 {t.description}
               </p>
 

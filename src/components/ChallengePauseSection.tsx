@@ -5,39 +5,25 @@ import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 export default function ChallengePauseSection() {
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"],
-  });
-
-  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.95, 1, 0.95]);
-  const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.4, 1, 1, 0.4]);
-
   return (
     <section
-      ref={containerRef}
-      className="py-24 sm:py-32 md:py-44 bg-editorial-white w-full relative overflow-hidden"
+      className="py-20 sm:py-28 md:py-36 bg-editorial-white w-full relative overflow-hidden"
       id="why-mani"
     >
       <motion.div
-        style={{ scale, opacity }}
-        className="w-full max-w-[1240px] mx-auto px-6 sm:px-12 md:px-16 bg-[#0E2E1E] text-editorial-white rounded-3xl py-20 sm:py-28 shadow-xl relative overflow-hidden"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+        className="w-full max-w-[1240px] mx-auto px-6 sm:px-12 md:px-16 bg-[#0E2E1E] text-editorial-white rounded-3xl py-16 sm:py-24 shadow-xl relative overflow-hidden"
       >
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-radial from-cream-logo/10 via-transparent to-transparent pointer-events-none rounded-full blur-3xl" />
-
         <div className="text-center max-w-4xl mx-auto relative z-10 space-y-6 sm:space-y-8">
-          <span className="text-xs font-bold tracking-widest uppercase text-cream-logo/60 block">
-            THE CHALLENGE
-          </span>
-
           <h2 className="font-serif-heading text-3xl xs:text-4xl sm:text-5xl md:text-6xl text-cream-logo leading-[1.15] tracking-tight">
-            No One Should Have to Struggle Alone
+            People Are Not Problems To Be Fixed
           </h2>
 
-          <p className="text-base sm:text-xl text-editorial-white/80 max-w-2xl mx-auto leading-relaxed font-light">
-            Understanding comes before change. Support comes before solutions. People are not problems to be fixed.
+          <p className="text-base sm:text-xl text-[#E8F0EC] max-w-2xl mx-auto leading-relaxed font-normal">
+            Understanding comes before change. Support comes before solutions.
           </p>
 
           <div className="pt-2">

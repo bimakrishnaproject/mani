@@ -36,9 +36,9 @@ export default function BetaTermsPage() {
               PROGRAM SPECIFICATIONS
             </div>
             <h1 className="font-serif-heading text-5xl sm:text-7xl text-[#0E2E1E]">
-              MANI Beta Program Terms
+              MANI&trade; Beta Program Terms
             </h1>
-            <p className="text-sm text-sage-grey uppercase tracking-wider font-semibold">
+            <p className="text-sm text-[#0E2E1E] uppercase tracking-wider font-semibold">
               EARLY ACCESS & TESTER AGREEMENT
             </p>
           </motion.div>
@@ -48,14 +48,14 @@ export default function BetaTermsPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="space-y-8 text-base text-[#4A524D] font-light leading-relaxed border-t border-mist-grey pt-8"
+            className="space-y-8 text-base text-[#1C2826] font-normal leading-relaxed border-t border-mist-grey pt-8"
           >
             <div className="p-8 bg-soft-white border-2 border-mist-grey rounded-3xl space-y-4 shadow-sm">
               <h2 className="font-serif-heading text-3xl text-[#0E2E1E]">
                 Beta App Program Overview
               </h2>
-              <p className="text-sm text-[#626A64]">
-                The MANI mobile app is currently in early-access beta development. By signing up for beta access, you agree to participate in testing guided conversation features and providing confidential feedback.
+              <p className="text-sm text-[#1C2826]">
+                The MANI&trade; mobile app is currently in early-access beta development. By signing up for beta access, you agree to participate in testing guided conversation features and providing confidential feedback.
               </p>
             </div>
 
@@ -69,7 +69,7 @@ export default function BetaTermsPage() {
             <div className="space-y-4">
               <h3 className="font-serif-heading text-2xl text-[#0E2E1E]">2. Feedback & Improvements</h3>
               <p>
-                Your feedback helps shape the final App Store release. All suggestions and usability reports provided during the beta testing program may be used by MANI to improve technology performance.
+                Your feedback helps shape the final App Store release. All suggestions and usability reports provided during the beta testing program may be used by MANI&trade; to improve technology performance.
               </p>
             </div>
 

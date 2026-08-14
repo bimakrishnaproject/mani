@@ -35,8 +35,8 @@ export default function InteractiveStoryNarrative() {
       act: "ACT 03",
       title: "App",
       subtitle: "Private, real-time reflection and support right from your phone.",
-      description: "Beyond passive listening, MANI guides you toward understanding and practical next steps when you need clarity most.",
-      badge: "MANI APP • PRIVATE BETA",
+      description: "Beyond passive listening, MANI™ guides you toward understanding and practical next steps when you need clarity most.",
+      badge: "MANI™ APP • PRIVATE BETA",
       ctaText: "Join Private Beta Access",
       ctaLink: "/#app",
       image: "/assets/Chat Conversation.png?v=3",
@@ -59,12 +59,12 @@ export default function InteractiveStoryNarrative() {
           </FramerMotionAnimate>
           <FramerMotionAnimate direction="up" delay={0.25}>
             <h2 className="font-serif-heading text-5xl sm:text-7xl md:text-8xl text-cream-logo mb-6 leading-tight">
-              How MANI Transforms<br />
+              How MANI&trade; Transforms<br />
               <span className="font-serif-italic">Emotional Growth.</span>
             </h2>
           </FramerMotionAnimate>
           <FramerMotionAnimate direction="up" delay={0.35}>
-            <p className="text-lg sm:text-xl text-[#C3CDC6] leading-relaxed font-light">
+            <p className="text-lg sm:text-xl text-[#E8F0EC] leading-relaxed font-normal">
               Emotional support should not feel fragmented or overwhelming. Select an act below to explore how our connected system guides your journey.
             </p>
           </FramerMotionAnimate>
@@ -102,7 +102,7 @@ export default function InteractiveStoryNarrative() {
               <p className="font-serif-italic text-2xl sm:text-3xl md:text-4xl text-[#E5EBE7] mb-6 leading-snug">
                 "{storyActs[activeAct].subtitle}"
               </p>
-              <p className="text-base sm:text-lg text-[#C3CDC6] leading-relaxed mb-10 font-light max-w-xl">
+              <p className="text-base sm:text-lg text-[#E8F0EC] leading-relaxed mb-10 font-normal max-w-xl">
                 {storyActs[activeAct].description}
               </p>
 

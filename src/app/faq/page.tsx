@@ -10,65 +10,90 @@ export default function FAQPage() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   const faqs = [
+    // 1. About Mani
     {
-      question: "What is MANI?",
-      answer: "MANI is a platform that brings together expert-led collections, daily educational videos, community, and a guided app to help people better understand themselves and navigate life's challenges. Our approach combines physical tools, digital content, and guided technology into one connected ecosystem.",
+      question: "What is Mani?",
+      answer: "Mani brings together carefully selected resources designed around specific challenges and life experiences. We combine physical tools, daily educational videos, a supportive community, and a guided app to help people better understand themselves and navigate life's challenges.",
     },
     {
-      question: "Is MANI therapy?",
-      answer: "No. MANI is not a substitute for professional clinical therapy, medical diagnosis, or emergency mental health crisis intervention. Our resources are designed for educational and self-reflection purposes. MANI may be used alongside therapy or coaching, but it does not replace professional care.",
+      question: "Who is Mani designed for?",
+      answer: "Most Mani resources are designed for people aged 18 and above. Our content is created for anyone seeking to better understand themselves, process emotions, and navigate challenges with practical, accessible tools.",
     },
+
+    // 2. Collections
     {
       question: "What is included in the Bye Bye Narcissist Collection?",
-      answer: "The collection includes five connected tools: (1) The Foundation Book ($24.99), (2) The Action Workbook ($29.99), (3) Coloring Book & Journal for calm ($14.99), (4) 10 Frameable Poster Collection for reinforcement ($29.99), and (5) The 52 Affirmation Card Deck for daily practice.",
+      answer: "The Bye Bye Narcissist Collection includes five complementary resources: The Foundation Book, The Action Workbook, The Calm Coloring Book & Journal, The 10-Piece Reinforcement Poster Collection, and The Daily Practice Affirmation Card Deck.",
     },
     {
-      question: "Can I buy individual items without purchasing the full collection?",
-      answer: "Yes! While the complete collection bundle is available at $119.99, every item can be purchased individually. We designed the collection as a connected system, but each resource works on its own too.",
+      question: "Are collections organized around specific challenges?",
+      answer: "Yes. Mani Collections bring together carefully selected resources designed around a specific challenge, topic, or life experience. Because support is most effective when everything works together.",
     },
     {
       question: "What other collections are coming?",
-      answer: "We are developing additional collections including Emotional Intelligence, Love Done Right, Boundaries That Stick, Purpose Starts Here, Beyond the Anxiety, Running on Empty, Meeting Your Shadow, Healing Your Inner Child, Stop Self Sabotage, Own Your Worth, and When Panic Hits.",
+      answer: "We are actively developing future collections including Emotional Intelligence, Love Done Right, Boundaries That Stick, Purpose Starts Here, Beyond the Anxiety, Meeting Your Shadow, Healing Your Inner Child, and Stop Self-Sabotage.",
+    },
+
+    // 3. Products & Orders
+    {
+      question: "Can I buy individual items without purchasing the full collection?",
+      answer: "Yes. While the complete collection bundle offers the most cohesive experience and best value ($119.99), each book, workbook, journal, poster set, and card deck can also be purchased individually.",
     },
     {
       question: "Do you ship internationally?",
-      answer: "Yes, we ship physical collections worldwide. Domestic US orders typically arrive in 3-5 business days, while international shipping takes 7-12 business days. Digital products are available immediately after purchase.",
+      answer: "Yes, we ship physical collections worldwide. Domestic US orders typically arrive in 3-5 business days, and international shipping typically takes 7-12 business days. Digital components are delivered instantly.",
     },
     {
       question: "What is your return policy?",
-      answer: "We offer a 30-day return policy. If you feel our physical collection does not provide value, return it within 30 days for a full refund. Digital products are non-refundable once accessed.",
+      answer: "We offer a 30-day return policy on all physical products. If you feel our resources do not meet your needs, return them within 30 days of delivery for a full refund.",
     },
+
+    // 4. App & Beta
     {
-      question: "How do I get access to the MANI app beta?",
-      answer: "You can join the beta by submitting your name and email through the beta signup form on our website. Beta invites are sent out in batches to ensure quality and stability.",
+      question: "How do I get access to the Mani app beta?",
+      answer: "You can apply for early access through the Join Beta form on our website. We invite small groups of testers periodically before public launch to explore new features and help shape the future of the app.",
     },
     {
       question: "What can the app do?",
-      answer: "The MANI app is currently in beta and focuses on guided support through a conversational interface. It provides personalized guidance to help users reflect, understand, and take practical next steps. Additional features are in development.",
+      answer: "The Mani App goes beyond listening. It provides guided conversations, breathwork, meditations, visualizations, and stories to help you understand what you are facing and guide you toward practical next steps.",
+    },
+    {
+      question: "Is the app required to use other Mani resources?",
+      answer: "No. The app is not required to use other Mani resources. Books, workbooks, journals, cards, posters, and videos are all standalone tools that can be used independently.",
     },
     {
       question: "Is my data in the app private?",
-      answer: "Absolutely. Your privacy is a priority. Your conversations and reflections in the app are kept private and secure. We do not sell or share your personal data with third parties.",
+      answer: "Yes. Privacy is a core principle. Your conversations and reflections in the app remain strictly confidential and secure. We do not sell or share personal user data.",
     },
+
+    // 5. Watch & Learn
     {
       question: "How many videos are available?",
-      answer: "Our Watch & Learn library currently includes 500+ short videos and is growing daily. New videos are added regularly, covering topics from psychology and emotional intelligence to relationships, stress management, and self-understanding.",
+      answer: "Our Watch & Learn video library includes 500+ short videos and is growing daily. Topics cover psychology, relationships, emotional intelligence, stress, self-sabotage, shadow work, inner child, and more.",
     },
     {
       question: "Are the videos free?",
-      answer: "Yes, the Watch & Learn video library is freely accessible. We believe educational content should be available to everyone who needs it.",
+      answer: "Yes, the Watch & Learn video library is freely accessible on our website.",
     },
     {
-      question: "How do I join the MANI community?",
-      answer: "You can join by entering your email on our website. As a community member, you'll be the first to hear about new collections, videos, app updates, and resources.",
+      question: "How do books, videos, and the app work together?",
+      answer: "Books, videos, and the app serve different purposes. Videos provide quick daily clarity, collections offer comprehensive in-depth guidance for specific challenges, and the app provides on-demand interactive support whenever you need it.",
+    },
+
+    // 6. Community
+    {
+      question: "How do I join the Mani community?",
+      answer: "You can join by entering your email on our website. As a community member, you will be the first to hear about new collections, videos, app updates, and resources.",
+    },
+
+    // 7. Professional Support & Safety
+    {
+      question: "Is Mani therapy?",
+      answer: "No. Mani is not therapy. Our resources are designed for educational and self-reflection purposes. Mani may be used alongside therapy or coaching, but it does not replace professional medical or mental health care. If you are experiencing a crisis, please contact your local emergency services or healthcare provider immediately.",
     },
     {
-      question: "Who is MANI designed for?",
-      answer: "Most MANI resources are designed for people aged 18 and above. Our content is created for anyone seeking to better understand themselves and navigate emotional challenges with practical, accessible tools.",
-    },
-    {
-      question: "Can I use MANI alongside therapy?",
-      answer: "Yes. MANI is designed to complement professional support, not replace it. Many people find our resources helpful alongside therapy or coaching. If you are experiencing a mental health emergency, please contact your local healthcare providers or emergency services immediately.",
+      question: "Can I use Mani alongside therapy?",
+      answer: "Yes. Mani may be used alongside therapy or coaching. Many people find our physical tools and daily reflections helpful to support their personal growth between sessions.",
     },
   ];
 
@@ -89,7 +114,7 @@ export default function FAQPage() {
             <h1 className="font-serif-heading text-4xl sm:text-6xl md:text-7xl text-[#0E2E1E] leading-[0.96] tracking-tight">
               Frequently Asked Questions
             </h1>
-            <p className="text-lg text-[#4A524D] font-light leading-relaxed max-w-2xl">
+            <p className="text-lg text-[#1C2826] font-normal leading-relaxed max-w-2xl">
               Find answers about our collections, shipping, app beta program, video library, and more.
             </p>
           </motion.div>
@@ -117,7 +142,7 @@ export default function FAQPage() {
                     <motion.span
                       animate={{ rotate: isOpen ? 45 : 0 }}
                       transition={{ duration: 0.3, ease: "easeInOut" }}
-                      className="text-xl font-sans text-[#4A524D] font-bold flex-shrink-0 w-7 h-7 rounded-full bg-mist-grey/50 flex items-center justify-center"
+                      className="text-xl font-sans text-[#0E2E1E] font-bold flex-shrink-0 w-7 h-7 rounded-full bg-mist-grey/50 flex items-center justify-center"
                     >
                       +
                     </motion.span>
@@ -132,7 +157,7 @@ export default function FAQPage() {
                         transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                         className="overflow-hidden"
                       >
-                        <div className="px-5 sm:px-6 pb-6 pt-1 text-sm sm:text-base text-[#4A524D] font-light leading-relaxed border-t border-mist-grey/60">
+                        <div className="px-5 sm:px-6 pb-6 pt-1 text-sm sm:text-base text-[#1C2826] font-normal leading-relaxed border-t border-mist-grey/60">
                           <p className="pt-4">{faq.answer}</p>
                         </div>
                       </motion.div>
@@ -156,7 +181,7 @@ export default function FAQPage() {
               <h2 className="font-serif-heading text-3xl sm:text-4xl text-cream-logo">
                 Still Have Questions?
               </h2>
-              <p className="text-base text-editorial-white/80 font-light max-w-xl mx-auto leading-relaxed">
+              <p className="text-base text-[#E8F0EC] font-normal max-w-xl mx-auto leading-relaxed">
                 Our team is here to support you. Reach out anytime and we&apos;ll respond as quickly as possible.
               </p>
               <div className="pt-2 flex flex-wrap justify-center gap-4">

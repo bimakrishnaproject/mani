@@ -38,7 +38,7 @@ export default function PrivacyPolicyPage() {
             <h1 className="font-serif-heading text-5xl sm:text-7xl text-[#0E2E1E]">
               Privacy Policy
             </h1>
-            <p className="text-sm text-sage-grey uppercase tracking-wider font-semibold">
+            <p className="text-sm text-[#0E2E1E] uppercase tracking-wider font-semibold">
               RADICAL DATA PRIVACY & CONFIDENTIALITY STANDARDS
             </p>
           </motion.div>
@@ -48,14 +48,14 @@ export default function PrivacyPolicyPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="space-y-8 text-base text-[#4A524D] font-light leading-relaxed border-t border-mist-grey pt-8"
+            className="space-y-8 text-base text-[#1C2826] font-normal leading-relaxed border-t border-mist-grey pt-8"
           >
             <div className="p-8 bg-[#0E2E1E] text-editorial-white rounded-3xl space-y-4 shadow-xl border border-emerald-500/20">
               <h2 className="font-serif-heading text-3xl text-cream-logo">
                 Privacy Assurance
               </h2>
-              <p className="text-sm text-[#C3CDC6] leading-relaxed">
-                At MANI, we believe your emotional processing, boundary work, and reflection belong exclusively to you. We do not sell your personal data, run invasive third-party ad trackers, or exploit sensitive reflection entries.
+              <p className="text-sm text-[#E8F0EC] font-normal leading-relaxed">
+                At MANI&trade;, we believe your emotional processing, boundary work, and reflection belong exclusively to you. We do not sell your personal data, run invasive third-party ad trackers, or exploit sensitive reflection entries.
               </p>
             </div>
 
@@ -69,16 +69,16 @@ export default function PrivacyPolicyPage() {
             <div className="space-y-4">
               <h3 className="font-serif-heading text-2xl text-[#0E2E1E]">2. Mobile App Reflection Privacy</h3>
               <p>
-                As specified in our architecture blueprint, the MANI mobile app experience is engineered around end-to-end privacy standards. Your chat entries and guided reflections are stored privately.
+                As specified in our architecture blueprint, the MANI&trade; mobile app experience is engineered around end-to-end privacy standards. Your chat entries and guided reflections are stored privately.
               </p>
             </div>
 
             {/* Client Action Note */}
             <div className="p-6 bg-editorial-white border border-mist-grey rounded-2xl space-y-2">
-              <span className="text-xs font-bold text-sage-grey uppercase tracking-wider block">
+              <span className="text-xs font-bold text-[#0E2E1E] uppercase tracking-wider block">
                 CLIENT COPY / ACTION REQUESTED
               </span>
-              <p className="text-xs text-[#626A64] italic">
+              <p className="text-xs text-[#1C2826] italic">
                 This page reflects the core brand privacy commitment outlined in `docs.md`. If your legal counsel requires specific GDPR, CCPA, or regional state privacy clauses to be appended, please supply the text to be added here.
               </p>
             </div>

@@ -22,7 +22,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/join-beta",
     "/products/book",
     "/products/workbook",
-    "/products/colouring-book",
+    "/products/coloring-book",
     "/products/posters",
     "/products/affirmation-cards",
   ];

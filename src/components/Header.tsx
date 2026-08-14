@@ -28,42 +28,66 @@ export default function Header() {
   };
 
   const isActive = (href: string) => {
+    if (!pathname) return false;
     if (href === "/") return pathname === "/";
+    if (href === "/collections") {
+      return pathname.startsWith("/collections") || pathname.startsWith("/products");
+    }
+    if (href === "/watch-learn") {
+      return pathname.startsWith("/watch-learn");
+    }
+    if (href === "/app") {
+      return pathname === "/app";
+    }
+    if (href === "/why-mani") {
+      return pathname.startsWith("/why-mani");
+    }
+    if (href === "/about") {
+      return pathname.startsWith("/about");
+    }
     return pathname.startsWith(href);
   };
 
-  const navLinkClass = (href: string) =>
-    `text-sm font-medium transition-colors cursor-pointer ${
-      isActive(href)
-        ? "text-[#0E2E1E] font-semibold border-b-2 border-[#0E2E1E] pb-0.5"
-        : "text-ink-black hover:text-[#0E2E1E]"
+  const navLinkClass = (href: string) => {
+    const active = isActive(href);
+    return `text-xs xl:text-sm font-semibold transition-all duration-200 cursor-pointer relative py-1.5 px-3 rounded-full whitespace-nowrap ${
+      active
+        ? "text-[#0E2E1E] bg-soft-signal-green font-bold shadow-xs after:content-[''] after:absolute after:-bottom-1 after:left-3 after:right-3 after:h-[2px] after:bg-[#0E2E1E] after:rounded-full"
+        : "text-[#1C2826] hover:text-[#0E2E1E] hover:bg-mist-grey/40"
     }`;
+  };
 
-  const mobileNavLinkClass = (href: string) =>
-    `text-[#0E2E1E] ${isActive(href) ? "font-bold" : ""}`;
+  const mobileNavLinkClass = (href: string) => {
+    const active = isActive(href);
+    return `flex items-center justify-between py-3 px-4 rounded-xl text-xl font-serif-heading transition-all ${
+      active
+        ? "bg-[#0E2E1E] text-cream-logo font-bold shadow-md pl-5 border-l-4 border-emerald-400"
+        : "text-[#0E2E1E] hover:bg-mist-grey/30"
+    }`;
+  };
 
   return (
     <>
       <header
         className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled
           ? "bg-white/95 backdrop-blur-md border-b border-mist-grey/80 py-2.5 shadow-sm"
-          : "bg-transparent py-4 sm:py-5"
+          : "bg-transparent py-3 sm:py-5"
           }`}
       >
-        <div className="max-w-[1360px] mx-auto px-6 md:px-12 flex items-center justify-between">
+        <div className="max-w-[1360px] mx-auto px-4 sm:px-6 md:px-12 flex items-center justify-between gap-4">
           <a
             href="/"
             onClick={(e) => handleNavClick(e, "/", "INITIALIZING MANI HOME")}
-            className="flex items-center cursor-pointer"
+            className="flex items-center cursor-pointer shrink-0"
           >
             <img
               src="/assets/Mani Logos/mani green logo.png"
-              alt="MANI Logo"
-              className="h-5 md:h-8 w-auto object-contain transition-all duration-300"
+              alt="MANI™ Logo"
+              className="h-5 md:h-7 xl:h-8 w-auto object-contain transition-all duration-300"
             />
           </a>
 
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-1.5 xl:gap-6 2xl:gap-8">
             <a
               href="/"
               onClick={(e) => handleNavClick(e, "/", "INITIALIZING MANI HOME")}
@@ -97,7 +121,7 @@ export default function Header() {
               onClick={(e) => handleNavClick(e, "/why-mani", "LOADING WHY MANI PHILOSOPHY")}
               className={navLinkClass("/why-mani")}
             >
-              Why MANI
+              Why Mani
             </a>
             <a
               href="/about"
@@ -108,7 +132,7 @@ export default function Header() {
             </a>
           </nav>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
             {/* Cart Drawer Trigger Button */}
             <button
               onClick={openCart}
@@ -130,14 +154,14 @@ export default function Header() {
             <a
               href="/join-community"
               onClick={(e) => handleNavClick(e, "/join-community", "JOINING MANI COMMUNITY")}
-              className="hidden md:inline-flex text-xs font-semibold px-4 py-2.5 bg-[#0E2E1E] text-cream-logo rounded-md hover:bg-[#143d28] transition-colors cursor-pointer"
+              className="hidden xl:inline-flex text-xs font-semibold px-4 py-2.5 bg-[#0E2E1E] text-cream-logo rounded-md hover:bg-[#143d28] transition-colors cursor-pointer whitespace-nowrap"
             >
               Join Our Community
             </a>
 
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2.5 text-ink-black focus:outline-none z-50 relative"
+              className="lg:hidden p-2.5 text-ink-black focus:outline-none z-50 relative cursor-pointer"
               aria-label="Toggle Navigation Menu"
             >
               {mobileMenuOpen ? (
@@ -158,7 +182,7 @@ export default function Header() {
 
       {/* MOBILE MENU OVERLAY */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-40 bg-editorial-white flex flex-col justify-between p-8 pt-28 md:hidden overflow-y-auto max-h-screen">
+        <div className="fixed inset-0 z-40 bg-editorial-white flex flex-col justify-between p-8 pt-28 lg:hidden overflow-y-auto max-h-screen">
           <nav className="flex flex-col gap-6 text-2xl font-serif-heading">
             <a
               href="/"
@@ -193,7 +217,7 @@ export default function Header() {
               onClick={(e) => handleNavClick(e, "/why-mani", "LOADING WHY MANI PHILOSOPHY")}
               className={mobileNavLinkClass("/why-mani")}
             >
-              Why MANI
+              Why Mani
             </a>
             <a
               href="/about"

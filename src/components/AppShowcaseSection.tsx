@@ -46,41 +46,28 @@ export default function AppShowcaseSection() {
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-7 bg-[#0E2E1E] text-editorial-white p-8 sm:p-14 lg:p-20 space-y-6 flex flex-col justify-center"
           >
-            <span className="text-xs font-bold tracking-widest uppercase text-cream-logo/70">
+            <span className="text-xs font-bold tracking-widest uppercase text-cream-logo">
               THE MANI APP
             </span>
             <h2 className="font-serif-heading text-4xl sm:text-6xl md:text-7xl text-cream-logo leading-[1.05] tracking-tight">
               Support Wherever You Are
             </h2>
-            <p className="text-lg sm:text-xl text-editorial-white/80 font-light leading-relaxed max-w-2xl">
+            <p className="text-lg sm:text-xl text-[#E8F0EC] font-normal leading-relaxed max-w-2xl">
               Guided conversations, breathwork, meditations, visualizations, stories, and practical tools designed to support you wherever you are.
             </p>
-            <p className="text-sm text-editorial-white/60 font-light leading-relaxed max-w-2xl">
+            <p className="text-base text-[#D8E6DE] font-normal leading-relaxed max-w-2xl">
               We&apos;re currently inviting beta testers to experience the app before launch and help shape future features.
             </p>
 
-            {submitted ? (
-              <div className="p-5 bg-[#05150D] text-cream-logo rounded-2xl font-semibold text-base shadow-lg border border-editorial-white/10">
-                Thank you! You have been added to the MANI early access list.
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 pt-2 max-w-lg">
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Enter your email address"
-                  required
-                  className="flex-grow px-5 py-4 border border-editorial-white/20 rounded-xl text-base bg-editorial-white/10 text-cream-logo placeholder-cream-logo/40 focus:outline-none focus:border-cream-logo shadow-xs"
-                />
-                <Link
-                  href="/join-beta"
-                  className="px-8 py-4 bg-cream-logo text-[#0E2E1E] font-semibold rounded-xl hover:bg-white transition-all shadow-md text-base tracking-wide whitespace-nowrap text-center"
-                >
-                  Join Beta &rarr;
-                </Link>
-              </form>
-            )}
+            <div className="pt-2">
+              <Link
+                href="/join-beta"
+                className="inline-flex items-center gap-2 px-9 py-4 bg-cream-logo text-[#0E2E1E] font-semibold rounded-xl hover:bg-white transition-all shadow-md text-base tracking-wide text-center"
+              >
+                <span>Join Beta</span>
+                <span>&rarr;</span>
+              </Link>
+            </div>
           </motion.div>
 
           {/* Right Column: Editorial White side with floating phone showcase */}
