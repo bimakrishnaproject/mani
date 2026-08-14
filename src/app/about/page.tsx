@@ -118,11 +118,11 @@ export default function AboutPage() {
               className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center"
             >
               <div className="lg:col-span-5">
-                <div className="relative w-full max-w-[420px] mx-auto rounded-2xl overflow-hidden shadow-xl border border-mist-grey">
+                <div className="relative w-full max-w-[420px] aspect-square mx-auto rounded-2xl overflow-hidden shadow-xl border border-mist-grey bg-[#0E2E1E]">
                   <img
                     src={founder.image}
                     alt={founder.name}
-                    className="w-full h-auto object-cover rounded-2xl"
+                    className="w-full h-full object-cover rounded-2xl"
                   />
                 </div>
               </div>
@@ -165,23 +165,25 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.7, delay: idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
-                className="p-6 bg-soft-white border border-mist-grey rounded-2xl space-y-4 flex flex-col"
+                className="p-6 bg-soft-white border border-mist-grey rounded-2xl space-y-5 flex flex-col justify-between"
               >
-                <div className="w-full h-[320px] sm:h-[380px] rounded-xl overflow-hidden border border-mist-grey shadow-sm bg-editorial-white">
-                  <img
-                    src={m.image}
-                    alt={m.name}
-                    className="w-full h-full object-cover object-top rounded-xl"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <h3 className="font-serif-heading text-2xl text-[#0E2E1E]">{m.name}</h3>
-                  <span className="text-xs font-bold text-[#626A64] uppercase tracking-wider block">
-                    {m.role}
-                  </span>
-                  <p className="text-xs text-[#4A524D] font-light leading-relaxed pt-1">
-                    {m.bio}
-                  </p>
+                <div className="space-y-5">
+                  <div className="w-full aspect-square rounded-xl overflow-hidden border border-mist-grey/60 shadow-sm bg-[#0E2E1E]">
+                    <img
+                      src={m.image}
+                      alt={m.name}
+                      className="w-full h-full object-cover rounded-xl"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <h3 className="font-serif-heading text-2xl sm:text-3xl text-[#0E2E1E]">{m.name}</h3>
+                    <span className="text-xs font-bold text-[#626A64] uppercase tracking-wider block">
+                      {m.role}
+                    </span>
+                    <p className="text-sm text-[#4A524D] font-light leading-relaxed pt-1 whitespace-pre-line">
+                      {m.bio}
+                    </p>
+                  </div>
                 </div>
               </motion.div>
             ))}
