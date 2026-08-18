@@ -1,35 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { motion } from "framer-motion";
-import UnderProgressModal from "./UnderProgressModal";
-import { trackBetaSignup } from "@/lib/analytics";
 
 export default function AppShowcaseSection() {
-  const [email, setEmail] = useState("");
-  const [submitted, setSubmitted] = useState(false);
-  const [showProgressModal, setShowProgressModal] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (email) {
-      setSubmitted(true);
-      trackBetaSignup(email);
-      try {
-        await fetch("/api/klaviyo/subscribe", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email, type: "beta" }),
-        });
-      } catch (err) {
-        console.error("Klaviyo CRM sync error:", err);
-      }
-      setEmail("");
-    }
-  };
-
   return (
     <section
       className="py-24 sm:py-32 bg-editorial-white text-ink-black overflow-hidden w-full"
@@ -38,7 +13,7 @@ export default function AppShowcaseSection() {
       <div className="max-w-[1360px] mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 rounded-3xl overflow-hidden shadow-2xl border border-mist-grey">
 
-          {/* Left Column: Deep Green side with copy & form */}
+          {/* Left Column: Deep Green side with copy & CTA */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -70,7 +45,7 @@ export default function AppShowcaseSection() {
             </div>
           </motion.div>
 
-          {/* Right Column: Editorial White side with floating phone showcase */}
+          {/* Right Column: Editorial White side with phone showcase */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -82,20 +57,14 @@ export default function AppShowcaseSection() {
               <img
                 src="/assets/Chat Conversation.png"
                 alt="MANI App Guided Chat Experience"
-                className="w-full h-auto object-contain drop-shadow-2xl hover:scale-[1.03] transition-transform duration-500"
+                className="w-full h-auto object-contain drop-shadow-2xl hover:scale-[1.03] transition-transform duration-500 rounded-3xl"
               />
             </div>
           </motion.div>
 
         </div>
       </div>
-
-      <UnderProgressModal
-        isOpen={showProgressModal}
-        onClose={() => setShowProgressModal(false)}
-        title="Early Access Under Progress"
-        description="App Early Access registration is currently under progress for today's milestone update. Please explore the live homepage presentation."
-      />
     </section>
   );
 }
+

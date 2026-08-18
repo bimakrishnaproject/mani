@@ -21,11 +21,11 @@ export interface CollectionItem {
 export const BYE_BYE_NARCISSIST_PRODUCTS: ProductItem[] = [
   {
     slug: "bye-bye-narcissist-book",
-    name: "Bye Bye Narcissist Book",
+    name: "The Bye Bye Narcissist Book",
     role: "Foundation",
     price: 24.99,
     format: "Physical",
-    description: "Deep understanding of narcissistic patterns, emotional manipulation, and cognitive dissonance.",
+    description: "Understand manipulation, gaslighting, and unhealthy patterns.",
     helpsWith: [
       "Identifying covert & overt narcissistic behavior",
       "Breaking free from gaslighting loops",
@@ -35,11 +35,11 @@ export const BYE_BYE_NARCISSIST_PRODUCTS: ProductItem[] = [
   },
   {
     slug: "bye-bye-narcissist-workbook",
-    name: "Bye Bye Narcissist Workbook",
+    name: "The Bye Bye Narcissist Workbook",
     role: "Action",
     price: 29.99,
     format: "Physical",
-    description: "Practical exercises, reflective writing prompts, and action steps for emotional recovery.",
+    description: "Turn insight into practical change.",
     helpsWith: [
       "Establishing non-negotiable boundaries",
       "Processing complex relational grief",
@@ -49,11 +49,11 @@ export const BYE_BYE_NARCISSIST_PRODUCTS: ProductItem[] = [
   },
   {
     slug: "bye-bye-narcissist-journal",
-    name: "Bye Bye Narcissist Coloring Book & Journal",
+    name: "The Bye Bye Narcissist Coloring Book & Journal",
     role: "Calm",
     price: 14.99,
     format: "Physical",
-    description: "Somatic grounding, therapeutic creative processing, and mindful journaling for nervous system regulation.",
+    description: "Slow down, process emotions, and reconnect with yourself.",
     helpsWith: [
       "Calming hypervigilance and anxiety response",
       "Creative emotional processing",
@@ -63,11 +63,11 @@ export const BYE_BYE_NARCISSIST_PRODUCTS: ProductItem[] = [
   },
   {
     slug: "bye-bye-narcissist-poster-set",
-    name: "Bye Bye Narcissist Poster Set",
+    name: "Bye Bye Narcissist Poster Collection",
     role: "Reinforcement",
     price: 29.99,
     format: "Physical",
-    description: "Visual daily boundary affirmations and cognitive reminders designed for your physical living space.",
+    description: "Daily reminders that strengthen boundaries and self-worth.",
     helpsWith: [
       "Daily subconscious boundary reinforcement",
       "Visual anchoring in safe environments",
@@ -76,11 +76,11 @@ export const BYE_BYE_NARCISSIST_PRODUCTS: ProductItem[] = [
   },
   {
     slug: "bye-bye-narcissist-card-deck",
-    name: "Bye Bye Narcissist Affirmation Card Deck",
+    name: "Bye Bye Narcissist Card Deck",
     role: "Daily Practice",
     price: 19.99,
     format: "Physical",
-    description: "Micro-actions, daily truth reminders, and self-trust rituals in a portable card deck format.",
+    description: "Build confidence and trust in yourself one day at a time.",
     helpsWith: [
       "Daily morning boundary intentions",
       "Immediate grounding during emotional triggers",

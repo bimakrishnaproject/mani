@@ -3,13 +3,11 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useTypewriterNavigation } from "./TypewriterNavigationProvider";
 import { useCart } from "@/context/CartContext";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { navigateTo } = useTypewriterNavigation();
   const { totalItems, openCart } = useCart();
   const pathname = usePathname();
 
@@ -20,12 +18,6 @@ export default function Header() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const handleNavClick = (e: React.MouseEvent, href: string, label: string) => {
-    e.preventDefault();
-    setMobileMenuOpen(false);
-    navigateTo(href, label);
-  };
 
   const isActive = (href: string) => {
     if (!pathname) return false;
@@ -69,15 +61,15 @@ export default function Header() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled
-          ? "bg-white/95 backdrop-blur-md border-b border-mist-grey/80 py-2.5 shadow-sm"
-          : "bg-transparent py-3 sm:py-5"
-          }`}
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+          scrolled
+            ? "bg-white/95 backdrop-blur-md border-b border-mist-grey/80 py-2.5 shadow-sm"
+            : "bg-transparent py-3 sm:py-5"
+        }`}
       >
         <div className="max-w-[1360px] mx-auto px-4 sm:px-6 md:px-12 flex items-center justify-between gap-4">
-          <a
+          <Link
             href="/"
-            onClick={(e) => handleNavClick(e, "/", "INITIALIZING MANI HOME")}
             className="flex items-center cursor-pointer shrink-0"
           >
             <img
@@ -85,51 +77,27 @@ export default function Header() {
               alt="MANI™ Logo"
               className="h-5 md:h-7 xl:h-8 w-auto object-contain transition-all duration-300"
             />
-          </a>
+          </Link>
 
           <nav className="hidden lg:flex items-center gap-1.5 xl:gap-6 2xl:gap-8">
-            <a
-              href="/"
-              onClick={(e) => handleNavClick(e, "/", "INITIALIZING MANI HOME")}
-              className={navLinkClass("/")}
-            >
+            <Link href="/" className={navLinkClass("/")}>
               Home
-            </a>
-            <a
-              href="/collections"
-              onClick={(e) => handleNavClick(e, "/collections", "CONNECTING TO MANI COLLECTIONS")}
-              className={navLinkClass("/collections")}
-            >
+            </Link>
+            <Link href="/collections" className={navLinkClass("/collections")}>
               Collections
-            </a>
-            <a
-              href="/watch-learn"
-              onClick={(e) => handleNavClick(e, "/watch-learn", "LOADING WATCH & LEARN")}
-              className={navLinkClass("/watch-learn")}
-            >
+            </Link>
+            <Link href="/watch-learn" className={navLinkClass("/watch-learn")}>
               Watch &amp; Learn
-            </a>
-            <a
-              href="/app"
-              onClick={(e) => handleNavClick(e, "/app", "LOADING MANI APP")}
-              className={navLinkClass("/app")}
-            >
+            </Link>
+            <Link href="/app" className={navLinkClass("/app")}>
               App
-            </a>
-            <a
-              href="/why-mani"
-              onClick={(e) => handleNavClick(e, "/why-mani", "LOADING WHY MANI PHILOSOPHY")}
-              className={navLinkClass("/why-mani")}
-            >
+            </Link>
+            <Link href="/why-mani" className={navLinkClass("/why-mani")}>
               Why Mani
-            </a>
-            <a
-              href="/about"
-              onClick={(e) => handleNavClick(e, "/about", "LOADING ABOUT MANI")}
-              className={navLinkClass("/about")}
-            >
+            </Link>
+            <Link href="/about" className={navLinkClass("/about")}>
               About
-            </a>
+            </Link>
           </nav>
 
           <div className="flex items-center gap-2 sm:gap-3 shrink-0">
@@ -151,13 +119,12 @@ export default function Header() {
               )}
             </button>
 
-            <a
+            <Link
               href="/join-community"
-              onClick={(e) => handleNavClick(e, "/join-community", "JOINING MANI COMMUNITY")}
               className="hidden xl:inline-flex text-xs font-semibold px-4 py-2.5 bg-[#0E2E1E] text-cream-logo rounded-md hover:bg-[#143d28] transition-colors cursor-pointer whitespace-nowrap"
             >
               Join Our Community
-            </a>
+            </Link>
 
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -184,48 +151,48 @@ export default function Header() {
       {mobileMenuOpen && (
         <div className="fixed inset-0 z-40 bg-editorial-white flex flex-col justify-between p-8 pt-28 lg:hidden overflow-y-auto max-h-screen">
           <nav className="flex flex-col gap-6 text-2xl font-serif-heading">
-            <a
+            <Link
               href="/"
-              onClick={(e) => handleNavClick(e, "/", "INITIALIZING MANI HOME")}
+              onClick={() => setMobileMenuOpen(false)}
               className={mobileNavLinkClass("/")}
             >
               Home
-            </a>
-            <a
+            </Link>
+            <Link
               href="/collections"
-              onClick={(e) => handleNavClick(e, "/collections", "CONNECTING TO MANI COLLECTIONS")}
+              onClick={() => setMobileMenuOpen(false)}
               className={mobileNavLinkClass("/collections")}
             >
               Collections
-            </a>
-            <a
+            </Link>
+            <Link
               href="/watch-learn"
-              onClick={(e) => handleNavClick(e, "/watch-learn", "LOADING WATCH & LEARN")}
+              onClick={() => setMobileMenuOpen(false)}
               className={mobileNavLinkClass("/watch-learn")}
             >
               Watch &amp; Learn
-            </a>
-            <a
+            </Link>
+            <Link
               href="/app"
-              onClick={(e) => handleNavClick(e, "/app", "LOADING MANI APP")}
+              onClick={() => setMobileMenuOpen(false)}
               className={mobileNavLinkClass("/app")}
             >
               App
-            </a>
-            <a
+            </Link>
+            <Link
               href="/why-mani"
-              onClick={(e) => handleNavClick(e, "/why-mani", "LOADING WHY MANI PHILOSOPHY")}
+              onClick={() => setMobileMenuOpen(false)}
               className={mobileNavLinkClass("/why-mani")}
             >
               Why Mani
-            </a>
-            <a
+            </Link>
+            <Link
               href="/about"
-              onClick={(e) => handleNavClick(e, "/about", "LOADING ABOUT MANI")}
+              onClick={() => setMobileMenuOpen(false)}
               className={mobileNavLinkClass("/about")}
             >
               About
-            </a>
+            </Link>
           </nav>
 
           <div className="space-y-4 pt-6 border-t border-mist-grey">
@@ -239,16 +206,17 @@ export default function Header() {
               View Cart ({totalItems})
             </button>
 
-            <a
+            <Link
               href="/join-community"
-              onClick={(e) => handleNavClick(e, "/join-community", "JOINING MANI COMMUNITY")}
+              onClick={() => setMobileMenuOpen(false)}
               className="block w-full py-4 bg-[#0E2E1E] text-cream-logo font-semibold rounded-md text-center text-sm"
             >
               Join Our Community
-            </a>
+            </Link>
           </div>
         </div>
       )}
     </>
   );
 }
+
