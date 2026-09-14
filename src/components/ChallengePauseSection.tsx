@@ -7,7 +7,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 export default function ChallengePauseSection() {
   return (
     <section
-      className="py-20 sm:py-28 md:py-36 bg-editorial-white w-full relative overflow-hidden"
+      className="py-20 sm:py-28 md:py-36 bg-editorial-white w-full px-6 sm:px-10 md:px-14 lg:px-16 xl:px-20 relative overflow-hidden"
       id="why-mani"
     >
       <motion.div
@@ -15,7 +15,7 @@ export default function ChallengePauseSection() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-        className="w-full max-w-[1240px] mx-auto px-6 sm:px-12 md:px-16 bg-[#0E2E1E] text-editorial-white rounded-3xl py-16 sm:py-24 shadow-xl relative overflow-hidden"
+        className="w-full bg-[#0E2E1E] text-editorial-white rounded-3xl px-8 sm:px-16 md:px-24 py-16 sm:py-24 shadow-xl relative overflow-hidden"
       >
         <div className="text-center max-w-4xl mx-auto relative z-10 space-y-6 sm:space-y-8">
           <h2 className="font-serif-heading text-3xl xs:text-4xl sm:text-5xl md:text-6xl text-cream-logo leading-[1.15] tracking-tight">

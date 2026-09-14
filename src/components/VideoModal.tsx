@@ -41,36 +41,26 @@ export default function VideoModal({ video, onClose }: VideoModalProps) {
           ✕
         </button>
 
-        {/* Video Player Area (Google Drive Embed or Fallback Preview) */}
+        {/* Video Player Area with HTML5 controls */}
         <div className="w-full bg-black aspect-video relative flex items-center justify-center overflow-hidden rounded-t-2xl">
-          {video.driveVideoUrl.includes("demo_sample_id") ? (
-            /* Styled Interactive Sample Player when real ID isn't assigned yet */
-            <div className="w-full h-full bg-gradient-to-br from-[#0E2E1E] to-[#081d13] p-8 flex flex-col items-center justify-center text-center text-cream-logo relative">
-              <div className="w-16 h-16 bg-cream-logo text-deep-green rounded-full flex items-center justify-center mb-4 shadow-lg animate-pulse">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-                  <polygon points="9,6 18,12 9,18" fill="currentColor" />
-                </svg>
-              </div>
-              <p className="text-sm font-semibold tracking-wide uppercase mb-1">
-                Google Drive Video Player
-              </p>
-              <h3 className="font-serif-heading text-2xl text-editorial-white max-w-md">
-                {video.title}
-              </h3>
-              <p className="text-xs text-cream-logo/80 mt-2">
-                Ready for streaming via Google Drive Iframe
-              </p>
-            </div>
-          ) : (
-            /* Live Google Drive Video Iframe */
-            <iframe
-              src={video.driveVideoUrl}
-              className="w-full h-full border-0"
-              allow="autoplay; encrypted-media"
-              allowFullScreen
-              title={video.title}
-            ></iframe>
-          )}
+          <video
+            key={video.id}
+            controls
+            autoPlay
+            playsInline
+            poster={video.thumbnailUrl ? encodeURI(video.thumbnailUrl) : undefined}
+            src={`/api/video-stream?title=${encodeURIComponent(video.title)}`}
+            onError={(e) => {
+              // Fallback to sample if stream is unavailable
+              const target = e.currentTarget;
+              if (!target.src.endsWith("sample-video.mp4")) {
+                target.src = "/assets/videos/sample-video.mp4";
+              }
+            }}
+            className="w-full h-full object-contain bg-black"
+          >
+            Your browser does not support HTML5 video streaming.
+          </video>
         </div>
 
         {/* Modal Info Section */}
@@ -89,11 +79,11 @@ export default function VideoModal({ video, onClose }: VideoModalProps) {
           </h2>
 
           <p className="text-base text-[#1C2826] leading-relaxed">
-            {video.summary}
+            {(video.summary || "").replace(/\s*\*?\*?!\[\]\[image\d+\]\*?\*?/g, "").trim()}
           </p>
 
           <div className="flex flex-wrap gap-2 pt-2">
-            {video.keywords.map((kw, i) => (
+            {(video.keywords || []).map((kw, i) => (
               <span
                 key={i}
                 className="text-xs font-medium bg-soft-white border border-mist-grey px-3 py-1 rounded-md text-ink-black"
@@ -110,19 +100,19 @@ export default function VideoModal({ video, onClose }: VideoModalProps) {
                 Looking for Deeper Support?
               </h4>
               <p className="text-xs text-[#1C2826]">
-                Explore our guided 5-part collections or get early access to the MANI Beta App.
+                Explore our guided 5-part collections or get early access to the <strong>mani</strong> Beta App.
               </p>
             </div>
             <div className="flex gap-3 shrink-0">
               <Link
-                href="/#collections"
+                href="/collections"
                 onClick={onClose}
                 className="px-4 py-2.5 bg-deep-green text-editorial-white text-xs font-semibold rounded-md hover:bg-[#143d28] transition-colors"
               >
                 Explore Collections
               </Link>
               <Link
-                href="/#app"
+                href="/app"
                 onClick={onClose}
                 className="px-4 py-2.5 border border-ink-black text-xs font-semibold rounded-md hover:bg-mist-grey transition-colors"
               >

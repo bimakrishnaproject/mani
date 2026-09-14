@@ -4,6 +4,7 @@ import React, { useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
+import AnimatedPhoneChat from "@/components/AnimatedPhoneChat";
 
 export default function HorizontalScrollytelling() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -78,7 +79,7 @@ export default function HorizontalScrollytelling() {
                 key={idx}
                 className={`w-[100vw] h-full flex items-center px-8 sm:px-16 md:px-24 lg:px-32 relative ${panel.bgColor}`}
               >
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center w-full max-w-[1400px] mx-auto">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center w-full">
                   
                   {/* Text Content */}
                   <div className="lg:col-span-6 space-y-6">
@@ -153,17 +154,11 @@ export default function HorizontalScrollytelling() {
                         </div>
                       )}
 
-                      {/* Panel 03: EXACT MATCH TO THREEWAYSSECTION */}
+                      {/* Panel 03: Animated Phone Chat */}
                       {idx === 2 && (
-                        <Image
-                          src="/assets/Chat Conversation.png"
-                          alt={panel.title}
-                          width={460}
-                          height={920}
-                          quality={100}
-                          priority
-                          className="w-auto h-[460px] sm:h-[520px] md:h-[580px] object-contain drop-shadow-2xl animate-float"
-                        />
+                        <div className="flex justify-center items-center py-2">
+                          <AnimatedPhoneChat />
+                        </div>
                       )}
 
                     </div>
@@ -246,13 +241,9 @@ export default function HorizontalScrollytelling() {
                   </div>
                 )}
                 {idx === 2 && (
-                  <Image
-                    src="/assets/Chat Conversation.png"
-                    alt={panel.title}
-                    width={320}
-                    height={640}
-                    className="w-auto h-[360px] object-contain drop-shadow-xl"
-                  />
+                  <div className="py-2 flex justify-center items-center">
+                    <AnimatedPhoneChat compact />
+                  </div>
                 )}
               </div>
 

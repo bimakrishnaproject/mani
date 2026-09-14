@@ -6,6 +6,7 @@ import Image from "next/image";
 import SpatialStoryCanvas from "./SpatialStoryCanvas";
 import SpatialElement3D from "./SpatialElement3D";
 import FramerMotionAnimate from "./FramerMotionAnimate";
+import AnimatedPhoneChat from "./AnimatedPhoneChat";
 
 export default function InteractiveStoryNarrative() {
   const [activeAct, setActiveAct] = useState<number>(0);
@@ -144,11 +145,9 @@ export default function InteractiveStoryNarrative() {
                   </div>
                 )}
                 {activeAct === 2 && (
-                  <img
-                    src={storyActs[2].image}
-                    alt={storyActs[2].title}
-                    className="w-auto h-[480px] object-contain mix-blend-multiply drop-shadow-[0_35px_50px_rgba(0,0,0,0.5)] animate-float"
-                  />
+                  <div className="flex justify-center items-center py-2">
+                    <AnimatedPhoneChat />
+                  </div>
                 )}
               </div>
             </SpatialElement3D>

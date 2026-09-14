@@ -4,6 +4,7 @@ import React, { useState, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
+import AnimatedPhoneChat from "@/components/AnimatedPhoneChat";
 
 export default function ThreeWaysSection() {
   const [activeTab, setActiveTab] = useState<number>(0);
@@ -63,7 +64,7 @@ export default function ThreeWaysSection() {
       {/* DESKTOP VIEW: Pinned Scroll Sequence (100% Intact & Unchanged for Laptop/Desktop) */}
       <div className="hidden lg:block relative h-[300vh]">
         <div className="sticky top-0 h-screen overflow-hidden flex flex-col justify-center py-12">
-          <div className="w-full px-6 sm:px-12 md:px-16 lg:px-24">
+          <div className="w-full px-6 sm:px-10 md:px-14 lg:px-16 xl:px-20">
             
             {/* Section Header */}
             <div className="max-w-4xl mb-10">
@@ -159,16 +160,9 @@ export default function ThreeWaysSection() {
                   )}
 
                   {activeTab === 2 && (
-                    <Image
-                      key="tab-2"
-                      src="/assets/Chat Conversation.png"
-                      alt={territories[2].title}
-                      width={460}
-                      height={920}
-                      quality={100}
-                      priority
-                      className="w-auto h-[460px] sm:h-[520px] md:h-[560px] object-contain drop-shadow-2xl animate-float"
-                    />
+                    <div key="tab-2" className="flex justify-center items-center py-2">
+                      <AnimatedPhoneChat />
+                    </div>
                   )}
 
                 </div>
@@ -245,13 +239,9 @@ export default function ThreeWaysSection() {
                   </div>
                 )}
                 {idx === 2 && (
-                  <Image
-                    src="/assets/Chat Conversation.png"
-                    alt={t.title}
-                    width={320}
-                    height={640}
-                    className="w-auto h-[340px] object-contain drop-shadow-xl"
-                  />
+                  <div className="py-2 flex justify-center items-center">
+                    <AnimatedPhoneChat compact />
+                  </div>
                 )}
               </div>
 

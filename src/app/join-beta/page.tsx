@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import UnderProgressPage from "@/components/UnderProgressPage";
+import AnimatedPhoneChat from "@/components/AnimatedPhoneChat";
 import { SITE_LOCKS } from "@/config/locks";
 
 export default function JoinBetaPage() {
@@ -61,37 +62,40 @@ export default function JoinBetaPage() {
       <Header />
 
       <main className="flex-grow pt-36 md:pt-48 pb-32">
-        <section className="px-6 sm:px-12 md:px-16 lg:px-24">
-          <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <section className="w-full px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24">
+          <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
-            {/* Left Column: Beta Form */}
+            {/* Left Column: Editorial Beta Application */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              className="lg:col-span-7 bg-[#081F14] text-editorial-white p-8 sm:p-12 rounded-3xl border border-emerald-500/30 shadow-2xl space-y-8"
+              className="lg:col-span-7 space-y-8"
             >
-              <div className="space-y-3">
-                <h1 className="font-serif-heading text-4xl sm:text-6xl text-cream-logo">
-                  Help Shape What&apos;s Next
+              <div className="space-y-4">
+                <span className="text-xs font-bold tracking-widest uppercase text-[#0E2E1E] block">
+                  BETA ACCESS
+                </span>
+                <h1 className="font-serif-heading text-4xl sm:text-6xl lg:text-7xl text-[#0E2E1E] leading-[1.02] tracking-tight">
+                  Shape <strong>mani</strong>’s Future
                 </h1>
-                <p className="text-sm text-[#E8F0EC] font-normal leading-relaxed">
-                  Join our private beta program to test guided chat experience, daily reflection prompts, and privacy-first features before public release.
+                <p className="text-base sm:text-lg text-[#0B1710] font-medium leading-relaxed max-w-xl">
+                  We’re inviting a small group of beta testers to use <strong>mani</strong>{" "}before its public launch. Test new features, share what works and what does not, and influence what we improve before release.
                 </p>
               </div>
 
               {submitted ? (
-                <div className="p-8 bg-[#05150D] rounded-2xl border border-emerald-500/40 text-cream-logo space-y-4 text-center">
+                <div className="p-8 bg-white rounded-2xl border border-[#0E2E1E]/30 text-[#0E2E1E] space-y-4 text-center shadow-sm">
                   <span className="text-4xl">✨</span>
                   <h3 className="font-serif-heading text-3xl">Beta Application Received</h3>
-                  <p className="text-sm text-[#E8F0EC] max-w-md mx-auto">
-                    We have reserved your spot for <strong className="text-cream-logo">{formData.email}</strong>. As soon as a testing slot opens, you will receive an invitation.
+                  <p className="text-sm sm:text-base text-[#0B1710] font-medium max-w-md mx-auto">
+                    We have reserved your spot for <strong className="text-[#0E2E1E]">{formData.email}</strong>. As soon as a testing slot opens, you will receive an invitation.
                   </p>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-5">
+                <form onSubmit={handleSubmit} className="space-y-5 max-w-xl">
                   <div>
-                    <label className="block text-xs font-bold text-cream-logo uppercase tracking-wider mb-1.5">
+                    <label className="block text-xs font-bold text-[#0E2E1E] uppercase tracking-wider mb-1.5">
                       Your Full Name *
                     </label>
                     <input
@@ -100,12 +104,12 @@ export default function JoinBetaPage() {
                       placeholder="Jane Doe"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-4 py-3.5 bg-editorial-white/10 border border-editorial-white/20 rounded-xl text-sm text-cream-logo placeholder-cream-logo/75 focus:outline-none focus:border-cream-logo"
+                      className="w-full px-4 py-3.5 bg-white border border-mist-grey/90 rounded-xl text-base text-[#0B1710] font-medium placeholder-[#1C2826]/50 focus:outline-none focus:border-[#0E2E1E] focus:ring-1 focus:ring-[#0E2E1E] transition-all shadow-2xs"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-cream-logo uppercase tracking-wider mb-1.5">
+                    <label className="block text-xs font-bold text-[#0E2E1E] uppercase tracking-wider mb-1.5">
                       Email Address *
                     </label>
                     <input
@@ -114,19 +118,19 @@ export default function JoinBetaPage() {
                       placeholder="your.email@domain.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-4 py-3.5 bg-editorial-white/10 border border-editorial-white/20 rounded-xl text-sm text-cream-logo placeholder-cream-logo/75 focus:outline-none focus:border-cream-logo"
+                      className="w-full px-4 py-3.5 bg-white border border-mist-grey/90 rounded-xl text-base text-[#0B1710] font-medium placeholder-[#1C2826]/50 focus:outline-none focus:border-[#0E2E1E] focus:ring-1 focus:ring-[#0E2E1E] transition-all shadow-2xs"
                     />
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-bold text-cream-logo uppercase tracking-wider mb-1.5">
+                      <label className="block text-xs font-bold text-[#0E2E1E] uppercase tracking-wider mb-1.5">
                         Primary Device
                       </label>
                       <select
                         value={formData.device}
                         onChange={(e) => setFormData({ ...formData, device: e.target.value })}
-                        className="w-full px-4 py-3.5 bg-[#05150D] border border-editorial-white/20 rounded-xl text-sm text-cream-logo focus:outline-none focus:border-cream-logo"
+                        className="w-full px-4 py-3.5 bg-white border border-mist-grey/90 rounded-xl text-base text-[#0B1710] font-medium focus:outline-none focus:border-[#0E2E1E] focus:ring-1 focus:ring-[#0E2E1E] transition-all shadow-2xs"
                       >
                         <option value="iOS (iPhone)">iOS (iPhone)</option>
                         <option value="Android">Android</option>
@@ -135,18 +139,18 @@ export default function JoinBetaPage() {
                     </div>
 
                     <div>
-                      <label className="block text-xs font-bold text-cream-logo uppercase tracking-wider mb-1.5">
+                      <label className="block text-xs font-bold text-[#0E2E1E] uppercase tracking-wider mb-1.5">
                         Primary Interest
                       </label>
                       <select
                         value={formData.interest}
                         onChange={(e) => setFormData({ ...formData, interest: e.target.value })}
-                        className="w-full px-4 py-3.5 bg-[#05150D] border border-editorial-white/20 rounded-xl text-sm text-cream-logo focus:outline-none focus:border-cream-logo"
+                        className="w-full px-4 py-3.5 bg-white border border-mist-grey/90 rounded-xl text-base text-[#0B1710] font-medium focus:outline-none focus:border-[#0E2E1E] focus:ring-1 focus:ring-[#0E2E1E] transition-all shadow-2xs"
                       >
-                        <option value="Narcissistic Recovery & Boundaries">Narcissistic Recovery & Boundaries</option>
+                        <option value="Narcissistic Recovery & Boundaries">Narcissistic Recovery &amp; Boundaries</option>
                         <option value="Emotional Intelligence">Emotional Intelligence</option>
-                        <option value="Relationships & Attachment">Relationships & Attachment</option>
-                        <option value="Overthinking & Anxiety">Overthinking & Anxiety</option>
+                        <option value="Relationships & Attachment">Relationships &amp; Attachment</option>
+                        <option value="Overthinking & Anxiety">Overthinking &amp; Anxiety</option>
                       </select>
                     </div>
                   </div>
@@ -158,9 +162,9 @@ export default function JoinBetaPage() {
                       required
                       checked={formData.consent}
                       onChange={(e) => setFormData({ ...formData, consent: e.target.checked })}
-                      className="mt-1 accent-cream-logo"
+                      className="mt-1 accent-[#0E2E1E]"
                     />
-                    <label htmlFor="betaConsent" className="text-xs text-[#E8F0EC] font-normal leading-snug">
+                    <label htmlFor="betaConsent" className="text-xs text-[#0B1710] font-medium leading-snug">
                       I agree to test unreleased beta features and keep early interface flows confidential under MANI&trade; Beta Terms.
                     </label>
                   </div>
@@ -168,37 +172,31 @@ export default function JoinBetaPage() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full py-4 bg-cream-logo text-[#0E2E1E] font-semibold rounded-xl hover:bg-[#f2e1bd] transition-all transform hover:scale-105 shadow-xl text-base"
+                    className="w-full py-4 bg-[#0E2E1E] text-cream-logo font-semibold rounded-xl hover:bg-[#143d28] active:scale-98 transition-all shadow-md text-base cursor-pointer"
                   >
-                    {isSubmitting ? "Submitting..." : "Join Beta →"}
+                    {isSubmitting ? "Submitting..." : "Join the App Beta →"}
                   </button>
                 </form>
               )}
 
-              <div className="pt-4 border-t border-editorial-white/10 flex justify-between items-center text-xs text-[#E8F0EC]">
-                <Link href="/beta-terms" className="underline hover:text-white">
+              <div className="pt-4 border-t border-mist-grey/60 flex justify-between items-center text-xs text-[#0B1710]/80 font-medium max-w-xl">
+                <Link href="/beta-terms" className="underline hover:text-[#0E2E1E]">
                   Read Beta Program Terms
                 </Link>
                 <span>Your data is kept private and secure.</span>
               </div>
             </motion.div>
 
-            {/* Right Column: Chat Showcase Mockup Stage */}
+            {/* Right Column: Chat Showcase Animated Stage */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              className="lg:col-span-5 flex flex-col justify-center items-center text-center space-y-6"
+              className="lg:col-span-5 flex flex-col justify-center items-center text-center space-y-5"
             >
-              <div className="relative max-w-[340px] flex justify-center items-center">
-                <img
-                  src="/assets/Chat Conversation.png"
-                  alt="MANI App Guided Chat Experience"
-                  className="w-full h-auto object-contain drop-shadow-2xl hover:scale-[1.02] transition-transform duration-500"
-                />
-              </div>
-              <p className="text-xs text-[#22332A] font-medium italic max-w-xs">
-                "For the moments you need it most. Accessible guided support right in your hands."
+              <AnimatedPhoneChat />
+              <p className="text-xs text-[#22332A] font-medium italic max-w-xs pt-1">
+                &ldquo;For the moments you need it most. Accessible guided support right in your hands.&rdquo;
               </p>
             </motion.div>
 

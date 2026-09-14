@@ -12,12 +12,12 @@ export default function OrderConfirmationPage() {
       <Header />
 
       <main className="flex-grow pt-36 md:pt-48 pb-32">
-        <section className="px-6 sm:px-12 md:px-16 lg:px-24">
+        <section className="w-full px-6 sm:px-10 md:px-14 lg:px-16 xl:px-20">
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 30 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="max-w-3xl mx-auto bg-[#081F14] text-editorial-white rounded-3xl p-10 sm:p-16 text-center space-y-8 shadow-2xl border border-emerald-500/30"
+            className="w-full bg-[#081F14] text-editorial-white rounded-3xl p-10 sm:p-16 md:p-20 text-center space-y-8 shadow-2xl border border-emerald-500/30"
           >
             <div className="w-20 h-20 bg-cream-logo/20 rounded-full flex items-center justify-center mx-auto text-cream-logo text-4xl">
               ✓

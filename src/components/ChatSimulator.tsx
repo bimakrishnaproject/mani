@@ -13,7 +13,7 @@ const chatMessages: Message[] = [
   {
     id: "m1",
     sender: "mani",
-    text: "Hi, it's Mani. How can I support you today?",
+    text: "Hi, it's mani. How can I support you today?",
   },
   {
     id: "m2",
@@ -152,8 +152,8 @@ export default function ChatSimulator() {
               )}
               <div>
                 {msg.sender === "mani" && (
-                  <span className="text-[8px] font-bold text-cream-logo uppercase tracking-wider block mb-0.5">
-                    MANI AI
+                  <span className="text-[10px] font-bold text-cream-logo lowercase tracking-wide block mb-0.5">
+                    mani
                   </span>
                 )}
                 <p className="text-editorial-white font-normal">{msg.text}</p>

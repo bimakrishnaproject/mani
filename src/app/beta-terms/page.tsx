@@ -5,81 +5,71 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import UnderProgressPage from "@/components/UnderProgressPage";
-import { SITE_LOCKS } from "@/config/locks";
+
+const fadeIn = {
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] as const },
+};
 
 export default function BetaTermsPage() {
-  if (SITE_LOCKS.PAGES_LOCKED) {
-    return (
-      <UnderProgressPage
-        pageName="App Beta Program Terms"
-        description="This page is currently undergoing milestone updates. Please explore the live homepage."
-      />
-    );
-  }
-
   return (
-    <div className="min-h-screen bg-editorial-white text-ink-black flex flex-col justify-between overflow-x-hidden">
+    <div className="min-h-screen bg-editorial-white text-ink-black flex flex-col justify-between overflow-x-hidden selection:bg-[#0E2E1E] selection:text-white">
       <Header />
 
-      <main className="flex-grow pt-36 md:pt-48 pb-32">
-        <section className="px-6 sm:px-12 md:px-16 lg:px-24 max-w-4xl mx-auto space-y-12">
+      <main className="flex-grow pt-32 sm:pt-40 md:pt-48 pb-32">
+        <section className="w-full px-6 sm:px-10 md:px-14 lg:px-16 xl:px-20 space-y-10">
           
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false }}
-            transition={{ duration: 0.8 }}
-            className="space-y-4"
-          >
-            <div className="inline-block text-xs font-bold tracking-widest uppercase text-[#0E2E1E] bg-soft-signal-green px-4 py-2 rounded-full">
-              PROGRAM SPECIFICATIONS
-            </div>
-            <h1 className="font-serif-heading text-5xl sm:text-7xl text-[#0E2E1E]">
-              MANI&trade; Beta Program Terms
+          <motion.div {...fadeIn} className="space-y-4">
+            <span className="text-xs font-bold tracking-widest uppercase text-[#0E2E1E] block">
+              LEGAL
+            </span>
+            <h1 className="font-serif-heading text-4xl sm:text-6xl text-[#0E2E1E] tracking-tight">
+              Beta Program Terms
             </h1>
-            <p className="text-sm text-[#0E2E1E] uppercase tracking-wider font-semibold">
-              EARLY ACCESS & TESTER AGREEMENT
+            <p className="text-xs text-[#1C2826]/70 uppercase tracking-wider font-semibold">
+              Last Updated: June 15, 2026
             </p>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            className="space-y-8 text-base text-[#1C2826] font-normal leading-relaxed border-t border-mist-grey pt-8"
+            {...fadeIn}
+            className="space-y-8 text-base text-[#1C2826] font-normal leading-relaxed border-t border-mist-grey/60 pt-8"
           >
-            <div className="p-8 bg-soft-white border-2 border-mist-grey rounded-3xl space-y-4 shadow-sm">
-              <h2 className="font-serif-heading text-3xl text-[#0E2E1E]">
-                Beta App Program Overview
+            <p>
+              mani™ is owned and operated by Moose Ventures LLC.
+            </p>
+            <p>
+              Participation in the mani™ beta program is voluntary.
+            </p>
+            <p>
+              Beta products are experimental and may contain bugs, errors, interruptions, or incomplete functionality.
+            </p>
+
+            <div className="space-y-4 pt-4 border-t border-mist-grey/40">
+              <h2 className="font-serif-heading text-2xl sm:text-3xl text-[#0E2E1E]">
+                Program Conditions
               </h2>
-              <p className="text-sm text-[#1C2826]">
-                The MANI&trade; mobile app is currently in early-access beta development. By signing up for beta access, you agree to participate in testing guided conversation features and providing confidential feedback.
-              </p>
+              <p>By participating in the beta program, you acknowledge that:</p>
+              <ul className="list-disc pl-6 space-y-2">
+                <li>Features may change at any time.</li>
+                <li>Access may be modified or terminated.</li>
+                <li>Feedback provided may be used to improve the platform.</li>
+                <li>No compensation is provided unless expressly agreed in writing.</li>
+                <li>Beta participation does not create any ownership interest in the platform or its intellectual property.</li>
+              </ul>
             </div>
 
-            <div className="space-y-4">
-              <h3 className="font-serif-heading text-2xl text-[#0E2E1E]">1. Confidentiality of Unreleased Features</h3>
+            <div className="space-y-4 pt-4 border-t border-mist-grey/40">
+              <h2 className="font-serif-heading text-2xl sm:text-3xl text-[#0E2E1E]">
+                Contact
+              </h2>
               <p>
-                Beta testers agree not to publish, screenshot, or distribute unreleased app features, interface designs, or guided algorithms outside the official beta testing portal.
+                Questions regarding the Beta Program may be directed to:{" "}
+                <a href="mailto:contact@mymani.ai" className="font-semibold text-[#0E2E1E] underline">
+                  contact@mymani.ai
+                </a>
               </p>
-            </div>
-
-            <div className="space-y-4">
-              <h3 className="font-serif-heading text-2xl text-[#0E2E1E]">2. Feedback & Improvements</h3>
-              <p>
-                Your feedback helps shape the final App Store release. All suggestions and usability reports provided during the beta testing program may be used by MANI&trade; to improve technology performance.
-              </p>
-            </div>
-
-            <div className="pt-8 border-t border-mist-grey flex justify-between items-center text-xs font-bold text-[#0E2E1E]">
-              <Link href="/join-beta" className="underline hover:text-emerald-700">
-                &larr; Join Private App Beta
-              </Link>
-              <Link href="/privacy" className="underline hover:text-emerald-700">
-                View Privacy Policy &rarr;
-              </Link>
             </div>
           </motion.div>
 

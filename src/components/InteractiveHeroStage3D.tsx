@@ -4,6 +4,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import AnimatedPhoneChat from "./AnimatedPhoneChat";
 
 export default function InteractiveHeroStage3D() {
   const containerVariants = {
@@ -142,13 +143,8 @@ export default function InteractiveHeroStage3D() {
                 03 / GUIDED APP
               </span>
 
-              <div className="h-[280px] rounded-2xl overflow-hidden bg-gradient-to-b from-soft-signal-green/20 to-transparent border border-mist-grey flex items-center justify-center relative my-4 p-4">
-                <div className="absolute inset-0 bg-radial from-soft-signal-green/40 via-transparent to-transparent pointer-events-none rounded-full blur-xl" />
-                <img
-                  src="/assets/Chat Conversation.png?v=3"
-                  alt="MANI App Chat Conversation"
-                  className="w-auto h-[260px] object-contain mix-blend-multiply drop-shadow-2xl group-hover:scale-108 transition-all duration-500 relative z-10"
-                />
+              <div className="h-[300px] rounded-2xl overflow-hidden bg-gradient-to-b from-[#FBFBFA] to-[#F1F3F5] border border-mist-grey flex items-center justify-center relative my-4 p-2">
+                <AnimatedPhoneChat compact />
               </div>
             </div>
 

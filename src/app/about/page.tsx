@@ -1,261 +1,518 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { trackCommunitySignup } from "@/lib/analytics";
 
-const fadeIn = {
-  initial: { opacity: 0, y: 20 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true },
-  transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] as const },
+// Apple-style smooth kinetic easing
+const appleEase = [0.16, 1, 0.3, 1] as const;
+
+// Stagger container for coordinated kinetic reveals
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.12,
+      delayChildren: 0.06,
+    },
+  },
 };
 
+// Smooth upward kinetic reveal with subtle unblur
+const itemFadeUp = {
+  hidden: { opacity: 0, y: 32, filter: "blur(6px)" },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: {
+      duration: 0.85,
+      ease: appleEase,
+    },
+  },
+};
+
+// Soft fade for secondary or horizontal elements
+const softFade = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.75,
+      ease: appleEase,
+    },
+  },
+};
+
+const specialists = [
+  {
+    name: "Michaela Katz",
+    role: "Somatic Healing & Mind-Body Specialist",
+    bio: "Michaela Katz specializes in somatic healing, emotional well-being, and mind-body practices. Through her work, she helps individuals cultivate greater self-awareness, emotional resilience, and a deeper connection with themselves. As the founder of Mindful Michaela, she brings valuable insight, compassion, and expertise to the work behind Mani.",
+    image: "/assets/Team Photos/Michaela Katz.png",
+  },
+  {
+    name: "Stephen Coghill",
+    role: "Award-Winning Composer, Producer & Audio Engineer",
+    bio: "Stephen Coghill is an award-winning composer, producer, and founder of COG Productions with decades of experience in music production, recording, and audio storytelling. He creates the original music and soundscapes behind Mani's breathing exercises, meditations, visualizations, and stories, helping shape the emotional experience behind everything we create.",
+    image: "/assets/Team Photos/Stephen CogHill.png",
+  },
+  {
+    name: "Michelle Falanga",
+    role: "Emmy Award-Winning Voice Artist, Actor & Meditation Teacher",
+    bio: "Michelle Falanga is an Emmy Award-winning voice artist whose work spans national commercial campaigns, animation, corporate productions, and brand storytelling. As the voice behind Mani's breathing exercises, meditations, visualizations, and stories, she helps bring every experience to life in a way that feels calming, supportive, and deeply human.",
+    image: "/assets/Team Photos/Michelle Falanga.png",
+  },
+];
+
+const processSteps = [
+  {
+    step: "01",
+    title: "Identify",
+    desc: "We focus on the real issues people need help understanding and navigating.",
+  },
+  {
+    step: "02",
+    title: "Research",
+    desc: "We draw upon decades of professional experience, established research, and expert insight.",
+  },
+  {
+    step: "03",
+    title: "Develop",
+    desc: "We turn insight and expertise into practical resources people can use in everyday life.",
+  },
+  {
+    step: "04",
+    title: "Evaluate",
+    desc: "We review and strengthen our resources to ensure they remain accurate, relevant, and useful.",
+  },
+];
+
 export default function AboutPage() {
-  const founders = [
-    {
-      name: "Manasa Reddy",
-      role: "Founder",
-      bio: "Manasa created MANI™ with a vision of making emotional support truly accessible. Her personal experience navigating life's challenges inspired her to build a platform that brings together expert-led content, physical tools, and guided technology into one connected support system.",
-      image: "/assets/Team Photos/Manasa Reddy.png",
-    },
-  ];
+  const [email, setEmail] = useState("");
+  const [joined, setJoined] = useState(false);
 
-  const experts = [
-    {
-      name: "Lolly Daskal",
-      role: "Behavioral Expert, Strategic Advisor & Best Selling Author",
-      bio: "For more than four decades, Lolly Daskal has studied human behavior and helped people navigate growth, relationships, leadership, and life's challenges. As founder and CEO of Lead From Within and bestselling author of The Leadership Gap, she has spent her career helping individuals and organizations gain clarity, build resilience, strengthen relationships, and create meaningful change.\n\nDrawing from decades of research, coaching, and real-world experience, Lolly helps shape the vision, content, and frameworks behind Mani. Her work combines behavioral science, psychology, and practical wisdom to help people better understand themselves, strengthen their relationships, and navigate life's challenges with greater confidence and clarity.",
-      image: "/assets/Team Photos/Lolly Daskal.png",
-    },
-    {
-      name: "Michaela Katz",
-      role: "Somatic Healing and Emotional Well-Being Specialist",
-      bio: "Michaela brings deep expertise in somatic healing practices, helping ensure Mani's tools address both the mind and body in the process of emotional growth and recovery.",
-      image: "/assets/Team Photos/Michaela Katz.png",
-    },
-    {
-      name: "Michelle Falanga",
-      role: "Emmy Award-Winning Voice Artist",
-      bio: "Michelle's award-winning voice artistry brings warmth and authenticity to Mani's guided experiences, creating a sense of calm and connection through every audio interaction.",
-      image: "/assets/Team Photos/Michelle Falanga.png",
-    },
-    {
-      name: "Stephen Coghill",
-      role: "Award-Winning Composer, Producer & Audio Engineer",
-      bio: "Stephen's expertise in music composition and sound design shapes the sonic identity of Mani, creating audio environments that support reflection, calm, and emotional processing.",
-      image: "/assets/Team Photos/Stephen CogHill.png",
-    },
-  ];
-
-  const howWeCreate = [
-    {
-      step: "01",
-      title: "Identify",
-      desc: "We focus on the real issues people need help understanding and navigating.",
-    },
-    {
-      step: "02",
-      title: "Research",
-      desc: "We draw upon decades of professional experience, established research, and expert insight.",
-    },
-    {
-      step: "03",
-      title: "Develop",
-      desc: "We create practical resources people can use in everyday life.",
-    },
-    {
-      step: "04",
-      title: "Evaluate",
-      desc: "We review and strengthen our resources to ensure they remain accurate, relevant, and useful.",
-    },
-  ];
+  const handleJoin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (email) {
+      setJoined(true);
+      trackCommunitySignup(email);
+      try {
+        await fetch("/api/klaviyo/subscribe", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, type: "community" }),
+        });
+      } catch (err) {
+        console.error("Subscribe error:", err);
+      }
+      setEmail("");
+    }
+  };
 
   return (
-    <div className="min-h-screen bg-editorial-white text-ink-black flex flex-col justify-between overflow-x-hidden">
+    <div className="min-h-screen bg-[#FDFCFA] text-ink-black flex flex-col justify-between overflow-x-hidden selection:bg-[#0E2E1E] selection:text-white">
       <Header />
 
-      <main className="flex-grow pt-36 md:pt-48 pb-32">
+      <main className="flex-grow pt-32 sm:pt-40 md:pt-48 pb-0">
 
-        {/* HERO SECTION */}
-        <section className="px-6 sm:px-12 md:px-16 lg:px-24 mb-24">
-          <motion.div {...fadeIn} className="max-w-4xl space-y-6">
-            <span className="text-xs font-bold tracking-widest uppercase text-[#0E2E1E] block">
-              ABOUT MANI
-            </span>
-            <h1 className="font-serif-heading text-4xl xs:text-5xl sm:text-7xl md:text-8xl text-[#0E2E1E] leading-[0.96] tracking-tight">
-              Built To Make A Difference
-            </h1>
-            <p className="text-xl sm:text-2xl text-[#1C2826] font-normal leading-relaxed">
-              Too many people struggle in silence, unsure where to turn or what to do next.
-            </p>
-            <p className="text-lg sm:text-xl text-[#1C2826] font-normal leading-relaxed">
-              Mani was created to make emotional support simple, accessible and practical for everyday life.
-            </p>
-          </motion.div>
-        </section>
-
-        {/* FOUNDER SECTION */}
-        <section className="px-6 sm:px-12 md:px-16 lg:px-24 mb-24">
-          <motion.div {...fadeIn} className="mb-12">
-            <span className="text-xs font-bold tracking-widest uppercase text-[#0E2E1E] block mb-2">
-              OUR FOUNDER
-            </span>
-            <h2 className="font-serif-heading text-4xl sm:text-6xl text-[#0E2E1E]">
-              Meet Manasa Reddy
-            </h2>
-          </motion.div>
-
-          {founders.map((founder, idx) => (
+        {/* SECTION 1: ABOUT MANI (Clear, Authoritative Grand Editorial Spread) */}
+        <section className="w-full px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-28 mb-24 sm:mb-32">
+          <div className="max-w-[1850px] w-full mx-auto">
             <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center"
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-40px" }}
+              className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 xl:gap-24 items-start"
             >
-              <div className="lg:col-span-5">
-                <div className="relative w-full max-w-[420px] aspect-square mx-auto rounded-2xl overflow-hidden shadow-xl border border-mist-grey bg-[#0E2E1E]">
-                  <img
-                    src={founder.image}
-                    alt={founder.name}
-                    className="w-full h-full object-cover rounded-2xl"
-                  />
-                </div>
+              {/* Left Column: Eyebrow + Main Headline */}
+              <div className="lg:col-span-6 space-y-6">
+                <motion.span
+                  variants={itemFadeUp}
+                  className="text-xs sm:text-sm font-bold tracking-[0.25em] uppercase text-[#0E2E1E]/70 block"
+                >
+                  ABOUT mani
+                </motion.span>
+                <motion.h1
+                  variants={itemFadeUp}
+                  className="font-serif-heading text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#0E2E1E] leading-[0.98] tracking-tight"
+                >
+                  Built To Make A Difference
+                </motion.h1>
               </div>
-              <div className="lg:col-span-7 space-y-6">
-                <div>
-                  <span className="text-xs font-bold text-[#0E2E1E] uppercase tracking-widest block mb-1">
-                    {founder.role}
-                  </span>
-                  <h3 className="font-serif-heading text-4xl sm:text-5xl text-[#0E2E1E]">
-                    {founder.name}
-                  </h3>
-                </div>
-                <p className="text-base text-[#1C2826] font-normal leading-relaxed">
-                  {founder.bio}
-                </p>
+
+              {/* Right Column: Clean, Unbroken Unified Body Copy */}
+              <div className="lg:col-span-6 space-y-6 lg:pt-8">
+                <motion.p
+                  variants={itemFadeUp}
+                  className="text-xl sm:text-2xl lg:text-3xl text-[#0B1710] font-normal leading-relaxed"
+                >
+                  Too many people struggle in silence, unsure where to turn or what to do next.
+                </motion.p>
+                <motion.p
+                  variants={itemFadeUp}
+                  className="text-xl sm:text-2xl lg:text-3xl text-[#0E2E1E] font-medium leading-relaxed"
+                >
+                  <strong>mani</strong> was created to make emotional support simple, accessible, and practical for everyday life.
+                </motion.p>
               </div>
             </motion.div>
-          ))}
+          </div>
         </section>
 
-        {/* EXPERTS SECTION */}
-        <section className="px-6 sm:px-12 md:px-16 lg:px-24 mb-24">
-          <motion.div {...fadeIn} className="mb-12">
-            <span className="text-xs font-bold tracking-widest uppercase text-[#0E2E1E] block mb-2">
-              BUILT BY EXPERTS
-            </span>
-            <h2 className="font-serif-heading text-4xl sm:text-5xl text-[#0E2E1E]">
-              The People Behind Mani
-            </h2>
-            <p className="text-base text-[#1C2826] font-normal leading-relaxed mt-4 max-w-2xl">
-              The people behind Mani bring decades of experience, specialized expertise, and a shared commitment to excellence because we believe the quality of what we create depends on the quality of the people who create it.
-            </p>
-          </motion.div>
+        {/* SECTION 2: BUILT BY EXPERTS (Balanced Editorial Statement Across Full Width) */}
+        <section className="w-full px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-28 mb-24 sm:mb-32">
+          <div className="max-w-[1850px] w-full mx-auto pt-20 sm:pt-28 border-t border-[#0E2E1E]/15">
+            <motion.div
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-40px" }}
+              className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 xl:gap-24 items-start"
+            >
+              {/* Left Column: Eyebrow + Headline */}
+              <div className="lg:col-span-6 space-y-6">
+                <motion.span
+                  variants={itemFadeUp}
+                  className="text-xs sm:text-sm font-bold tracking-[0.25em] uppercase text-[#0E2E1E]/70 block"
+                >
+                  BUILT BY EXPERTS
+                </motion.span>
+                <motion.h2
+                  variants={itemFadeUp}
+                  className="font-serif-heading text-3xl sm:text-5xl lg:text-6xl xl:text-7xl text-[#0E2E1E] leading-[1.05] tracking-tight"
+                >
+                  The People Behind Mani
+                </motion.h2>
+              </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {experts.map((m, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7, delay: idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
-                className="p-6 bg-soft-white border border-mist-grey rounded-2xl space-y-4 flex flex-col justify-between hover:border-[#0E2E1E]/40 transition-all shadow-xs"
-              >
+              {/* Right Column: Unified Statement Without Fractured Borders */}
+              <div className="lg:col-span-6 space-y-6 lg:pt-8">
+                <motion.p
+                  variants={itemFadeUp}
+                  className="text-xl sm:text-2xl lg:text-3xl text-[#0B1710] font-normal leading-relaxed"
+                >
+                  Decades of experience. Different areas of expertise.
+                </motion.p>
+                <motion.p
+                  variants={itemFadeUp}
+                  className="text-xl sm:text-2xl lg:text-3xl text-[#0E2E1E] font-medium leading-relaxed"
+                >
+                  One shared purpose: creating emotional support people can understand, trust, and use in their everyday lives.
+                </motion.p>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* SECTION 3: OUR FOUNDER (Full-Bleed Deep Forest Green Editorial Band) */}
+        <section className="w-full bg-[#081F14] text-[#FAF5EB] py-24 sm:py-36 border-y border-[#0E2E1E]/30 mb-24 sm:mb-32 relative overflow-hidden">
+          <div className="max-w-[1850px] w-full mx-auto px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-28 relative z-10">
+            <motion.div
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-40px" }}
+              className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 xl:gap-24 items-center"
+            >
+              {/* Founder Portrait: Architectural Editorial Frame */}
+              <motion.div variants={itemFadeUp} className="lg:col-span-5 flex justify-center lg:justify-start">
+                <div className="relative w-full max-w-[440px] aspect-[4/5] rounded-3xl overflow-hidden bg-[#0a2317] border border-editorial-white/20 shadow-2xl group">
+                  <img
+                    src="/assets/Team Photos/Manasa Reddy.png"
+                    alt="Manasa Reddy, Founder of mani"
+                    className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#081F14]/40 via-transparent to-transparent pointer-events-none" />
+                </div>
+              </motion.div>
+
+              {/* Founder Narrative: Complete 4 Paragraphs From Docs */}
+              <div className="lg:col-span-7 space-y-8">
                 <div className="space-y-4">
-                  <div className="w-full aspect-square rounded-xl overflow-hidden border border-mist-grey/60 shadow-xs bg-[#0E2E1E]">
-                    <img
-                      src={m.image}
-                      alt={m.name}
-                      className="w-full h-full object-cover rounded-xl"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <h3 className="font-serif-heading text-xl sm:text-2xl text-[#0E2E1E] leading-snug">{m.name}</h3>
-                    <span className="text-[11px] font-bold text-[#0E2E1E] uppercase tracking-wider block leading-tight">
-                      {m.role}
-                    </span>
-                    <p className="text-xs sm:text-sm text-[#1C2826] font-normal leading-relaxed pt-1 whitespace-pre-line">
-                      {m.bio}
-                    </p>
-                  </div>
+                  <motion.span
+                    variants={itemFadeUp}
+                    className="text-xs sm:text-sm font-bold tracking-[0.25em] uppercase text-cream-logo block"
+                  >
+                    OUR FOUNDER
+                  </motion.span>
+
+                  <motion.h2
+                    variants={itemFadeUp}
+                    className="font-serif-heading text-4xl sm:text-5xl lg:text-6xl xl:text-7xl text-cream-logo leading-[1.05] tracking-tight"
+                  >
+                    Meet Manasa Reddy
+                  </motion.h2>
                 </div>
-              </motion.div>
-            ))}
+
+                <div className="space-y-6 text-base sm:text-lg lg:text-xl text-[#FAF5EB]/90 font-normal leading-relaxed">
+                  <motion.p variants={itemFadeUp}>
+                    Manasa founded <strong>mani</strong> after experiencing firsthand what it feels like to need emotional support and struggle to find it. That experience stayed with her. As she learned, listened, and spoke with others, she realized how many people were facing life’s challenges without knowing where to turn or what to do next.
+                  </motion.p>
+                  <motion.p variants={itemFadeUp}>
+                    When Manasa finally found the guidance and expertise that helped her, she became committed to making meaningful support more accessible to others.
+                  </motion.p>
+                  <motion.p variants={itemFadeUp}>
+                    <strong>mani</strong> grew from a simple belief: emotional support should be simple, practical, and available when people need it. What began with one person’s experience became a mission to create trusted guidance and practical tools that help people better understand themselves and what they are going through.
+                  </motion.p>
+                  <motion.p
+                    variants={itemFadeUp}
+                    className="font-serif-heading text-xl sm:text-2xl text-cream-logo pt-2"
+                  >
+                    That belief continues to guide everything <strong>mani</strong> creates.
+                  </motion.p>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </section>
 
-        {/* HOW WE CREATE */}
-        <section className="px-6 sm:px-12 md:px-16 lg:px-24 mb-24">
-          <motion.div {...fadeIn} className="mb-12">
-            <span className="text-xs font-bold tracking-widest uppercase text-[#0E2E1E] block mb-2">
-              HOW WE CREATE
-            </span>
-            <h2 className="font-serif-heading text-4xl sm:text-5xl text-[#0E2E1E]">
-              How We Turn Expertise Into Support
-            </h2>
-          </motion.div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
-            {howWeCreate.map((item, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7, delay: idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
-                className="p-8 sm:p-9 bg-[#0E2E1E] text-editorial-white rounded-3xl space-y-5 shadow-xl border border-emerald-500/20 flex flex-col justify-between hover:border-cream-logo/30 transition-all"
+        {/* SECTION 4: MEET OUR TEAM */}
+        <section className="w-full px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-28 mb-24 sm:mb-32">
+          <div className="max-w-[1850px] w-full mx-auto space-y-16 sm:space-y-24">
+            
+            {/* Section Header */}
+            <motion.div
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-40px" }}
+              className="space-y-4"
+            >
+              <motion.span
+                variants={itemFadeUp}
+                className="text-xs sm:text-sm font-bold tracking-[0.25em] uppercase text-[#0E2E1E]/70 block"
               >
-                <div className="space-y-3">
-                  <span className="text-4xl font-serif-heading text-cream-logo/80 block">
-                    {item.step}
-                  </span>
-                  <h3 className="font-serif-heading text-2xl sm:text-3xl text-cream-logo">
-                    {item.title}
-                  </h3>
+                MEET OUR TEAM
+              </motion.span>
+              <motion.h2
+                variants={itemFadeUp}
+                className="font-serif-heading text-3xl sm:text-5xl lg:text-6xl xl:text-7xl text-[#0E2E1E] leading-[1.05] tracking-tight"
+              >
+                Meet The Experts Behind Mani
+              </motion.h2>
+            </motion.div>
+
+            {/* DEDICATED EDITORIAL FEATURE FOR LOLLY DASKAL (Per Designer Note: High Prominence, Substantial Treatment) */}
+            <motion.div
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-40px" }}
+              className="border-t-2 border-[#0E2E1E] pt-12 sm:pt-16 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 xl:gap-24 items-center"
+            >
+              {/* Lolly Daskal Portrait */}
+              <motion.div variants={itemFadeUp} className="lg:col-span-5 flex justify-center lg:justify-start">
+                <div className="relative w-full max-w-[440px] aspect-[4/5] rounded-3xl overflow-hidden bg-[#0E2E1E] border border-mist-grey shadow-xl group">
+                  <img
+                    src="/assets/Team Photos/Lolly Daskal.png"
+                    alt="Lolly Daskal, Strategic Advisor, Behavioral Expert & Bestselling Author"
+                    className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
+                  />
                 </div>
-                <p className="text-sm sm:text-base text-[#E8F0EC] font-normal leading-relaxed">
-                  {item.desc}
-                </p>
               </motion.div>
-            ))}
+
+              {/* Lolly Daskal Editorial Bio: Verbatim to docs line 958 */}
+              <div className="lg:col-span-7 space-y-6">
+                <div className="space-y-3">
+                  <motion.span
+                    variants={itemFadeUp}
+                    className="text-xs sm:text-sm font-bold tracking-[0.2em] uppercase text-[#0E2E1E]/70 block"
+                  >
+                    STRATEGIC ADVISOR, BEHAVIORAL EXPERT &amp; BESTSELLING AUTHOR
+                  </motion.span>
+                  <motion.h3
+                    variants={itemFadeUp}
+                    className="font-serif-heading text-3xl sm:text-5xl lg:text-6xl text-[#0E2E1E] leading-tight"
+                  >
+                    Lolly Daskal
+                  </motion.h3>
+                </div>
+
+                <div className="space-y-5 text-base sm:text-lg lg:text-xl text-[#0B1710] font-normal leading-relaxed">
+                  <motion.p variants={itemFadeUp}>
+                    Lolly Daskal has studied human behavior and helped people navigate growth, relationships, leadership, and life&apos;s challenges. As founder and CEO of Lead From Within and bestselling author of <em>The Leadership Gap</em>, she has spent her career helping individuals and organizations gain clarity, build resilience, strengthen relationships, and create meaningful change.
+                  </motion.p>
+                  <motion.p variants={itemFadeUp}>
+                    Drawing from decades of research, coaching, and real-world experience, Lolly helps shape the vision, content, and frameworks behind Mani. Her work draws on behavioral science, psychology, and practical wisdom to help people better understand themselves, strengthen their relationships, and navigate life&apos;s challenges with greater confidence and clarity.
+                  </motion.p>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* SEAMLESS TRANSITION INTO THE THREE SPECIALISTS (Per Designer Note: Transition without another headline) */}
+            <div className="pt-8 sm:pt-12">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
+                {specialists.map((expert, idx) => (
+                  <motion.div
+                    key={expert.name}
+                    initial={{ opacity: 0, y: 28, filter: "blur(4px)" }}
+                    whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                    viewport={{ once: true, margin: "-30px" }}
+                    transition={{ duration: 0.7, delay: idx * 0.12, ease: appleEase }}
+                    className="bg-white border-t-2 border-t-[#0E2E1E] border-x border-b border-mist-grey/80 rounded-2xl p-7 sm:p-9 flex flex-col justify-between shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-500 group"
+                  >
+                    <div className="space-y-6">
+                      <div className="w-full aspect-[4/4.5] rounded-xl overflow-hidden bg-[#0E2E1E] border border-mist-grey">
+                        <img
+                          src={expert.image}
+                          alt={expert.name}
+                          className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
+                        />
+                      </div>
+                      <div className="space-y-3">
+                        <h4 className="font-serif-heading text-2xl sm:text-3xl text-[#0E2E1E]">
+                          {expert.name}
+                        </h4>
+                        <p className="text-xs sm:text-sm font-bold tracking-wider text-[#0E2E1E]/80 uppercase leading-snug">
+                          {expert.role}
+                        </p>
+                        <p className="text-sm sm:text-base text-[#0B1710] leading-relaxed font-normal pt-1">
+                          {expert.bio}
+                        </p>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
           </div>
         </section>
 
-        {/* CLOSING CTA */}
-        <section className="px-6 sm:px-12 md:px-16 lg:px-24 py-24">
-          <motion.div {...fadeIn} className="max-w-4xl mx-auto">
-            <div className="bg-[#081F14] text-editorial-white rounded-2xl p-10 sm:p-16 text-center space-y-6 shadow-2xl">
-              <span className="text-xs font-bold tracking-widest uppercase text-cream-logo block">
-                SUPPORT DOESN&apos;T END HERE
-              </span>
-              <h2 className="font-serif-heading text-3xl sm:text-5xl text-cream-logo">
-                Join us in making emotional support accessible to everyone.
-              </h2>
-              <p className="text-base sm:text-lg text-[#E8F0EC] font-normal leading-relaxed max-w-2xl mx-auto">
-                Explore our collections, watch our daily videos, or join our growing community.
-              </p>
-              <div className="pt-4 flex flex-wrap justify-center gap-4">
+        {/* SECTION 5: HOW WE CREATE (Clean Horizontal Progression per designer note) */}
+        <section className="w-full px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-28 mb-24 sm:mb-32">
+          <div className="max-w-[1850px] w-full mx-auto pt-20 sm:pt-28 border-t border-[#0E2E1E]/15 space-y-12 sm:space-y-16">
+            <motion.div
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-40px" }}
+              className="space-y-4"
+            >
+              <motion.span
+                variants={itemFadeUp}
+                className="text-xs sm:text-sm font-bold tracking-[0.25em] uppercase text-[#0E2E1E]/70 block"
+              >
+                HOW WE CREATE
+              </motion.span>
+              <motion.h2
+                variants={itemFadeUp}
+                className="font-serif-heading text-3xl sm:text-5xl lg:text-6xl xl:text-7xl text-[#0E2E1E] leading-[1.05] tracking-tight"
+              >
+                How We Turn Expertise Into Support
+              </motion.h2>
+            </motion.div>
+
+            {/* Clean Horizontal Progression: Identify → Research → Develop → Evaluate */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 relative">
+              {processSteps.map((step, idx) => (
+                <motion.div
+                  key={step.step}
+                  initial={{ opacity: 0, y: 24, filter: "blur(4px)" }}
+                  whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                  viewport={{ once: true, margin: "-30px" }}
+                  transition={{ duration: 0.65, delay: idx * 0.1, ease: appleEase }}
+                  className="bg-white border-t-2 border-t-[#0E2E1E] border-x border-b border-mist-grey/70 rounded-2xl p-7 sm:p-9 space-y-5 shadow-xs hover:shadow-lg hover:-translate-y-1 transition-all duration-400 relative"
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="font-serif-heading text-2xl sm:text-3xl text-[#0E2E1E] font-bold opacity-60">
+                      {step.step}
+                    </span>
+                    {idx < 3 && (
+                      <span className="hidden lg:block text-[#0E2E1E]/40 text-xl font-light">
+                        &rarr;
+                      </span>
+                    )}
+                  </div>
+                  <h3 className="font-serif-heading text-2xl sm:text-3xl text-[#0E2E1E]">
+                    {step.title}
+                  </h3>
+                  <p className="text-sm sm:text-base text-[#0B1710] leading-relaxed font-normal">
+                    {step.desc}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* SECTION 6: THERE’S MORE TO MANI (Full-Bleed Editorial Invitation) */}
+        <section className="w-full px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-28 border-t border-[#0E2E1E]/15 pt-24 sm:pt-32 pb-24 sm:pb-32 bg-gradient-to-b from-[#FDFCFA] to-[#F5F2EB]/50">
+          <div className="max-w-[1850px] w-full mx-auto">
+            <motion.div
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-40px" }}
+              className="max-w-4xl mx-auto text-center space-y-8"
+            >
+              <motion.h2
+                variants={itemFadeUp}
+                className="font-serif-heading text-4xl sm:text-6xl lg:text-7xl text-[#0E2E1E] leading-[1.05] tracking-tight"
+              >
+                There’s More To mani
+              </motion.h2>
+
+              <motion.p
+                variants={itemFadeUp}
+                className="text-xl sm:text-2xl text-[#0B1710] font-normal leading-relaxed max-w-3xl mx-auto"
+              >
+                Join our community and stay connected as new collections, videos, app features, and resources are released.
+              </motion.p>
+
+              {/* Action Buttons: Exact Docs CTA */}
+              <motion.div
+                variants={itemFadeUp}
+                className="pt-4 flex flex-wrap justify-center items-center gap-4 sm:gap-6"
+              >
                 <Link
                   href="/join-community"
-                  className="px-10 py-5 bg-cream-logo text-[#0E2E1E] font-semibold rounded-xl hover:bg-white transition-all shadow-xl text-base"
+                  className="px-9 py-4 bg-[#0E2E1E] text-cream-logo font-semibold rounded-xl hover:bg-[#143d28] active:scale-98 transition-all text-base sm:text-lg shadow-lg hover:shadow-xl cursor-pointer"
                 >
                   Join Our Community &rarr;
                 </Link>
-                <Link
-                  href="/collections"
-                  className="px-10 py-5 bg-editorial-white/10 text-cream-logo border border-editorial-white/20 font-semibold rounded-xl hover:bg-editorial-white/20 transition-all text-base"
+                <a
+                  href="mailto:contact@mymani.ai"
+                  className="px-9 py-4 bg-white text-[#0E2E1E] border-2 border-[#0E2E1E] font-semibold rounded-xl hover:bg-soft-white active:scale-98 transition-all shadow-xs hover:shadow-md text-base sm:text-lg cursor-pointer"
                 >
-                  Explore Collections &rarr;
-                </Link>
-              </div>
-            </div>
-          </motion.div>
+                  Contact Us
+                </a>
+              </motion.div>
+
+              {/* Quick Inline Community Form Option */}
+              <motion.div variants={itemFadeUp} className="pt-6 max-w-md mx-auto">
+                {joined ? (
+                  <div className="p-4 rounded-xl bg-[#0E2E1E]/10 border border-[#0E2E1E]/20 text-[#0E2E1E] font-semibold text-sm">
+                    Thank you for joining the mani community!
+                  </div>
+                ) : (
+                  <form onSubmit={handleJoin} className="flex flex-col sm:flex-row gap-3">
+                    <input
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="Enter your email"
+                      required
+                      className="flex-grow px-5 py-3.5 rounded-xl border border-[#0E2E1E]/25 bg-white text-ink-black text-sm focus:outline-none focus:ring-2 focus:ring-[#0E2E1E]"
+                    />
+                    <button
+                      type="submit"
+                      className="px-6 py-3.5 bg-[#0E2E1E] text-cream-logo rounded-xl font-semibold text-sm hover:bg-[#143d28] transition-colors cursor-pointer"
+                    >
+                      Subscribe
+                    </button>
+                  </form>
+                )}
+              </motion.div>
+            </motion.div>
+          </div>
         </section>
 
       </main>

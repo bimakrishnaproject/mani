@@ -42,10 +42,10 @@ export default function Header() {
 
   const navLinkClass = (href: string) => {
     const active = isActive(href);
-    return `text-xs xl:text-sm font-semibold transition-all duration-200 cursor-pointer relative py-1.5 px-3 rounded-full whitespace-nowrap ${
+    return `text-xs xl:text-sm transition-all duration-200 cursor-pointer relative py-2 px-1.5 whitespace-nowrap ${
       active
-        ? "text-[#0E2E1E] bg-soft-signal-green font-bold shadow-xs after:content-[''] after:absolute after:-bottom-1 after:left-3 after:right-3 after:h-[2px] after:bg-[#0E2E1E] after:rounded-full"
-        : "text-[#1C2826] hover:text-[#0E2E1E] hover:bg-mist-grey/40"
+        ? "text-[#0E2E1E] font-bold after:content-[''] after:absolute after:bottom-0 after:left-1.5 after:right-1.5 after:h-[2px] after:bg-[#0E2E1E] after:rounded-full"
+        : "text-[#1C2826] font-medium hover:text-[#0E2E1E] after:content-[''] after:absolute after:bottom-0 after:left-1.5 after:right-1.5 after:h-[2px] after:bg-[#0E2E1E]/30 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-200"
     }`;
   };
 
@@ -67,7 +67,7 @@ export default function Header() {
             : "bg-transparent py-3 sm:py-5"
         }`}
       >
-        <div className="max-w-[1360px] mx-auto px-4 sm:px-6 md:px-12 flex items-center justify-between gap-4">
+        <div className="w-full px-6 sm:px-10 md:px-14 lg:px-16 xl:px-20 flex items-center justify-between gap-4">
           <Link
             href="/"
             className="flex items-center cursor-pointer shrink-0"
@@ -79,7 +79,7 @@ export default function Header() {
             />
           </Link>
 
-          <nav className="hidden lg:flex items-center gap-1.5 xl:gap-6 2xl:gap-8">
+          <nav className="hidden lg:flex items-center gap-2 xl:gap-7 2xl:gap-8">
             <Link href="/" className={navLinkClass("/")}>
               Home
             </Link>
@@ -100,14 +100,14 @@ export default function Header() {
             </Link>
           </nav>
 
-          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
-            {/* Cart Drawer Trigger Button */}
+          <div className="flex items-center gap-3 sm:gap-4 shrink-0">
+            {/* Enlarged Prominent Cart Drawer Trigger Button */}
             <button
               onClick={openCart}
-              className="relative p-2.5 bg-soft-white border border-mist-grey text-[#0E2E1E] rounded-full hover:bg-mist-grey/50 transition-colors flex items-center justify-center cursor-pointer shadow-xs"
+              className="relative p-3 bg-white border border-[#0E2E1E]/20 text-[#0E2E1E] rounded-full hover:bg-[#0E2E1E] hover:text-white transition-all flex items-center justify-center cursor-pointer shadow-sm hover:shadow-md"
               aria-label="View Shopping Cart"
             >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
                 <line x1="3" y1="6" x2="21" y2="6" />
                 <path d="M16 10a4 4 0 0 1-8 0" />
@@ -121,7 +121,7 @@ export default function Header() {
 
             <Link
               href="/join-community"
-              className="hidden xl:inline-flex text-xs font-semibold px-4 py-2.5 bg-[#0E2E1E] text-cream-logo rounded-md hover:bg-[#143d28] transition-colors cursor-pointer whitespace-nowrap"
+              className="hidden xl:inline-flex text-xs font-semibold px-5 py-3 bg-[#0E2E1E] text-cream-logo rounded-xl hover:bg-[#143d28] transition-all cursor-pointer whitespace-nowrap shadow-sm hover:shadow-md"
             >
               Join Our Community
             </Link>

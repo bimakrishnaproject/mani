@@ -5,88 +5,60 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import UnderProgressPage from "@/components/UnderProgressPage";
-import { SITE_LOCKS } from "@/config/locks";
+
+const fadeIn = {
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] as const },
+};
 
 export default function CommunityGuidelinesPage() {
-  if (SITE_LOCKS.PAGES_LOCKED) {
-    return (
-      <UnderProgressPage
-        pageName="Community Guidelines"
-        description="This page is currently undergoing milestone updates. Please explore the live homepage."
-      />
-    );
-  }
-
   return (
-    <div className="min-h-screen bg-editorial-white text-ink-black flex flex-col justify-between overflow-x-hidden">
+    <div className="min-h-screen bg-editorial-white text-ink-black flex flex-col justify-between overflow-x-hidden selection:bg-[#0E2E1E] selection:text-white">
       <Header />
 
-      <main className="flex-grow pt-36 md:pt-48 pb-32">
-        <section className="px-6 sm:px-12 md:px-16 lg:px-24 max-w-4xl mx-auto space-y-12">
+      <main className="flex-grow pt-32 sm:pt-40 md:pt-48 pb-32">
+        <section className="w-full px-6 sm:px-10 md:px-14 lg:px-16 xl:px-20 space-y-10">
           
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false }}
-            transition={{ duration: 0.8 }}
-            className="space-y-4"
-          >
-            <div className="inline-block text-xs font-bold tracking-widest uppercase text-[#0E2E1E] bg-soft-signal-green px-4 py-2 rounded-full">
-              COMMUNITY RULES
-            </div>
-            <h1 className="font-serif-heading text-5xl sm:text-7xl text-[#0E2E1E]">
+          <motion.div {...fadeIn} className="space-y-4">
+            <span className="text-xs font-bold tracking-widest uppercase text-[#0E2E1E] block">
+              COMMUNITY
+            </span>
+            <h1 className="font-serif-heading text-4xl sm:text-6xl text-[#0E2E1E] tracking-tight">
               Community Guidelines
             </h1>
-            <p className="text-sm text-[#0E2E1E] uppercase tracking-wider font-semibold">
-              SAFE & RESPECTFUL SPACE FOR EMOTIONAL GROWTH
+            <p className="text-xs text-[#1C2826]/70 uppercase tracking-wider font-semibold">
+              Last Updated: June 15, 2026
             </p>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            className="space-y-8 text-base text-[#1C2826] font-normal leading-relaxed border-t border-mist-grey pt-8"
+            {...fadeIn}
+            className="space-y-8 text-base text-[#1C2826] font-normal leading-relaxed border-t border-mist-grey/60 pt-8"
           >
-            <div className="p-8 bg-[#0E2E1E] text-editorial-white rounded-3xl space-y-4 shadow-xl">
-              <h2 className="font-serif-heading text-3xl text-cream-logo">
-                Support Without Judgment
-              </h2>
-              <p className="text-sm text-[#E8F0EC] font-normal leading-relaxed">
-                The MANI community exists to provide a calm, respectful, and encouraging environment. We prioritize emotional safety, constructive discussion, and mutual respect.
-              </p>
-            </div>
+            <p>
+              mani™ is owned and operated by Moose Ventures LLC.
+            </p>
+            <p className="text-lg font-medium text-[#0E2E1E]">
+              We are committed to creating a respectful and supportive community.
+            </p>
+            <p>
+              By participating in any mani™ community space, including Discord, social channels, beta programs, or future community experiences, you agree to:
+            </p>
 
-            <div className="space-y-4">
-              <h3 className="font-serif-heading text-2xl text-[#0E2E1E]">1. Respect Privacy & Confidentiality</h3>
-              <p>
-                What is shared in the community stays in the community. Respect the privacy of fellow members and never share personal experiences or names outside the platform.
-              </p>
-            </div>
+            <ul className="list-disc pl-6 space-y-3 pt-2 text-[#1C2826]">
+              <li><strong>Treat others with respect.</strong> Approach conversations with empathy and thoughtful consideration.</li>
+              <li><strong>Avoid harassment, bullying, discrimination, or abusive behavior.</strong> Hostility has no place in our spaces.</li>
+              <li><strong>Respect privacy and confidentiality.</strong> Never share others&apos; personal stories or identifying details without permission.</li>
+              <li><strong>Avoid sharing harmful, illegal, or dangerous content.</strong> Do not post materials that compromise community well-being.</li>
+              <li><strong>Avoid promoting misinformation.</strong> Keep conversations grounded and credible.</li>
+              <li><strong>Refrain from impersonation or deceptive behavior.</strong> Engage authentically as yourself.</li>
+            </ul>
 
-            <div className="space-y-4">
-              <h3 className="font-serif-heading text-2xl text-[#0E2E1E]">2. No Unsolicited Advice or Diagnosis</h3>
-              <p>
-                Members are encouraged to share personal insights and progress. However, diagnosing others or offering medical/clinical advice is strictly prohibited.
+            <div className="p-6 bg-[#0E2E1E] text-editorial-white rounded-2xl space-y-2 mt-6 shadow-md">
+              <p className="text-sm font-medium text-cream-logo">
+                We reserve the right to remove content, suspend access, or terminate participation when community standards are violated.
               </p>
-            </div>
-
-            <div className="space-y-4">
-              <h3 className="font-serif-heading text-2xl text-[#0E2E1E]">3. Zero Tolerance for Harassment</h3>
-              <p>
-                Toxic behavior, hate speech, victim-blaming, or aggressive communication will result in immediate removal from MANI community channels.
-              </p>
-            </div>
-
-            <div className="pt-8 border-t border-mist-grey flex justify-between items-center text-xs font-bold text-[#0E2E1E]">
-              <Link href="/join-community" className="underline hover:text-emerald-700">
-                &larr; Join Our Community
-              </Link>
-              <Link href="/beta-terms" className="underline hover:text-emerald-700">
-                View Beta Program Terms &rarr;
-              </Link>
             </div>
           </motion.div>
 

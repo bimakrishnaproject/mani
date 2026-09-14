@@ -54,7 +54,7 @@ export default function RealisticPaperScroll({
       ref={containerRef}
       className={`relative min-h-[140vh] w-full pt-32 pb-24 flex justify-center items-start overflow-hidden bg-gradient-to-b from-editorial-white via-soft-white/60 to-soft-white [perspective:1400px] ${className}`}
     >
-      <div className="sticky top-28 w-full max-w-6xl px-4 sm:px-8 md:px-12 flex justify-center">
+      <div className="sticky top-28 w-full px-6 sm:px-10 md:px-14 lg:px-16 xl:px-20 flex justify-center">
         
         {/* Main 3D Paper Sheet Container */}
         <motion.div

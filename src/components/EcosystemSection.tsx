@@ -1,175 +1,293 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import ChatSimulator from "@/components/ChatSimulator";
 import { VIDEOS_DATA } from "@/data/videos";
 
 const newestVideo = VIDEOS_DATA[0];
 
-const pillars = [
+interface CollectionBook {
+  id: string;
+  name: string;
+  image: string;
+  alt: string;
+  baseRotation: string;
+  hoverRotation: string;
+  baseMargin: string;
+  heightClass: string;
+  zIndex: number;
+}
+
+const ECOSYSTEM_BOOKS: CollectionBook[] = [
   {
-    id: "collections",
-    number: "01",
-    title: "Collections",
-    description: "Complete collections designed to help you better understand and navigate specific life challenges.",
-    ctaText: "Explore Collections",
-    ctaLink: "/collections",
-    image: "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/Collection/Collection.png",
-    type: "image",
+    id: "coloring",
+    name: "Coloring Book & Journal",
+    image: "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/trimmed/Coloring Book.png",
+    alt: "The Bye Bye Narcissist Coloring Book and Daily Journal",
+    baseRotation: "-rotate-[5deg]",
+    hoverRotation: "-rotate-[1deg]",
+    baseMargin: "-mr-3 sm:-mr-4 lg:-mr-5",
+    heightClass: "h-[220px] sm:h-[255px] md:h-[285px] lg:h-[310px] xl:h-[345px] 2xl:h-[370px]",
+    zIndex: 10,
   },
   {
-    id: "app",
-    number: "02",
-    title: "App",
-    description: "Guided conversations, breathwork, meditations, stories, and expert-created resources designed to support you whenever you need it.",
-    ctaText: "Join Beta",
-    ctaLink: "/join-beta",
-    type: "app",
+    id: "book",
+    name: "Hardcover Book",
+    image: "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/trimmed/Solo_Book_Clean.png",
+    alt: "The Bye Bye Narcissist Hardcover Book",
+    baseRotation: "rotate-0",
+    hoverRotation: "rotate-0",
+    baseMargin: "z-20",
+    heightClass: "h-[255px] sm:h-[295px] md:h-[335px] lg:h-[365px] xl:h-[400px] 2xl:h-[425px]",
+    zIndex: 20,
   },
   {
-    id: "watch-learn",
-    number: "03",
-    title: "Watch & Learn",
-    description: "Daily videos that turn psychology, relationships, and personal growth into practical insights you can use every day.",
-    ctaText: "Watch Videos",
-    ctaLink: "/watch-learn",
-    image: newestVideo.thumbnailUrl,
-    type: "video",
+    id: "workbook",
+    name: "Guided Workbook",
+    image: "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/trimmed/Solo_Workbook_Clean.png",
+    alt: "The Bye Bye Narcissist Guided Workbook",
+    baseRotation: "rotate-[5deg]",
+    hoverRotation: "rotate-[1deg]",
+    baseMargin: "-ml-3 sm:-ml-4 lg:-ml-5",
+    heightClass: "h-[230px] sm:h-[265px] md:h-[300px] lg:h-[325px] xl:h-[360px] 2xl:h-[385px]",
+    zIndex: 10,
   },
 ];
 
 export default function EcosystemSection() {
+  const [hoveredBookId, setHoveredBookId] = useState<string | null>(null);
   return (
-    <section className="py-20 sm:py-28 md:py-36 bg-[#081F14] text-editorial-white w-full relative overflow-hidden">
-      {/* Background ambient lighting */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[500px] bg-radial from-[#143d28]/40 to-transparent pointer-events-none blur-3xl" />
+    <section
+      id="how-mani-helps"
+      className="relative bg-[#06180F] text-cream-logo py-20 sm:py-24 lg:py-28 w-full border-b border-editorial-white/10 select-none overflow-hidden"
+    >
+      {/* Cinematic Ambient Stage Lighting */}
+      <div
+        className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[1400px] h-[600px] bg-radial from-emerald-500/10 via-[#0E2E1E]/15 to-transparent blur-3xl pointer-events-none"
+        aria-hidden="true"
+      />
 
-      <div className="max-w-[1360px] mx-auto px-6 md:px-12 relative z-10">
+      {/* Full-Width Canvas: Uses maximum screen width with balanced margins */}
+      <div className="w-full max-w-[1880px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-14 2xl:px-16 space-y-12 lg:space-y-16 relative z-10">
         
         {/* Section Header */}
-        <div className="max-w-3xl mb-12 sm:mb-16">
-          <span className="text-xs font-bold tracking-widest text-cream-logo uppercase block mb-3">
-            HOW MANI&trade; HELPS
-          </span>
-          <h2 className="font-serif-heading text-3xl xs:text-4xl sm:text-5xl md:text-6xl text-cream-logo leading-[1.1] tracking-tight">
+        <div className="space-y-3">
+          <div className="flex items-center gap-2.5">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <span className="text-xs font-mono font-bold tracking-widest text-emerald-400 uppercase">
+              HOW MANI HELPS
+            </span>
+          </div>
+
+          <h2 className="font-serif-heading text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-cream-logo leading-[1.05] tracking-tight">
             Three Ways We Can Help
           </h2>
         </div>
 
-        {/* 3-Pillar Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
-          {pillars.map((pillar, idx) => (
-            <motion.div
-              key={pillar.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: idx * 0.15, ease: [0.16, 1, 0.3, 1] }}
-              className="bg-[#0E2E1E] border border-editorial-white/15 rounded-3xl p-6 sm:p-8 shadow-2xl flex flex-col justify-between group hover:border-cream-logo/40 transition-all duration-300"
+        {/* ============================================================== */}
+        {/* THREE PILLARS: VISUAL STAGE & GROUNDED SHELF (NO CARD BG)      */}
+        {/* ============================================================== */}
+        <div className="w-full space-y-0">
+          
+          {/* Visual Showcase Row: Books, Phone, Video sitting side-by-side */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-8 xl:gap-12 items-end">
+            
+            {/* Pillar 1 Visual: Collections Books */}
+            <Link
+              href="/collections"
+              className="w-full flex flex-col items-center justify-end cursor-pointer"
             >
-              <div>
-                {/* Pillar Header Tag */}
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-xs font-bold tracking-widest text-cream-logo uppercase">
-                    {pillar.number} / {pillar.title}
-                  </span>
-                  {pillar.type === "video" && (
-                    <span className="text-[10px] font-bold text-cream-logo bg-black/60 px-2.5 py-0.5 rounded-full border border-editorial-white/20">
-                      {newestVideo.duration}
-                    </span>
-                  )}
-                  {pillar.type === "app" && (
-                    <span className="text-[9px] bg-editorial-white/10 px-2 py-0.5 rounded-full text-cream-logo font-bold">
-                      BETA
-                    </span>
-                  )}
-                </div>
+              <div
+                onMouseLeave={() => setHoveredBookId(null)}
+                className="w-full flex items-end justify-center pb-0"
+              >
+                {ECOSYSTEM_BOOKS.map((book) => {
+                  const isHovered = hoveredBookId === book.id;
+                  const isAnyHovered = hoveredBookId !== null;
 
-                <h3 className="font-serif-heading text-2xl sm:text-3xl text-cream-logo mb-4 group-hover:text-white transition-colors">
-                  {pillar.title}
-                </h3>
-
-                {/* Stage Preview Container */}
-                {pillar.type === "image" && (
-                  <div className="relative w-full h-[340px] sm:h-[380px] rounded-2xl overflow-hidden mb-6 bg-gradient-to-b from-[#143D28] via-[#0E2E1E] to-[#081F14] flex items-center justify-center border border-editorial-white/15 shadow-inner p-6 group">
-                    <div className="absolute bottom-4 w-4/5 h-6 bg-black/40 blur-lg rounded-full pointer-events-none" />
-                    <img
-                      src={encodeURI(pillar.image!)}
-                      alt={pillar.title}
-                      className="relative z-10 max-h-[270px] sm:max-h-[300px] w-auto object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.4)] transition-transform duration-500 group-hover:scale-105"
-                    />
-                  </div>
-                )}
-
-                {pillar.type === "app" && (
-                  <div className="relative w-full h-[340px] sm:h-[380px] rounded-2xl overflow-hidden mb-6 bg-gradient-to-b from-[#0B2418] to-[#05150D] p-3 sm:p-4 flex items-center justify-center border border-editorial-white/15 shadow-inner group">
-                    {/* Modern Smartphone Frame with Official Chat */}
-                    <div className="relative w-full max-w-[270px] h-full bg-[#020A06] border-2 border-emerald-500/30 rounded-[28px] p-2 flex flex-col justify-between shadow-[0_15px_35px_rgba(0,0,0,0.6)] overflow-hidden">
-                      {/* Top App Header with Get Help Now */}
-                      <div className="w-full flex items-center justify-between px-2.5 pt-1 pb-1.5 border-b border-editorial-white/10 shrink-0">
-                        <div className="flex items-center gap-1">
-                          <img src="/assets/Mani Logos/mani cream logo.png" alt="MANI™" className="h-3 w-auto object-contain" />
-                        </div>
-                        <span className="text-[7.5px] font-bold tracking-wide text-cream-logo bg-[#0E2E1E] border border-emerald-400/30 px-2 py-0.5 rounded-full">
-                          Get Help Now
-                        </span>
-                      </div>
-                      {/* Live Crisp Official Conversation */}
-                      <div className="flex-1 overflow-hidden py-1">
-                        <ChatSimulator />
-                      </div>
-                    </div>
-                  </div>
-                )}
-
-                {pillar.type === "video" && (
-                  <div className="relative w-full h-[340px] sm:h-[380px] rounded-2xl overflow-hidden mb-6 bg-gradient-to-b from-[#143D28] via-[#0E2E1E] to-[#081F14] flex items-center justify-center p-3 sm:p-4 border border-editorial-white/15 shadow-inner group">
-                    {/* 100% Full Uncropped 9:16 Vertical Video Reel Card */}
-                    <div className="relative h-full aspect-[9/16] rounded-2xl overflow-hidden shadow-2xl border border-editorial-white/25 flex flex-col justify-between group-hover:scale-105 transition-transform duration-500 bg-black">
-                      {/* Full Clean Vertical Artwork Thumbnail */}
-                      <img
-                        src={encodeURI(newestVideo.thumbnailUrl)}
-                        alt={newestVideo.title}
-                        className="absolute inset-0 w-full h-full object-cover object-center"
+                  return (
+                    <div
+                      key={book.id}
+                      onMouseEnter={() => setHoveredBookId(book.id)}
+                      onMouseLeave={() => setHoveredBookId(null)}
+                      className={`relative flex flex-col items-center justify-end cursor-pointer transition-all duration-300 origin-bottom select-none ${book.baseMargin} ${
+                        isHovered
+                          ? "z-50 -translate-y-5 sm:-translate-y-7"
+                          : `${book.zIndex} ${isAnyHovered ? "opacity-75 scale-[0.98]" : "opacity-100 scale-100"}`
+                      }`}
+                    >
+                      {/* Ambient Shadow Behind Book */}
+                      <div
+                        className={`absolute inset-0 bg-black/50 blur-2xl rounded-2xl pointer-events-none transition-all duration-300 ${
+                          isHovered ? "opacity-60 scale-110" : "opacity-25 scale-100"
+                        }`}
                       />
 
-                      {/* Top duration badge */}
-                      <div className="relative z-10 p-2.5 flex justify-end">
-                        <span className="text-[9px] font-bold text-cream-logo bg-black/75 backdrop-blur-md px-2.5 py-0.5 rounded-full border border-editorial-white/20 shadow-md">
-                          {newestVideo.duration}
-                        </span>
-                      </div>
+                      {/* The Book Mockup */}
+                      <img
+                        src={encodeURI(book.image)}
+                        alt={book.alt}
+                        className={`${book.heightClass} w-auto object-contain transition-all duration-300 relative z-10 origin-bottom ${
+                          isHovered
+                            ? `${book.hoverRotation} scale-[1.06] drop-shadow-[0_30px_45px_rgba(0,0,0,0.95)]`
+                            : `${book.baseRotation} drop-shadow-[0_12px_22px_rgba(0,0,0,0.7)]`
+                        }`}
+                      />
 
-                      {/* Center play button */}
-                      <div className="relative z-10 flex items-center justify-center my-auto">
-                        <div className="w-13 h-13 rounded-full bg-cream-logo/95 text-[#0E2E1E] flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform">
-                          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" className="ml-0.5">
-                            <polygon points="8,5 19,12 8,19" fill="currentColor" />
-                          </svg>
-                        </div>
+                      {/* Contact Shadow Grounded Directly on the Shelf Floor */}
+                      <div className="w-full relative h-0 pointer-events-none z-20">
+                        <div
+                          className={`w-[90%] h-[4px] bg-black/95 blur-[1.5px] rounded-full mx-auto -mt-[2px] transition-all duration-300 ${
+                            isHovered ? "scale-50 opacity-25" : "scale-100 opacity-95"
+                          }`}
+                        />
+                        <div
+                          className={`w-[80%] h-[8px] bg-black/50 blur-[4px] rounded-full mx-auto -mt-[2px] transition-all duration-300 ${
+                            isHovered ? "scale-60 opacity-20" : "scale-100 opacity-50"
+                          }`}
+                        />
                       </div>
                     </div>
+                  );
+                })}
+              </div>
+            </Link>
+
+            {/* Pillar 2 Visual: App Companion Phone */}
+            <Link
+              href="/join-beta"
+              className="w-full flex flex-col items-center justify-end cursor-pointer group"
+            >
+              <div className="relative w-[215px] sm:w-[240px] lg:w-[260px] xl:w-[285px] 2xl:w-[310px] h-[300px] sm:h-[340px] lg:h-[375px] xl:h-[410px] 2xl:h-[435px] bg-[#020A06] border-[2.5px] border-[#1d4a32] rounded-t-[34px] p-2.5 sm:p-3 flex flex-col justify-between shadow-[0_25px_50px_rgba(0,0,0,0.85)] group-hover:scale-[1.02] origin-bottom transition-transform duration-300 overflow-hidden">
+                {/* Top App Header */}
+                <div className="w-full flex items-center justify-center px-2 pt-1 pb-2 border-b border-editorial-white/10 shrink-0">
+                  <div className="flex items-center gap-1.5">
+                    <img
+                      src="/assets/Mani Logos/mani cream logo.png"
+                      alt="mani"
+                      className="h-3 w-auto object-contain"
+                    />
                   </div>
-                )}
+                </div>
 
-                <p className="text-xs sm:text-sm text-[#E8F0EC] font-normal leading-relaxed mb-6">
-                  {pillar.description}
-                </p>
-              </div>
+                {/* Live Conversation Simulator */}
+                <div className="flex-1 overflow-hidden py-1.5">
+                  <ChatSimulator />
+                </div>
 
-              <div>
-                <Link
-                  href={pillar.ctaLink}
-                  className="inline-flex items-center gap-2 w-full justify-center px-6 py-3.5 bg-cream-logo text-[#0E2E1E] font-semibold rounded-xl hover:bg-white transition-all text-xs sm:text-sm shadow-md"
-                >
-                  <span>{pillar.ctaText}</span>
-                  <span>&rarr;</span>
-                </Link>
+                {/* Contact Shadow at Phone Base */}
+                <div className="w-full relative h-0 pointer-events-none z-20">
+                  <div className="w-[88%] h-[4px] bg-black/95 blur-[1px] rounded-full mx-auto -mt-[2px]" />
+                  <div className="w-[78%] h-[8px] bg-black/50 blur-[3px] rounded-full mx-auto -mt-[2px]" />
+                </div>
               </div>
-            </motion.div>
-          ))}
+            </Link>
+
+            {/* Pillar 3 Visual: Watch & Learn Video */}
+            <Link
+              href="/watch-learn"
+              className="w-full flex flex-col items-center justify-end cursor-pointer group"
+            >
+              <div className="relative w-[215px] sm:w-[240px] lg:w-[260px] xl:w-[285px] 2xl:w-[310px] h-[300px] sm:h-[340px] lg:h-[375px] xl:h-[410px] 2xl:h-[435px] rounded-t-2xl overflow-hidden border-t border-x border-white/20 shadow-[0_25px_50px_rgba(0,0,0,0.85)] group-hover:scale-[1.02] origin-bottom transition-transform duration-300">
+                <img
+                  src={newestVideo.thumbnailUrl}
+                  alt={newestVideo.title}
+                  className="w-full h-full object-cover"
+                />
+
+                <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/35 to-black/40" />
+
+                {/* Play Button */}
+                <div className="absolute inset-0 flex items-center justify-center z-10">
+                  <div className="w-13 h-13 rounded-full bg-cream-logo/90 text-[#06180F] flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      className="translate-x-0.5"
+                    >
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                  </div>
+                </div>
+
+                {/* Video Title */}
+                <div className="absolute bottom-3 left-3 right-3 z-10">
+                  <h4 className="text-xs sm:text-sm font-serif-heading font-medium text-cream-logo line-clamp-2 leading-snug">
+                    {newestVideo.title}
+                  </h4>
+                </div>
+
+                {/* Contact Shadow at Video Base */}
+                <div className="w-full relative h-0 pointer-events-none z-20">
+                  <div className="w-[88%] h-[4px] bg-black/95 blur-[1px] rounded-full mx-auto -mt-[2px]" />
+                  <div className="w-[78%] h-[8px] bg-black/50 blur-[3px] rounded-full mx-auto -mt-[2px]" />
+                </div>
+              </div>
+            </Link>
+
+          </div>
+
+          {/* Continuous Architectural Shelf Ledge (Tatakan Nyata - Edge-to-Edge) */}
+          <div className="relative z-20 w-full -mt-2.5 sm:-mt-3">
+            {/* Shelf Floor Surface Plane */}
+            <div className="w-full h-4 sm:h-5 bg-gradient-to-r from-[#0d2618] via-[#1a4028] to-[#0d2618] border-t border-cream-logo/25 shadow-[inset_0_2px_4px_rgba(255,255,255,0.12)] relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-emerald-400/10 to-transparent pointer-events-none" />
+              <div className="absolute bottom-0 inset-x-0 h-[1.5px] bg-gradient-to-r from-transparent via-cream-logo/50 to-transparent" />
+            </div>
+
+            {/* Shelf Front Fascia */}
+            <div className="w-full h-5 sm:h-6 bg-gradient-to-b from-[#0b2114] via-[#07150d] to-[#030a06] border-t border-black/80 shadow-[0_12px_24px_rgba(0,0,0,0.8)]" />
+          </div>
+
+        </div>
+
+        {/* ============================================================== */}
+        {/* THREE VISUAL CARDS: 100% VERBATIM COPY FROM docs/website_copy.md */}
+        {/* ============================================================== */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-8 xl:gap-12 2xl:gap-14 pt-4 sm:pt-6">
+          
+          {/* Pillar 1: Collections */}
+          <Link
+            href="/collections"
+            className="space-y-3 block group cursor-pointer"
+          >
+            <h3 className="font-serif-heading text-2xl sm:text-3xl lg:text-[2.1rem] text-cream-logo tracking-tight leading-snug group-hover:text-white transition-colors">
+              Collections
+            </h3>
+            <p className="text-sm sm:text-base text-cream-logo/80 font-normal leading-relaxed">
+              Digital books, workbooks, and tools that help you explore a specific challenge and put what you learn into practice.
+            </p>
+          </Link>
+
+          {/* Pillar 2: App */}
+          <Link
+            href="/join-beta"
+            className="space-y-3 block group cursor-pointer"
+          >
+            <h3 className="font-serif-heading text-2xl sm:text-3xl lg:text-[2.1rem] text-cream-logo tracking-tight leading-snug group-hover:text-white transition-colors">
+              App
+            </h3>
+            <p className="text-sm sm:text-base text-cream-logo/80 font-normal leading-relaxed">
+              Guided conversations, breathwork, meditations, stories, and expert-created resources designed to support you whenever you need it.
+            </p>
+          </Link>
+
+          {/* Pillar 3: Watch & Learn */}
+          <Link
+            href="/watch-learn"
+            className="space-y-3 block group cursor-pointer"
+          >
+            <h3 className="font-serif-heading text-2xl sm:text-3xl lg:text-[2.1rem] text-cream-logo tracking-tight leading-snug group-hover:text-white transition-colors">
+              Watch & Learn
+            </h3>
+            <p className="text-sm sm:text-base text-cream-logo/80 font-normal leading-relaxed">
+              Daily videos that turn psychology, relationships, and personal growth into practical insights you can use every day.
+            </p>
+          </Link>
+
         </div>
 
       </div>

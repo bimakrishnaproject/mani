@@ -11,13 +11,13 @@ export default function NotFoundPage() {
     <div className="min-h-screen bg-editorial-white text-ink-black flex flex-col justify-between overflow-x-hidden">
       <Header />
 
-      <main className="flex-grow pt-36 md:pt-48 pb-32">
-        <section className="px-6 sm:px-12 md:px-16 lg:px-24">
+      <main className="flex-grow pt-36 md:pt-48 pb-32 flex items-center justify-center">
+        <section className="w-full px-6 sm:px-10 md:px-14 lg:px-16 xl:px-20">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="max-w-3xl mx-auto text-center space-y-8"
+            className="w-full text-center space-y-8"
           >
             <span className="text-xs font-bold tracking-widest uppercase text-[#0E2E1E] bg-soft-signal-green px-4 py-2 rounded-full shadow-xs">
               PAGE NOT FOUND • 404 ERROR

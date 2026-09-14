@@ -78,9 +78,9 @@ export default function CheckoutPage() {
       <Header />
 
       <main className="flex-grow pt-36 md:pt-44 pb-32">
-        <section className="px-6 sm:px-12 md:px-16 lg:px-24">
+        <section className="w-full px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24">
           
-          <div className="max-w-6xl mx-auto mb-12">
+          <div className="w-full mb-12">
             <span className="text-xs font-bold tracking-widest uppercase text-[#0E2E1E] bg-soft-signal-green px-4 py-2 rounded-full shadow-xs">
               SECURE CHECKOUT
             </span>
@@ -92,30 +92,30 @@ export default function CheckoutPage() {
           {cart.length === 0 ? (
             <div className="max-w-2xl mx-auto text-center py-16 p-8 bg-soft-white border border-mist-grey rounded-3xl space-y-6">
               <h2 className="font-serif-heading text-3xl text-[#0E2E1E]">Your Cart is Currently Empty</h2>
-              <p className="text-sm text-[#1C2826] font-normal">
+              <p className="text-base text-[#0B1710] font-medium">
                 Explore the Bye Bye Narcissist collection or individual tools to add items to your order.
               </p>
               <Link
                 href="/collections/bye-bye-narcissist"
                 className="inline-block px-8 py-4 bg-[#0E2E1E] text-editorial-white font-semibold rounded-xl hover:bg-[#143d28] transition-all text-sm"
               >
-                Shop Flagship Collection ($119.99) &rarr;
+                Explore Collections &rarr;
               </Link>
             </div>
           ) : (
-            <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
               
-              {/* Left Column: Customer Form */}
-              <form onSubmit={handleSubmit} className="lg:col-span-7 space-y-8 bg-soft-white p-8 sm:p-10 border-2 border-mist-grey rounded-3xl shadow-sm">
+              {/* Form Section */}
+              <form onSubmit={handleSubmit} className="lg:col-span-7 space-y-8 bg-white p-8 sm:p-10 border-2 border-mist-grey/80 rounded-3xl shadow-sm">
                 
                 {/* 1. Contact Information */}
                 <div className="space-y-4">
                   <h3 className="font-serif-heading text-2xl text-[#0E2E1E] border-b border-mist-grey pb-3">
-                    1. Contact & Delivery Email
+                    1. Contact &amp; Delivery Email
                   </h3>
                   <div>
-                    <label className="block text-xs font-bold text-ink-black uppercase tracking-wider mb-2">
-                      Email Address (For Order Tracking & Digital Access)
+                    <label className="block text-xs font-bold text-[#0E2E1E] uppercase tracking-wider mb-2">
+                      Email Address (For Order Tracking &amp; Access)
                     </label>
                     <input
                       type="email"
@@ -123,7 +123,7 @@ export default function CheckoutPage() {
                       placeholder="your.email@domain.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-4 py-3.5 bg-editorial-white border border-mist-grey rounded-xl text-sm focus:outline-none focus:border-[#0E2E1E]"
+                      className="w-full px-4 py-3.5 bg-white border border-mist-grey rounded-xl text-base text-[#0B1710] font-medium focus:outline-none focus:border-[#0E2E1E]"
                     />
                   </div>
                 </div>
@@ -135,7 +135,7 @@ export default function CheckoutPage() {
                   </h3>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-bold text-ink-black uppercase tracking-wider mb-2">
+                      <label className="block text-xs font-bold text-[#0E2E1E] uppercase tracking-wider mb-2">
                         First Name
                       </label>
                       <input
@@ -144,11 +144,11 @@ export default function CheckoutPage() {
                         placeholder="First Name"
                         value={formData.firstName}
                         onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-                        className="w-full px-4 py-3.5 bg-editorial-white border border-mist-grey rounded-xl text-sm focus:outline-none focus:border-[#0E2E1E]"
+                        className="w-full px-4 py-3.5 bg-white border border-mist-grey rounded-xl text-base text-[#0B1710] font-medium focus:outline-none focus:border-[#0E2E1E]"
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-bold text-ink-black uppercase tracking-wider mb-2">
+                      <label className="block text-xs font-bold text-[#0E2E1E] uppercase tracking-wider mb-2">
                         Last Name
                       </label>
                       <input
@@ -157,13 +157,13 @@ export default function CheckoutPage() {
                         placeholder="Last Name"
                         value={formData.lastName}
                         onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
-                        className="w-full px-4 py-3.5 bg-editorial-white border border-mist-grey rounded-xl text-sm focus:outline-none focus:border-[#0E2E1E]"
+                        className="w-full px-4 py-3.5 bg-white border border-mist-grey rounded-xl text-base text-[#0B1710] font-medium focus:outline-none focus:border-[#0E2E1E]"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-ink-black uppercase tracking-wider mb-2">
+                    <label className="block text-xs font-bold text-[#0E2E1E] uppercase tracking-wider mb-2">
                       Street Address
                     </label>
                     <input
@@ -172,13 +172,13 @@ export default function CheckoutPage() {
                       placeholder="Street Address, Suite or Apartment"
                       value={formData.address}
                       onChange={(e) => setFormData({ ...formData, address: e.target.value })}
-                      className="w-full px-4 py-3.5 bg-editorial-white border border-mist-grey rounded-xl text-sm focus:outline-none focus:border-[#0E2E1E]"
+                      className="w-full px-4 py-3.5 bg-white border border-mist-grey rounded-xl text-base text-[#0B1710] font-medium focus:outline-none focus:border-[#0E2E1E]"
                     />
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     <div>
-                      <label className="block text-xs font-bold text-ink-black uppercase tracking-wider mb-2">
+                      <label className="block text-xs font-bold text-[#0E2E1E] uppercase tracking-wider mb-2">
                         City
                       </label>
                       <input
@@ -187,17 +187,17 @@ export default function CheckoutPage() {
                         placeholder="City"
                         value={formData.city}
                         onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-                        className="w-full px-4 py-3.5 bg-editorial-white border border-mist-grey rounded-xl text-sm focus:outline-none focus:border-[#0E2E1E]"
+                        className="w-full px-4 py-3.5 bg-white border border-mist-grey rounded-xl text-base text-[#0B1710] font-medium focus:outline-none focus:border-[#0E2E1E]"
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-bold text-ink-black uppercase tracking-wider mb-2">
+                      <label className="block text-xs font-bold text-[#0E2E1E] uppercase tracking-wider mb-2">
                         Country
                       </label>
                       <select
                         value={formData.country}
                         onChange={(e) => setFormData({ ...formData, country: e.target.value })}
-                        className="w-full px-4 py-3.5 bg-editorial-white border border-mist-grey rounded-xl text-sm focus:outline-none focus:border-[#0E2E1E]"
+                        className="w-full px-4 py-3.5 bg-white border border-mist-grey rounded-xl text-base text-[#0B1710] font-medium focus:outline-none focus:border-[#0E2E1E]"
                       >
                         <option value="United States">United States</option>
                         <option value="Canada">Canada</option>
@@ -207,7 +207,7 @@ export default function CheckoutPage() {
                       </select>
                     </div>
                     <div>
-                      <label className="block text-xs font-bold text-ink-black uppercase tracking-wider mb-2">
+                      <label className="block text-xs font-bold text-[#0E2E1E] uppercase tracking-wider mb-2">
                         Postal Code
                       </label>
                       <input
@@ -216,7 +216,7 @@ export default function CheckoutPage() {
                         placeholder="ZIP / Postal Code"
                         value={formData.postalCode}
                         onChange={(e) => setFormData({ ...formData, postalCode: e.target.value })}
-                        className="w-full px-4 py-3.5 bg-editorial-white border border-mist-grey rounded-xl text-sm focus:outline-none focus:border-[#0E2E1E]"
+                        className="w-full px-4 py-3.5 bg-white border border-mist-grey rounded-xl text-base text-[#0B1710] font-medium focus:outline-none focus:border-[#0E2E1E]"
                       />
                     </div>
                   </div>

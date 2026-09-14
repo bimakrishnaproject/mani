@@ -5,79 +5,104 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import UnderProgressPage from "@/components/UnderProgressPage";
-import { SITE_LOCKS } from "@/config/locks";
+
+const fadeIn = {
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] as const },
+};
 
 export default function ShippingPolicyPage() {
-  if (SITE_LOCKS.PAGES_LOCKED) {
-    return (
-      <UnderProgressPage
-        pageName="Shipping & Fulfillment Policy"
-        description="This page is currently undergoing milestone updates. Please explore the live homepage."
-      />
-    );
-  }
-
   return (
-    <div className="min-h-screen bg-editorial-white text-ink-black flex flex-col justify-between overflow-x-hidden">
+    <div className="min-h-screen bg-editorial-white text-ink-black flex flex-col justify-between overflow-x-hidden selection:bg-[#0E2E1E] selection:text-white">
       <Header />
 
-      <main className="flex-grow pt-36 md:pt-48 pb-32">
-        <section className="px-6 sm:px-12 md:px-16 lg:px-24 max-w-4xl mx-auto space-y-12">
+      <main className="flex-grow pt-32 sm:pt-40 md:pt-48 pb-32">
+        <section className="w-full px-6 sm:px-10 md:px-14 lg:px-16 xl:px-20 space-y-10">
           
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false }}
-            transition={{ duration: 0.8 }}
-            className="space-y-4"
-          >
-            <div className="inline-block text-xs font-bold tracking-widest uppercase text-[#0E2E1E] bg-soft-signal-green px-4 py-2 rounded-full">
-              ORDER FULFILLMENT & DELIVERY
-            </div>
-            <h1 className="font-serif-heading text-5xl sm:text-7xl text-[#0E2E1E]">
+          <motion.div {...fadeIn} className="space-y-4">
+            <span className="text-xs font-bold tracking-widest uppercase text-[#0E2E1E] block">
+              LEGAL
+            </span>
+            <h1 className="font-serif-heading text-4xl sm:text-6xl text-[#0E2E1E] tracking-tight">
               Shipping Policy
             </h1>
-            <p className="text-sm text-[#0E2E1E] uppercase tracking-wider font-semibold">
-              PHYSICAL FULFILLMENT & DIGITAL ACCESS SPECIFICATIONS
+            <p className="text-xs text-[#1C2826]/70 uppercase tracking-wider font-semibold">
+              Last Updated: June 15, 2026
             </p>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            className="space-y-8 text-base text-[#1C2826] font-normal leading-relaxed border-t border-mist-grey pt-8"
+            {...fadeIn}
+            className="space-y-8 text-base text-[#1C2826] font-normal leading-relaxed border-t border-mist-grey/60 pt-8"
           >
-            <div className="space-y-4">
-              <h3 className="font-serif-heading text-2xl text-[#0E2E1E]">1. Free Worldwide Shipping on Bundles</h3>
+            <p>
+              mani™ is owned and operated by Moose Ventures LLC.
+            </p>
+            <p>
+              mani™ currently ships physical products within the United States and select international locations.
+            </p>
+
+            <div className="space-y-4 pt-4 border-t border-mist-grey/40">
+              <h2 className="font-serif-heading text-2xl sm:text-3xl text-[#0E2E1E]">
+                Processing Times
+              </h2>
               <p>
-                All complete MANI&trade; 5-Part Collection Bundles (such as the Bye Bye Narcissist $119.99 system) qualify for **Free Worldwide Express Shipping**. Individual items are shipped using standard domestic and international postal rates calculated at checkout.
+                Orders are generally processed within 3-5 business days. Processing times may vary during:
+              </p>
+              <ul className="list-disc pl-6 space-y-2">
+                <li>Product launches</li>
+                <li>Holidays</li>
+                <li>Promotional periods</li>
+                <li>High-volume sales periods</li>
+              </ul>
+            </div>
+
+            <div className="space-y-4 pt-4 border-t border-mist-grey/40">
+              <h2 className="font-serif-heading text-2xl sm:text-3xl text-[#0E2E1E]">
+                Shipping Times
+              </h2>
+              <p>
+                Delivery times vary based on location and carrier. Estimated shipping times are provided at checkout and are not guaranteed.
               </p>
             </div>
 
-            <div className="space-y-4">
-              <h3 className="font-serif-heading text-2xl text-[#0E2E1E]">2. Order Processing Times</h3>
+            <div className="space-y-4 pt-4 border-t border-mist-grey/40">
+              <h2 className="font-serif-heading text-2xl sm:text-3xl text-[#0E2E1E]">
+                Tracking Information
+              </h2>
               <p>
-                Orders are processed and dispatched within 1-2 business days from our fulfillment centers. You will receive a tracking confirmation email with real-time delivery updates as soon as your package leaves the warehouse.
+                When available, tracking information will be provided once your order has shipped.
               </p>
             </div>
 
-            <div className="space-y-4">
-              <h3 className="font-serif-heading text-2xl text-[#0E2E1E]">3. Instant Digital Product Access</h3>
+            <div className="space-y-4 pt-4 border-t border-mist-grey/40">
+              <h2 className="font-serif-heading text-2xl sm:text-3xl text-[#0E2E1E]">
+                Lost or Delayed Packages
+              </h2>
+              <p>mani™ is not responsible for shipping delays caused by:</p>
+              <ul className="list-disc pl-6 space-y-2">
+                <li>Weather</li>
+                <li>Carrier disruptions</li>
+                <li>Customs delays</li>
+                <li>Incorrect addresses provided by customers</li>
+              </ul>
               <p>
-                Digital editions and PDF companions included in your purchase are accessible immediately upon order completion. You will receive an instant download link via email and on your checkout confirmation page.
+                If your package appears lost, please contact us at{" "}
+                <a href="mailto:contact@mymani.ai" className="font-semibold text-[#0E2E1E] underline">
+                  contact@mymani.ai
+                </a>{" "}
+                and we will work with the carrier to investigate.
               </p>
             </div>
 
-            <div className="pt-8 border-t border-mist-grey flex justify-between items-center text-xs font-bold text-[#0E2E1E]">
-              <Link href="/refund-policy" className="underline hover:text-emerald-700">
-                &larr; View Refund Policy
-              </Link>
-              <Link href="/faq" className="underline hover:text-emerald-700">
-                Return to FAQ &rarr;
-              </Link>
+            <div className="space-y-4 pt-4 border-t border-mist-grey/40">
+              <h2 className="font-serif-heading text-2xl sm:text-3xl text-[#0E2E1E]">
+                International Orders
+              </h2>
+              <p>
+                Customers are responsible for any duties, taxes, customs fees, or import charges imposed by their local jurisdiction.
+              </p>
             </div>
           </motion.div>
 

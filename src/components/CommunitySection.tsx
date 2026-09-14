@@ -1,7 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
+import { motion } from "framer-motion";
 import { trackCommunitySignup } from "@/lib/analytics";
+
+const fadeIn = {
+  initial: { opacity: 0, y: 20 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true },
+  transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] as const },
+};
 
 export default function CommunitySection() {
   const [email, setEmail] = useState("");
@@ -26,38 +34,42 @@ export default function CommunitySection() {
   };
 
   return (
-    <section className="py-24 sm:py-32 bg-[#F4EFE6] text-[#0E2E1E] text-center border-t border-mist-grey" id="community">
-      <div className="max-w-[680px] mx-auto px-6">
-        <h2 className="font-serif-heading text-4xl sm:text-6xl text-[#0E2E1E] mb-4">
-          Support Doesn&apos;t End Here
-        </h2>
-        <p className="text-base sm:text-lg text-[#1C2826] mb-8 leading-relaxed font-normal">
-          Join our community and be the first to hear about new collections, videos, app updates, and resources.
-        </p>
+    <section className="py-24 sm:py-36 bg-gradient-to-b from-editorial-white to-soft-white text-ink-black text-center relative overflow-hidden" id="community">
+      <div className="w-full px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24">
+        <motion.div {...fadeIn} className="space-y-6 sm:space-y-8">
+          <h2 className="font-serif-heading text-4xl sm:text-6xl md:text-7xl text-[#0E2E1E] leading-[1.05] tracking-tight">
+            There’s More To <strong>mani</strong>
+          </h2>
 
-        {submitted ? (
-          <div className="p-4 bg-[#0E2E1E] text-cream-logo rounded-xl font-semibold text-sm shadow-md">
-            ✓ Welcome to the MANI&trade; Community! Updates will be sent to your email.
+          <p className="text-lg sm:text-xl md:text-2xl text-[#0B1710] leading-relaxed font-medium max-w-3xl mx-auto">
+            Join our community for new collections, videos, app updates, and practical resources for everyday life.
+          </p>
+
+          <div className="pt-4 max-w-xl mx-auto">
+            {submitted ? (
+              <div className="p-6 bg-[#0E2E1E] text-cream-logo rounded-2xl font-semibold text-base shadow-lg">
+                ✓ Welcome to the <strong>mani</strong>{" "}Community! Updates will be sent to your inbox.
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Enter Email"
+                  required
+                  className="flex-grow px-6 py-4 rounded-xl text-sm sm:text-base text-ink-black bg-white border border-mist-grey focus:outline-none focus:border-[#0E2E1E] shadow-xs"
+                />
+                <button
+                  type="submit"
+                  className="px-8 py-4 bg-[#0E2E1E] text-cream-logo font-semibold rounded-xl hover:bg-[#143d28] transition-all whitespace-nowrap text-sm sm:text-base shadow-md cursor-pointer"
+                >
+                  Join Our Community
+                </button>
+              </form>
+            )}
           </div>
-        ) : (
-          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-[500px] mx-auto mb-4">
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter your email"
-              required
-              className="flex-grow px-5 py-4 rounded-xl text-sm text-ink-black bg-white border border-mist-grey focus:outline-none focus:border-[#0E2E1E]"
-            />
-            <button
-              type="submit"
-              className="px-8 py-4 bg-[#0E2E1E] text-editorial-white font-semibold rounded-xl hover:bg-[#143d28] transition-colors whitespace-nowrap text-sm shadow-md"
-            >
-              Join The MANI&trade; Community
-            </button>
-          </form>
-        )}
-        <p className="text-xs text-[#22332A] font-medium">By subscribing, you agree to receive MANI&trade; updates. Unsubscribe anytime.</p>
+        </motion.div>
       </div>
     </section>
   );

@@ -2,10 +2,10 @@
 
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { motion } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import AnimatedPhoneChat from "@/components/AnimatedPhoneChat";
 
 const fadeIn = {
   initial: { opacity: 0, y: 20 },
@@ -16,333 +16,292 @@ const fadeIn = {
 
 export default function AppPage() {
   return (
-    <div className="min-h-screen bg-editorial-white text-ink-black flex flex-col justify-between overflow-x-hidden">
+    <div className="min-h-screen bg-editorial-white text-ink-black flex flex-col justify-between overflow-x-hidden selection:bg-[#0E2E1E] selection:text-white">
       <Header />
 
-      <main className="flex-grow pt-36 md:pt-48 pb-32">
+      <main className="flex-grow pt-32 sm:pt-40 md:pt-48 pb-32">
 
         {/* SECTION 1: Not Just Someone To Talk To */}
-        <section className="px-6 sm:px-12 md:px-16 lg:px-24 mb-24">
-          <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <section className="px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24 mb-24 sm:mb-32">
+          <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            
             <motion.div {...fadeIn} className="lg:col-span-7 space-y-6">
-              <span className="text-xs font-bold tracking-widest uppercase text-[#0E2E1E] block">
-                THE MANI&trade; APP
+              <span className="text-xs font-bold tracking-widest lowercase text-[#0E2E1E] block">
+                <strong>mani</strong>
               </span>
+
               <h1 className="font-serif-heading text-4xl xs:text-5xl sm:text-7xl md:text-8xl text-[#0E2E1E] leading-[0.96] tracking-tight">
                 Not Just Someone To Talk To
               </h1>
-              <p className="text-lg sm:text-xl text-[#1C2826] font-normal leading-relaxed">
-                Most support stops at listening.
-              </p>
-              <p className="text-lg sm:text-xl text-[#1C2826] font-normal leading-relaxed">
-                The MANI&trade; App goes further.
-              </p>
-              <p className="text-base sm:text-lg text-[#1C2826] font-normal leading-relaxed">
-                Guided conversations help you understand what you are facing. Breathwork, meditations, visualizations, and stories help you move through it.
-              </p>
-              <p className="text-base sm:text-lg text-[#22332A] font-medium leading-relaxed italic">
-                Because feeling heard is only the beginning.
-              </p>
+
+              <div className="space-y-3 text-lg sm:text-xl md:text-2xl text-[#0B1710] font-medium leading-relaxed">
+                <p>Most support stops at listening.</p>
+                <p className="font-semibold text-[#0E2E1E]"><strong>mani</strong>{" "}goes further.</p>
+                <p>
+                  Guided conversations help you understand what you are facing. Breathwork, meditations, visualizations, and stories help you move through it.
+                </p>
+                <p className="text-base sm:text-lg font-semibold text-[#0E2E1E] italic pt-1">
+                  Because feeling heard is only the beginning.
+                </p>
+              </div>
+
               <div className="pt-2">
                 <Link
                   href="/join-beta"
-                  className="inline-flex px-8 py-4 bg-[#0E2E1E] text-cream-logo font-semibold rounded-xl hover:bg-[#143d28] transition-all text-sm shadow-md cursor-pointer"
+                  className="inline-flex px-8 py-4 bg-[#0E2E1E] text-cream-logo font-semibold rounded-xl hover:bg-[#143d28] transition-all text-sm sm:text-base shadow-md cursor-pointer"
                 >
-                  Join Beta &rarr;
+                  Join the App Beta &rarr;
                 </Link>
               </div>
             </motion.div>
 
+            {/* Interactive Animated Phone Mockup */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
               className="lg:col-span-5 flex justify-center"
             >
-              <div className="relative w-full max-w-[360px] flex justify-center items-center group">
-                <img
-                  src="/assets/Chat Conversation.png"
-                  alt="MANI™ App Conversation Interface"
-                  className="w-full h-auto object-contain drop-shadow-[0_20px_35px_rgba(0,0,0,0.25)] group-hover:scale-[1.02] transition-transform duration-500 rounded-3xl"
-                />
+              <AnimatedPhoneChat />
+            </motion.div>
+
+          </div>
+        </section>
+
+        {/* SECTION 2: For The Moments You Need It Most (Full-bleed edge-to-edge cinematic band) */}
+        <section className="w-full bg-[#081F14] text-editorial-white py-24 sm:py-36 border-y border-editorial-white/10 mb-24 sm:mb-32 relative overflow-hidden">
+          {/* Subtle ambient light */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-emerald-500/5 rounded-full blur-3xl pointer-events-none" />
+          
+          <div className="w-full px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24 relative z-10">
+            <motion.div
+              {...fadeIn}
+              className="max-w-4xl mx-auto text-center space-y-6 sm:space-y-8"
+            >
+
+              <h2 className="font-serif-heading text-3xl sm:text-5xl lg:text-6xl text-cream-logo leading-[1.08] tracking-tight">
+                For The Moments You Need It Most
+              </h2>
+              <p className="text-lg sm:text-xl md:text-2xl text-[#FAF5EB] font-medium leading-relaxed max-w-3xl mx-auto">
+                Overwhelm does not arrive on a schedule. It can surface at midnight, during a lunch break, or in the middle of a conversation you were not ready for.
+              </p>
+              <div className="pt-2">
+                <p className="text-xl sm:text-2xl font-medium text-cream-logo leading-relaxed">
+                  <strong>mani</strong>{" "}exists for those moments.
+                </p>
               </div>
             </motion.div>
           </div>
         </section>
 
-        {/* SECTION 2: For The Moments You Need It Most */}
-        <section className="px-6 sm:px-12 md:px-16 lg:px-24 mb-24">
-          <motion.div {...fadeIn} className="max-w-4xl mx-auto bg-[#0E2E1E] text-editorial-white rounded-3xl p-10 sm:p-16 text-center space-y-6 shadow-xl border border-emerald-500/20">
-            <h2 className="font-serif-heading text-3xl sm:text-5xl text-cream-logo">
-              For The Moments You Need It Most
-            </h2>
-            <p className="text-base sm:text-lg text-[#E8F0EC] font-normal leading-relaxed max-w-2xl mx-auto">
-              Most people do not fall apart on a schedule. Hard moments happen at midnight, on a lunch break, in the middle of a conversation you were not ready for.
-            </p>
-            <p className="text-base sm:text-lg text-[#E8F0EC] font-normal leading-relaxed max-w-2xl mx-auto">
-              The MANI&trade; App exists for those moments.
-            </p>
-          </motion.div>
+        {/* SECTION 3: How mani Responds (Grand Full-Width Editorial Section) */}
+        <section className="w-full px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-28 mb-28 sm:mb-40">
+          <div className="w-full max-w-[1850px] mx-auto space-y-16 sm:space-y-20">
+            
+            <motion.div {...fadeIn} className="text-center max-w-4xl mx-auto space-y-4">
+              <h2 className="font-serif-heading text-4xl sm:text-6xl lg:text-7xl text-[#0E2E1E] leading-[1.04] tracking-tight">
+                How <strong>mani</strong>{" "}Responds
+              </h2>
+            </motion.div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10 xl:gap-12">
+              {/* Point 1 */}
+              <motion.div
+                {...fadeIn}
+                whileHover={{ y: -6, scale: 1.01, transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] } }}
+                className="bg-white border border-mist-grey/80 rounded-3xl p-9 sm:p-11 lg:p-12 shadow-[0_4px_24px_rgba(0,0,0,0.03)] hover:shadow-[0_24px_48px_rgba(14,46,30,0.08)] transition-all duration-500 hover:border-[#0E2E1E]/40 flex flex-col justify-between group min-h-[300px]"
+              >
+                <div className="space-y-6">
+                  <div className="w-12 h-1.5 bg-[#0E2E1E] rounded-full group-hover:w-24 transition-all duration-500 ease-out" />
+                  <h3 className="font-serif-heading text-2xl sm:text-3xl lg:text-4xl text-[#0E2E1E] leading-snug group-hover:text-[#143d28] transition-colors">
+                    No Labels. No Judgment.
+                  </h3>
+                  <p className="text-base sm:text-lg lg:text-xl text-[#0B1710] leading-relaxed font-medium">
+                    <strong>mani</strong>{" "}helps you understand what is happening without telling you who you are or what you should feel.
+                  </p>
+                </div>
+              </motion.div>
+
+              {/* Point 2 */}
+              <motion.div
+                {...fadeIn}
+                whileHover={{ y: -6, scale: 1.01, transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] } }}
+                className="bg-white border border-mist-grey/80 rounded-3xl p-9 sm:p-11 lg:p-12 shadow-[0_4px_24px_rgba(0,0,0,0.03)] hover:shadow-[0_24px_48px_rgba(14,46,30,0.08)] transition-all duration-500 hover:border-[#0E2E1E]/40 flex flex-col justify-between group min-h-[300px]"
+              >
+                <div className="space-y-6">
+                  <div className="w-12 h-1.5 bg-[#0E2E1E] rounded-full group-hover:w-24 transition-all duration-500 ease-out" />
+                  <h3 className="font-serif-heading text-2xl sm:text-3xl lg:text-4xl text-[#0E2E1E] leading-snug group-hover:text-[#143d28] transition-colors">
+                    Guidance That Fits The Moment
+                  </h3>
+                  <p className="text-base sm:text-lg lg:text-xl text-[#0B1710] leading-relaxed font-medium">
+                    What you need may be a conversation, a pause, a reframe, or a guided practice. <strong>mani</strong>{" "}responds to what you bring.
+                  </p>
+                </div>
+              </motion.div>
+
+              {/* Point 3 */}
+              <motion.div
+                {...fadeIn}
+                whileHover={{ y: -6, scale: 1.01, transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] } }}
+                className="bg-white border border-mist-grey/80 rounded-3xl p-9 sm:p-11 lg:p-12 shadow-[0_4px_24px_rgba(0,0,0,0.03)] hover:shadow-[0_24px_48px_rgba(14,46,30,0.08)] transition-all duration-500 hover:border-[#0E2E1E]/40 flex flex-col justify-between group min-h-[300px]"
+              >
+                <div className="space-y-6">
+                  <div className="w-12 h-1.5 bg-[#0E2E1E] rounded-full group-hover:w-24 transition-all duration-500 ease-out" />
+                  <h3 className="font-serif-heading text-2xl sm:text-3xl lg:text-4xl text-[#0E2E1E] leading-snug group-hover:text-[#143d28] transition-colors">
+                    From Insight To Action
+                  </h3>
+                  <p className="text-base sm:text-lg lg:text-xl text-[#0B1710] leading-relaxed font-medium">
+                    When you are ready, <strong>mani</strong>{" "}helps you turn understanding into a practical next step.
+                  </p>
+                </div>
+              </motion.div>
+            </div>
+          </div>
         </section>
 
-        {/* SECTION 3: Why It's Different */}
-        <section className="px-6 sm:px-12 md:px-16 lg:px-24 mb-24">
-          <motion.div {...fadeIn} className="max-w-4xl mx-auto mb-12">
-            <h2 className="font-serif-heading text-4xl sm:text-6xl text-[#0E2E1E]">
-              Why It&apos;s Different
-            </h2>
-          </motion.div>
+        {/* SECTION 4: Inside mani: (Expansive Full-Width Distinct Cards Band) */}
+        <section className="w-full bg-gradient-to-b from-[#F3F6F3] via-[#FAFBF9] to-editorial-white border-y border-mist-grey/70 py-28 sm:py-40 mb-28 sm:mb-40">
+          <div className="w-full max-w-[1850px] mx-auto px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-28 space-y-16 sm:space-y-20">
+            
+            <motion.div {...fadeIn} className="text-center max-w-4xl mx-auto space-y-4">
+              <h2 className="font-serif-heading text-4xl sm:text-6xl lg:text-7xl text-[#0E2E1E] leading-[1.04] tracking-tight">
+                Inside <strong>mani</strong>:
+              </h2>
+            </motion.div>
 
-          <div className="max-w-4xl mx-auto space-y-8">
-            {[
-              {
-                title: "More Than A Chat",
-                body: "Most apps listen. Mani helps you understand what you are feeling and guides you toward what comes next.",
-              },
-              {
-                title: "Support In Different Ways",
-                body: "Conversations, breathwork, meditations, visualizations, and stories because different moments call for different kinds of support.",
-              },
-              {
-                title: "Built For Where You Actually Are",
-                body: "Not where you should be. Not where you were. Where you are right now.",
-              },
-            ].map((item, idx) => (
+            {/* 4 Distinct Clean & Informative Cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-7 lg:gap-8 xl:gap-10">
+              
+              {/* Card 1: Guided Conversations */}
               <motion.div
-                key={idx}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.7, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                className="p-8 sm:p-10 bg-soft-white border border-mist-grey rounded-2xl space-y-3"
+                whileHover={{ y: -6, scale: 1.01, transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] } }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="bg-white border border-mist-grey rounded-3xl p-9 sm:p-10 lg:p-11 shadow-[0_4px_24px_rgba(0,0,0,0.02)] hover:shadow-[0_20px_40px_rgba(14,46,30,0.08)] hover:border-[#0E2E1E]/40 transition-all duration-500 flex flex-col justify-start space-y-6 group"
               >
-                <h3 className="font-serif-heading text-2xl sm:text-3xl text-[#0E2E1E]">
-                  {item.title}
-                </h3>
-                <p className="text-base text-[#1C2826] font-normal leading-relaxed">
-                  {item.body}
-                </p>
+                <div className="w-14 h-14 rounded-2xl bg-[#0E2E1E] text-cream-logo flex items-center justify-center group-hover:scale-105 transition-transform duration-300 shadow-xs">
+                  <svg className="w-7 h-7 text-cream-logo" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.75}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                  </svg>
+                </div>
+
+                <div className="space-y-3">
+                  <h3 className="font-serif-heading text-2xl sm:text-3xl text-[#0E2E1E] leading-snug group-hover:text-[#143d28] transition-colors">
+                    Guided Conversations
+                  </h3>
+                  <p className="text-base sm:text-lg text-[#0B1710] font-medium leading-relaxed">
+                    Talk through what is happening with prompts that help you reflect and understand what you need.
+                  </p>
+                </div>
               </motion.div>
-            ))}
+
+              {/* Card 2: Breathwork & Meditations */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -6, scale: 1.01, transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] } }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="bg-white border border-mist-grey rounded-3xl p-9 sm:p-10 lg:p-11 shadow-[0_4px_24px_rgba(0,0,0,0.02)] hover:shadow-[0_20px_40px_rgba(14,46,30,0.08)] hover:border-[#0E2E1E]/40 transition-all duration-500 flex flex-col justify-start space-y-6 group"
+              >
+                <div className="w-14 h-14 rounded-2xl bg-[#0E2E1E] text-cream-logo flex items-center justify-center group-hover:scale-105 transition-transform duration-300 shadow-xs">
+                  <svg className="w-7 h-7 text-cream-logo" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.75}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                  </svg>
+                </div>
+
+                <div className="space-y-3">
+                  <h3 className="font-serif-heading text-2xl sm:text-3xl text-[#0E2E1E] leading-snug group-hover:text-[#143d28] transition-colors">
+                    Breathwork &amp; Meditations
+                  </h3>
+                  <p className="text-base sm:text-lg text-[#0B1710] font-medium leading-relaxed">
+                    Use guided practices to slow down, settle your thoughts, and regain focus.
+                  </p>
+                </div>
+              </motion.div>
+
+              {/* Card 3: Visualizations & Stories */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -6, scale: 1.01, transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] } }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="bg-white border border-mist-grey rounded-3xl p-9 sm:p-10 lg:p-11 shadow-[0_4px_24px_rgba(0,0,0,0.02)] hover:shadow-[0_20px_40px_rgba(14,46,30,0.08)] hover:border-[#0E2E1E]/40 transition-all duration-500 flex flex-col justify-start space-y-6 group"
+              >
+                <div className="w-14 h-14 rounded-2xl bg-[#0E2E1E] text-cream-logo flex items-center justify-center group-hover:scale-105 transition-transform duration-300 shadow-xs">
+                  <svg className="w-7 h-7 text-cream-logo" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.75}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+                  </svg>
+                </div>
+
+                <div className="space-y-3">
+                  <h3 className="font-serif-heading text-2xl sm:text-3xl text-[#0E2E1E] leading-snug group-hover:text-[#143d28] transition-colors">
+                    Visualizations &amp; Stories
+                  </h3>
+                  <p className="text-base sm:text-lg text-[#0B1710] font-medium leading-relaxed">
+                    Experience new perspectives that help you understand a situation differently.
+                  </p>
+                </div>
+              </motion.div>
+
+              {/* Card 4: Practical Tools */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -6, scale: 1.01, transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] } }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                className="bg-white border border-mist-grey rounded-3xl p-9 sm:p-10 lg:p-11 shadow-[0_4px_24px_rgba(0,0,0,0.02)] hover:shadow-[0_20px_40px_rgba(14,46,30,0.08)] hover:border-[#0E2E1E]/40 transition-all duration-500 flex flex-col justify-start space-y-6 group"
+              >
+                <div className="w-14 h-14 rounded-2xl bg-[#0E2E1E] text-cream-logo flex items-center justify-center group-hover:scale-105 transition-transform duration-300 shadow-xs">
+                  <svg className="w-7 h-7 text-cream-logo" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.75}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                </div>
+
+                <div className="space-y-3">
+                  <h3 className="font-serif-heading text-2xl sm:text-3xl text-[#0E2E1E] leading-snug group-hover:text-[#143d28] transition-colors">
+                    Practical Tools
+                  </h3>
+                  <p className="text-base sm:text-lg text-[#0B1710] font-medium leading-relaxed">
+                    Use exercises and frameworks to turn insight into a next step.
+                  </p>
+                </div>
+              </motion.div>
+            </div>
+
           </div>
         </section>
 
-        {/* SECTION 4: What It Will Do */}
-        <section className="px-6 sm:px-12 md:px-16 lg:px-24 mb-24">
-          <motion.div {...fadeIn} className="max-w-4xl mx-auto mb-14 text-center space-y-3">
-            <span className="text-xs font-bold tracking-widest uppercase text-[#0E2E1E] block">
-              APP CAPABILITIES
+        {/* SECTION 5: BETA ACCESS (Open High-End Editorial Callout) */}
+        <section className="w-full px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24 border-t border-mist-grey/70 pt-28 sm:pt-40">
+          <motion.div
+            {...fadeIn}
+            className="w-full max-w-5xl mx-auto text-center space-y-8"
+          >
+            <span className="text-xs sm:text-sm font-bold tracking-widest uppercase text-[#0E2E1E] block">
+              BETA ACCESS
             </span>
-            <h2 className="font-serif-heading text-4xl sm:text-6xl text-[#0E2E1E]">
-              What It Will Do
+
+            <h2 className="font-serif-heading text-4xl sm:text-6xl lg:text-7xl text-[#0E2E1E] leading-[1.05] tracking-tight">
+              Shape <strong>mani</strong>’s Future
             </h2>
-            <p className="text-base sm:text-lg text-[#1C2826] font-normal max-w-xl mx-auto">
-              Intelligent features crafted to guide, ground, and build lasting resilience.
+
+            <p className="text-lg sm:text-2xl text-[#0B1710] font-medium leading-relaxed max-w-3xl mx-auto">
+              We’re inviting a small group of beta testers to use <strong>mani</strong>{" "}before its public launch. Test new features, share what works and what does not, and influence what we improve before release.
             </p>
-          </motion.div>
 
-          <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Card 1: Guided Support */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
-              className="bg-[#0E2E1E] text-editorial-white rounded-3xl p-7 sm:p-8 flex flex-col justify-between space-y-6 shadow-xl border border-emerald-500/20 group hover:border-cream-logo/40 transition-all"
-            >
-              {/* Visual 1: Guided Support Dialogue & Clarity Compass */}
-              <div className="w-full h-44 sm:h-48 rounded-2xl bg-gradient-to-b from-[#143D28] to-[#081F14] border border-emerald-500/20 flex items-center justify-center relative overflow-hidden shadow-inner">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(244,233,215,0.08)_0,transparent_70%)]" />
-                <svg width="180" height="110" viewBox="0 0 180 110" fill="none" className="relative z-10">
-                  <circle cx="90" cy="55" r="45" stroke="#F4E9D7" strokeWidth="1" strokeDasharray="3 3" opacity="0.3" />
-                  <circle cx="90" cy="55" r="30" stroke="#F4E9D7" strokeWidth="1" opacity="0.5" />
-                  <circle cx="90" cy="55" r="14" fill="#F4E9D7" fillOpacity="0.15" stroke="#F4E9D7" strokeWidth="1.5" />
-                  <circle cx="90" cy="55" r="5" fill="#F4E9D7" />
-                  
-                  {/* Guided Wave Lines */}
-                  <path d="M30 55 C 50 35, 70 35, 90 55 C 110 75, 130 75, 150 55" stroke="#F4E9D7" strokeWidth="2" strokeLinecap="round" opacity="0.8" />
-                  <path d="M45 55 C 60 42, 75 42, 90 55 C 105 68, 120 68, 135 55" stroke="#77E2A8" strokeWidth="1.5" strokeLinecap="round" opacity="0.7" />
-                  
-                  {/* Dialogue Node Accents */}
-                  <circle cx="45" cy="55" r="3" fill="#77E2A8" />
-                  <circle cx="135" cy="55" r="3" fill="#77E2A8" />
-                </svg>
-                <span className="absolute bottom-3 left-4 text-[10px] font-mono uppercase tracking-widest text-cream-logo/70">
-                  Clarity &bull; Dialogue Engine
-                </span>
-              </div>
-
-              <div className="space-y-3">
-                <span className="text-xs font-bold tracking-widest uppercase text-cream-logo bg-editorial-white/10 px-3 py-1 rounded-full inline-block">
-                  01 &bull; GUIDED SUPPORT
-                </span>
-                <h3 className="font-serif-heading text-2xl sm:text-3xl text-cream-logo">
-                  Guided Support
-                </h3>
-                <p className="text-sm sm:text-base text-[#E8F0EC] font-normal leading-relaxed">
-                  Guidance that helps bring clarity when things feel uncertain.
-                </p>
-              </div>
-            </motion.div>
-
-            {/* Card 2: Practical Tools */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="bg-[#0E2E1E] text-editorial-white rounded-3xl p-7 sm:p-8 flex flex-col justify-between space-y-6 shadow-xl border border-emerald-500/20 group hover:border-cream-logo/40 transition-all"
-            >
-              {/* Visual 2: Breathwork & Somatic Pacer Visual */}
-              <div className="w-full h-44 sm:h-48 rounded-2xl bg-gradient-to-b from-[#143D28] to-[#081F14] border border-emerald-500/20 flex items-center justify-center relative overflow-hidden shadow-inner">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(119,226,168,0.08)_0,transparent_70%)]" />
-                <svg width="180" height="110" viewBox="0 0 180 110" fill="none" className="relative z-10">
-                  {/* Breath Ring Expansion Layers */}
-                  <circle cx="90" cy="55" r="42" stroke="#77E2A8" strokeWidth="1" strokeDasharray="4 4" opacity="0.4" />
-                  <circle cx="90" cy="55" r="32" stroke="#F4E9D7" strokeWidth="1.5" opacity="0.6" />
-                  <circle cx="90" cy="55" r="20" fill="#143D28" stroke="#77E2A8" strokeWidth="2" />
-                  
-                  {/* Petals / Calming Mandala Nodes */}
-                  <circle cx="90" cy="23" r="3.5" fill="#F4E9D7" />
-                  <circle cx="90" cy="87" r="3.5" fill="#F4E9D7" />
-                  <circle cx="58" cy="55" r="3.5" fill="#F4E9D7" />
-                  <circle cx="122" cy="55" r="3.5" fill="#F4E9D7" />
-                  
-                  <text x="90" y="59" fill="#F4E9D7" fontSize="9" textAnchor="middle" fontWeight="bold" fontFamily="sans-serif">
-                    CALM
-                  </text>
-                </svg>
-                <span className="absolute bottom-3 left-4 text-[10px] font-mono uppercase tracking-widest text-cream-logo/70">
-                  Somatic &bull; Breath &bull; Meditation
-                </span>
-              </div>
-
-              <div className="space-y-3">
-                <span className="text-xs font-bold tracking-widest uppercase text-cream-logo bg-editorial-white/10 px-3 py-1 rounded-full inline-block">
-                  02 &bull; PRACTICAL TOOLS
-                </span>
-                <h3 className="font-serif-heading text-2xl sm:text-3xl text-cream-logo">
-                  Practical Tools
-                </h3>
-                <p className="text-sm sm:text-base text-[#E8F0EC] font-normal leading-relaxed">
-                  Practical experiences designed to calm, reflect, and refocus.
-                </p>
-              </div>
-            </motion.div>
-
-            {/* Card 3: Meaningful Progress */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-              className="bg-[#0E2E1E] text-editorial-white rounded-3xl p-7 sm:p-8 flex flex-col justify-between space-y-6 shadow-xl border border-emerald-500/20 group hover:border-cream-logo/40 transition-all"
-            >
-              {/* Visual 3: Upward Trajectory & Milestone Progression */}
-              <div className="w-full h-44 sm:h-48 rounded-2xl bg-gradient-to-b from-[#143D28] to-[#081F14] border border-emerald-500/20 flex items-center justify-center relative overflow-hidden shadow-inner">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(244,233,215,0.08)_0,transparent_70%)]" />
-                <svg width="200" height="110" viewBox="0 0 200 110" fill="none" className="relative z-10">
-                  {/* Grid Lines */}
-                  <line x1="30" y1="85" x2="170" y2="85" stroke="#F4E9D7" strokeWidth="1" opacity="0.2" />
-                  <line x1="30" y1="55" x2="170" y2="55" stroke="#F4E9D7" strokeWidth="1" strokeDasharray="3 3" opacity="0.15" />
-                  <line x1="30" y1="25" x2="170" y2="25" stroke="#F4E9D7" strokeWidth="1" strokeDasharray="3 3" opacity="0.15" />
-                  
-                  {/* Upward Momentum Arc */}
-                  <path d="M35 80 Q 80 75 110 50 T 165 25" stroke="#77E2A8" strokeWidth="2.5" strokeLinecap="round" />
-                  
-                  {/* Milestone Points */}
-                  <circle cx="35" cy="80" r="4" fill="#F4E9D7" stroke="#0E2E1E" strokeWidth="1.5" />
-                  <circle cx="85" cy="65" r="4" fill="#F4E9D7" stroke="#0E2E1E" strokeWidth="1.5" />
-                  <circle cx="125" cy="42" r="4" fill="#F4E9D7" stroke="#0E2E1E" strokeWidth="1.5" />
-                  <circle cx="165" cy="25" r="6" fill="#77E2A8" stroke="#0E2E1E" strokeWidth="1.5" />
-                  <circle cx="165" cy="25" r="10" stroke="#77E2A8" strokeWidth="1" strokeDasharray="2 2" opacity="0.6" />
-                </svg>
-                <span className="absolute bottom-3 left-4 text-[10px] font-mono uppercase tracking-widest text-cream-logo/70">
-                  Resilience &bull; Milestone Arc
-                </span>
-              </div>
-
-              <div className="space-y-3">
-                <span className="text-xs font-bold tracking-widest uppercase text-cream-logo bg-editorial-white/10 px-3 py-1 rounded-full inline-block">
-                  03 &bull; MEANINGFUL PROGRESS
-                </span>
-                <h3 className="font-serif-heading text-2xl sm:text-3xl text-cream-logo">
-                  Meaningful Progress
-                </h3>
-                <p className="text-sm sm:text-base text-[#E8F0EC] font-normal leading-relaxed">
-                  Small steps that build confidence, resilience, and momentum.
-                </p>
-              </div>
-            </motion.div>
-
-            {/* Card 4: Always Accessible */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="bg-[#0E2E1E] text-editorial-white rounded-3xl p-7 sm:p-8 flex flex-col justify-between space-y-6 shadow-xl border border-emerald-500/20 group hover:border-cream-logo/40 transition-all"
-            >
-              {/* Visual 4: 24/7 Celestial Support Visual */}
-              <div className="w-full h-44 sm:h-48 rounded-2xl bg-gradient-to-b from-[#143D28] to-[#081F14] border border-emerald-500/20 flex items-center justify-center relative overflow-hidden shadow-inner">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(244,233,215,0.08)_0,transparent_70%)]" />
-                <svg width="180" height="110" viewBox="0 0 180 110" fill="none" className="relative z-10">
-                  {/* 24/7 Orbital Ring */}
-                  <ellipse cx="90" cy="55" rx="55" ry="24" stroke="#F4E9D7" strokeWidth="1" strokeDasharray="3 3" opacity="0.4" transform="rotate(-15 90 55)" />
-                  <circle cx="90" cy="55" r="26" stroke="#77E2A8" strokeWidth="1.5" fill="#143D28" />
-                  
-                  {/* Clock / Hour & Minute Accents */}
-                  <line x1="90" y1="55" x2="90" y2="40" stroke="#F4E9D7" strokeWidth="2" strokeLinecap="round" />
-                  <line x1="90" y1="55" x2="102" y2="55" stroke="#F4E9D7" strokeWidth="2" strokeLinecap="round" />
-                  <circle cx="90" cy="55" r="3" fill="#F4E9D7" />
-                  
-                  {/* Orbiting Satellite Star */}
-                  <circle cx="138" cy="42" r="3" fill="#77E2A8" />
-                  <circle cx="42" cy="68" r="3" fill="#F4E9D7" />
-                  
-                  <text x="90" y="96" fill="#F4E9D7" fontSize="9" textAnchor="middle" fontWeight="bold" fontFamily="sans-serif" letterSpacing="1">
-                    24/7 ALWAYS ON
-                  </text>
-                </svg>
-                <span className="absolute bottom-3 left-4 text-[10px] font-mono uppercase tracking-widest text-cream-logo/70">
-                  Direct Access &bull; No Waitlist
-                </span>
-              </div>
-
-              <div className="space-y-3">
-                <span className="text-xs font-bold tracking-widest uppercase text-cream-logo bg-editorial-white/10 px-3 py-1 rounded-full inline-block">
-                  04 &bull; ALWAYS ACCESSIBLE
-                </span>
-                <h3 className="font-serif-heading text-2xl sm:text-3xl text-cream-logo">
-                  Always Accessible
-                </h3>
-                <p className="text-sm sm:text-base text-[#E8F0EC] font-normal leading-relaxed">
-                  Available whenever you need it. No appointment. No waitlist. No judgment.
-                </p>
-              </div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* SECTION 5: Beta CTA */}
-        <section className="px-6 sm:px-12 md:px-16 lg:px-24">
-          <motion.div {...fadeIn} className="max-w-4xl mx-auto bg-[#081F14] text-editorial-white rounded-3xl p-10 sm:p-16 text-center space-y-6 shadow-2xl border border-emerald-500/20">
-            <h2 className="font-serif-heading text-3xl sm:text-5xl text-cream-logo">
-              Help Shape What&apos;s Next
-            </h2>
-            <p className="text-base sm:text-lg text-[#E8F0EC] font-normal leading-relaxed max-w-2xl mx-auto">
-              We are inviting a small group of people to experience the Mani App before public launch.
-            </p>
-            <p className="text-base sm:text-lg text-[#E8F0EC] font-normal leading-relaxed max-w-2xl mx-auto">
-              Get early access, explore new features, and help shape the future of the app.
-            </p>
-            <div className="pt-4">
+            <div className="pt-2">
               <Link
                 href="/join-beta"
-                className="inline-flex px-10 py-5 bg-cream-logo text-[#0E2E1E] font-semibold rounded-xl hover:bg-white transition-all shadow-xl text-base cursor-pointer"
+                className="inline-flex px-10 py-4 bg-[#0E2E1E] text-cream-logo font-semibold rounded-xl hover:bg-[#143d28] active:scale-98 transition-all text-base shadow-lg cursor-pointer"
               >
-                Join Beta
+                Join the App Beta &rarr;
               </Link>
             </div>
           </motion.div>

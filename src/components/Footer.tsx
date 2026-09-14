@@ -22,7 +22,7 @@ export default function Footer() {
 
   return (
     <footer className="bg-[#0E2E1E] text-editorial-white pt-20 pb-12 border-t border-[#183B29]">
-      <div className="max-w-[1360px] mx-auto px-6 md:px-12">
+      <div className="w-full px-6 sm:px-10 md:px-14 lg:px-16 xl:px-20">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b border-editorial-white/10">
 
           {/* Brand Info */}
@@ -34,8 +34,8 @@ export default function Footer() {
                 className="h-5 md:h-8 w-auto object-contain"
               />
             </Link>
-            <p className="text-sm text-[#E8F0EC] max-w-sm leading-relaxed font-normal">
-              Emotional Support Made Simple™. Helping people better understand themselves, navigate life&apos;s challenges, and create meaningful change.
+            <p className="text-sm font-medium text-cream-logo max-w-sm leading-relaxed">
+              Emotional Support Made Simple&trade;
             </p>
           </div>
 
@@ -58,13 +58,13 @@ export default function Footer() {
             <h4 className="text-xs font-bold uppercase tracking-widest text-cream-logo">Collections</h4>
             <ul className="space-y-2 text-xs text-[#E8F0EC]">
               <li><Link href="/collections/bye-bye-narcissist" className={linkClass("/collections/bye-bye-narcissist")}>Bye Bye Narcissist</Link></li>
-              <li><span className="text-cream-logo/80">Love Done Right (Coming Soon)</span></li>
-              <li><span className="text-cream-logo/80">Emotional Intelligence (Coming Soon)</span></li>
+              <li><Link href="/collections#future-collections" className="text-cream-logo/80 hover:text-cream-logo transition-colors">Love Done Right (Coming Soon)</Link></li>
+              <li><Link href="/collections#future-collections" className="text-cream-logo/80 hover:text-cream-logo transition-colors">Emotional Intelligence (Coming Soon)</Link></li>
             </ul>
 
             <h4 className="text-xs font-bold uppercase tracking-widest text-cream-logo pt-4">Get Involved</h4>
             <ul className="space-y-2 text-xs text-[#E8F0EC]">
-              <li><Link href="/join-beta" className={linkClass("/join-beta")}>Join Beta</Link></li>
+              <li><Link href="/join-beta" className={linkClass("/join-beta")}>Join the App Beta</Link></li>
               <li><Link href="/join-community" className={linkClass("/join-community")}>Join Our Community</Link></li>
             </ul>
           </div>
@@ -96,10 +96,10 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-[#E8F0EC] gap-4">
-          <p>&copy; {new Date().getFullYear()} MANI&trade;. All rights reserved. Emotional Support Made Simple&trade;.</p>
-          <p className="text-[11px] text-[#D8E6DE] italic">
-            MANI&trade; is an educational and supportive platform, not a substitute for therapy or emergency crisis care.
+        <div className="pt-8 flex flex-col md:flex-row items-start md:items-center justify-between text-xs text-[#E8F0EC] gap-4">
+          <p className="font-medium shrink-0">&copy; 2026 MANI&trade;. All rights reserved.</p>
+          <p className="text-[11px] text-[#D8E6DE] leading-relaxed max-w-3xl">
+            <strong>Disclaimer:</strong> <strong>mani</strong>&trade; provides educational and informational content intended to support learning and personal growth. <strong>mani</strong>&trade; is not therapy, counseling, mental health treatment, crisis support, medical care, or a substitute for professional advice, diagnosis, or treatment.
           </p>
         </div>
       </div>

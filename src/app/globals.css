@@ -24,18 +24,31 @@ html {
   background-color: var(--color-editorial-white);
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
 }
 
-/* Custom Editorial Typography Utilities */
+body {
+  font-weight: 500;
+  color: #0B1710;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+}
+
+/* Custom Editorial Typography Utilities with Physical Ink Weight */
 .font-serif-italic {
   font-family: var(--font-serif);
   font-style: italic;
   font-weight: 400;
+  -webkit-text-stroke: 0.25px currentColor;
+  text-rendering: optimizeLegibility;
 }
 
 .font-serif-heading {
   font-family: var(--font-serif);
   font-weight: 400;
+  letter-spacing: -0.015em;
+  -webkit-text-stroke: 0.35px currentColor;
+  text-rendering: optimizeLegibility;
 }
 
 /* Animations */

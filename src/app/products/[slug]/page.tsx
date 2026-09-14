@@ -8,9 +8,11 @@ import Footer from "@/components/Footer";
 import UnderProgressPage from "@/components/UnderProgressPage";
 import { SITE_LOCKS } from "@/config/locks";
 import { useCart } from "@/context/CartContext";
-import { MagneticElement, ScrollReveal, KineticTextReveal, SplitSlideCombine } from "@/components/ScrollAnimations";
 
-const posterImages = Array.from({ length: 10 }, (_, i) => `/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/Posters/${i + 1} Framed.png`);
+const posterImages = Array.from(
+  { length: 10 },
+  (_, i) => `/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/Posters/${i + 1} Framed.png`
+);
 
 export default function ProductDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   if (SITE_LOCKS.PAGES_LOCKED) {
@@ -23,102 +25,138 @@ export default function ProductDetailPage({ params }: { params: Promise<{ slug: 
   }
 
   const resolvedParams = use(params);
-  const slug = resolvedParams?.slug || "book";
+  const rawSlug = resolvedParams?.slug || "book";
   const { addToCart } = useCart();
   const [quantity, setQuantity] = useState<number>(1);
   const [addedToCart, setAddedToCart] = useState<boolean>(false);
-  const [selectedPoster, setSelectedPoster] = useState<number | null>(null);
+  const [selectedPoster, setSelectedPoster] = useState<number>(0);
 
   const productCatalog: Record<string, any> = {
     book: {
       id: "book",
+      slug: "bye-bye-narcissist-book",
       title: "The Bye Bye Narcissist Book",
-      subtitle: "Foundation",
+      subtitle: "Understand manipulation, gaslighting, and unhealthy patterns.",
       numericPrice: 24.99,
       price: "$24.99",
       badge: "FOUNDATION",
-      description: "Understand manipulation, gaslighting, and unhealthy patterns.",
+      description:
+        "The core foundational book that helps you recognize the subtle signs of narcissistic manipulation, understand the psychological dynamics of toxic relationships, and begin rebuilding your self-trust.",
       image: "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/Book.png",
-      specs: ["280 Pages", "Softcover Luxe Finish", "10 In-Depth Chapters", "Emergency Quick-Reference Guide"],
+      specs: [
+        "280 Pages · Complete Volume",
+        "Luxe Softcover Edition",
+        "10 Guided Chapters",
+        "Emergency Reference Guide",
+      ],
       features: [
-        "Anatomy of Covert Manipulation & Gaslighting",
-        "Breaking the Chemical Bond of Trauma",
-        "Rebuilding Self-Trust After Systemic Devaluation",
-        "Scripting Bulletproof Boundary Statements",
+        "Anatomy of covert manipulation, gaslighting, and love-bombing cycles",
+        "Breaking the biological and emotional bonds of trauma bonding",
+        "Rebuilding self-trust and somatic intuition after systemic devaluation",
+        "Scripting clear, firm boundary statements for everyday encounters",
       ],
     },
     workbook: {
       id: "workbook",
+      slug: "bye-bye-narcissist-workbook",
       title: "The Bye Bye Narcissist Workbook",
-      subtitle: "Action",
+      subtitle: "Turn insight into practical, everyday change.",
       numericPrice: 29.99,
       price: "$29.99",
       badge: "ACTION",
-      description: "Turn insight into practical change.",
+      description:
+        "A practical, hands-on workbook filled with structured exercises, reflection prompts, boundary templates, and action logs designed to help you process experiences and take confident steps forward.",
       image: "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/Workbook.png",
-      specs: ["196 Interactive Exercises", "Spiral-Bound Flat Lay", "Boundary Scripting Templates", "Trigger Audit Logs"],
+      specs: [
+        "196 Interactive Exercises",
+        "Lay-Flat Journal Binding",
+        "Boundary Scripting Templates",
+        "Trigger Audit & Processing Logs",
+      ],
       features: [
-        "Boundary Scripting Fill-in Templates",
-        "Emotional Trigger Processing Audits",
-        "Cognitive Distortion Reality Checklists",
-        "Emergency No-Contact Action Protocol",
+        "Step-by-step fill-in templates for setting and holding firm boundaries",
+        "Emotional trigger identification and processing audits",
+        "Reality-checking exercises for unmasking gaslighting distortions",
+        "Practical protocols for detachment and regaining personal agency",
       ],
     },
     "coloring-book": {
       id: "coloring-book",
+      slug: "bye-bye-narcissist-coloring-book",
       title: "The Bye Bye Narcissist Coloring Book & Journal",
-      subtitle: "Calm",
+      subtitle: "Slow down, process emotions, and reconnect with yourself.",
       numericPrice: 14.99,
       price: "$14.99",
       badge: "CALM",
-      description: "Slow down, process emotions, and reconnect with yourself.",
+      description:
+        "An artistic and reflective companion combining guided coloring art mandalas with gentle journaling prompts to calm the nervous system and give you space to breathe.",
       image: "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/Coloring Book.png",
-      specs: ["50 Art Mandalas", "Perforated Pages", "Heavy Bleed-Resistant Paper", "Reflective Journal Prompts"],
+      specs: [
+        "50 Hand-Crafted Art Mandalas",
+        "Heavy Bleed-Resistant Paper",
+        "Perforated Frameable Pages",
+        "Quiet Reflective Prompts",
+      ],
       features: [
-        "Somatic Nervous System Art Mandalas",
-        "Overthinking De-escalation Prompts",
-        "Daily Emotional Weather Trackers",
-        "Visual Affirmation Color Grids",
+        "Mindful art patterns to settle nervous system overdrive",
+        "De-escalation journal reflections for calming racing thoughts",
+        "Gentle daily self-check-ins and emotional weather tracking",
+        "Affirmative visual motifs reinforcing inner peace and boundaries",
       ],
     },
     posters: {
       id: "posters",
+      slug: "bye-bye-narcissist-posters",
       title: "Bye Bye Narcissist Poster Collection",
-      subtitle: "Reinforcement",
+      subtitle: "Daily reminders that strengthen boundaries and self-worth.",
       numericPrice: 29.99,
       price: "$29.99",
       badge: "REINFORCEMENT",
-      description: "Daily reminders that strengthen boundaries and self-worth.",
+      description:
+        "A complete set of 10 frameable 8×10 art prints featuring clear, grounded reminders designed to anchor your recovery and keep self-trust visible in your everyday environment.",
       image: "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/Posters/1 Framed.png",
       posterGrid: true,
-      specs: ["10 Art Prints Included", "Frameable 8x10 Format", "300 GSM Heavy Cardstock", "Matte Protective Finish"],
+      specs: [
+        "Complete Set of 10 Art Prints",
+        "Standard 8×10 Frameable Size",
+        "300 GSM Heavyweight Matte Stock",
+        "Protective Archival Finish",
+      ],
       features: [
-        "Complete Set of 10 Frameable 8x10 Art Prints",
-        "'My Guilt Is Not Evidence of Wrongdoing'",
-        "'No Is a Complete Sentence'",
-        "Daily Reminders to Anchor Progress",
+        "Daily grounding principles designed for home, office, or personal space",
+        "Visual affirmations that counteract self-doubt in seconds",
+        "High-contrast, timeless typography matching the mani aesthetic",
+        "Pairs seamlessly with standard 8×10 gallery picture frames",
       ],
     },
     "affirmation-cards": {
       id: "affirmation-cards",
-      title: "Bye Bye Narcissist Card Deck",
-      subtitle: "Daily Practice",
+      slug: "bye-bye-narcissist-affirmation-cards",
+      title: "Bye Bye Narcissist Affirmation Cards",
+      subtitle: "Build confidence and trust in yourself one day at a time.",
       numericPrice: 19.99,
       price: "$19.99",
       badge: "DAILY PRACTICE",
-      description: "Build confidence and trust in yourself one day at a time.",
+      description:
+        "A 52-card deck housed in a keepsake rigid box. Each card delivers a targeted micro-action, grounding insight, or boundary reminder whenever you feel uncertain.",
       image: "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/Affirmation Cards/Box Display.png",
-      specs: ["52 Micro-Action Cards", "Luxe Rigid Display Box", "Instant Trigger Grounding", "Gold Foil Accents"],
+      specs: [
+        "52 Luxe Micro-Action Cards",
+        "Rigid Keepsake Display Box",
+        "Gold Foil Accent Details",
+        "Smooth Matte-Touch Cardstock",
+      ],
       features: [
-        "52 Weekly Micro-Action Cards",
-        "Luxe Rigid Display Box",
-        "Quick-Draw Trigger Guidance",
-        "Pocket-Sized Cards",
+        "52 weekly focus prompts for continuous healing and self-trust",
+        "Quick-draw cards for instant clarity during moments of overwhelm",
+        "Pocket-sized format designed for everyday carrying or desk display",
+        "Structured guidance grounded in clinical behavioral insights",
       ],
     },
   };
 
-  const product = productCatalog[slug] || productCatalog["book"];
+  const cleanSlug = rawSlug.replace("bye-bye-narcissist-", "");
+  const product = productCatalog[rawSlug] || productCatalog[cleanSlug] || productCatalog["book"];
 
   const handleAddToCart = () => {
     for (let i = 0; i < quantity; i++) {
@@ -135,215 +173,260 @@ export default function ProductDetailPage({ params }: { params: Promise<{ slug: 
   };
 
   return (
-    <div className="min-h-screen bg-editorial-white text-ink-black flex flex-col justify-between overflow-x-hidden">
+    <div className="min-h-screen bg-editorial-white text-ink-black flex flex-col justify-between overflow-x-hidden selection:bg-[#0E2E1E] selection:text-white">
       <Header />
 
-      <main className="flex-grow pt-36 md:pt-48 pb-32">
-        <div className="max-w-[1360px] mx-auto px-6 sm:px-12 md:px-16">
+      <main className="flex-grow pt-32 sm:pt-40 md:pt-44 pb-28">
+        <div className="w-full px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24">
           
-          {/* Breadcrumb Navigation */}
-          <div className="mb-8 text-xs font-semibold text-[#0E2E1E] flex items-center gap-2">
-            <Link href="/collections" className="hover:underline">Collections</Link>
+          {/* Minimalist Breadcrumb Navigation */}
+          <nav className="mb-10 text-xs font-semibold tracking-wider text-[#0E2E1E]/70 uppercase flex items-center gap-2">
+            <Link href="/collections" className="hover:text-[#0E2E1E] transition-colors">
+              Collections
+            </Link>
             <span>/</span>
-            <Link href="/collections/bye-bye-narcissist" className="hover:underline">Bye Bye Narcissist</Link>
+            <Link href="/collections/bye-bye-narcissist" className="hover:text-[#0E2E1E] transition-colors">
+              Bye Bye Narcissist
+            </Link>
             <span>/</span>
             <span className="text-[#0E2E1E] font-bold">{product.title}</span>
-          </div>
+          </nav>
 
-          {/* Main Product Showcase Split */}
-          <SplitSlideCombine className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          {/* Main Product Showcase Split (Apple / Magazine Aesthetic) */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 xl:gap-24 items-start w-full">
             
-            {/* Left Column: Product Image Stage with Grounded Depth */}
-            <div className="lg:col-span-6 flex justify-center items-center">
-              {slug === "posters" ? (
-                <div className="relative w-full bg-gradient-to-b from-[#F5F2EC] to-[#E5E0D8] rounded-3xl p-6 sm:p-8 border border-[#D5CEC2] shadow-[inset_0_1px_3px_rgba(255,255,255,0.8),0_20px_35px_-12px_rgba(14,46,30,0.2)] overflow-hidden">
-                  <div className="flex items-center justify-between mb-4 px-1">
-                    <span className="text-xs font-bold uppercase tracking-wider text-[#0E2E1E] bg-soft-signal-green px-3 py-1 rounded-full">
-                      Complete 10-Poster Collection (8&times;10)
-                    </span>
-                    <span className="text-xs text-[#0E2E1E] font-bold">10 Frameable Prints</span>
+            {/* Left Column: Pure Apple-Style Hero Stage */}
+            <div className="lg:col-span-6 w-full relative lg:sticky top-28">
+              {product.posterGrid ? (
+                <div className="w-full bg-gradient-to-b from-[#FBFBFA] to-[#F1F3F5] border border-mist-grey/80 rounded-3xl p-6 sm:p-10 flex flex-col items-center justify-between shadow-xs overflow-hidden">
+                  {/* Large Featured Poster Preview */}
+                  <div className="relative w-full flex items-center justify-center py-4">
+                    <img
+                      src={encodeURI(posterImages[selectedPoster])}
+                      alt={`Poster Print 0${selectedPoster + 1}`}
+                      className="max-h-[380px] sm:max-h-[440px] w-auto object-contain drop-shadow-[0_16px_24px_rgba(0,0,0,0.16)] transition-all duration-500"
+                    />
                   </div>
-                  <div className="grid grid-cols-5 gap-2.5 relative z-10">
-                    {posterImages.map((src, idx) => (
-                      <div
-                        key={idx}
-                        onClick={() => setSelectedPoster(idx)}
-                        className="group relative rounded-lg overflow-hidden bg-white p-1.5 shadow-[0_4px_12px_rgba(0,0,0,0.12)] hover:shadow-[0_8px_20px_rgba(0,0,0,0.2)] hover:-translate-y-1 transition-all cursor-pointer"
-                      >
-                        <img
-                          src={encodeURI(src)}
-                          alt={`Poster ${idx + 1} of 10`}
-                          className="w-full h-auto object-contain rounded-xs"
-                        />
-                        <span className="absolute bottom-1 right-1 text-[9px] font-bold bg-black/70 text-white px-1 rounded">
-                          0{idx + 1}
-                        </span>
-                      </div>
-                    ))}
+
+                  {/* Realistic Ground Contact Shadow */}
+                  <div className="w-[75%] h-2.5 bg-gradient-to-r from-transparent via-black/35 to-transparent blur-[4px] rounded-full mx-auto -mt-1 pointer-events-none" />
+
+                  {/* 10-Print Gallery Strip */}
+                  <div className="w-full pt-6 mt-4 border-t border-mist-grey/60">
+                    <div className="flex items-center justify-between mb-3 px-1">
+                      <span className="text-xs font-bold uppercase tracking-wider text-[#0E2E1E]">
+                        All 10 Included Prints
+                      </span>
+                      <span className="text-xs text-[#0E2E1E]/70 font-semibold">
+                        Click to preview
+                      </span>
+                    </div>
+                    <div className="grid grid-cols-5 sm:grid-cols-10 gap-2 w-full">
+                      {posterImages.map((src, idx) => (
+                        <button
+                          key={idx}
+                          type="button"
+                          onClick={() => setSelectedPoster(idx)}
+                          className={`group relative rounded-lg overflow-hidden p-1 transition-all cursor-pointer border ${
+                            selectedPoster === idx
+                              ? "border-[#0E2E1E] ring-2 ring-[#0E2E1E]/20 bg-white scale-105"
+                              : "border-mist-grey/60 bg-white/60 hover:border-[#0E2E1E]/50"
+                          }`}
+                        >
+                          <img
+                            src={encodeURI(src)}
+                            alt={`Print 0${idx + 1}`}
+                            className="w-full h-auto object-contain"
+                          />
+                        </button>
+                      ))}
+                    </div>
                   </div>
-                  {/* Ground shadow beneath gallery */}
-                  <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4/5 h-5 bg-black/15 blur-md rounded-full pointer-events-none" />
                 </div>
               ) : (
-                <div className="relative w-full aspect-[4/3] sm:aspect-[16/12] bg-gradient-to-b from-[#F7F5F0] via-[#EFEBE4] to-[#E3DDD4] rounded-3xl p-8 sm:p-12 flex justify-center items-center border border-[#D5CEC2] shadow-[inset_0_1px_3px_rgba(255,255,255,0.9),0_20px_35px_-12px_rgba(14,46,30,0.14)] overflow-hidden group">
-                  {/* Ambient Ground Surface Plane */}
-                  <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/[0.04] to-transparent pointer-events-none" />
-
-                  {/* Product & Direct Base Contact Shadow */}
-                  <div className="relative z-10 flex flex-col items-center justify-center max-h-full">
-                    <Image
+                <div className="w-full bg-gradient-to-b from-[#FBFBFA] to-[#F1F3F5] border border-mist-grey/80 rounded-3xl p-8 sm:p-12 lg:p-16 flex flex-col items-center justify-end shadow-xs relative overflow-hidden group">
+                  {/* Hero Product Image */}
+                  <div className="relative w-full flex items-end justify-center pt-6 pb-0">
+                    <img
                       src={product.image}
                       alt={product.title}
-                      width={540}
-                      height={540}
-                      quality={100}
-                      priority
-                      className="relative z-10 w-auto max-h-[320px] sm:max-h-[380px] object-contain drop-shadow-[0_12px_22px_rgba(0,0,0,0.2)] group-hover:scale-105 transition-transform duration-700"
+                      className="max-h-[360px] sm:max-h-[440px] w-auto object-contain drop-shadow-[0_18px_26px_rgba(0,0,0,0.16)] group-hover:scale-[1.02] transition-transform duration-700"
                     />
-                    <div className="w-[85%] h-4.5 bg-black/30 blur-md rounded-[100%] -mt-3.5 pointer-events-none" />
-                    <div className="w-[55%] h-3 bg-black/40 blur-xs rounded-[100%] -mt-3.5 pointer-events-none" />
+                  </div>
+
+                  {/* Realistic Physical Contact Shadow */}
+                  <div className="w-[80%] h-3 bg-gradient-to-r from-transparent via-black/40 to-transparent blur-[5px] rounded-full mx-auto -mt-1 pointer-events-none z-10" />
+
+                  {/* Clean Studio Horizon Plinth */}
+                  <div className="w-full h-9 bg-gradient-to-b from-[#E6E8EC] to-[#DBDEE4] border-t border-[#CCD0D7] rounded-b-2xl mt-1.5 flex items-center justify-center shadow-inner">
+                    <span className="text-[10px] font-bold text-[#0E2E1E]/70 uppercase tracking-widest">
+                      Official Physical Edition · mani™ Collections
+                    </span>
                   </div>
                 </div>
               )}
             </div>
 
-            {/* Right Column: Product Detail & Purchase Action */}
+            {/* Right Column: Editorial Details & Action */}
             <div className="lg:col-span-6 space-y-6">
-              <span className="text-xs font-bold tracking-widest uppercase text-[#0E2E1E] bg-soft-signal-green px-3.5 py-1.5 rounded-full inline-block">
-                {product.badge}
-              </span>
+              <div>
+                <span className="text-xs font-bold tracking-widest uppercase text-[#0E2E1E] bg-[#0E2E1E]/10 px-3.5 py-1.5 rounded-full inline-block mb-3">
+                  BYE BYE NARCISSIST · {product.badge}
+                </span>
 
-              <KineticTextReveal
-                text={product.title}
-                tag="h1"
-                className="font-serif-heading text-3xl xs:text-4xl sm:text-6xl text-[#0E2E1E] leading-tight"
-              />
+                <h1 className="font-serif-heading text-4xl sm:text-5xl lg:text-6xl text-[#0E2E1E] leading-[1.06] tracking-tight">
+                  {product.title}
+                </h1>
 
-              <p className="font-serif-italic text-2xl text-[#1C2826]">
-                &ldquo;{product.subtitle}&rdquo;
-              </p>
+                <p className="font-serif-italic text-xl sm:text-2xl text-[#1C2826]/85 mt-2">
+                  &ldquo;{product.subtitle}&rdquo;
+                </p>
+              </div>
 
-              <div className="flex items-baseline gap-4 pt-2">
-                <span className="text-4xl font-serif-heading text-[#0E2E1E]">
+              {/* Price Display */}
+              <div className="flex items-baseline gap-3 pt-2">
+                <span className="text-4xl font-serif-heading text-[#0E2E1E] font-bold">
                   {product.price}
                 </span>
-                <span className="text-xs font-bold text-emerald-700 bg-soft-signal-green px-3 py-1 rounded-full">
-                  IN STOCK • READY TO SHIP
+                <span className="text-xs font-medium text-[#0E2E1E]/70 uppercase tracking-wider">
+                  Physical Edition · In Stock
                 </span>
               </div>
 
-              <p className="text-base text-[#1C2826] font-normal leading-relaxed">
+              <p className="text-base sm:text-lg text-[#0B1710] font-medium leading-relaxed">
                 {product.description}
               </p>
 
-              {/* Specs Grid */}
-              <div className="pt-4 border-t border-mist-grey space-y-3">
-                <span className="text-xs font-bold text-[#0E2E1E] uppercase tracking-wider block">
-                  SPECIFICATIONS &amp; FORMAT
+              {/* Specifications / Format (Clean Apple Key-Value List) */}
+              <div className="border-t border-b border-mist-grey/60 py-6 space-y-3">
+                <span className="text-xs font-bold text-[#0E2E1E] uppercase tracking-widest block">
+                  Specifications &amp; Format
                 </span>
-                <div className="grid grid-cols-2 gap-2 text-xs text-ink-black font-medium">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-[#0B1710]">
                   {product.specs.map((spec: string, idx: number) => (
-                    <div key={idx} className="flex items-center gap-2">
-                      <span className="text-[#0E2E1E] font-bold">✓</span>
-                      <span>{spec}</span>
+                    <div key={idx} className="flex items-center gap-2.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#0E2E1E]" />
+                      <span className="font-semibold">{spec}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
-              {/* Features List */}
-              <div className="pt-4 border-t border-mist-grey space-y-3">
-                <span className="text-xs font-bold text-[#0E2E1E] uppercase tracking-wider block">
-                  WHAT IS INCLUDED
+              {/* Key Focus Areas */}
+              <div className="space-y-3">
+                <span className="text-xs font-bold text-[#0E2E1E] uppercase tracking-widest block">
+                  Key Focus Areas
                 </span>
-                <ul className="space-y-1.5 text-xs text-ink-black font-medium">
+                <div className="space-y-2.5">
                   {product.features.map((feat: string, idx: number) => (
-                    <li key={idx} className="flex items-center gap-2">
-                      <span className="text-[#0E2E1E] font-bold">•</span>
+                    <div key={idx} className="flex items-baseline gap-3 text-sm text-[#0B1710] font-medium leading-relaxed">
+                      <span className="text-xs font-serif-heading font-bold text-[#0E2E1E]">
+                        0{idx + 1}
+                      </span>
                       <span>{feat}</span>
-                    </li>
+                    </div>
                   ))}
-                </ul>
+                </div>
               </div>
 
-              {/* Quantity Selector & Add to Cart */}
-              <div className="pt-6 border-t border-mist-grey flex flex-col sm:flex-row gap-4">
-                <div className="flex items-center gap-3 bg-soft-white border border-mist-grey rounded-xl px-4 py-3 justify-center">
-                  <span className="text-xs text-[#0E2E1E] uppercase font-bold">QTY</span>
+              {/* Quantity Selector & Add to Bag CTA */}
+              <div className="pt-4 space-y-4">
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+                  {/* Quantity Controller */}
+                  <div className="flex items-center justify-between border border-mist-grey/80 rounded-xl px-4 py-3 bg-[#FAFAFA] min-w-[130px]">
+                    <span className="text-xs text-[#0E2E1E] font-bold uppercase tracking-wider mr-2">Qty</span>
+                    <button
+                      type="button"
+                      onClick={() => setQuantity((q) => Math.max(1, q - 1))}
+                      className="w-7 h-7 rounded-lg bg-white border border-mist-grey/60 text-sm font-semibold hover:bg-mist-grey/40 flex items-center justify-center cursor-pointer transition-colors"
+                      aria-label="Decrease quantity"
+                    >
+                      -
+                    </button>
+                    <span className="font-bold text-sm text-[#0E2E1E] min-w-[24px] text-center">
+                      {quantity}
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => setQuantity((q) => q + 1)}
+                      className="w-7 h-7 rounded-lg bg-white border border-mist-grey/60 text-sm font-semibold hover:bg-mist-grey/40 flex items-center justify-center cursor-pointer transition-colors"
+                      aria-label="Increase quantity"
+                    >
+                      +
+                    </button>
+                  </div>
+
+                  {/* Primary Apple-Style CTA */}
                   <button
-                    onClick={() => setQuantity((q) => Math.max(1, q - 1))}
-                    className="w-6 h-6 rounded bg-editorial-white font-bold text-sm text-[#0E2E1E] flex items-center justify-center hover:bg-mist-grey"
+                    type="button"
+                    onClick={handleAddToCart}
+                    className="flex-grow py-4 px-8 bg-[#0E2E1E] text-cream-logo font-semibold rounded-xl hover:bg-[#143d28] active:scale-[0.99] transition-all text-base shadow-md cursor-pointer flex items-center justify-center gap-2"
                   >
-                    -
-                  </button>
-                  <span className="font-bold text-sm text-[#0E2E1E] min-w-[20px] text-center">
-                    {quantity}
-                  </span>
-                  <button
-                    onClick={() => setQuantity((q) => q + 1)}
-                    className="w-6 h-6 rounded bg-editorial-white font-bold text-sm text-[#0E2E1E] flex items-center justify-center hover:bg-mist-grey"
-                  >
-                    +
+                    {addedToCart ? "✓ Added to Bag" : `Add to Bag — $${(product.numericPrice * quantity).toFixed(2)}`}
                   </button>
                 </div>
 
-                <MagneticElement strength={0.15} className="flex-grow">
-                  <button
-                    onClick={handleAddToCart}
-                    className="w-full py-4 bg-[#0E2E1E] text-cream-logo font-semibold rounded-xl hover:bg-[#143d28] transition-all transform hover:scale-[1.02] shadow-xl text-base flex items-center justify-center gap-2"
-                  >
-                    {addedToCart ? "✓ Added to Cart!" : `Add to Cart ($${(product.numericPrice * quantity).toFixed(2)}) →`}
-                  </button>
-                </MagneticElement>
-              </div>
-
-              <div className="pt-4 flex flex-wrap gap-4 text-xs font-medium text-[#22332A] border-t border-mist-grey">
-                <span>🚚 Free Shipping over $100</span>
-                <span>🔒 30-Day Guarantee</span>
-                <span>📦 Discreet Packaging</span>
+                {/* Subtle Editorial Trust Signals (Clean typography, no emojis) */}
+                <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-[#1C2826]/70 pt-3 border-t border-mist-grey/40">
+                  <span>Complimentary domestic shipping over $100</span>
+                  <span className="hidden sm:inline">&bull;</span>
+                  <span>30-day satisfaction guarantee</span>
+                  <span className="hidden sm:inline">&bull;</span>
+                  <span>Discreet packaging</span>
+                </div>
               </div>
 
             </div>
 
-          </SplitSlideCombine>
+          </div>
 
-          {/* Related System Tools */}
-          <section className="mt-28 pt-16 border-t-2 border-mist-grey">
-            <ScrollReveal direction="up" className="mb-10">
-              <span className="text-xs font-bold tracking-widest uppercase text-[#0E2E1E] block mb-1">
+          {/* Related System Tools (Full Width Grid) */}
+          <section className="mt-28 pt-20 border-t border-mist-grey/60 w-full">
+            <div className="mb-10 space-y-2">
+              <span className="text-xs font-bold tracking-widest uppercase text-[#0E2E1E] block">
                 CONNECTED 5-PART SYSTEM
               </span>
-              <h2 className="font-serif-heading text-4xl text-[#0E2E1E]">
+              <h2 className="font-serif-heading text-3xl sm:text-4xl lg:text-5xl text-[#0E2E1E]">
                 Explore Other Tools in the Collection
               </h2>
-            </ScrollReveal>
+            </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
               {Object.entries(productCatalog)
-                .filter(([k]) => k !== slug)
+                .filter(([k]) => k !== cleanSlug && !k.startsWith("bye-bye-narcissist-"))
                 .slice(0, 4)
                 .map(([k, p]) => (
-                  <Link key={k} href={`/products/${k}`} className="group">
-                    <div className="p-6 bg-soft-white border border-mist-grey rounded-2xl hover:border-[#0E2E1E] transition-all space-y-4 shadow-xs h-full flex flex-col justify-between">
-                      <div className="h-44 bg-editorial-white rounded-xl p-4 flex items-center justify-center border border-mist-grey">
-                        <Image
+                  <Link key={k} href={`/products/${p.slug || k}`} className="group block h-full">
+                    <div className="p-6 bg-white border border-mist-grey/80 rounded-2xl hover:border-[#0E2E1E]/40 hover:shadow-lg transition-all space-y-4 h-full flex flex-col justify-between shadow-xs">
+                      {/* Product Stage with Tabletop Surface */}
+                      <div className="h-56 bg-gradient-to-b from-[#FBFBFA] to-[#F1F3F5] rounded-xl p-4 flex flex-col justify-end items-center border border-mist-grey/60 relative overflow-hidden">
+                        <img
                           src={p.image}
                           alt={p.title}
-                          width={200}
-                          height={200}
-                          className="w-auto max-h-36 object-contain group-hover:scale-105 transition-transform"
+                          className="max-h-40 w-auto object-contain drop-shadow-[0_10px_16px_rgba(0,0,0,0.14)] group-hover:scale-105 transition-transform duration-500 pb-0"
                         />
+                        <div className="w-[75%] h-2 bg-gradient-to-r from-transparent via-black/35 to-transparent blur-[3px] rounded-full mx-auto -mt-1 pointer-events-none" />
+                        <div className="w-full h-5 bg-gradient-to-b from-[#E7E9ED] to-[#DCE0E6] border-t border-[#CDD2DA] mt-1 shadow-inner" />
                       </div>
+
                       <div className="space-y-2">
-                        <span className="text-[10px] font-bold text-[#0E2E1E] bg-soft-signal-green px-2.5 py-0.5 rounded-full inline-block">
-                          {p.badge.split("•")[0]}
+                        <span className="text-[10px] font-bold text-[#0E2E1E] bg-[#0E2E1E]/10 px-2.5 py-0.5 rounded-full inline-block uppercase tracking-wider">
+                          {p.badge}
                         </span>
-                        <h4 className="font-serif-heading text-xl text-[#0E2E1E] group-hover:text-[#1c5c3b] transition-colors leading-snug">
+                        <h4 className="font-serif-heading text-xl text-[#0E2E1E] group-hover:text-[#143d28] transition-colors leading-snug">
                           {p.title}
                         </h4>
-                        <span className="text-lg font-serif-heading text-[#0E2E1E] block">
-                          {p.price}
-                        </span>
+                        <p className="text-xs text-[#1C2826]/80 leading-relaxed line-clamp-2">
+                          {p.description}
+                        </p>
+                        <div className="pt-3 flex items-center justify-between border-t border-mist-grey/60">
+                          <span className="text-lg font-serif-heading text-[#0E2E1E] font-bold">
+                            {p.price}
+                          </span>
+                          <span className="text-xs font-semibold text-[#0E2E1E] group-hover:underline">
+                            Details &rarr;
+                          </span>
+                        </div>
                       </div>
                     </div>
                   </Link>

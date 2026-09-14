@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { VIDEOS_DATA, getStreamableVideoUrl } from "@/data/videos";
@@ -19,34 +19,63 @@ const newestVideos = VIDEOS_DATA.slice(0, 5).map((v) => ({
 
 export default function WatchLearnSpotlight() {
   const [activeVideoModal, setActiveVideoModal] = useState<any | null>(null);
+  const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [containerWidth, setContainerWidth] = useState<number>(1200);
+
+  // Dynamically measure container width to span 100% full width with zero side margins
+  useEffect(() => {
+    if (!containerRef.current) return;
+    const updateSize = () => {
+      if (containerRef.current) {
+        setContainerWidth(containerRef.current.offsetWidth);
+      }
+    };
+    updateSize();
+    const ro = new ResizeObserver(updateSize);
+    ro.observe(containerRef.current);
+    return () => ro.disconnect();
+  }, []);
 
   const handleOpenVideo = (video: any) => {
     setActiveVideoModal(video);
     trackVideoView(video.title, video.duration);
   };
 
+  const count = newestVideos.length; // 5
+
+  // Sizing mathematics: strictly preserve exact 9:16 aspect ratio so 1080x1920 thumbnail is NEVER CUT
+  // Subtle overlap (20px) creates the physical "menindih kartu setelahnya" layered deck without covering text
+  const targetOverlap = Math.max(18, Math.min(26, containerWidth * 0.018));
+  const rawCardWidth = (containerWidth + (count - 1) * targetOverlap) / count;
+  const cardWidth = Math.max(240, Math.min(360, rawCardWidth));
+  // Exact 9:16 aspect ratio: cardHeight / cardWidth = 16 / 9 (1080x1920)
+  const cardHeight = Math.round(cardWidth * (16 / 9));
+
+  // Step between card origins so Card 0 is flush left and Card (count - 1) is flush right
+  const restingStep = count > 1 ? (containerWidth - cardWidth) / (count - 1) : 0;
+  const actualOverlap = cardWidth - restingStep;
+
   return (
     <section
+      id="watch-learn"
       className="py-20 sm:py-28 bg-[#FBF9F5] text-ink-black w-full relative overflow-hidden border-t border-b border-mist-grey/60"
     >
-      <div className="max-w-[1360px] mx-auto px-6 md:px-12">
+      <div className="w-full px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-14 gap-6">
-          <div className="max-w-2xl space-y-3">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 sm:mb-12 gap-6">
+          <div className="max-w-4xl space-y-3">
             <span className="text-xs font-bold tracking-widest text-[#0E2E1E] uppercase block">
               WATCH &amp; LEARN
             </span>
             <h2 className="font-serif-heading text-3xl xs:text-4xl sm:text-5xl lg:text-6xl text-[#0E2E1E] leading-[1.08] tracking-tight">
               Support In Minutes
             </h2>
-            <p className="text-base sm:text-lg text-[#1C2826] font-normal leading-relaxed">
-              Some days you need perspective. Some days you need clarity. Some days you just need a reminder that you&apos;re not alone.
+            <p className="text-base sm:text-lg text-[#0B1710] font-medium leading-relaxed">
+              Understand why you react the way you do, recognize patterns in your relationships, and learn new ways to respond through short, practical videos.
             </p>
-            <p className="text-base text-[#1C2826] font-normal leading-relaxed">
-              Our daily videos bring clarity to the emotions, patterns, and experiences shaping your life.
-            </p>
-            <p className="text-sm font-medium text-[#22332A] leading-relaxed pt-1">
+            <p className="text-sm font-semibold text-[#0E2E1E] leading-relaxed pt-1">
               Psychology. Relationships. Emotional Intelligence. Shadow Work. Self-Sabotage. Stress and Overwhelm. Inner Child. Narcissistic Abuse. And more.
             </p>
           </div>
@@ -62,54 +91,155 @@ export default function WatchLearnSpotlight() {
           </div>
         </div>
 
-        {/* Clean, Compact Video Grid with Calm Vertical Entrance */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-5 max-w-[1360px] mx-auto">
-          {newestVideos.map((video, idx) => (
-            <motion.div
+        {/* DESKTOP & TABLET: 100% Full-Width Overlapping Deck (Exact 9:16 Uncut Thumbnails) */}
+        <div
+          ref={containerRef}
+          onMouseLeave={() => setHoveredIdx(null)}
+          className="hidden md:block w-full select-none relative pt-4 pb-8 overflow-visible"
+        >
+          <div
+            className="w-full relative overflow-visible"
+            style={{ height: `${cardHeight + 20}px` }}
+          >
+            {newestVideos.map((video, idx) => {
+              const isHovered = hoveredIdx === idx;
+
+              let targetX = idx * restingStep;
+              let targetY = 0;
+              let targetScale = 1;
+              let targetOpacity = 1;
+              let zIndex = count - idx + 10; // Card 0 has highest resting zIndex (menindih kartu setelahnya)
+
+              if (hoveredIdx !== null) {
+                if (isHovered) {
+                  targetX = idx * restingStep;
+                  targetY = -14;
+                  targetScale = 1.04;
+                  zIndex = 50; // Pop to front
+                } else if (idx < hoveredIdx) {
+                  // Preceding cards slide left slightly to reveal hovered card
+                  const shift = Math.min(45, (hoveredIdx - idx) * 22);
+                  targetX = idx * restingStep - shift;
+                  targetScale = 0.98;
+                  targetOpacity = 0.85;
+                  zIndex = idx + 10;
+                } else {
+                  // Following cards slide right to completely uncover the hovered card
+                  const shift = Math.max(55, actualOverlap + 30);
+                  targetX = idx * restingStep + shift;
+                  targetScale = 0.98;
+                  targetOpacity = 0.85;
+                  zIndex = count - idx + 10;
+                }
+              }
+
+              return (
+                <motion.div
+                  key={video.id}
+                  onMouseEnter={() => setHoveredIdx(idx)}
+                  onClick={() => handleOpenVideo(video)}
+                  animate={{
+                    x: targetX,
+                    y: targetY,
+                    scale: targetScale,
+                    opacity: targetOpacity,
+                  }}
+                  style={{
+                    position: "absolute",
+                    top: 10,
+                    left: 0,
+                    width: `${cardWidth}px`,
+                    height: `${cardHeight}px`,
+                    zIndex,
+                  }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 340,
+                    damping: 27,
+                    mass: 0.8,
+                  }}
+                  className={`rounded-2xl sm:rounded-3xl overflow-hidden cursor-pointer border transition-all duration-300 ${
+                    isHovered
+                      ? "border-cream-logo shadow-[0_28px_60px_rgba(0,0,0,0.55)] ring-2 ring-cream-logo/50"
+                      : "border-white/25 shadow-[8px_0_24px_rgba(0,0,0,0.32)]"
+                  }`}
+                >
+                  {/* Exact 9:16 Thumbnail Image - 100% Full Uncut Display */}
+                  <div className="relative w-full h-full bg-[#0E2E1E]">
+                    <img
+                      src={encodeURI(video.thumbnail)}
+                      alt={video.title}
+                      className="w-full h-full object-cover object-center select-none pointer-events-none"
+                    />
+
+                    {/* Gentle subtle hover overlay */}
+                    <motion.div
+                      animate={{ opacity: isHovered ? 0.15 : 0 }}
+                      className="absolute inset-0 bg-black pointer-events-none"
+                    />
+                  </div>
+
+                  {/* Center Play Button - Pops up dynamically on hover */}
+                  <AnimatePresence>
+                    {isHovered && (
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.7 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.7 }}
+                        transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                        className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none"
+                      >
+                        <div className="w-14 h-14 rounded-full bg-cream-logo text-[#0E2E1E] flex items-center justify-center shadow-2xl ring-4 ring-cream-logo/30">
+                          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" className="ml-0.5">
+                            <polygon points="8,5 19,12 8,19" fill="currentColor" />
+                          </svg>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* MOBILE VIEW (Screens < 768px): Touch-Friendly Horizontal Reel (Uncut 9:16 Posters) */}
+        <div className="flex md:hidden overflow-x-auto gap-4 pb-6 pt-2 px-1 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden snap-x snap-mandatory">
+          {newestVideos.map((video) => (
+            <div
               key={video.id}
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.06, ease: [0.16, 1, 0.3, 1] }}
               onClick={() => handleOpenVideo(video)}
-              className="group relative bg-[#0E2E1E] rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-editorial-white/10 flex flex-col justify-between aspect-[9/15] w-full cursor-pointer select-none"
+              className="group flex flex-col w-[210px] xs:w-[230px] shrink-0 snap-center cursor-pointer select-none"
             >
-              {/* Actual Supplied Video Thumbnail */}
-              <div className="absolute inset-0 w-full h-full">
+              {/* Exact 9:16 Card - 100% Uncut Poster */}
+              <div className="relative w-full aspect-[9/16] rounded-2xl overflow-hidden shadow-md border border-editorial-white/20 bg-[#0E2E1E]">
                 <img
                   src={encodeURI(video.thumbnail)}
                   alt={video.title}
-                  className="w-full h-full object-cover opacity-95 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+                  className="w-full h-full object-cover select-none"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-black/30 opacity-70 group-hover:opacity-60 transition-opacity" />
-              </div>
 
-              {/* Top: Duration Badge */}
-              <div className="relative z-10 p-2.5 flex items-center justify-end">
-                <span className="text-[9px] font-bold text-cream-logo bg-black/75 backdrop-blur-md px-2 py-0.5 rounded-full border border-editorial-white/15">
-                  {video.duration}
-                </span>
-              </div>
-
-              {/* Center Play Button */}
-              <div className="relative z-10 flex items-center justify-center my-auto">
-                <div className="w-10 h-10 rounded-full bg-cream-logo text-[#0E2E1E] flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="ml-0.5">
-                    <polygon points="8,5 19,12 8,19" fill="currentColor" />
-                  </svg>
+                {/* Center Play Button on mobile tap */}
+                <div className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none">
+                  <div className="w-11 h-11 rounded-full bg-cream-logo/95 text-[#0E2E1E] flex items-center justify-center shadow-lg group-active:scale-95 transition-transform">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" className="ml-0.5">
+                      <polygon points="8,5 19,12 8,19" fill="currentColor" />
+                    </svg>
+                  </div>
                 </div>
               </div>
 
-              {/* Bottom: Supplied Title & Summary */}
-              <div className="relative z-10 p-3 bg-gradient-to-t from-black/95 via-black/80 to-transparent">
-                <h3 className="font-serif-heading text-xs sm:text-sm text-cream-logo leading-snug line-clamp-2">
+              {/* Clean Metadata Below Card (Zero obstruction of thumbnail) */}
+              <div className="mt-2 px-1">
+                <div className="flex items-center justify-between text-[10px] font-bold text-[#0E2E1E]/75 uppercase tracking-wider mb-0.5">
+                  <span className="truncate max-w-[70%]">{video.category}</span>
+                  <span className="shrink-0">{video.duration}</span>
+                </div>
+                <h3 className="text-xs font-serif-heading text-[#0E2E1E] font-semibold truncate">
                   {video.title}
                 </h3>
-                <p className="text-[9.5px] text-[#D8E6DE] font-normal leading-tight mt-1 line-clamp-2 opacity-90">
-                  {video.summary}
-                </p>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
 
@@ -151,7 +281,7 @@ export default function WatchLearnSpotlight() {
                 </button>
               </div>
 
-              <div className="relative w-full aspect-[9/15] max-h-[460px] bg-ink-black rounded-xl overflow-hidden flex flex-col items-center justify-center border border-editorial-white/15">
+              <div className="relative w-full aspect-[9/16] max-h-[520px] bg-ink-black rounded-xl overflow-hidden flex flex-col items-center justify-center border border-editorial-white/15">
                 <video
                   controls
                   autoPlay

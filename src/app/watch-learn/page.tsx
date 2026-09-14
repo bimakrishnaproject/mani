@@ -5,38 +5,17 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import UnderProgressPage from "@/components/UnderProgressPage";
-import { SITE_LOCKS } from "@/config/locks";
-import { VIDEOS_DATA, CATEGORIES, getStreamableVideoUrl } from "@/data/videos";
+import VideoModal from "@/components/VideoModal";
+import { VIDEOS_DATA, CATEGORIES, TOPIC_GROUPS, getStreamableVideoUrl, VideoItem } from "@/data/videos";
 import { trackVideoView } from "@/lib/analytics";
 
 export default function WatchLearnPage() {
-  if (SITE_LOCKS.PAGES_LOCKED) {
-    return (
-      <UnderProgressPage
-        pageName="Watch & Learn"
-        description="This page is currently undergoing milestone updates. Please explore the live homepage."
-      />
-    );
-  }
-
-  const [selectedTopic, setSelectedTopic] = useState<string>("All Categories");
+  const [selectedTopic, setSelectedTopic] = useState<string>("All Videos");
   const [searchQuery, setSearchQuery] = useState<string>("");
-  const [activeVideoModal, setActiveVideoModal] = useState<any | null>(null);
+  const [activeVideoModal, setActiveVideoModal] = useState<VideoItem | null>(null);
   const [visibleCount, setVisibleCount] = useState<number>(30);
 
-  const topics = CATEGORIES;
-
-  // Display newest videos first directly from curated order
-  const videos = VIDEOS_DATA.map((v) => ({
-    id: v.id,
-    title: v.title,
-    category: v.category,
-    duration: v.duration,
-    thumbnail: v.thumbnailUrl,
-    description: v.summary,
-    driveVideoUrl: v.driveVideoUrl,
-  }));
+  const videos: VideoItem[] = VIDEOS_DATA;
 
   useEffect(() => {
     setVisibleCount(30);
@@ -44,7 +23,7 @@ export default function WatchLearnPage() {
 
   const filteredVideos = videos.filter((v) => {
     const matchesTopic =
-      selectedTopic === "All Categories" || selectedTopic === "All"
+      selectedTopic === "All Videos" || selectedTopic === "All"
         ? true
         : v.category.trim().toLowerCase() === selectedTopic.trim().toLowerCase();
     const matchesQuery =
@@ -56,40 +35,46 @@ export default function WatchLearnPage() {
 
   const visibleVideos = filteredVideos.slice(0, visibleCount);
 
-  const handleOpenVideo = (video: any) => {
+  const handleOpenVideo = (video: VideoItem) => {
     setActiveVideoModal(video);
     trackVideoView(video.title, video.duration);
   };
 
   return (
-    <div className="min-h-screen bg-editorial-white text-ink-black flex flex-col justify-between overflow-x-hidden">
+    <div className="min-h-screen bg-editorial-white text-ink-black flex flex-col justify-between overflow-x-hidden selection:bg-[#0E2E1E] selection:text-white">
       <Header />
 
-      <main className="flex-grow pt-36 md:pt-48 pb-32">
+      <main className="flex-grow pt-32 sm:pt-40 md:pt-48 pb-32">
 
-        {/* HERO & BROWSE BY TOPIC */}
-        <section className="px-6 sm:px-12 md:px-16 lg:px-24 mb-14">
-          <div className="bg-[#0E2E1E] text-editorial-white rounded-3xl p-8 sm:p-12 border border-editorial-white/10 shadow-xl space-y-8">
-            <div className="max-w-3xl space-y-4">
-              <span className="inline-block text-xs font-bold tracking-widest uppercase text-cream-logo">
-                WATCH &amp; LEARN
+        {/* HERO & BROWSE BY TOPIC (Full-Bleed Edge-to-Edge Deep Green Banner, Centered & Balanced) */}
+        <section className="w-full bg-[#081F14] text-editorial-white py-16 sm:py-24 border-b border-editorial-white/10 mb-14 relative overflow-hidden">
+          {/* Ambient Lighting */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
+
+          <div className="w-full max-w-6xl mx-auto px-4 sm:px-8 md:px-12 relative z-10 space-y-12">
+            <div className="max-w-3xl mx-auto text-center space-y-6 flex flex-col items-center">
+              <span className="inline-block text-xs font-bold tracking-widest uppercase text-cream-logo/85 bg-cream-logo/10 border border-cream-logo/20 px-4 py-1.5 rounded-full shadow-xs">
+                SHORT VIDEOS
               </span>
 
-              <h1 className="font-serif-heading text-4xl xs:text-5xl sm:text-7xl lg:text-8xl text-cream-logo leading-[0.96] tracking-tight">
+              <h1 className="font-serif-heading text-5xl sm:text-7xl lg:text-8xl text-cream-logo leading-[0.96] tracking-tight">
                 Watch &amp; Learn
               </h1>
 
-              <p className="text-lg sm:text-xl text-[#E8F0EC] font-normal leading-relaxed max-w-2xl">
-                Short videos designed to help you better understand your emotions, relationships and experiences shaping your life.
+              <p className="text-lg sm:text-xl text-[#FAF5EB] font-medium leading-relaxed max-w-2xl mx-auto">
+                Short videos designed to help you understand your emotions, relationships, and the experiences shaping your life.
               </p>
 
-              <p className="text-sm text-[#D8E6DE] font-normal leading-relaxed max-w-2xl">
-                500+ videos and growing. New videos added daily.
-              </p>
+              <div className="inline-flex items-center gap-2 bg-[#0E271B] border border-emerald-500/30 px-5 py-2 rounded-full shadow-inner">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                <span className="text-xs sm:text-sm font-semibold text-cream-logo">
+                  500+ Videos. New Videos Added Daily.
+                </span>
+              </div>
 
-              {/* Search Bar */}
-              <div className="relative max-w-md pt-2">
-                <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none text-cream-logo/80">
+              {/* Centered Search Bar */}
+              <div className="relative w-full max-w-xl pt-2">
+                <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none text-cream-logo/70">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <circle cx="11" cy="11" r="8" />
                     <line x1="21" y1="21" x2="16.65" y2="16.65" />
@@ -100,12 +85,12 @@ export default function WatchLearnPage() {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Search topics or titles..."
-                  className="w-full pl-11 pr-10 py-3 rounded-xl bg-editorial-white/10 text-cream-logo text-xs placeholder-cream-logo/70 border border-editorial-white/20 focus:outline-none focus:border-cream-logo transition-colors"
+                  className="w-full pl-11 pr-10 py-3.5 rounded-xl bg-[#0E271B] text-cream-logo text-xs sm:text-sm placeholder-cream-logo/60 border border-emerald-500/30 focus:outline-none focus:border-cream-logo focus:bg-[#133524] transition-all shadow-inner"
                 />
                 {searchQuery && (
                   <button
                     onClick={() => setSearchQuery("")}
-                    className="absolute inset-y-0 right-3 flex items-center text-xs text-cream-logo/80 hover:text-cream-logo"
+                    className="absolute inset-y-0 right-3 flex items-center text-xs text-cream-logo/80 hover:text-cream-logo cursor-pointer"
                   >
                     ✕
                   </button>
@@ -113,87 +98,108 @@ export default function WatchLearnPage() {
               </div>
             </div>
 
-            {/* Stationary Browse by Topic */}
-            <div className="pt-2 border-t border-editorial-white/15 space-y-3">
-              <span className="text-xs font-bold text-cream-logo uppercase tracking-widest block">
-                Browse by Topic
-              </span>
-              <div className="flex flex-wrap gap-2">
-                {topics.map((topic, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => setSelectedTopic(topic)}
-                    className={`text-xs font-semibold px-3.5 py-1.5 rounded-full transition-colors cursor-pointer ${
-                      selectedTopic === topic
-                        ? "bg-cream-logo text-[#0E2E1E] shadow-sm font-bold"
-                        : "bg-editorial-white/10 text-cream-logo border border-editorial-white/15 hover:bg-editorial-white/20"
-                    }`}
-                  >
-                    {topic}
-                  </button>
+            {/* BROWSE BY TOPIC: 13 Categorized Topics across 4 Pillars */}
+            <div className="pt-8 border-t border-editorial-white/15 space-y-6">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+                <span className="text-xs font-bold text-cream-logo uppercase tracking-widest">
+                  Browse by Topic:
+                </span>
+                <button
+                  onClick={() => setSelectedTopic("All Videos")}
+                  className={`text-xs font-semibold px-5 py-2 rounded-full transition-all cursor-pointer ${
+                    selectedTopic === "All Videos"
+                      ? "bg-cream-logo text-[#0E2E1E] font-bold shadow-md"
+                      : "bg-[#0E271B] text-cream-logo border border-emerald-500/30 hover:bg-[#133524]"
+                  }`}
+                >
+                  All Videos
+                </button>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-2">
+                {TOPIC_GROUPS.map((group) => (
+                  <div key={group.pillar} className="space-y-2.5 bg-[#0A2417]/60 p-4 rounded-2xl border border-white/5">
+                    <h4 className="text-[11px] font-bold uppercase tracking-wider text-cream-logo/80 border-b border-editorial-white/10 pb-2 text-center">
+                      {group.pillar}
+                    </h4>
+                    <div className="flex flex-wrap gap-1.5 justify-center">
+                      {group.topics.map((topic) => (
+                        <button
+                          key={topic}
+                          onClick={() => setSelectedTopic(topic)}
+                          className={`text-xs px-3 py-1.5 rounded-lg transition-all cursor-pointer text-center ${
+                            selectedTopic === topic
+                              ? "bg-cream-logo text-[#0E2E1E] font-bold shadow-xs"
+                              : "text-[#E8F0EC] hover:text-cream-logo bg-[#0E271B]/80 hover:bg-[#133524] border border-white/5"
+                          }`}
+                        >
+                          {topic}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
                 ))}
               </div>
             </div>
           </div>
         </section>
 
-        {/* SECTION HEADER */}
-        <section className="px-6 sm:px-12 md:px-16 lg:px-24 mb-6 flex items-center justify-between">
-          <div>
-            <h2 className="font-serif-heading text-2xl sm:text-3xl text-[#0E2E1E]">
-              {searchQuery ? `Search Results for "${searchQuery}" (${filteredVideos.length})` : `${selectedTopic === "All Categories" || selectedTopic === "All" ? "All Videos" : selectedTopic}`}
+        {/* SECTION HEADER WITH SELECTED TOPIC DYNAMIC TITLE (Centered) */}
+        <section className="px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24 mb-10 text-center">
+          <div className="max-w-2xl mx-auto space-y-2">
+            <span className="text-xs font-bold text-[#0E2E1E] uppercase tracking-wider block">
+              {searchQuery ? "Search Results" : "Topic View"}
+            </span>
+            <h2 className="font-serif-heading text-3xl sm:text-5xl text-[#0E2E1E]">
+              {searchQuery ? `"${searchQuery}"` : selectedTopic}
             </h2>
+            <div className="pt-1">
+              <span className="inline-block text-xs font-bold text-[#0E2E1E] bg-soft-white border border-mist-grey px-4 py-1.5 rounded-full shadow-xs">
+                {filteredVideos.length} {filteredVideos.length === 1 ? "Video" : "Videos"}
+              </span>
+            </div>
           </div>
-          <span className="text-xs font-bold text-[#0E2E1E] hidden sm:inline-block bg-soft-white border border-mist-grey px-3.5 py-1.5 rounded-full">
-            {filteredVideos.length} {filteredVideos.length === 1 ? "VIDEO" : "VIDEOS"}
-          </span>
         </section>
 
-        {/* VIDEO GRID (5 columns on desktop) */}
+        {/* VIDEO GRID (Strictly 5 columns on desktop in responsive layout per docs) */}
         {filteredVideos.length > 0 ? (
-          <section className="max-w-[1440px] mx-auto px-6 sm:px-12 md:px-16 lg:px-24 mb-24">
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+          <section className="w-full px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24 mb-24">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 2xl:grid-cols-5 gap-4 md:gap-6 w-full">
               {visibleVideos.map((video, idx) => (
                 <motion.div
-                  key={video.id}
+                  key={`${video.id}-${idx}`}
                   initial={{ opacity: 0, y: 15 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: (idx % 5) * 0.04, ease: [0.16, 1, 0.3, 1] }}
+                  transition={{ duration: 0.4, delay: (idx % 5) * 0.03, ease: [0.16, 1, 0.3, 1] }}
                   onClick={() => handleOpenVideo(video)}
-                  className="group relative cursor-pointer rounded-2xl overflow-hidden shadow-md hover:shadow-lg border border-mist-grey transition-all aspect-[9/14] flex flex-col justify-between bg-[#05150D]"
+                  className="group relative cursor-pointer rounded-2xl overflow-hidden shadow-sm hover:shadow-xl border border-mist-grey/80 transition-all aspect-[9/15] flex flex-col justify-between bg-[#0E2E1E]"
                 >
+                  {/* Thumbnail Image */}
                   <img
-                    src={encodeURI(video.thumbnail)}
+                    src={encodeURI(video.thumbnailUrl)}
                     alt={video.title}
-                    className="absolute inset-0 w-full h-full object-cover rounded-2xl opacity-90 group-hover:opacity-100 transition-opacity duration-500"
+                    className="absolute inset-0 w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-all duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-black/20 rounded-2xl" />
+                  <div className="absolute inset-0 bg-black/15 group-hover:bg-black/5 transition-colors rounded-2xl" />
 
-                  {/* Top: Category & Duration */}
-                  <div className="relative z-10 p-3 flex items-center justify-between">
-                    <span className="text-[8px] font-bold tracking-wider uppercase bg-[#0E2E1E]/80 text-cream-logo px-2 py-0.5 rounded-full border border-editorial-white/15">
+                  {/* Top: Category & Duration Badge (clean, no overlap) */}
+                  <div className="relative z-10 p-2.5 flex items-center justify-between gap-1">
+                    <span className="text-[8px] font-bold tracking-wider uppercase bg-[#0E2E1E]/85 text-cream-logo px-2 py-0.5 rounded-full border border-editorial-white/15 truncate max-w-[65%] shadow-xs">
                       {video.category}
                     </span>
-                    <span className="text-[8px] font-bold text-editorial-white bg-black/60 px-2 py-0.5 rounded-full">
+                    <span className="text-[8px] font-bold text-cream-logo bg-black/70 backdrop-blur-xs px-2 py-0.5 rounded-full shrink-0 shadow-xs">
                       {video.duration}
                     </span>
                   </div>
 
-                  {/* Center Play */}
-                  <div className="relative z-10 flex items-center justify-center my-auto">
-                    <div className="w-10 h-10 rounded-full bg-cream-logo text-[#0E2E1E] flex items-center justify-center shadow-md transition-all duration-300">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="ml-0.5">
+                  {/* Center Play Icon */}
+                  <div className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none">
+                    <div className="w-11 h-11 rounded-full bg-cream-logo/90 text-[#0E2E1E] flex items-center justify-center shadow-lg group-hover:scale-115 group-hover:bg-cream-logo transition-all">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" className="ml-0.5">
                         <polygon points="8,5 19,12 8,19" fill="currentColor" />
                       </svg>
                     </div>
-                  </div>
-
-                  {/* Bottom: Title */}
-                  <div className="relative z-10 p-3 bg-gradient-to-t from-black/80 to-transparent">
-                    <h3 className="text-xs font-semibold text-editorial-white leading-snug group-hover:text-cream-logo transition-colors line-clamp-2">
-                      {video.title}
-                    </h3>
                   </div>
                 </motion.div>
               ))}
@@ -211,45 +217,41 @@ export default function WatchLearnPage() {
             )}
           </section>
         ) : (
-          <div className="max-w-[1360px] mx-auto px-6 py-16 text-center space-y-4">
-            <h3 className="font-serif-heading text-3xl text-[#0E2E1E]">No videos found matching &ldquo;{searchQuery}&rdquo;</h3>
+          <div className="w-full px-6 py-16 text-center space-y-4">
+            <h3 className="font-serif-heading text-3xl text-[#0E2E1E]">
+              No videos found matching &ldquo;{searchQuery}&rdquo;
+            </h3>
             <p className="text-sm text-[#1C2826] max-w-md mx-auto font-normal">
-              Try searching for different keywords or select &ldquo;All&rdquo; topics to view our full video library.
+              Try searching for different keywords or select &ldquo;All Videos&rdquo; to view our full video library.
             </p>
             <button
               onClick={() => {
                 setSearchQuery("");
-                setSelectedTopic("All Categories");
+                setSelectedTopic("All Videos");
               }}
-              className="px-6 py-2.5 bg-[#0E2E1E] text-cream-logo font-semibold rounded-full text-xs hover:bg-[#143d28] transition-colors"
+              className="px-6 py-2.5 bg-[#0E2E1E] text-cream-logo font-semibold rounded-full text-xs hover:bg-[#143d28] transition-colors cursor-pointer"
             >
               Reset Search &amp; Filters
             </button>
           </div>
         )}
 
-        {/* BOTTOM CTA */}
-        <section className="px-6 sm:px-12 md:px-16 lg:px-24 mt-8">
-          <div className="max-w-4xl mx-auto">
-            <div className="bg-[#0E2E1E] text-editorial-white rounded-2xl p-10 sm:p-14 text-center space-y-6 shadow-xl">
+        {/* BOTTOM SECTION: TAKE WHAT YOU LEARN FURTHER */}
+        <section className="px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24 mt-8">
+          <div className="w-full">
+            <div className="bg-[#0E2E1E] text-editorial-white rounded-3xl p-10 sm:p-16 lg:p-20 text-center space-y-6 shadow-xl">
               <h2 className="font-serif-heading text-3xl sm:text-5xl text-cream-logo">
-                Looking for deeper support?
+                Take What You Learn Further
               </h2>
-              <p className="text-base sm:text-lg text-editorial-white/80 font-light leading-relaxed max-w-2xl mx-auto">
-                Explore our structured collections or join the app beta.
+              <p className="text-base sm:text-lg text-[#FAF5EB] font-medium leading-relaxed max-w-3xl mx-auto">
+                Stay connected to new Watch &amp; Learn videos, practical guidance from <strong>mani</strong> Collections, and opportunities to experience the app.
               </p>
-              <div className="pt-4 flex flex-wrap justify-center gap-4">
+              <div className="pt-2">
                 <Link
-                  href="/collections"
-                  className="px-8 py-4 bg-cream-logo text-[#0E2E1E] font-semibold rounded-xl hover:bg-white transition-all shadow-md text-sm"
+                  href="/join-community"
+                  className="inline-flex px-8 py-4 bg-cream-logo text-[#0E2E1E] font-semibold rounded-xl hover:bg-white transition-all text-sm shadow-md cursor-pointer"
                 >
-                  Explore Collections &rarr;
-                </Link>
-                <Link
-                  href="/join-beta"
-                  className="px-8 py-4 bg-editorial-white/10 text-cream-logo border border-editorial-white/20 font-semibold rounded-xl hover:bg-editorial-white/20 transition-all text-sm"
-                >
-                  Join App Beta &rarr;
+                  Join Our Community &rarr;
                 </Link>
               </div>
             </div>
@@ -258,79 +260,15 @@ export default function WatchLearnPage() {
 
       </main>
 
-      {/* VIDEO PLAYER MODAL */}
-      <AnimatePresence>
-        {activeVideoModal && (
-          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setActiveVideoModal(null)}
-              className="absolute inset-0 bg-ink-black/90 backdrop-blur-md"
-            />
-
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              className="relative w-full max-w-md bg-[#081F14] text-editorial-white rounded-2xl border border-editorial-white/20 p-5 sm:p-6 shadow-2xl z-10 space-y-4 max-h-[90vh] overflow-y-auto"
-            >
-              <div className="flex items-center justify-between">
-                <div>
-                  <span className="text-xs font-bold text-cream-logo uppercase tracking-widest block">
-                    {activeVideoModal.category} &bull; {activeVideoModal.duration}
-                  </span>
-                  <h3 className="font-serif-heading text-xl sm:text-2xl text-cream-logo mt-0.5">
-                    {activeVideoModal.title}
-                  </h3>
-                </div>
-                <button
-                  onClick={() => setActiveVideoModal(null)}
-                  className="w-9 h-9 rounded-full bg-editorial-white/10 text-cream-logo flex items-center justify-center hover:bg-editorial-white/20 text-sm font-bold flex-shrink-0"
-                >
-                  ✕
-                </button>
-              </div>
-
-              <div className="relative w-full aspect-[9/15] max-h-[460px] bg-ink-black rounded-xl overflow-hidden flex flex-col items-center justify-center border border-editorial-white/15">
-                <video
-                  controls
-                  autoPlay
-                  playsInline
-                  poster={encodeURI(activeVideoModal.thumbnail)}
-                  src={getStreamableVideoUrl(activeVideoModal)}
-                  className="w-full h-full object-contain rounded-xl"
-                />
-              </div>
-
-              <p className="text-xs text-editorial-white/70 font-light leading-relaxed">
-                {activeVideoModal.description}
-              </p>
-
-              <div className="flex flex-wrap gap-2 pt-2">
-                <a
-                  href={getStreamableVideoUrl(activeVideoModal).replace("raw=1", "dl=0")}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-xs font-semibold text-cream-logo bg-[#0E2E1E] border border-editorial-white/20 px-4 py-2 rounded-full hover:bg-[#143d28] transition-colors"
-                >
-                  Stream on Dropbox &rarr;
-                </a>
-                <Link
-                  href="/collections"
-                  className="text-xs font-semibold text-cream-logo bg-editorial-white/10 px-4 py-2 rounded-full hover:bg-editorial-white/20 transition-colors"
-                >
-                  Explore Collections &rarr;
-                </Link>
-              </div>
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
-
       <Footer />
+
+      {/* Video Modal Player */}
+      {activeVideoModal && (
+        <VideoModal
+          video={activeVideoModal}
+          onClose={() => setActiveVideoModal(null)}
+        />
+      )}
     </div>
   );
 }
