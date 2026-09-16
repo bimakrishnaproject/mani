@@ -37,13 +37,13 @@ export default function CommunityGuidelinesPage() {
             className="space-y-8 text-base text-[#1C2826] font-normal leading-relaxed border-t border-mist-grey/60 pt-8"
           >
             <p>
-              mani™ is owned and operated by Moose Ventures LLC.
+              <strong className="font-bold lowercase">mani</strong>&trade; is owned and operated by Moose Ventures LLC.
             </p>
             <p className="text-lg font-medium text-[#0E2E1E]">
               We are committed to creating a respectful and supportive community.
             </p>
             <p>
-              By participating in any mani™ community space, including Discord, social channels, beta programs, or future community experiences, you agree to:
+              By participating in any <strong className="font-bold lowercase">mani</strong>&trade; community space, including Discord, social channels, beta programs, or future community experiences, you agree to:
             </p>
 
             <ul className="list-disc pl-6 space-y-3 pt-2 text-[#1C2826]">

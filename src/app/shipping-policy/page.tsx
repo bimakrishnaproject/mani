@@ -37,10 +37,10 @@ export default function ShippingPolicyPage() {
             className="space-y-8 text-base text-[#1C2826] font-normal leading-relaxed border-t border-mist-grey/60 pt-8"
           >
             <p>
-              mani™ is owned and operated by Moose Ventures LLC.
+              <strong className="font-bold lowercase">mani</strong>&trade; is owned and operated by Moose Ventures LLC.
             </p>
             <p>
-              mani™ currently ships physical products within the United States and select international locations.
+              <strong className="font-bold lowercase">mani</strong>&trade; currently ships physical products within the United States and select international locations.
             </p>
 
             <div className="space-y-4 pt-4 border-t border-mist-grey/40">
@@ -80,7 +80,7 @@ export default function ShippingPolicyPage() {
               <h2 className="font-serif-heading text-2xl sm:text-3xl text-[#0E2E1E]">
                 Lost or Delayed Packages
               </h2>
-              <p>mani™ is not responsible for shipping delays caused by:</p>
+              <p><strong className="font-bold lowercase">mani</strong>&trade; is not responsible for shipping delays caused by:</p>
               <ul className="list-disc pl-6 space-y-2">
                 <li>Weather</li>
                 <li>Carrier disruptions</li>

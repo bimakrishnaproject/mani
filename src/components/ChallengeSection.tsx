@@ -25,7 +25,7 @@ export default function ChallengeSection() {
             Stress, self-doubt, relationship challenges, uncertainty, and overwhelming emotions are part of being human. Yet finding meaningful support is not always easy.
           </p>
           <p className="text-lg sm:text-xl md:text-2xl font-semibold text-[#0E2E1E] leading-relaxed">
-            <strong>mani</strong>{" "}was built to change that.
+            <strong className="font-bold lowercase">mani</strong>{" "}was built to change that.
           </p>
         </motion.div>
       </div>

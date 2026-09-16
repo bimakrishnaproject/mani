@@ -38,7 +38,7 @@ export default function CommunitySection() {
       <div className="w-full px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24">
         <motion.div {...fadeIn} className="space-y-6 sm:space-y-8">
           <h2 className="font-serif-heading text-4xl sm:text-6xl md:text-7xl text-[#0E2E1E] leading-[1.05] tracking-tight">
-            There’s More To <strong>mani</strong>
+            There’s More To <strong className="font-bold lowercase">mani</strong>
           </h2>
 
           <p className="text-lg sm:text-xl md:text-2xl text-[#0B1710] leading-relaxed font-medium max-w-3xl mx-auto">
@@ -48,7 +48,7 @@ export default function CommunitySection() {
           <div className="pt-4 max-w-xl mx-auto">
             {submitted ? (
               <div className="p-6 bg-[#0E2E1E] text-cream-logo rounded-2xl font-semibold text-base shadow-lg">
-                ✓ Welcome to the <strong>mani</strong>{" "}Community! Updates will be sent to your inbox.
+                ✓ Welcome to the <strong className="font-bold lowercase">mani</strong>{" "}Community! Updates will be sent to your inbox.
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">

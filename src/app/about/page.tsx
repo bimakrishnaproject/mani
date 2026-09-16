@@ -49,23 +49,40 @@ const softFade = {
   },
 };
 
-const specialists = [
+const specialists: {
+  name: string;
+  role: string;
+  bio: React.ReactNode;
+  image: string;
+}[] = [
   {
     name: "Michaela Katz",
     role: "Somatic Healing & Mind-Body Specialist",
-    bio: "Michaela Katz specializes in somatic healing, emotional well-being, and mind-body practices. Through her work, she helps individuals cultivate greater self-awareness, emotional resilience, and a deeper connection with themselves. As the founder of Mindful Michaela, she brings valuable insight, compassion, and expertise to the work behind Mani.",
+    bio: (
+      <>
+        Michaela Katz specializes in somatic healing, emotional well-being, and mind-body practices. Through her work, she helps individuals cultivate greater self-awareness, emotional resilience, and a deeper connection with themselves. As the founder of Mindful Michaela, she brings valuable insight, compassion, and expertise to the work behind <strong className="font-bold lowercase">mani</strong>.
+      </>
+    ),
     image: "/assets/Team Photos/Michaela Katz.png",
   },
   {
     name: "Stephen Coghill",
     role: "Award-Winning Composer, Producer & Audio Engineer",
-    bio: "Stephen Coghill is an award-winning composer, producer, and founder of COG Productions with decades of experience in music production, recording, and audio storytelling. He creates the original music and soundscapes behind Mani's breathing exercises, meditations, visualizations, and stories, helping shape the emotional experience behind everything we create.",
+    bio: (
+      <>
+        Stephen Coghill is an award-winning composer, producer, and founder of COG Productions with decades of experience in music production, recording, and audio storytelling. He creates the original music and soundscapes behind <strong className="font-bold lowercase">mani</strong>&apos;s breathing exercises, meditations, visualizations, and stories, helping shape the emotional experience behind everything we create.
+      </>
+    ),
     image: "/assets/Team Photos/Stephen CogHill.png",
   },
   {
     name: "Michelle Falanga",
     role: "Emmy Award-Winning Voice Artist, Actor & Meditation Teacher",
-    bio: "Michelle Falanga is an Emmy Award-winning voice artist whose work spans national commercial campaigns, animation, corporate productions, and brand storytelling. As the voice behind Mani's breathing exercises, meditations, visualizations, and stories, she helps bring every experience to life in a way that feels calming, supportive, and deeply human.",
+    bio: (
+      <>
+        Michelle Falanga is an Emmy Award-winning voice artist whose work spans national commercial campaigns, animation, corporate productions, and brand storytelling. As the voice behind <strong className="font-bold lowercase">mani</strong>&apos;s breathing exercises, meditations, visualizations, and stories, she helps bring every experience to life in a way that feels calming, supportive, and deeply human.
+      </>
+    ),
     image: "/assets/Team Photos/Michelle Falanga.png",
   },
 ];
@@ -137,7 +154,7 @@ export default function AboutPage() {
                   variants={itemFadeUp}
                   className="text-xs sm:text-sm font-bold tracking-[0.25em] uppercase text-[#0E2E1E]/70 block"
                 >
-                  ABOUT mani
+                  ABOUT <strong className="font-bold lowercase">mani</strong>
                 </motion.span>
                 <motion.h1
                   variants={itemFadeUp}
@@ -159,7 +176,7 @@ export default function AboutPage() {
                   variants={itemFadeUp}
                   className="text-xl sm:text-2xl lg:text-3xl text-[#0E2E1E] font-medium leading-relaxed"
                 >
-                  <strong>mani</strong> was created to make emotional support simple, accessible, and practical for everyday life.
+                  <strong className="font-bold lowercase">mani</strong> was created to make emotional support simple, accessible, and practical for everyday life.
                 </motion.p>
               </div>
             </motion.div>
@@ -188,7 +205,7 @@ export default function AboutPage() {
                   variants={itemFadeUp}
                   className="font-serif-heading text-3xl sm:text-5xl lg:text-6xl xl:text-7xl text-[#0E2E1E] leading-[1.05] tracking-tight"
                 >
-                  The People Behind Mani
+                  The People Behind <strong className="font-bold lowercase">mani</strong>
                 </motion.h2>
               </div>
 
@@ -253,19 +270,19 @@ export default function AboutPage() {
 
                 <div className="space-y-6 text-base sm:text-lg lg:text-xl text-[#FAF5EB]/90 font-normal leading-relaxed">
                   <motion.p variants={itemFadeUp}>
-                    Manasa founded <strong>mani</strong> after experiencing firsthand what it feels like to need emotional support and struggle to find it. That experience stayed with her. As she learned, listened, and spoke with others, she realized how many people were facing life’s challenges without knowing where to turn or what to do next.
+                    Manasa founded <strong className="font-bold lowercase">mani</strong> after experiencing firsthand what it feels like to need emotional support and struggle to find it. That experience stayed with her. As she learned, listened, and spoke with others, she realized how many people were facing life’s challenges without knowing where to turn or what to do next.
                   </motion.p>
                   <motion.p variants={itemFadeUp}>
                     When Manasa finally found the guidance and expertise that helped her, she became committed to making meaningful support more accessible to others.
                   </motion.p>
                   <motion.p variants={itemFadeUp}>
-                    <strong>mani</strong> grew from a simple belief: emotional support should be simple, practical, and available when people need it. What began with one person’s experience became a mission to create trusted guidance and practical tools that help people better understand themselves and what they are going through.
+                    <strong className="font-bold lowercase">mani</strong> grew from a simple belief: emotional support should be simple, practical, and available when people need it. What began with one person’s experience became a mission to create trusted guidance and practical tools that help people better understand themselves and what they are going through.
                   </motion.p>
                   <motion.p
                     variants={itemFadeUp}
                     className="font-serif-heading text-xl sm:text-2xl text-cream-logo pt-2"
                   >
-                    That belief continues to guide everything <strong>mani</strong> creates.
+                    That belief continues to guide everything <strong className="font-bold lowercase">mani</strong> creates.
                   </motion.p>
                 </div>
               </div>
@@ -295,7 +312,7 @@ export default function AboutPage() {
                 variants={itemFadeUp}
                 className="font-serif-heading text-3xl sm:text-5xl lg:text-6xl xl:text-7xl text-[#0E2E1E] leading-[1.05] tracking-tight"
               >
-                Meet The Experts Behind Mani
+                Meet The Experts Behind <strong className="font-bold lowercase">mani</strong>
               </motion.h2>
             </motion.div>
 
@@ -340,7 +357,7 @@ export default function AboutPage() {
                     Lolly Daskal has studied human behavior and helped people navigate growth, relationships, leadership, and life&apos;s challenges. As founder and CEO of Lead From Within and bestselling author of <em>The Leadership Gap</em>, she has spent her career helping individuals and organizations gain clarity, build resilience, strengthen relationships, and create meaningful change.
                   </motion.p>
                   <motion.p variants={itemFadeUp}>
-                    Drawing from decades of research, coaching, and real-world experience, Lolly helps shape the vision, content, and frameworks behind Mani. Her work draws on behavioral science, psychology, and practical wisdom to help people better understand themselves, strengthen their relationships, and navigate life&apos;s challenges with greater confidence and clarity.
+                    Drawing from decades of research, coaching, and real-world experience, Lolly helps shape the vision, content, and frameworks behind <strong className="font-bold lowercase">mani</strong>. Her work draws on behavioral science, psychology, and practical wisdom to help people better understand themselves, strengthen their relationships, and navigate life&apos;s challenges with greater confidence and clarity.
                   </motion.p>
                 </div>
               </div>
@@ -457,7 +474,7 @@ export default function AboutPage() {
                 variants={itemFadeUp}
                 className="font-serif-heading text-4xl sm:text-6xl lg:text-7xl text-[#0E2E1E] leading-[1.05] tracking-tight"
               >
-                There’s More To mani
+                There’s More To <strong className="font-bold lowercase">mani</strong>
               </motion.h2>
 
               <motion.p
@@ -490,7 +507,7 @@ export default function AboutPage() {
               <motion.div variants={itemFadeUp} className="pt-6 max-w-md mx-auto">
                 {joined ? (
                   <div className="p-4 rounded-xl bg-[#0E2E1E]/10 border border-[#0E2E1E]/20 text-[#0E2E1E] font-semibold text-sm">
-                    Thank you for joining the mani community!
+                    Thank you for joining the <strong className="font-bold lowercase">mani</strong> community!
                   </div>
                 ) : (
                   <form onSubmit={handleJoin} className="flex flex-col sm:flex-row gap-3">

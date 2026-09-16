@@ -13,6 +13,19 @@ const fadeIn = {
   transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] as const },
 };
 
+function renderFormattedMani(text: string): React.ReactNode {
+  const parts = text.split(/(\b(?:Mani|mani)(?:'s)?\b)/g);
+  return parts.map((part, idx) => {
+    if (part === "Mani" || part === "mani") {
+      return <strong key={idx} className="font-bold lowercase">mani</strong>;
+    }
+    if (part === "Mani's" || part === "mani's") {
+      return <span key={idx}><strong className="font-bold lowercase">mani</strong>&apos;s</span>;
+    }
+    return part;
+  });
+}
+
 const faqs = [
   {
     question: "Why is Mani called Mani?",
@@ -117,7 +130,7 @@ export default function FAQPage() {
               Frequently Asked Questions
             </h1>
             <p className="text-base sm:text-lg text-[#0B1710] font-medium leading-relaxed max-w-3xl mx-auto">
-              Find clear answers about <strong>mani</strong>, our resources, collections, app, and philosophy.
+              Find clear answers about <strong className="font-bold lowercase">mani</strong>, our resources, collections, app, and philosophy.
             </p>
 
             {/* Search filter */}
@@ -158,7 +171,7 @@ export default function FAQPage() {
                         isOpen ? "text-cream-logo" : "text-[#0E2E1E]"
                       }`}
                     >
-                      {faq.question}
+                      {renderFormattedMani(faq.question)}
                     </span>
                     <span
                       className={`text-xl font-bold transition-transform duration-300 shrink-0 ${
@@ -179,7 +192,7 @@ export default function FAQPage() {
                         className="overflow-hidden"
                       >
                         <div className="px-6 sm:px-8 pb-6 text-sm sm:text-base text-[#FAF5EB] leading-relaxed font-medium border-t border-editorial-white/10 pt-4">
-                          {faq.answer}
+                          {renderFormattedMani(faq.answer)}
                         </div>
                       </motion.div>
                     )}

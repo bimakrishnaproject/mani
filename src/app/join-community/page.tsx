@@ -55,7 +55,7 @@ export default function JoinCommunityPage() {
                   COMMUNITY INVITATION
                 </span>
                 <h1 className="font-serif-heading text-4xl sm:text-6xl md:text-7xl lg:text-8xl text-[#0E2E1E] tracking-tight leading-[0.98]">
-                  Join The <strong>mani</strong>{" "}Community
+                  Join The <strong className="font-bold lowercase">mani</strong>{" "}Community
                 </h1>
                 <p className="text-xl sm:text-2xl text-[#0B1710] font-medium leading-relaxed pt-2">
                   Be the first to hear about new collections, videos, app updates, and resources.
@@ -82,7 +82,7 @@ export default function JoinCommunityPage() {
                 </div>
                 <div className="space-y-2">
                   <span className="text-xs font-bold tracking-wider text-[#0E2E1E] uppercase block">
-                    03 &middot; mani App
+                    03 &middot; <strong className="font-bold lowercase">mani</strong> App
                   </span>
                   <p className="text-xs sm:text-sm text-[#0B1710] font-medium leading-relaxed">
                     Direct access to new reflections, practices, and beta features.

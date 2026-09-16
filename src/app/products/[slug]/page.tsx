@@ -125,7 +125,11 @@ export default function ProductDetailPage({ params }: { params: Promise<{ slug: 
       features: [
         "Daily grounding principles designed for home, office, or personal space",
         "Visual affirmations that counteract self-doubt in seconds",
-        "High-contrast, timeless typography matching the mani aesthetic",
+        (
+          <>
+            High-contrast, timeless typography matching the <strong className="font-bold lowercase">mani</strong> aesthetic
+          </>
+        ),
         "Pairs seamlessly with standard 8×10 gallery picture frames",
       ],
     },
@@ -260,7 +264,7 @@ export default function ProductDetailPage({ params }: { params: Promise<{ slug: 
                   {/* Clean Studio Horizon Plinth */}
                   <div className="w-full h-9 bg-gradient-to-b from-[#E6E8EC] to-[#DBDEE4] border-t border-[#CCD0D7] rounded-b-2xl mt-1.5 flex items-center justify-center shadow-inner">
                     <span className="text-[10px] font-bold text-[#0E2E1E]/70 uppercase tracking-widest">
-                      Official Physical Edition · mani™ Collections
+                      Official Physical Edition · <strong className="font-bold lowercase">mani</strong>&trade; Collections
                     </span>
                   </div>
                 </div>

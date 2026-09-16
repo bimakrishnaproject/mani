@@ -51,10 +51,10 @@ export default function Header() {
 
   const mobileNavLinkClass = (href: string) => {
     const active = isActive(href);
-    return `flex items-center justify-between py-3 px-4 rounded-xl text-xl font-serif-heading transition-all ${
+    return `flex items-center justify-between py-3 px-1 text-xl font-serif-heading transition-all border-b-2 ${
       active
-        ? "bg-[#0E2E1E] text-cream-logo font-bold shadow-md pl-5 border-l-4 border-emerald-400"
-        : "text-[#0E2E1E] hover:bg-mist-grey/30"
+        ? "text-[#0E2E1E] font-bold border-[#0E2E1E]"
+        : "text-[#1C2826] border-transparent hover:text-[#0E2E1E]"
     }`;
   };
 
@@ -74,7 +74,7 @@ export default function Header() {
           >
             <img
               src="/assets/Mani Logos/mani green logo.png"
-              alt="MANI™ Logo"
+              alt="mani™ Logo"
               className="h-5 md:h-7 xl:h-8 w-auto object-contain transition-all duration-300"
             />
           </Link>
@@ -93,7 +93,7 @@ export default function Header() {
               App
             </Link>
             <Link href="/why-mani" className={navLinkClass("/why-mani")}>
-              Why Mani
+              Why <strong className="font-bold lowercase">mani</strong>
             </Link>
             <Link href="/about" className={navLinkClass("/about")}>
               About
@@ -121,7 +121,7 @@ export default function Header() {
 
             <Link
               href="/join-community"
-              className="hidden xl:inline-flex text-xs font-semibold px-5 py-3 bg-[#0E2E1E] text-cream-logo rounded-xl hover:bg-[#143d28] transition-all cursor-pointer whitespace-nowrap shadow-sm hover:shadow-md"
+              className="hidden lg:inline-flex text-xs font-semibold px-4 xl:px-5 py-2.5 xl:py-3 bg-[#0E2E1E] text-cream-logo rounded-xl hover:bg-[#143d28] transition-all cursor-pointer whitespace-nowrap shadow-sm hover:shadow-md"
             >
               Join Our Community
             </Link>
@@ -184,7 +184,7 @@ export default function Header() {
               onClick={() => setMobileMenuOpen(false)}
               className={mobileNavLinkClass("/why-mani")}
             >
-              Why Mani
+              Why <strong className="font-bold lowercase">mani</strong>
             </Link>
             <Link
               href="/about"

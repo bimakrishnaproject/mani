@@ -24,7 +24,7 @@ const stats = [
     percentage: 84,
     label: (
       <>
-        viewed <strong>mani</strong> as a supplement to therapy, not a replacement
+        viewed <strong className="font-bold lowercase">mani</strong> as a supplement to therapy, not a replacement
       </>
     ),
   },

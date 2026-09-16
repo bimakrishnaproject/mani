@@ -22,14 +22,18 @@ export default function WatchLearnPage() {
   }, [selectedTopic, searchQuery]);
 
   const filteredVideos = videos.filter((v) => {
+    const topicLower = selectedTopic.trim().toLowerCase();
     const matchesTopic =
       selectedTopic === "All Videos" || selectedTopic === "All"
         ? true
-        : v.category.trim().toLowerCase() === selectedTopic.trim().toLowerCase();
+        : v.category.trim().toLowerCase() === topicLower ||
+          v.keywords.some((k) => k.trim().toLowerCase() === topicLower);
+    const queryLower = searchQuery.trim().toLowerCase();
     const matchesQuery =
-      searchQuery.trim() === "" ||
-      v.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      v.category.toLowerCase().includes(searchQuery.toLowerCase());
+      queryLower === "" ||
+      v.title.toLowerCase().includes(queryLower) ||
+      v.category.toLowerCase().includes(queryLower) ||
+      v.keywords.some((k) => k.toLowerCase().includes(queryLower));
     return matchesTopic && matchesQuery;
   });
 
@@ -244,7 +248,7 @@ export default function WatchLearnPage() {
                 Take What You Learn Further
               </h2>
               <p className="text-base sm:text-lg text-[#FAF5EB] font-medium leading-relaxed max-w-3xl mx-auto">
-                Stay connected to new Watch &amp; Learn videos, practical guidance from <strong>mani</strong> Collections, and opportunities to experience the app.
+                Stay connected to new Watch &amp; Learn videos, practical guidance from <strong className="font-bold lowercase">mani</strong> Collections, and opportunities to experience the app.
               </p>
               <div className="pt-2">
                 <Link

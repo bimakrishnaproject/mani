@@ -37,10 +37,10 @@ export default function BetaTermsPage() {
             className="space-y-8 text-base text-[#1C2826] font-normal leading-relaxed border-t border-mist-grey/60 pt-8"
           >
             <p>
-              mani™ is owned and operated by Moose Ventures LLC.
+              <strong className="font-bold lowercase">mani</strong>&trade; is owned and operated by Moose Ventures LLC.
             </p>
             <p>
-              Participation in the mani™ beta program is voluntary.
+              Participation in the <strong className="font-bold lowercase">mani</strong>&trade; beta program is voluntary.
             </p>
             <p>
               Beta products are experimental and may contain bugs, errors, interruptions, or incomplete functionality.

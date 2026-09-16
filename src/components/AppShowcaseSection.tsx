@@ -29,7 +29,7 @@ export default function AppShowcaseSection() {
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-emerald-400" />
               <span className="text-xs font-bold tracking-widest uppercase text-cream-logo/80">
-                MANI APP
+                <strong className="font-bold lowercase">mani</strong> APP
               </span>
             </div>
 
@@ -38,7 +38,7 @@ export default function AppShowcaseSection() {
             </h2>
 
             <p className="text-base sm:text-lg text-[#FAF5EB] font-normal leading-relaxed max-w-xl">
-              When your thoughts won’t slow down, emotions feel overwhelming, or you need to talk something through, <strong>mani</strong> offers guided support to help you pause, reflect, and work through what’s on your mind.
+              When your thoughts won’t slow down, emotions feel overwhelming, or you need to talk something through, <strong className="font-bold lowercase">mani</strong> offers guided support to help you pause, reflect, and work through what’s on your mind.
             </p>
 
             <p className="text-xs sm:text-sm text-[#E0ECE5]/80 font-normal leading-relaxed max-w-xl">

@@ -193,7 +193,7 @@ export default function CollectionsPage() {
 
             <div className="space-y-4 max-w-3xl mx-auto text-base sm:text-lg md:text-xl text-[#0B1710] font-normal leading-relaxed">
               <p>
-                <strong>mani</strong> Collections bring together expert-created books, workbooks, and practical tools around a specific challenge, topic, or life experience.
+                <strong className="font-bold lowercase">mani</strong> Collections bring together expert-created books, workbooks, and practical tools around a specific challenge, topic, or life experience.
               </p>
               <p>
                 Each resource offers a different way to understand what you’re experiencing and put what you learn into practice.
@@ -741,7 +741,7 @@ export default function CollectionsPage() {
             className="w-full bg-gradient-to-b from-editorial-white to-soft-white border border-mist-grey/80 rounded-3xl p-10 sm:p-16 lg:p-20 text-center space-y-6 shadow-sm"
           >
             <h3 className="font-serif-heading text-3xl sm:text-5xl lg:text-6xl text-[#0E2E1E] leading-[1.08] tracking-tight">
-              Be Part Of What <strong>mani</strong> Creates Next
+              Be Part Of What <strong className="font-bold lowercase">mani</strong> Creates Next
             </h3>
             <p className="text-base sm:text-lg text-[#0B1710] font-normal leading-relaxed max-w-3xl mx-auto">
               Receive early access to new Collections, invitations to experience the app, and Watch &amp; Learn videos with practical guidance for everyday life.

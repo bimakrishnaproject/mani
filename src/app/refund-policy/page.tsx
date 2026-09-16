@@ -37,10 +37,10 @@ export default function RefundPolicyPage() {
             className="space-y-8 text-base text-[#1C2826] font-normal leading-relaxed border-t border-mist-grey/60 pt-8"
           >
             <p>
-              mani™ is owned and operated by Moose Ventures LLC.
+              <strong className="font-bold lowercase">mani</strong>&trade; is owned and operated by Moose Ventures LLC.
             </p>
             <p>
-              At mani™, we strive to provide high-quality products and resources designed to support personal growth, emotional well-being, and learning.
+              At <strong className="font-bold lowercase">mani</strong>&trade;, we strive to provide high-quality products and resources designed to support personal growth, emotional well-being, and learning.
             </p>
             <p>
               Because we offer a combination of physical products, digital products, and future subscription-based services, our refund policies vary by product type.
@@ -51,7 +51,7 @@ export default function RefundPolicyPage() {
                 Physical Products
               </h2>
               <p>
-                If you are not satisfied with a physical product purchased through mani™, you may request a return within 30 days of delivery.
+                If you are not satisfied with a physical product purchased through <strong className="font-bold lowercase">mani</strong>&trade;, you may request a return within 30 days of delivery.
               </p>
               <p className="font-medium text-[#0E2E1E]">To be eligible for a refund:</p>
               <ul className="list-disc pl-6 space-y-2">

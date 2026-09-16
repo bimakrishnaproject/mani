@@ -72,11 +72,11 @@ export const BYE_BYE_NARCISSIST_PRODUCTS: ProductItem[] = [
       "Daily subconscious boundary reinforcement",
       "Visual anchoring in safe environments",
     ],
-    mockupImage: "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/Collection/Book Trio.png",
+    mockupImage: "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/Posters/1 Framed.png",
   },
   {
-    slug: "bye-bye-narcissist-card-deck",
-    name: "Bye Bye Narcissist Card Deck",
+    slug: "bye-bye-narcissist-affirmation-cards",
+    name: "The Bye Bye Narcissist Affirmation Cards",
     role: "Daily Practice",
     price: 19.99,
     format: "Physical",
@@ -85,7 +85,7 @@ export const BYE_BYE_NARCISSIST_PRODUCTS: ProductItem[] = [
       "Daily morning boundary intentions",
       "Immediate grounding during emotional triggers",
     ],
-    mockupImage: "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/Collection/Collection.png",
+    mockupImage: "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/Affirmation Cards/Box Display.png",
   },
 ];
 
@@ -188,7 +188,7 @@ export const ALL_COLLECTIONS: CollectionItem[] = [
   {
     slug: "emotional-intelligence",
     title: "Emotional Intelligence",
-    status: "Available",
+    status: "Coming Soon",
     positioning: "Master emotional self-regulation and develop high-EQ communication skills.",
     bundlePrice: 69.99,
     products: EMOTIONAL_INTELLIGENCE_PRODUCTS,
@@ -196,7 +196,7 @@ export const ALL_COLLECTIONS: CollectionItem[] = [
   {
     slug: "love-done-right",
     title: "Love Done Right",
-    status: "Available",
+    status: "Coming Soon",
     positioning: "Build healthy partnership patterns and understand attachment dynamics.",
     bundlePrice: 59.99,
     products: LOVE_DONE_RIGHT_PRODUCTS,
@@ -204,13 +204,13 @@ export const ALL_COLLECTIONS: CollectionItem[] = [
 ];
 
 export const FUTURE_COLLECTIONS = [
-  { title: "Boundaries That Stick", status: "In Development" },
-  { title: "Purpose Starts Here", status: "In Development" },
-  { title: "Beyond the Anxiety", status: "In Development" },
-  { title: "Running on Empty", status: "In Development" },
-  { title: "Meeting Your Shadow", status: "In Development" },
-  { title: "Healing Your Inner Child", status: "In Development" },
-  { title: "Stop Self Sabotage", status: "In Development" },
-  { title: "Own Your Worth", status: "In Development" },
-  { title: "When Panic Hits", status: "In Development" },
+  { title: "Boundaries", status: "In Development" },
+  { title: "Purpose", status: "In Development" },
+  { title: "Anxiety", status: "In Development" },
+  { title: "Burnout", status: "In Development" },
+  { title: "Shadow Work", status: "In Development" },
+  { title: "Inner Child Healing", status: "In Development" },
+  { title: "Self-Sabotage", status: "In Development" },
+  { title: "Self-Worth", status: "In Development" },
+  { title: "Panic", status: "In Development" },
 ];

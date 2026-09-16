@@ -70,7 +70,7 @@ export default function HeroSection() {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="text-lg sm:text-xl md:text-2xl text-[#0B1710] leading-relaxed max-w-2xl mx-auto font-medium px-2"
           >
-            <strong>mani</strong>{" "}brings together expert-guided collections, daily videos, and a new app in development to help you better understand yourself and navigate life&apos;s challenges.
+            <strong className="font-bold lowercase">mani</strong>{" "}brings together expert-guided collections, daily videos, and a new app in development to help you better understand yourself and navigate life&apos;s challenges.
           </motion.p>
 
           {/* CTA Buttons: Explore Collections | Join the App Beta */}

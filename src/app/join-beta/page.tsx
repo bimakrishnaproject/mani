@@ -14,7 +14,7 @@ export default function JoinBetaPage() {
   if (SITE_LOCKS.PAGES_LOCKED) {
     return (
       <UnderProgressPage
-        pageName="Join MANI App Beta"
+        pageName="Join mani App Beta"
         description="This page is currently undergoing milestone updates. Please explore the live homepage."
       />
     );
@@ -77,10 +77,10 @@ export default function JoinBetaPage() {
                   BETA ACCESS
                 </span>
                 <h1 className="font-serif-heading text-4xl sm:text-6xl lg:text-7xl text-[#0E2E1E] leading-[1.02] tracking-tight">
-                  Shape <strong>mani</strong>’s Future
+                  Shape <strong className="font-bold lowercase">mani</strong>’s Future
                 </h1>
                 <p className="text-base sm:text-lg text-[#0B1710] font-medium leading-relaxed max-w-xl">
-                  We’re inviting a small group of beta testers to use <strong>mani</strong>{" "}before its public launch. Test new features, share what works and what does not, and influence what we improve before release.
+                  We’re inviting a small group of beta testers to use <strong className="font-bold lowercase">mani</strong>{" "}before its public launch. Test new features, share what works and what does not, and influence what we improve before release.
                 </p>
               </div>
 
@@ -165,7 +165,7 @@ export default function JoinBetaPage() {
                       className="mt-1 accent-[#0E2E1E]"
                     />
                     <label htmlFor="betaConsent" className="text-xs text-[#0B1710] font-medium leading-snug">
-                      I agree to test unreleased beta features and keep early interface flows confidential under MANI&trade; Beta Terms.
+                      I agree to test unreleased beta features and keep early interface flows confidential under <strong className="font-bold lowercase">mani</strong>&trade; Beta Terms.
                     </label>
                   </div>
 

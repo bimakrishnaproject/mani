@@ -100,7 +100,7 @@ export default function VideoModal({ video, onClose }: VideoModalProps) {
                 Looking for Deeper Support?
               </h4>
               <p className="text-xs text-[#1C2826]">
-                Explore our guided 5-part collections or get early access to the <strong>mani</strong> Beta App.
+                Explore our guided 5-part collections or get early access to the <strong className="font-bold lowercase">mani</strong> Beta App.
               </p>
             </div>
             <div className="flex gap-3 shrink-0">

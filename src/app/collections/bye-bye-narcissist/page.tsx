@@ -68,7 +68,7 @@ const products = [
     id: "cards",
     num: "05",
     badge: "DAILY PRACTICE",
-    title: "Bye Bye Narcissist Card Deck",
+    title: "The Bye Bye Narcissist Affirmation Cards",
     description: "Build confidence and trust in yourself one day at a time.",
     price: "$19.99",
     numericPrice: 19.99,
@@ -95,7 +95,7 @@ export default function ByeByeNarcissistCollectionPage() {
       id: "bye-bye-narcissist-bundle",
       title: "Bye Bye Narcissist (Complete Collection)",
       price: 119.99,
-      subtitle: "Includes Book, Workbook, Coloring Book & Journal, Posters, Card Deck",
+      subtitle: "Includes Book, Workbook, Coloring Book & Journal, Posters, Affirmation Cards",
       image: "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/Collection/Collection.png",
     });
     setCartAdded(true);
@@ -177,7 +177,7 @@ export default function ByeByeNarcissistCollectionPage() {
                 All 5 Tools in One System
               </h2>
               <p className="text-base text-[#0B1710] leading-relaxed font-medium">
-                Includes the Foundation Book, Action Workbook, Coloring Book &amp; Journal, complete 10-Poster Set, and 30-day Card Deck.
+                Includes the Foundation Book, Action Workbook, Coloring Book &amp; Journal, complete 10-Poster Set, and Affirmation Cards.
               </p>
 
               <div className="flex flex-wrap items-center gap-3 text-xs font-semibold text-[#0E2E1E] uppercase tracking-wider pt-1">

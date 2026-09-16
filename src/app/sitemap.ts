@@ -8,6 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/collections",
     "/collections/bye-bye-narcissist",
     "/watch-learn",
+    "/app",
     "/why-mani",
     "/about",
     "/faq",
@@ -20,11 +21,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/beta-terms",
     "/join-community",
     "/join-beta",
-    "/products/book",
-    "/products/workbook",
-    "/products/coloring-book",
-    "/products/posters",
-    "/products/affirmation-cards",
+    "/products/bye-bye-narcissist-book",
+    "/products/bye-bye-narcissist-workbook",
+    "/products/bye-bye-narcissist-coloring-book",
+    "/products/bye-bye-narcissist-posters",
+    "/products/bye-bye-narcissist-affirmation-cards",
   ];
 
   return routes.map((route) => ({

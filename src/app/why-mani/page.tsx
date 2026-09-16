@@ -49,12 +49,15 @@ const softFade = {
   },
 };
 
-const approachPrinciples = [
+const approachPrinciples: { number: string; title: string; description: React.ReactNode }[] = [
   {
     number: "01",
     title: "Information Isn’t The Same As Understanding.",
-    description:
-      "Knowing something exists is not the same as knowing what it means for your life. mani helps you make sense of what you are going through.",
+    description: (
+      <>
+        Knowing something exists is not the same as knowing what it means for your life. <strong className="font-bold lowercase">mani</strong> helps you make sense of what you are going through.
+      </>
+    ),
   },
   {
     number: "02",
@@ -114,7 +117,7 @@ export default function WhyManiPage() {
                   variants={itemFadeUp}
                   className="text-xs sm:text-sm font-bold tracking-[0.25em] uppercase text-[#0E2E1E]/70 block"
                 >
-                  WHY MANI
+                  WHY <strong className="font-bold lowercase">mani</strong>
                 </motion.span>
                 <motion.h1
                   variants={itemFadeUp}
@@ -142,7 +145,7 @@ export default function WhyManiPage() {
                   variants={itemFadeUp}
                   className="text-2xl sm:text-3xl lg:text-4xl font-serif-heading text-[#0E2E1E] font-medium leading-relaxed pt-2"
                 >
-                  <strong>mani</strong> was created to change that.
+                  <strong className="font-bold lowercase">mani</strong> was created to change that.
                 </motion.p>
               </div>
             </motion.div>
@@ -258,7 +261,7 @@ export default function WhyManiPage() {
 
                 <motion.div variants={itemFadeUp} className="pt-6">
                   <p className="text-xl sm:text-2xl lg:text-3xl font-serif-heading text-[#0E2E1E] font-medium border-t border-[#0E2E1E]/15 pt-6 inline-block">
-                    That belief shapes everything we create at <strong>mani</strong>.
+                    That belief shapes everything we create at <strong className="font-bold lowercase">mani</strong>.
                   </p>
                 </motion.div>
               </div>
@@ -370,7 +373,7 @@ export default function WhyManiPage() {
                 variants={itemFadeUp}
                 className="font-serif-heading text-4xl sm:text-6xl lg:text-7xl text-[#0E2E1E] leading-[1.02] tracking-tight"
               >
-                What You&apos;ll Find At <strong>mani</strong>
+                What You&apos;ll Find At <strong className="font-bold lowercase">mani</strong>
               </motion.h2>
             </motion.div>
 
@@ -449,7 +452,7 @@ export default function WhyManiPage() {
               >
                 <div className="space-y-4">
                   <span className="text-xs font-bold tracking-[0.2em] uppercase text-[#0E2E1E]/70 block group-hover:text-[#0E2E1E] transition-colors">
-                    03 &middot; <strong>mani</strong> APP
+                    03 &middot; <strong className="font-bold lowercase">mani</strong> APP
                   </span>
                   <h3 className="font-serif-heading text-2xl sm:text-3xl lg:text-4xl text-[#0E2E1E] leading-snug group-hover:translate-x-1 transition-transform duration-300">
                     Support Wherever You Are
@@ -464,7 +467,7 @@ export default function WhyManiPage() {
                     href="/app"
                     className="inline-flex items-center gap-2 px-7 py-4 bg-[#0E2E1E] text-cream-logo text-xs sm:text-sm font-semibold rounded-xl hover:bg-[#143d28] transition-all shadow-sm group-hover:shadow-md"
                   >
-                    <span>Learn About mani</span>
+                    <span>Learn About <strong className="font-bold lowercase">mani</strong></span>
                     <span className="inline-block transition-transform duration-300 group-hover:translate-x-1.5">&rarr;</span>
                   </Link>
                 </div>
@@ -528,7 +531,7 @@ export default function WhyManiPage() {
             <motion.div variants={itemFadeUp} className="pt-2 max-w-md mx-auto">
               {joined ? (
                 <div className="p-4 bg-[#0E2E1E] text-cream-logo rounded-xl font-semibold text-sm">
-                  ✓ Thank you! You&apos;re connected to <strong>mani</strong>{" "}updates.
+                  ✓ Thank you! You&apos;re connected to <strong className="font-bold lowercase">mani</strong>{" "}updates.
                 </div>
               ) : (
                 <form onSubmit={handleJoin} className="flex flex-col sm:flex-row gap-3">

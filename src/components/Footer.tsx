@@ -30,7 +30,7 @@ export default function Footer() {
             <Link href="/" className="inline-block">
               <img
                 src="/assets/Mani Logos/mani cream logo.png"
-                alt="MANI™ Logo"
+                alt="mani™ Logo"
                 className="h-5 md:h-8 w-auto object-contain"
               />
             </Link>
@@ -44,7 +44,7 @@ export default function Footer() {
             <h4 className="text-xs font-bold uppercase tracking-widest text-cream-logo">Explore</h4>
             <ul className="space-y-2 text-xs text-[#E8F0EC]">
               <li><Link href="/" className={linkClass("/")}>Home</Link></li>
-              <li><Link href="/why-mani" className={linkClass("/why-mani")}>Why Mani</Link></li>
+              <li><Link href="/why-mani" className={linkClass("/why-mani")}>Why <strong className="font-bold lowercase">mani</strong></Link></li>
               <li><Link href="/collections" className={linkClass("/collections")}>Collections</Link></li>
               <li><Link href="/watch-learn" className={linkClass("/watch-learn")}>Watch &amp; Learn</Link></li>
               <li><Link href="/app" className={linkClass("/app")}>App</Link></li>
@@ -83,23 +83,24 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Social */}
+          {/* Connect */}
           <div className="md:col-span-2 space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-widest text-cream-logo">Social</h4>
+            <h4 className="text-xs font-bold uppercase tracking-widest text-cream-logo">Connect</h4>
             <ul className="space-y-2 text-xs text-[#E8F0EC]">
               <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Instagram</a></li>
               <li><a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">TikTok</a></li>
               <li><a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">YouTube</a></li>
               <li><a href="https://reddit.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Reddit</a></li>
               <li><a href="https://threads.net" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Threads</a></li>
+              <li><a href="mailto:contact@mymani.ai" className="hover:text-white transition-colors">Contact Us</a></li>
             </ul>
           </div>
         </div>
 
         <div className="pt-8 flex flex-col md:flex-row items-start md:items-center justify-between text-xs text-[#E8F0EC] gap-4">
-          <p className="font-medium shrink-0">&copy; 2026 MANI&trade;. All rights reserved.</p>
+          <p className="font-medium shrink-0">&copy; 2026 <strong className="font-bold lowercase">mani</strong>&trade;. All rights reserved.</p>
           <p className="text-[11px] text-[#D8E6DE] leading-relaxed max-w-3xl">
-            <strong>Disclaimer:</strong> <strong>mani</strong>&trade; provides educational and informational content intended to support learning and personal growth. <strong>mani</strong>&trade; is not therapy, counseling, mental health treatment, crisis support, medical care, or a substitute for professional advice, diagnosis, or treatment.
+            <strong>Disclaimer:</strong> <strong className="font-bold lowercase">mani</strong>&trade; provides educational and informational content intended to support learning and personal growth. <strong className="font-bold lowercase">mani</strong>&trade; is not therapy, counseling, mental health treatment, crisis support, medical care, or a substitute for professional advice, diagnosis, or treatment.
           </p>
         </div>
       </div>

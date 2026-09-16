@@ -27,7 +27,7 @@ export default function AppPage() {
             
             <motion.div {...fadeIn} className="lg:col-span-7 space-y-6">
               <span className="text-xs font-bold tracking-widest lowercase text-[#0E2E1E] block">
-                <strong>mani</strong>
+                <strong className="font-bold lowercase">mani</strong>
               </span>
 
               <h1 className="font-serif-heading text-4xl xs:text-5xl sm:text-7xl md:text-8xl text-[#0E2E1E] leading-[0.96] tracking-tight">
@@ -36,7 +36,7 @@ export default function AppPage() {
 
               <div className="space-y-3 text-lg sm:text-xl md:text-2xl text-[#0B1710] font-medium leading-relaxed">
                 <p>Most support stops at listening.</p>
-                <p className="font-semibold text-[#0E2E1E]"><strong>mani</strong>{" "}goes further.</p>
+                <p className="font-semibold text-[#0E2E1E]"><strong className="font-bold lowercase">mani</strong>{" "}goes further.</p>
                 <p>
                   Guided conversations help you understand what you are facing. Breathwork, meditations, visualizations, and stories help you move through it.
                 </p>
@@ -88,7 +88,7 @@ export default function AppPage() {
               </p>
               <div className="pt-2">
                 <p className="text-xl sm:text-2xl font-medium text-cream-logo leading-relaxed">
-                  <strong>mani</strong>{" "}exists for those moments.
+                  <strong className="font-bold lowercase">mani</strong>{" "}exists for those moments.
                 </p>
               </div>
             </motion.div>
@@ -101,7 +101,7 @@ export default function AppPage() {
             
             <motion.div {...fadeIn} className="text-center max-w-4xl mx-auto space-y-4">
               <h2 className="font-serif-heading text-4xl sm:text-6xl lg:text-7xl text-[#0E2E1E] leading-[1.04] tracking-tight">
-                How <strong>mani</strong>{" "}Responds
+                How <strong className="font-bold lowercase">mani</strong>{" "}Responds
               </h2>
             </motion.div>
 
@@ -118,7 +118,7 @@ export default function AppPage() {
                     No Labels. No Judgment.
                   </h3>
                   <p className="text-base sm:text-lg lg:text-xl text-[#0B1710] leading-relaxed font-medium">
-                    <strong>mani</strong>{" "}helps you understand what is happening without telling you who you are or what you should feel.
+                    <strong className="font-bold lowercase">mani</strong>{" "}helps you understand what is happening without telling you who you are or what you should feel.
                   </p>
                 </div>
               </motion.div>
@@ -135,7 +135,7 @@ export default function AppPage() {
                     Guidance That Fits The Moment
                   </h3>
                   <p className="text-base sm:text-lg lg:text-xl text-[#0B1710] leading-relaxed font-medium">
-                    What you need may be a conversation, a pause, a reframe, or a guided practice. <strong>mani</strong>{" "}responds to what you bring.
+                    What you need may be a conversation, a pause, a reframe, or a guided practice. <strong className="font-bold lowercase">mani</strong>{" "}responds to what you bring.
                   </p>
                 </div>
               </motion.div>
@@ -152,7 +152,7 @@ export default function AppPage() {
                     From Insight To Action
                   </h3>
                   <p className="text-base sm:text-lg lg:text-xl text-[#0B1710] leading-relaxed font-medium">
-                    When you are ready, <strong>mani</strong>{" "}helps you turn understanding into a practical next step.
+                    When you are ready, <strong className="font-bold lowercase">mani</strong>{" "}helps you turn understanding into a practical next step.
                   </p>
                 </div>
               </motion.div>
@@ -166,7 +166,7 @@ export default function AppPage() {
             
             <motion.div {...fadeIn} className="text-center max-w-4xl mx-auto space-y-4">
               <h2 className="font-serif-heading text-4xl sm:text-6xl lg:text-7xl text-[#0E2E1E] leading-[1.04] tracking-tight">
-                Inside <strong>mani</strong>:
+                Inside <strong className="font-bold lowercase">mani</strong>:
               </h2>
             </motion.div>
 
@@ -289,11 +289,11 @@ export default function AppPage() {
             </span>
 
             <h2 className="font-serif-heading text-4xl sm:text-6xl lg:text-7xl text-[#0E2E1E] leading-[1.05] tracking-tight">
-              Shape <strong>mani</strong>’s Future
+              Shape <strong className="font-bold lowercase">mani</strong>’s Future
             </h2>
 
             <p className="text-lg sm:text-2xl text-[#0B1710] font-medium leading-relaxed max-w-3xl mx-auto">
-              We’re inviting a small group of beta testers to use <strong>mani</strong>{" "}before its public launch. Test new features, share what works and what does not, and influence what we improve before release.
+              We’re inviting a small group of beta testers to use <strong className="font-bold lowercase">mani</strong>{" "}before its public launch. Test new features, share what works and what does not, and influence what we improve before release.
             </p>
 
             <div className="pt-2">
