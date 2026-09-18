@@ -57,7 +57,7 @@ export default function Footer() {
           <div className="md:col-span-2 space-y-3">
             <h4 className="text-xs font-bold uppercase tracking-widest text-cream-logo">Collections</h4>
             <ul className="space-y-2 text-xs text-[#E8F0EC]">
-              <li><Link href="/collections/bye-bye-narcissist" className={linkClass("/collections/bye-bye-narcissist")}>Bye Bye Narcissist</Link></li>
+              <li><Link href="/collections#featured-collection" className="text-cream-logo/90 hover:text-white transition-colors">Bye Bye Narcissist</Link></li>
               <li><Link href="/collections#future-collections" className="text-cream-logo/80 hover:text-cream-logo transition-colors">Love Done Right (Coming Soon)</Link></li>
               <li><Link href="/collections#future-collections" className="text-cream-logo/80 hover:text-cream-logo transition-colors">Emotional Intelligence (Coming Soon)</Link></li>
             </ul>
