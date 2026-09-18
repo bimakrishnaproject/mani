@@ -77,53 +77,6 @@ const products = [
   },
 ];
 
-const featuredCollectionItems = [
-  {
-    id: "cards",
-    name: "Affirmation Cards",
-    badge: "DAILY PRACTICE",
-    slug: "bye-bye-narcissist-affirmation-cards",
-    image:
-      "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/trimmed/Grounded_Cards.png",
-    heightClass: "h-[145px] sm:h-[185px] md:h-[215px] lg:h-[235px]",
-    zIndex: "z-20",
-    marginClass: "-mr-2 sm:-mr-4 md:-mr-5",
-  },
-  {
-    id: "coloring",
-    name: "Coloring Book & Daily Journal",
-    badge: "CALM",
-    slug: "bye-bye-narcissist-coloring-book",
-    image:
-      "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/trimmed/Grounded_Coloring.png",
-    heightClass: "h-[195px] sm:h-[245px] md:h-[285px] lg:h-[315px]",
-    zIndex: "z-30",
-    marginClass: "-mr-2 sm:-mr-4 md:-mr-5",
-  },
-  {
-    id: "book",
-    name: "The Bye Bye Narcissist Book",
-    badge: "FOUNDATION",
-    slug: "bye-bye-narcissist-book",
-    image:
-      "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/trimmed/Grounded_Book.png",
-    heightClass: "h-[230px] sm:h-[290px] md:h-[335px] lg:h-[370px]",
-    zIndex: "z-40",
-    marginClass: "scale-[1.02]",
-  },
-  {
-    id: "workbook",
-    name: "The Bye Bye Narcissist Workbook",
-    badge: "ACTION",
-    slug: "bye-bye-narcissist-workbook",
-    image:
-      "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/trimmed/Grounded_Workbook.png",
-    heightClass: "h-[210px] sm:h-[265px] md:h-[305px] lg:h-[335px]",
-    zIndex: "z-30",
-    marginClass: "-ml-2 sm:-ml-4 md:-ml-5",
-  },
-];
-
 const inDevelopmentTitles = [
   "Boundaries",
   "Purpose",
@@ -139,7 +92,6 @@ const inDevelopmentTitles = [
 export default function CollectionsPage() {
   const { addToCart } = useCart();
   const [addedItem, setAddedItem] = useState<string | null>(null);
-  const [hoveredFeaturedBookId, setHoveredFeaturedBookId] = useState<string | null>(null);
   const [hoveredCardId, setHoveredCardId] = useState<string | null>(null);
   const [notifyModalOpen, setNotifyModalOpen] = useState(false);
   const [notifyEmail, setNotifyEmail] = useState("");
@@ -281,83 +233,23 @@ export default function CollectionsPage() {
               {...fadeIn}
               className="w-full grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center"
             >
-              {/* Grounded Physical Collection Display on Architectural Tatakan Shelf Ledge (Individual Interactive Hoverable Books) */}
-              <div className="lg:col-span-6 flex flex-col items-center justify-end w-full">
-                <div
-                  onMouseLeave={() => setHoveredFeaturedBookId(null)}
-                  className="relative w-full flex flex-col items-center justify-end select-none overflow-visible group"
-                >
-                  {/* The Physical Collection Books sitting on the shelf floor */}
-                  <div className="relative w-full flex items-end justify-center pb-0 z-10 overflow-visible pt-16">
-                    {featuredCollectionItems.map((item) => {
-                      const isHovered = hoveredFeaturedBookId === item.id;
-                      const isAnyHovered = hoveredFeaturedBookId !== null;
+              {/* Single Master Collection Image Alongside Introduction (Verbatim per docs/website_copy.md Line 284) */}
+              <div className="lg:col-span-6 flex flex-col items-center justify-center w-full">
+                <div className="relative w-full rounded-3xl bg-gradient-to-b from-[#FAF7F0] via-[#F2ECE0] to-[#E5DACB] border border-[#D8CCB9] p-6 sm:p-10 shadow-[0_20px_50px_-15px_rgba(14,46,30,0.12)] overflow-hidden flex flex-col items-center justify-center group">
+                  {/* Overhead soft illumination */}
+                  <div className="absolute top-0 left-0 right-0 h-48 bg-[radial-gradient(ellipse_80%_60%_at_50%_0%,rgba(255,255,255,0.9),transparent_75%)] pointer-events-none" />
 
-                      return (
-                        <Link
-                          key={item.id}
-                          href={`/products/${item.slug}`}
-                          onMouseEnter={() => setHoveredFeaturedBookId(item.id)}
-                          onMouseLeave={() => setHoveredFeaturedBookId(null)}
-                          className={`relative flex flex-col items-center justify-end cursor-pointer transition-all duration-300 origin-bottom select-none ${item.marginClass} ${
-                            isHovered
-                              ? "z-50 -translate-y-5 sm:-translate-y-7 scale-[1.07]"
-                              : `${item.zIndex} ${isAnyHovered ? "opacity-80 scale-[0.98]" : "opacity-100 scale-100"}`
-                          }`}
-                        >
-                          {/* Floating Badge on Hover */}
-                          <div
-                            className={`absolute -top-10 px-3 py-1 bg-[#0E2E1E] text-cream-logo text-[10px] font-mono font-bold tracking-wider uppercase rounded-full shadow-lg transition-all duration-300 pointer-events-none whitespace-nowrap z-50 ${
-                              isHovered ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
-                            }`}
-                          >
-                            {item.badge} &bull; {item.name}
-                          </div>
+                  {/* High-res collection asset */}
+                  <img
+                    src={encodeURI("/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/Collection/Collection.png")}
+                    alt="The Bye Bye Narcissist Collection"
+                    className="w-full h-auto max-h-[460px] object-contain drop-shadow-[0_16px_30px_rgba(14,46,30,0.18)] relative z-10 transition-transform duration-500 group-hover:scale-[1.02]"
+                  />
 
-                          {/* Book Asset */}
-                          <img
-                            src={encodeURI(item.image)}
-                            alt={item.name}
-                            className={`${item.heightClass} w-auto block object-contain transition-all duration-300 origin-bottom ${
-                              isHovered
-                                ? "drop-shadow-[0_28px_42px_rgba(0,0,0,0.45)]"
-                                : "drop-shadow-[0_16px_25px_rgba(0,0,0,0.26)]"
-                            }`}
-                          />
-
-                          {/* Individual Grounding Contact Shadow Directly on Shelf Floor Plane */}
-                          <div className="w-full relative h-0 pointer-events-none z-20">
-                            <div
-                              className={`w-[88%] h-[4px] bg-black/95 blur-[1.5px] rounded-full mx-auto -mt-[2px] transition-all duration-300 ${
-                                isHovered ? "scale-75 opacity-30" : "scale-100 opacity-95"
-                              }`}
-                            />
-                            <div
-                              className={`w-[78%] h-[8px] bg-black/45 blur-[3px] rounded-full mx-auto -mt-[2px] transition-all duration-300 ${
-                                isHovered ? "scale-85 opacity-25" : "scale-100 opacity-60"
-                              }`}
-                            />
-                          </div>
-                        </Link>
-                      );
-                    })}
-                  </div>
-
-                  {/* Overall Grounding Contact Shadow Baseline */}
-                  <div className="w-full relative h-0 z-20 pointer-events-none">
-                    <div className="w-[96%] h-[4.5px] bg-black/95 blur-[1.5px] rounded-full mx-auto -mt-[2px]" />
-                    <div className="w-[90%] h-[9px] bg-black/45 blur-[4px] rounded-full mx-auto -mt-[2px]" />
-                  </div>
-
-                  {/* Architectural Shelf Plinth with Perspective Surface Plane */}
-                  <div className="w-full z-20 -mt-1">
-                    {/* Shelf Top Surface Plane */}
-                    <div className="w-full h-6 sm:h-7 bg-gradient-to-b from-[#EAE2D5] via-[#DFD6C7] to-[#D5CAB9] border-t border-white/95 shadow-[inset_0_2px_4px_rgba(255,255,255,0.95)] relative">
-                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent pointer-events-none" />
-                      <div className="absolute bottom-0 inset-x-0 h-[1.5px] bg-gradient-to-r from-white/30 via-white to-white/30" />
-                    </div>
-                    {/* Shelf Front Fascia Bevel Drop */}
-                    <div className="w-full h-5 sm:h-6 bg-gradient-to-b from-[#C4B59F] via-[#B8A891] to-[#A08F77] border-t border-[#B8A790] shadow-[0_16px_28px_rgba(14,46,30,0.2)]" />
+                  {/* Grounding Contact Shadow Baseline */}
+                  <div className="w-full max-w-md relative h-0 pointer-events-none z-20 -mt-2">
+                    <div className="w-[90%] h-[5px] bg-black/45 blur-[2.5px] rounded-full mx-auto" />
+                    <div className="w-[80%] h-[10px] bg-black/20 blur-[5px] rounded-full mx-auto" />
                   </div>
                 </div>
               </div>

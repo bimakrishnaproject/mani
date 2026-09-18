@@ -2,81 +2,13 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-
-interface ShelfItem {
-  id: string;
-  name: string;
-  category: string;
-  image: string;
-  maxHeight: string;
-  zIndex: string;
-  marginClass: string;
-  tiltClass: string;
-}
-
-const SHELF_ITEMS: ShelfItem[] = [
-  {
-    id: "cards",
-    name: "Affirmation Cards",
-    category: "DAILY PRACTICE",
-    image:
-      "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/trimmed/Solo_Cards_Tray.png",
-    maxHeight: "max-h-[165px] sm:max-h-[195px] md:max-h-[225px] lg:max-h-[265px] xl:max-h-[300px]",
-    zIndex: "z-20",
-    marginClass: "-mr-3 sm:-mr-5 md:-mr-6 lg:-mr-8",
-    tiltClass: "-rotate-1",
-  },
-  {
-    id: "coloring",
-    name: "Coloring Book",
-    category: "CALM",
-    image:
-      "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/trimmed/Grounded_Coloring.png",
-    maxHeight: "max-h-[210px] sm:max-h-[250px] md:max-h-[290px] lg:max-h-[345px] xl:max-h-[390px]",
-    zIndex: "z-30",
-    marginClass: "-mr-3 sm:-mr-5 md:-mr-6 lg:-mr-8",
-    tiltClass: "rotate-0",
-  },
-  {
-    id: "book",
-    name: "Hardcover Book",
-    category: "FOUNDATION",
-    image:
-      "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/trimmed/Grounded_Book.png",
-    maxHeight: "max-h-[240px] sm:max-h-[285px] md:max-h-[335px] lg:max-h-[395px] xl:max-h-[445px]",
-    zIndex: "z-40",
-    marginClass: "scale-[1.03]",
-    tiltClass: "rotate-0",
-  },
-  {
-    id: "workbook",
-    name: "Guided Workbook",
-    category: "ACTION",
-    image:
-      "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/trimmed/Grounded_Workbook.png",
-    maxHeight: "max-h-[225px] sm:max-h-[265px] md:max-h-[310px] lg:max-h-[365px] xl:max-h-[410px]",
-    zIndex: "z-30",
-    marginClass: "-ml-3 sm:-ml-5 md:-ml-6 lg:-ml-8",
-    tiltClass: "rotate-1",
-  },
-  {
-    id: "posters",
-    name: "Framed Posters",
-    category: "REINFORCEMENT",
-    image:
-      "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/trimmed/Grounded_Poster.png",
-    maxHeight: "max-h-[210px] sm:max-h-[250px] md:max-h-[290px] lg:max-h-[345px] xl:max-h-[390px]",
-    zIndex: "z-20",
-    marginClass: "-ml-3 sm:-ml-5 md:-ml-6 lg:-ml-8",
-    tiltClass: "-rotate-1",
-  },
-];
+import { motion } from "framer-motion";
 
 export default function FeaturedCollectionSection() {
-  const [activeItem, setActiveItem] = useState<string | null>(null);
   const [notifyModalOpen, setNotifyModalOpen] = useState(false);
   const [notifyEmail, setNotifyEmail] = useState("");
   const [notifySubmitted, setNotifySubmitted] = useState(false);
+  const [isButtonPressed, setIsButtonPressed] = useState(false);
 
   const handleNotifySubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -127,10 +59,14 @@ export default function FeaturedCollectionSection() {
             <div className="shrink-0 pt-2">
               <Link
                 href="/collections"
-                className="inline-flex items-center gap-2.5 px-8 py-3.5 bg-[#0E2E1E] text-cream-logo font-semibold rounded-full hover:bg-[#143d28] hover:shadow-xl active:scale-98 transition-all text-sm tracking-wide shadow-md group"
+                onMouseDown={() => setIsButtonPressed(true)}
+                onMouseUp={() => setIsButtonPressed(false)}
+                className={`inline-flex items-center gap-2.5 px-8 py-3.5 bg-[#0E2E1E] text-cream-logo font-semibold rounded-full hover:bg-[#143d28] hover:shadow-xl active:scale-95 active:bg-[#081f14] transition-all text-sm tracking-wide shadow-md group ${
+                  isButtonPressed ? "ring-4 ring-[#0E2E1E]/20 scale-95" : ""
+                }`}
               >
                 <span>Explore Collection</span>
-                <span className="inline-block transition-transform duration-200 group-hover:translate-x-1">
+                <span className="inline-block transition-transform duration-200 group-hover:translate-x-1.5">
                   &rarr;
                 </span>
               </Link>
@@ -139,86 +75,62 @@ export default function FeaturedCollectionSection() {
         </div>
 
         {/* ========================================================================= */}
-        {/* 2. ARCHITECTURAL GALLERY EXHIBITION STAGE                                 */}
+        {/* 2. ARCHITECTURAL GALLERY EXHIBITION STAGE (SINGLE UNIFIED COLLECTION IMAGE) */}
+        {/* Per docs/ai_notes.md Line 27 & 65: Single collection image & grounded     */}
         {/* ========================================================================= */}
         <div className="w-full">
-          {/* Architectural Cream Plinth Tray */}
-          <div className="relative w-full rounded-[28px] sm:rounded-[40px] bg-gradient-to-b from-[#FBF8F2] via-[#F3ECE0] to-[#E8DDD0] border border-[#DDD1BE] shadow-[0_22px_55px_-12px_rgba(14,46,30,0.12),0_8px_20px_-6px_rgba(0,0,0,0.06)] overflow-hidden">
-            
-            {/* Gallery Overhead Soft Illumination */}
-            <div className="absolute top-0 left-0 right-0 h-64 bg-[radial-gradient(ellipse_80%_60%_at_50%_0%,rgba(255,255,255,0.95),transparent_75%)] pointer-events-none z-10" />
-
-            {/* Subtle Gallery Picture Rail Shadow on the Back Wall */}
-            <div className="absolute top-10 left-12 right-12 h-[1px] bg-gradient-to-r from-transparent via-[#D6C7B2]/60 to-transparent pointer-events-none" />
-
-            {/* BACKREST ALCOVE */}
-            <div className="relative z-10 w-full pt-8 sm:pt-12 md:pt-16 pb-0 px-3 sm:px-6 md:px-8">
+          <Link
+            href="/collections"
+            className="block group cursor-pointer"
+          >
+            {/* Architectural Cream Plinth Tray */}
+            <div className="relative w-full rounded-[28px] sm:rounded-[40px] bg-gradient-to-b from-[#FAF7F0] via-[#F2ECE0] to-[#E5DACB] border border-[#D8CCB9] shadow-[0_25px_60px_-15px_rgba(14,46,30,0.14),0_10px_25px_-5px_rgba(0,0,0,0.06)] overflow-hidden transition-all duration-500 group-hover:shadow-[0_35px_75px_-15px_rgba(14,46,30,0.22)]">
               
-              {/* THE 5 PHYSICAL ASSETS SEATED & LEANING ON THE TATAKAN */}
-              <div className="w-full flex items-end justify-start sm:justify-center overflow-x-auto sm:overflow-x-visible [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden pt-6 sm:pt-8 md:pt-10 lg:pt-14 pb-0 scroll-smooth snap-x">
-                <div className="flex items-end justify-start sm:justify-center min-w-max mx-auto px-6 sm:px-2">
-                  {SHELF_ITEMS.map((item) => {
-                    const isHovered = activeItem === item.id;
-                    return (
-                      <div
-                        key={item.id}
-                        onMouseEnter={() => setActiveItem(item.id)}
-                        onMouseLeave={() => setActiveItem(null)}
-                        className={`relative flex flex-col items-center justify-end ${
-                          isHovered ? "z-50" : item.zIndex
-                        } ${item.marginClass} transition-all duration-300 cursor-pointer origin-bottom`}
-                      >
-                        {/* Ambient wall shadow behind the item ("bersender" depth) */}
-                        <div
-                          className={`absolute inset-0 bg-black/10 blur-lg rounded-xl pointer-events-none transition-opacity duration-300 ${
-                            isHovered ? "opacity-35 scale-105" : "opacity-12"
-                          }`}
-                        />
+              {/* Gallery Overhead Soft Illumination */}
+              <div className="absolute top-0 left-0 right-0 h-72 bg-[radial-gradient(ellipse_80%_60%_at_50%_0%,rgba(255,255,255,0.95),transparent_75%)] pointer-events-none z-10" />
 
-                        {/* The Precision-Grounded Mockup Asset */}
-                        <img
-                          src={encodeURI(item.image)}
-                          alt={item.name}
-                          className={`${item.maxHeight} w-auto object-contain transition-all duration-300 relative z-10 origin-bottom ${
-                            isHovered
-                              ? "scale-105 -translate-y-3 drop-shadow-[0_25px_35px_rgba(14,46,30,0.22)]"
-                              : `${item.tiltClass} drop-shadow-[0_8px_14px_rgba(0,0,0,0.12)]`
-                          }`}
-                        />
+              {/* Subtle Gallery Picture Rail Accent */}
+              <div className="absolute top-10 left-12 right-12 h-[1px] bg-gradient-to-r from-transparent via-[#D6C7B2]/60 to-transparent pointer-events-none" />
 
-                        {/* EXACT CONTACT SHADOW RIGHT ON THE SHELF SURFACE */}
-                        <div className="w-full relative h-0 pointer-events-none z-20">
-                          <div
-                            className={`w-[88%] h-[3px] bg-black/60 blur-[1.5px] rounded-full mx-auto -mt-[2px] transition-all duration-300 ${
-                              isHovered ? "opacity-25 scale-75" : "opacity-100"
-                            }`}
-                          />
-                          <div
-                            className={`w-[78%] h-[7px] bg-black/25 blur-[3px] rounded-full mx-auto -mt-[1px] transition-all duration-300 ${
-                              isHovered ? "opacity-15 scale-85" : "opacity-100"
-                            }`}
-                          />
-                        </div>
-                      </div>
-                    );
-                  })}
+              {/* COLLECTION STAGE DISPLAY */}
+              <div className="relative z-10 w-full pt-8 sm:pt-12 md:pt-16 pb-2 sm:pb-4 px-4 sm:px-8 md:px-12 flex flex-col items-center justify-center">
+                
+                {/* Single Master Collection Image */}
+                <div className="relative w-full max-w-5xl mx-auto flex items-center justify-center">
+                  {/* Soft ambient back shadow */}
+                  <div className="absolute inset-0 bg-black/10 blur-2xl rounded-full scale-90 pointer-events-none transition-all duration-500 group-hover:scale-95 group-hover:opacity-60" />
+
+                  <img
+                    src={encodeURI("/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/Collection/Collection.png")}
+                    alt="The Complete Bye Bye Narcissist Collection"
+                    className="w-full h-auto max-h-[520px] object-contain drop-shadow-[0_20px_35px_rgba(14,46,30,0.18)] transition-all duration-500 group-hover:scale-[1.02] group-hover:-translate-y-2 relative z-10"
+                  />
+                </div>
+
+                {/* Grounding Contact Shadow underneath collection baseline */}
+                <div className="w-full max-w-4xl relative h-0 pointer-events-none z-20 -mt-3 sm:-mt-5">
+                  <div className="w-[92%] h-[6px] bg-black/50 blur-[3px] rounded-full mx-auto transition-all duration-500 group-hover:opacity-40" />
+                  <div className="w-[84%] h-[12px] bg-black/20 blur-[6px] rounded-full mx-auto transition-all duration-500 group-hover:opacity-20" />
                 </div>
               </div>
-            </div>
 
-            {/* THE "TATAKAN" (PHYSICAL 3D SHELF LEDGE WITH INTEGRATED SURFACE) */}
-            <div className="relative z-20 w-full">
-              {/* SHELF FLOOR PLANE: The surface the books stand on */}
-              <div className="w-full h-4 sm:h-5 bg-gradient-to-r from-[#D7CBBA] via-[#EAE0D0] to-[#D7CBBA] border-t border-white/90 shadow-[inset_0_2px_4px_rgba(255,255,255,0.9)] relative">
-                {/* Crisp Horizon Bevel Edge Reflection */}
-                <div className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-white/30 via-white to-white/30" />
+              {/* ARCHITECTURAL TATAKAN SHELF PLINTH LEDGE */}
+              <div className="relative z-20 w-full">
+                {/* Surface Plane */}
+                <div className="w-full h-4 sm:h-5 bg-gradient-to-r from-[#D8CCBA] via-[#ECE2D2] to-[#D8CCBA] border-t border-white/90 shadow-[inset_0_2px_4px_rgba(255,255,255,0.9)] relative">
+                  <div className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-white/30 via-white to-white/30" />
+                </div>
+
+                {/* Front Fascia Bevel */}
+                <div className="w-full h-5 sm:h-6 bg-gradient-to-b from-[#C4B59F] via-[#B8A891] to-[#A4937B] border-t border-[#BFAA94] shadow-[0_6px_14px_rgba(0,0,0,0.14)] flex items-center justify-center">
+                  <span className="text-[10px] sm:text-xs font-mono font-bold tracking-widest uppercase text-[#544634] opacity-80 group-hover:opacity-100 transition-opacity">
+                    Click to Explore Full Collection &rarr;
+                  </span>
+                </div>
               </div>
 
-              {/* SHELF FRONT FASCIA: The vertical thickness of the tatakan plinth */}
-              <div className="w-full h-5 sm:h-6 bg-gradient-to-b from-[#C4B59F] via-[#B8A891] to-[#A4937B] border-t border-[#BFAA94] shadow-[0_6px_14px_rgba(0,0,0,0.14)]" />
             </div>
-
-          </div>
+          </Link>
         </div>
 
         {/* ========================================================================= */}
@@ -237,7 +149,7 @@ export default function FeaturedCollectionSection() {
             <button
               type="button"
               onClick={() => setNotifyModalOpen(true)}
-              className="inline-flex items-center gap-2 px-8 py-3.5 bg-editorial-white text-[#0E2E1E] border border-[#0E2E1E] font-semibold rounded-full hover:bg-[#0E2E1E] hover:text-cream-logo transition-all shadow-sm text-sm sm:text-base tracking-wide cursor-pointer"
+              className="inline-flex items-center gap-2 px-8 py-3.5 bg-editorial-white text-[#0E2E1E] border border-[#0E2E1E] font-semibold rounded-full hover:bg-[#0E2E1E] hover:text-cream-logo active:scale-95 transition-all shadow-sm text-sm sm:text-base tracking-wide cursor-pointer"
             >
               <span>Notify Me About New Collections</span>
               <span>&rarr;</span>
