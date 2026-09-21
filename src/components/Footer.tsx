@@ -8,20 +8,21 @@ export default function Footer() {
 
   const isLinkActive = (href: string) => {
     if (!pathname) return false;
-    if (href === "/") return pathname === "/";
-    if (href === "/collections") {
+    const baseHref = href.split("#")[0];
+    if (baseHref === "/") return pathname === "/";
+    if (baseHref === "/collections") {
       return pathname.startsWith("/collections") || pathname.startsWith("/products");
     }
-    return pathname.startsWith(href);
+    return pathname.startsWith(baseHref);
   };
 
   const linkClass = (href: string) =>
     isLinkActive(href)
-      ? "text-cream-logo font-bold underline underline-offset-4"
-      : "hover:text-white transition-colors";
+      ? "text-cream-logo font-bold underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-cream-logo/60 rounded-xs"
+      : "hover:text-white transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-cream-logo/60 rounded-xs";
 
   return (
-    <footer className="bg-[#0E2E1E] text-editorial-white pt-20 pb-12 border-t border-[#183B29]">
+    <footer className="bg-[#0E2E1E] text-editorial-white pt-20 pb-12">
       <div className="w-full px-6 sm:px-10 md:px-14 lg:px-16 xl:px-20">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b border-editorial-white/10">
 
@@ -57,7 +58,7 @@ export default function Footer() {
           <div className="md:col-span-2 space-y-3">
             <h4 className="text-xs font-bold uppercase tracking-widest text-cream-logo">Collections</h4>
             <ul className="space-y-2 text-xs text-[#E8F0EC]">
-              <li><Link href="/collections#featured-collection" className="text-cream-logo/90 hover:text-white transition-colors">Bye Bye Narcissist</Link></li>
+              <li><Link href="/collections#featured-collection" className={linkClass("/collections#featured-collection")}>Bye Bye Narcissist</Link></li>
               <li><Link href="/collections#future-collections" className="text-cream-logo/80 hover:text-cream-logo transition-colors">Love Done Right (Coming Soon)</Link></li>
               <li><Link href="/collections#future-collections" className="text-cream-logo/80 hover:text-cream-logo transition-colors">Emotional Intelligence (Coming Soon)</Link></li>
             </ul>

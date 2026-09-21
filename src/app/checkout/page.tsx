@@ -96,7 +96,7 @@ export default function CheckoutPage() {
                 Explore the Bye Bye Narcissist collection or individual tools to add items to your order.
               </p>
               <Link
-                href="/collections/bye-bye-narcissist"
+                href="/collections#featured-collection"
                 className="inline-block px-8 py-4 bg-[#0E2E1E] text-editorial-white font-semibold rounded-xl hover:bg-[#143d28] transition-all text-sm"
               >
                 Explore Collections &rarr;

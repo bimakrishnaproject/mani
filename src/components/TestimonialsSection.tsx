@@ -34,7 +34,7 @@ export default function TestimonialsSection() {
   return (
     <section
       id="real-feedback"
-      className="relative bg-[#FBF9F5] text-ink-black py-20 sm:py-24 lg:py-28 border-b border-mist-grey/70"
+      className="relative bg-[#FBF9F5] text-ink-black py-20 sm:py-24 lg:py-28"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16">
         {/* Section Header */}

@@ -77,6 +77,53 @@ const products = [
   },
 ];
 
+const featuredCollectionItems = [
+  {
+    id: "cards",
+    name: "Affirmation Cards",
+    badge: "DAILY PRACTICE",
+    slug: "bye-bye-narcissist-affirmation-cards",
+    image:
+      "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/trimmed/Grounded_Cards.png",
+    heightClass: "h-[145px] sm:h-[185px] md:h-[215px] lg:h-[235px]",
+    zIndex: "z-20",
+    marginClass: "-mr-2 sm:-mr-4 md:-mr-5",
+  },
+  {
+    id: "coloring",
+    name: "Coloring Book & Daily Journal",
+    badge: "CALM",
+    slug: "bye-bye-narcissist-coloring-book",
+    image:
+      "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/trimmed/Grounded_Coloring.png",
+    heightClass: "h-[195px] sm:h-[245px] md:h-[285px] lg:h-[315px]",
+    zIndex: "z-30",
+    marginClass: "-mr-2 sm:-mr-4 md:-mr-5",
+  },
+  {
+    id: "book",
+    name: "The Bye Bye Narcissist Book",
+    badge: "FOUNDATION",
+    slug: "bye-bye-narcissist-book",
+    image:
+      "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/trimmed/Grounded_Book.png",
+    heightClass: "h-[230px] sm:h-[290px] md:h-[335px] lg:h-[370px]",
+    zIndex: "z-40",
+    marginClass: "scale-[1.02]",
+  },
+  {
+    id: "workbook",
+    name: "The Bye Bye Narcissist Workbook",
+    badge: "ACTION",
+    slug: "bye-bye-narcissist-workbook",
+    image:
+      "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/trimmed/Grounded_Workbook.png",
+    heightClass: "h-[210px] sm:h-[265px] md:h-[305px] lg:h-[335px]",
+    zIndex: "z-30",
+    marginClass: "-ml-2 sm:-ml-4 md:-ml-5",
+  },
+];
+
 const inDevelopmentTitles = [
   "Boundaries",
   "Purpose",
@@ -130,9 +177,7 @@ export default function CollectionsPage() {
 
       <main className="flex-grow pt-32 sm:pt-40 md:pt-44 pb-24">
 
-        {/* ============================================================== */}
-        {/* SECTION 1: WHAT ARE COLLECTIONS? (VERBATIM FROM DOCS)          */}
-        {/* ============================================================== */}
+        {/* Section 1: What Are Collections? */}
         <section className="px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24 mb-20 sm:mb-28 text-center">
           <motion.div {...fadeIn} className="max-w-4xl mx-auto space-y-6 sm:space-y-8">
             <span className="text-xs font-mono font-bold tracking-widest uppercase text-[#0E2E1E] block">
@@ -167,9 +212,7 @@ export default function CollectionsPage() {
           </motion.div>
         </section>
 
-        {/* ============================================================== */}
-        {/* SECTION 2: WHY OUR COLLECTIONS EXIST (VERBATIM FROM DOCS)      */}
-        {/* ============================================================== */}
+        {/* Section 2: Why Our Collections Exist */}
         <section className="w-full px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24 mb-20 sm:mb-28 border-t border-mist-grey/60 pt-16 sm:pt-24">
           <div className="w-full text-center space-y-8">
             <motion.div {...fadeIn} className="space-y-4">
@@ -221,9 +264,7 @@ export default function CollectionsPage() {
           </div>
         </section>
 
-        {/* ============================================================== */}
-        {/* SECTION 3: FEATURED COLLECTION (GROUNDED TATAKAN STAGE)         */}
-        {/* ============================================================== */}
+        {/* Section 3: Featured Collection */}
         <section
           id="featured-collection"
           className="w-full px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24 mb-24 sm:mb-32"
@@ -233,23 +274,38 @@ export default function CollectionsPage() {
               {...fadeIn}
               className="w-full grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center"
             >
-              {/* Single Master Collection Image Alongside Introduction (Verbatim per docs/website_copy.md Line 284) */}
-              <div className="lg:col-span-6 flex flex-col items-center justify-center w-full">
-                <div className="relative w-full rounded-3xl bg-gradient-to-b from-[#FAF7F0] via-[#F2ECE0] to-[#E5DACB] border border-[#D8CCB9] p-6 sm:p-10 shadow-[0_20px_50px_-15px_rgba(14,46,30,0.12)] overflow-hidden flex flex-col items-center justify-center group">
-                  {/* Overhead soft illumination */}
-                  <div className="absolute top-0 left-0 right-0 h-48 bg-[radial-gradient(ellipse_80%_60%_at_50%_0%,rgba(255,255,255,0.9),transparent_75%)] pointer-events-none" />
+              {/* Grounded Physical Collection Display on Architectural Tatakan Plinth (Verbatim Designer Note: Show the collection image alongside this introduction) */}
+              <div className="lg:col-span-6 flex flex-col items-center justify-end w-full">
+                <div className="relative w-full flex flex-col items-center justify-end select-none overflow-visible group">
+                  {/* Soft ambient back glow */}
+                  <div className="absolute inset-0 bg-[#0E2E1E]/5 blur-3xl rounded-full pointer-events-none group-hover:bg-[#0E2E1E]/10 transition-all duration-700" />
 
-                  {/* High-res collection asset */}
-                  <img
-                    src={encodeURI("/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/Collection/Collection.png")}
-                    alt="The Bye Bye Narcissist Collection"
-                    className="w-full h-auto max-h-[460px] object-contain drop-shadow-[0_16px_30px_rgba(14,46,30,0.18)] relative z-10 transition-transform duration-500 group-hover:scale-[1.02]"
-                  />
+                  {/* Complete Collection Mockup Asset */}
+                  <div className="relative w-full flex items-end justify-center pb-0 z-10 overflow-visible pt-8 sm:pt-12">
+                    <img
+                      src={encodeURI(
+                        "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/Collection/Collection.png"
+                      )}
+                      alt="The Bye Bye Narcissist Complete Collection"
+                      className="w-full max-h-[360px] sm:max-h-[440px] md:max-h-[500px] object-contain relative z-10 drop-shadow-[0_18px_32px_rgba(0,0,0,0.22)] transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.02] group-hover:-translate-y-2 group-hover:drop-shadow-[0_30px_45px_rgba(14,46,30,0.28)]"
+                    />
+                  </div>
 
-                  {/* Grounding Contact Shadow Baseline */}
-                  <div className="w-full max-w-md relative h-0 pointer-events-none z-20 -mt-2">
-                    <div className="w-[90%] h-[5px] bg-black/45 blur-[2.5px] rounded-full mx-auto" />
-                    <div className="w-[80%] h-[10px] bg-black/20 blur-[5px] rounded-full mx-auto" />
+                  {/* Overall Grounding Contact Shadow Baseline */}
+                  <div className="w-full relative h-0 z-20 pointer-events-none">
+                    <div className="w-[94%] h-[4.5px] bg-black/95 blur-[1.5px] rounded-full mx-auto -mt-[2px] transition-all duration-700 group-hover:scale-95 group-hover:opacity-75" />
+                    <div className="w-[86%] h-[10px] bg-black/45 blur-[4px] rounded-full mx-auto -mt-[2px] transition-all duration-700 group-hover:scale-90 group-hover:opacity-25" />
+                  </div>
+
+                  {/* Architectural Shelf Plinth with Perspective Surface Plane */}
+                  <div className="w-full z-20 -mt-1">
+                    {/* Shelf Top Surface Plane */}
+                    <div className="w-full h-6 sm:h-7 bg-gradient-to-b from-[#EAE2D5] via-[#DFD6C7] to-[#D5CAB9] border-t border-white/95 shadow-[inset_0_2px_4px_rgba(255,255,255,0.95)] relative">
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent pointer-events-none" />
+                      <div className="absolute bottom-0 inset-x-0 h-[1.5px] bg-gradient-to-r from-white/30 via-white to-white/30" />
+                    </div>
+                    {/* Shelf Front Fascia Bevel Drop */}
+                    <div className="w-full h-5 sm:h-6 bg-gradient-to-b from-[#C4B59F] via-[#B8A891] to-[#A08F77] border-t border-[#B8A790] shadow-[0_16px_28px_rgba(14,46,30,0.2)]" />
                   </div>
                 </div>
               </div>
@@ -294,9 +350,7 @@ export default function CollectionsPage() {
           </div>
         </section>
 
-        {/* ============================================================== */}
-        {/* SECTION 4: WHAT’S INCLUDED? (5 GROUNDED PRODUCT PLINTH CARDS) */}
-        {/* ============================================================== */}
+        {/* Section 4: What's Included? */}
         <section
           id="whats-included"
           className="w-full px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24 mb-24 sm:mb-32"
@@ -341,24 +395,24 @@ export default function CollectionsPage() {
                       {/* Grounded Physical Display Plinth Stage (No Card Background Behind Book, No Clipping on Zoom) */}
                       <Link
                         href={`/products/${product.slug}`}
-                        className="block relative w-full h-[360px] sm:h-[390px] md:h-[415px] pt-10 sm:pt-14 flex flex-col justify-end items-center cursor-pointer select-none overflow-visible group/stage"
+                        className="block relative w-full h-[360px] sm:h-[390px] md:h-[415px] pt-10 sm:pt-14 flex flex-col justify-end items-center cursor-pointer select-none overflow-visible group/stage [perspective:1000px]"
                       >
                         {/* Product Asset Firmly Resting on Floor (Scales up smoothly on hover without cut off) */}
                         <div className="relative w-full flex-grow flex items-end justify-center pb-0 z-10 overflow-visible">
                           <img
                             src={encodeURI(product.image)}
                             alt={product.title}
-                            className={`${product.heightClass} w-auto block object-contain drop-shadow-[0_20px_32px_rgba(0,0,0,0.26)] transition-all duration-300 origin-bottom group-hover:scale-[1.10] group-hover:-translate-y-4 group-hover:drop-shadow-[0_32px_48px_rgba(0,0,0,0.4)] group-hover/stage:scale-[1.14] group-hover/stage:-translate-y-5`}
+                            className={`${product.heightClass} w-auto block object-contain drop-shadow-[0_20px_32px_rgba(0,0,0,0.26)] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] origin-bottom group-hover:scale-[1.10] group-hover:-translate-y-4 group-hover:drop-shadow-[0_32px_48px_rgba(0,0,0,0.4)] group-hover/stage:scale-[1.14] group-hover/stage:-translate-y-5 [transform:perspective(1000px)_rotateX(2deg)]`}
                           />
                         </div>
 
                         {/* Precision Contact Shadow directly touching the bottom of the object */}
                         <div className="w-full relative h-0 pointer-events-none z-20">
                           <div
-                            className="w-[88%] h-[5px] bg-black/95 blur-[1.5px] rounded-full mx-auto -mt-[2px] transition-all duration-300 group-hover:scale-80 group-hover:opacity-50"
+                            className="w-[88%] h-[5px] bg-black rounded-full mx-auto -mt-[2px] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-75 group-hover:opacity-20 group-hover:blur-[5px] group-hover:translate-y-1 blur-[1.5px] opacity-95"
                           />
                           <div
-                            className="w-[78%] h-[10px] bg-black/45 blur-[4px] rounded-full mx-auto -mt-[2px] transition-all duration-300 group-hover:scale-85 group-hover:opacity-40"
+                            className="w-[78%] h-[10px] bg-black rounded-full mx-auto -mt-[2px] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-80 group-hover:opacity-15 group-hover:blur-[8px] group-hover:translate-y-1.5 blur-[4px] opacity-45"
                           />
                         </div>
 
@@ -429,24 +483,24 @@ export default function CollectionsPage() {
                       {/* Grounded Physical Display Plinth Stage (No Card Background Behind Book, No Clipping on Zoom) */}
                       <Link
                         href={`/products/${product.slug}`}
-                        className="block relative w-full h-[360px] sm:h-[390px] md:h-[415px] pt-10 sm:pt-14 flex flex-col justify-end items-center cursor-pointer select-none overflow-visible group/stage"
+                        className="block relative w-full h-[360px] sm:h-[390px] md:h-[415px] pt-10 sm:pt-14 flex flex-col justify-end items-center cursor-pointer select-none overflow-visible group/stage [perspective:1000px]"
                       >
                         {/* Product Asset Firmly Resting on Floor (Scales up smoothly on hover without cut off) */}
                         <div className="relative w-full flex-grow flex items-end justify-center pb-0 z-10 overflow-visible">
                           <img
                             src={encodeURI(product.image)}
                             alt={product.title}
-                            className={`${product.heightClass} w-auto block object-contain drop-shadow-[0_20px_32px_rgba(0,0,0,0.26)] transition-all duration-300 origin-bottom group-hover:scale-[1.10] group-hover:-translate-y-4 group-hover:drop-shadow-[0_32px_48px_rgba(0,0,0,0.4)] group-hover/stage:scale-[1.14] group-hover/stage:-translate-y-5`}
+                            className={`${product.heightClass} w-auto block object-contain drop-shadow-[0_20px_32px_rgba(0,0,0,0.26)] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] origin-bottom group-hover:scale-[1.10] group-hover:-translate-y-4 group-hover:drop-shadow-[0_32px_48px_rgba(0,0,0,0.4)] group-hover/stage:scale-[1.14] group-hover/stage:-translate-y-5 [transform:perspective(1000px)_rotateX(2deg)]`}
                           />
                         </div>
 
                         {/* Precision Contact Shadow directly touching the bottom of the object */}
                         <div className="w-full relative h-0 pointer-events-none z-20">
                           <div
-                            className="w-[88%] h-[5px] bg-black/95 blur-[1.5px] rounded-full mx-auto -mt-[2px] transition-all duration-300 group-hover:scale-80 group-hover:opacity-50"
+                            className="w-[88%] h-[5px] bg-black rounded-full mx-auto -mt-[2px] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-75 group-hover:opacity-20 group-hover:blur-[5px] group-hover:translate-y-1 blur-[1.5px] opacity-95"
                           />
                           <div
-                            className="w-[78%] h-[10px] bg-black/45 blur-[4px] rounded-full mx-auto -mt-[2px] transition-all duration-300 group-hover:scale-85 group-hover:opacity-40"
+                            className="w-[78%] h-[10px] bg-black rounded-full mx-auto -mt-[2px] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-80 group-hover:opacity-15 group-hover:blur-[8px] group-hover:translate-y-1.5 blur-[4px] opacity-45"
                           />
                         </div>
 
@@ -495,9 +549,7 @@ export default function CollectionsPage() {
           </div>
         </section>
 
-        {/* ============================================================== */}
-        {/* SECTION 5: FIND YOUR STARTING POINT (VERBATIM FROM DOCS)       */}
-        {/* ============================================================== */}
+        {/* Section 5: Find Your Starting Point */}
         <section id="starting-point" className="px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24 mb-24 sm:mb-32">
           <motion.div
             {...fadeIn}
@@ -521,9 +573,7 @@ export default function CollectionsPage() {
           </motion.div>
         </section>
 
-        {/* ============================================================== */}
-        {/* SECTION 6: MORE COLLECTIONS ARE COMING (VERBATIM FROM DOCS)     */}
-        {/* ============================================================== */}
+        {/* Section 6: More Collections Are Coming */}
         <section
           id="future-collections"
           className="px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24 mb-24 sm:mb-32 border-t border-mist-grey/60 pt-20"
@@ -624,9 +674,7 @@ export default function CollectionsPage() {
           </div>
         </section>
 
-        {/* ============================================================== */}
-        {/* SECTION 7: COMMUNITY (VERBATIM FROM DOCS)                       */}
-        {/* ============================================================== */}
+        {/* Section 7: Community */}
         <section id="community" className="px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24">
           <motion.div
             {...fadeIn}
@@ -662,7 +710,8 @@ export default function CollectionsPage() {
                 setNotifyModalOpen(false);
                 setNotifySubmitted(false);
               }}
-              className="absolute top-4 right-4 text-gray-400 hover:text-gray-700 text-lg cursor-pointer"
+              className="absolute top-4 right-4 w-11 h-11 flex items-center justify-center rounded-full text-neutral-600 hover:text-neutral-950 hover:bg-neutral-100 transition-colors text-lg cursor-pointer"
+              aria-label="Close modal"
             >
               ✕
             </button>

@@ -70,7 +70,7 @@ export default function WatchLearnPage() {
               </p>
 
               <div className="inline-flex items-center gap-2 bg-[#0E271B] border border-emerald-500/30 px-5 py-2 rounded-full shadow-inner">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                <span className="w-2 h-2 rounded-full bg-emerald-400" />
                 <span className="text-xs sm:text-sm font-semibold text-cream-logo">
                   500+ Videos. New Videos Added Daily.
                 </span>
@@ -150,18 +150,10 @@ export default function WatchLearnPage() {
 
         {/* SECTION HEADER WITH SELECTED TOPIC DYNAMIC TITLE (Centered) */}
         <section className="px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24 mb-10 text-center">
-          <div className="max-w-2xl mx-auto space-y-2">
-            <span className="text-xs font-bold text-[#0E2E1E] uppercase tracking-wider block">
-              {searchQuery ? "Search Results" : "Topic View"}
-            </span>
+          <div className="max-w-2xl mx-auto">
             <h2 className="font-serif-heading text-3xl sm:text-5xl text-[#0E2E1E]">
               {searchQuery ? `"${searchQuery}"` : selectedTopic}
             </h2>
-            <div className="pt-1">
-              <span className="inline-block text-xs font-bold text-[#0E2E1E] bg-soft-white border border-mist-grey px-4 py-1.5 rounded-full shadow-xs">
-                {filteredVideos.length} {filteredVideos.length === 1 ? "Video" : "Videos"}
-              </span>
-            </div>
           </div>
         </section>
 
@@ -215,7 +207,7 @@ export default function WatchLearnPage() {
                   onClick={() => setVisibleCount((prev) => prev + 30)}
                   className="px-10 py-4 bg-[#0E2E1E] text-cream-logo font-semibold rounded-xl hover:bg-[#143d28] transition-all shadow-md text-sm cursor-pointer"
                 >
-                  Load More Videos ({visibleCount} of {filteredVideos.length}) &rarr;
+                  Load More Videos &rarr;
                 </button>
               </div>
             )}
