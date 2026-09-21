@@ -47,12 +47,12 @@ export default function CommunityGuidelinesPage() {
             </p>
 
             <ul className="list-disc pl-6 space-y-3 pt-2 text-[#1C2826]">
-              <li><strong>Treat others with respect.</strong> Approach conversations with empathy and thoughtful consideration.</li>
-              <li><strong>Avoid harassment, bullying, discrimination, or abusive behavior.</strong> Hostility has no place in our spaces.</li>
-              <li><strong>Respect privacy and confidentiality.</strong> Never share others&apos; personal stories or identifying details without permission.</li>
-              <li><strong>Avoid sharing harmful, illegal, or dangerous content.</strong> Do not post materials that compromise community well-being.</li>
-              <li><strong>Avoid promoting misinformation.</strong> Keep conversations grounded and credible.</li>
-              <li><strong>Refrain from impersonation or deceptive behavior.</strong> Engage authentically as yourself.</li>
+              <li>Treat others with respect.</li>
+              <li>Avoid harassment, bullying, discrimination, or abusive behavior.</li>
+              <li>Respect privacy and confidentiality.</li>
+              <li>Avoid sharing harmful, illegal, or dangerous content.</li>
+              <li>Avoid promoting misinformation.</li>
+              <li>Refrain from impersonation or deceptive behavior.</li>
             </ul>
 
             <div className="p-6 bg-[#0E2E1E] text-editorial-white rounded-2xl space-y-2 mt-6 shadow-md">

@@ -271,9 +271,9 @@ export default function WhyManiPage() {
 
         {/* SECTION 4: OUR APPROACH (Deep Forest Green with Micro-Interactive Floating Cards) */}
         <section className="w-full bg-[#0E2E1E] text-editorial-white py-24 sm:py-36 relative overflow-hidden mb-24 sm:mb-32">
-          {/* Subtle cinematic drifting ambient lights */}
-          <div className="absolute top-0 right-1/4 w-[650px] h-[450px] bg-emerald-500/10 rounded-full blur-[150px] pointer-events-none animate-pulse" style={{ animationDuration: "6s" }} />
-          <div className="absolute bottom-0 left-1/4 w-[550px] h-[400px] bg-emerald-600/10 rounded-full blur-[130px] pointer-events-none animate-pulse" style={{ animationDuration: "8s" }} />
+          {/* Subtle cinematic ambient lights */}
+          <div className="absolute top-0 right-1/4 w-[650px] h-[450px] bg-emerald-500/10 rounded-full blur-[150px] pointer-events-none" />
+          <div className="absolute bottom-0 left-1/4 w-[550px] h-[400px] bg-emerald-600/10 rounded-full blur-[130px] pointer-events-none" />
 
           <div className="max-w-[1850px] w-full mx-auto px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-28 relative z-10 space-y-16">
             

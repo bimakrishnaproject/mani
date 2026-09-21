@@ -2,9 +2,11 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useInView } from "framer-motion";
 import { VIDEOS_DATA, getStreamableVideoUrl } from "@/data/videos";
 import { trackVideoView } from "@/lib/analytics";
+
+import MaskedReveal from "@/components/MaskedReveal";
 
 // Use the newest 5 videos from the data (newest first)
 const newestVideos = VIDEOS_DATA.slice(0, 5).map((v) => ({
@@ -21,6 +23,7 @@ export default function WatchLearnSpotlight() {
   const [activeVideoModal, setActiveVideoModal] = useState<any | null>(null);
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(containerRef, { amount: 0.15, once: true });
   const [containerWidth, setContainerWidth] = useState<number>(1200);
 
   // Dynamically measure container width to span 100% full width with zero side margins
@@ -59,7 +62,7 @@ export default function WatchLearnSpotlight() {
   return (
     <section
       id="watch-learn"
-      className="py-20 sm:py-28 bg-[#FBF9F5] text-ink-black w-full relative overflow-hidden border-t border-b border-mist-grey/60"
+      className="pt-20 sm:pt-28 pb-36 sm:pb-48 bg-[#FBF9F5] text-ink-black w-full relative overflow-hidden select-none"
     >
       <div className="w-full px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24">
         
@@ -69,9 +72,11 @@ export default function WatchLearnSpotlight() {
             <span className="text-xs font-bold tracking-widest text-[#0E2E1E] uppercase block">
               WATCH &amp; LEARN
             </span>
-            <h2 className="font-serif-heading text-3xl xs:text-4xl sm:text-5xl lg:text-6xl text-[#0E2E1E] leading-[1.08] tracking-tight">
-              Support In Minutes
-            </h2>
+            <MaskedReveal>
+              <h2 className="font-serif-heading text-3xl xs:text-4xl sm:text-5xl lg:text-6xl text-[#0E2E1E] leading-[1.08] tracking-tight">
+                Support In Minutes
+              </h2>
+            </MaskedReveal>
             <p className="text-base sm:text-lg text-[#0B1710] font-medium leading-relaxed">
               Understand why you react the way you do, recognize patterns in your relationships, and learn new ways to respond through short, practical videos.
             </p>
@@ -83,7 +88,7 @@ export default function WatchLearnSpotlight() {
           <div className="shrink-0">
             <Link
               href="/watch-learn"
-              className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#0E2E1E] text-editorial-white font-semibold rounded-xl hover:bg-[#143d28] transition-all text-xs sm:text-sm shadow-md whitespace-nowrap"
+              className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#0E2E1E] text-editorial-white font-semibold rounded-xl hover:bg-[#143d28] transition-all text-xs sm:text-sm shadow-md whitespace-nowrap cursor-pointer"
             >
               <span>Watch Videos</span>
               <span>&rarr;</span>
@@ -104,13 +109,15 @@ export default function WatchLearnSpotlight() {
             {newestVideos.map((video, idx) => {
               const isHovered = hoveredIdx === idx;
 
-              let targetX = idx * restingStep;
-              let targetY = 0;
+              // Automatic scroll-triggered cascade:
+              // When entering view, cards fan out from a compact cluster to their full overlapping deck
+              let targetX = isInView ? idx * restingStep : idx * (restingStep * 0.45);
+              let targetY = isInView ? 0 : 25;
               let targetScale = 1;
-              let targetOpacity = 1;
+              let targetOpacity = isInView ? 1 : 0;
               let zIndex = count - idx + 10; // Card 0 has highest resting zIndex (menindih kartu setelahnya)
 
-              if (hoveredIdx !== null) {
+              if (hoveredIdx !== null && isInView) {
                 if (isHovered) {
                   targetX = idx * restingStep;
                   targetY = -14;
@@ -154,9 +161,10 @@ export default function WatchLearnSpotlight() {
                   }}
                   transition={{
                     type: "spring",
-                    stiffness: 340,
-                    damping: 27,
+                    stiffness: 300,
+                    damping: 26,
                     mass: 0.8,
+                    delay: !isInView ? 0 : idx * 0.08,
                   }}
                   className={`rounded-2xl sm:rounded-3xl overflow-hidden cursor-pointer border transition-all duration-300 ${
                     isHovered

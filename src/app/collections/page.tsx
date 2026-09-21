@@ -139,7 +139,6 @@ const inDevelopmentTitles = [
 export default function CollectionsPage() {
   const { addToCart } = useCart();
   const [addedItem, setAddedItem] = useState<string | null>(null);
-  const [hoveredFeaturedBookId, setHoveredFeaturedBookId] = useState<string | null>(null);
   const [hoveredCardId, setHoveredCardId] = useState<string | null>(null);
   const [notifyModalOpen, setNotifyModalOpen] = useState(false);
   const [notifyEmail, setNotifyEmail] = useState("");
@@ -178,9 +177,7 @@ export default function CollectionsPage() {
 
       <main className="flex-grow pt-32 sm:pt-40 md:pt-44 pb-24">
 
-        {/* ============================================================== */}
-        {/* SECTION 1: WHAT ARE COLLECTIONS? (VERBATIM FROM DOCS)          */}
-        {/* ============================================================== */}
+        {/* Section 1: What Are Collections? */}
         <section className="px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24 mb-20 sm:mb-28 text-center">
           <motion.div {...fadeIn} className="max-w-4xl mx-auto space-y-6 sm:space-y-8">
             <span className="text-xs font-mono font-bold tracking-widest uppercase text-[#0E2E1E] block">
@@ -215,9 +212,7 @@ export default function CollectionsPage() {
           </motion.div>
         </section>
 
-        {/* ============================================================== */}
-        {/* SECTION 2: WHY OUR COLLECTIONS EXIST (VERBATIM FROM DOCS)      */}
-        {/* ============================================================== */}
+        {/* Section 2: Why Our Collections Exist */}
         <section className="w-full px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24 mb-20 sm:mb-28 border-t border-mist-grey/60 pt-16 sm:pt-24">
           <div className="w-full text-center space-y-8">
             <motion.div {...fadeIn} className="space-y-4">
@@ -269,9 +264,7 @@ export default function CollectionsPage() {
           </div>
         </section>
 
-        {/* ============================================================== */}
-        {/* SECTION 3: FEATURED COLLECTION (GROUNDED TATAKAN STAGE)         */}
-        {/* ============================================================== */}
+        {/* Section 3: Featured Collection */}
         <section
           id="featured-collection"
           className="w-full px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24 mb-24 sm:mb-32"
@@ -281,72 +274,27 @@ export default function CollectionsPage() {
               {...fadeIn}
               className="w-full grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center"
             >
-              {/* Grounded Physical Collection Display on Architectural Tatakan Shelf Ledge (Individual Interactive Hoverable Books) */}
+              {/* Grounded Physical Collection Display on Architectural Tatakan Plinth (Verbatim Designer Note: Show the collection image alongside this introduction) */}
               <div className="lg:col-span-6 flex flex-col items-center justify-end w-full">
-                <div
-                  onMouseLeave={() => setHoveredFeaturedBookId(null)}
-                  className="relative w-full flex flex-col items-center justify-end select-none overflow-visible group"
-                >
-                  {/* The Physical Collection Books sitting on the shelf floor */}
-                  <div className="relative w-full flex items-end justify-center pb-0 z-10 overflow-visible pt-16">
-                    {featuredCollectionItems.map((item) => {
-                      const isHovered = hoveredFeaturedBookId === item.id;
-                      const isAnyHovered = hoveredFeaturedBookId !== null;
+                <div className="relative w-full flex flex-col items-center justify-end select-none overflow-visible group">
+                  {/* Soft ambient back glow */}
+                  <div className="absolute inset-0 bg-[#0E2E1E]/5 blur-3xl rounded-full pointer-events-none group-hover:bg-[#0E2E1E]/10 transition-all duration-700" />
 
-                      return (
-                        <Link
-                          key={item.id}
-                          href={`/products/${item.slug}`}
-                          onMouseEnter={() => setHoveredFeaturedBookId(item.id)}
-                          onMouseLeave={() => setHoveredFeaturedBookId(null)}
-                          className={`relative flex flex-col items-center justify-end cursor-pointer transition-all duration-300 origin-bottom select-none ${item.marginClass} ${
-                            isHovered
-                              ? "z-50 -translate-y-5 sm:-translate-y-7 scale-[1.07]"
-                              : `${item.zIndex} ${isAnyHovered ? "opacity-80 scale-[0.98]" : "opacity-100 scale-100"}`
-                          }`}
-                        >
-                          {/* Floating Badge on Hover */}
-                          <div
-                            className={`absolute -top-10 px-3 py-1 bg-[#0E2E1E] text-cream-logo text-[10px] font-mono font-bold tracking-wider uppercase rounded-full shadow-lg transition-all duration-300 pointer-events-none whitespace-nowrap z-50 ${
-                              isHovered ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
-                            }`}
-                          >
-                            {item.badge} &bull; {item.name}
-                          </div>
-
-                          {/* Book Asset */}
-                          <img
-                            src={encodeURI(item.image)}
-                            alt={item.name}
-                            className={`${item.heightClass} w-auto block object-contain transition-all duration-300 origin-bottom ${
-                              isHovered
-                                ? "drop-shadow-[0_28px_42px_rgba(0,0,0,0.45)]"
-                                : "drop-shadow-[0_16px_25px_rgba(0,0,0,0.26)]"
-                            }`}
-                          />
-
-                          {/* Individual Grounding Contact Shadow Directly on Shelf Floor Plane */}
-                          <div className="w-full relative h-0 pointer-events-none z-20">
-                            <div
-                              className={`w-[88%] h-[4px] bg-black/95 blur-[1.5px] rounded-full mx-auto -mt-[2px] transition-all duration-300 ${
-                                isHovered ? "scale-75 opacity-30" : "scale-100 opacity-95"
-                              }`}
-                            />
-                            <div
-                              className={`w-[78%] h-[8px] bg-black/45 blur-[3px] rounded-full mx-auto -mt-[2px] transition-all duration-300 ${
-                                isHovered ? "scale-85 opacity-25" : "scale-100 opacity-60"
-                              }`}
-                            />
-                          </div>
-                        </Link>
-                      );
-                    })}
+                  {/* Complete Collection Mockup Asset */}
+                  <div className="relative w-full flex items-end justify-center pb-0 z-10 overflow-visible pt-8 sm:pt-12">
+                    <img
+                      src={encodeURI(
+                        "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/Collection/Collection.png"
+                      )}
+                      alt="The Bye Bye Narcissist Complete Collection"
+                      className="w-full max-h-[360px] sm:max-h-[440px] md:max-h-[500px] object-contain relative z-10 drop-shadow-[0_18px_32px_rgba(0,0,0,0.22)] transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.02] group-hover:-translate-y-2 group-hover:drop-shadow-[0_30px_45px_rgba(14,46,30,0.28)]"
+                    />
                   </div>
 
                   {/* Overall Grounding Contact Shadow Baseline */}
                   <div className="w-full relative h-0 z-20 pointer-events-none">
-                    <div className="w-[96%] h-[4.5px] bg-black/95 blur-[1.5px] rounded-full mx-auto -mt-[2px]" />
-                    <div className="w-[90%] h-[9px] bg-black/45 blur-[4px] rounded-full mx-auto -mt-[2px]" />
+                    <div className="w-[94%] h-[4.5px] bg-black/95 blur-[1.5px] rounded-full mx-auto -mt-[2px] transition-all duration-700 group-hover:scale-95 group-hover:opacity-75" />
+                    <div className="w-[86%] h-[10px] bg-black/45 blur-[4px] rounded-full mx-auto -mt-[2px] transition-all duration-700 group-hover:scale-90 group-hover:opacity-25" />
                   </div>
 
                   {/* Architectural Shelf Plinth with Perspective Surface Plane */}
@@ -402,9 +350,7 @@ export default function CollectionsPage() {
           </div>
         </section>
 
-        {/* ============================================================== */}
-        {/* SECTION 4: WHAT’S INCLUDED? (5 GROUNDED PRODUCT PLINTH CARDS) */}
-        {/* ============================================================== */}
+        {/* Section 4: What's Included? */}
         <section
           id="whats-included"
           className="w-full px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24 mb-24 sm:mb-32"
@@ -449,24 +395,24 @@ export default function CollectionsPage() {
                       {/* Grounded Physical Display Plinth Stage (No Card Background Behind Book, No Clipping on Zoom) */}
                       <Link
                         href={`/products/${product.slug}`}
-                        className="block relative w-full h-[360px] sm:h-[390px] md:h-[415px] pt-10 sm:pt-14 flex flex-col justify-end items-center cursor-pointer select-none overflow-visible group/stage"
+                        className="block relative w-full h-[360px] sm:h-[390px] md:h-[415px] pt-10 sm:pt-14 flex flex-col justify-end items-center cursor-pointer select-none overflow-visible group/stage [perspective:1000px]"
                       >
                         {/* Product Asset Firmly Resting on Floor (Scales up smoothly on hover without cut off) */}
                         <div className="relative w-full flex-grow flex items-end justify-center pb-0 z-10 overflow-visible">
                           <img
                             src={encodeURI(product.image)}
                             alt={product.title}
-                            className={`${product.heightClass} w-auto block object-contain drop-shadow-[0_20px_32px_rgba(0,0,0,0.26)] transition-all duration-300 origin-bottom group-hover:scale-[1.10] group-hover:-translate-y-4 group-hover:drop-shadow-[0_32px_48px_rgba(0,0,0,0.4)] group-hover/stage:scale-[1.14] group-hover/stage:-translate-y-5`}
+                            className={`${product.heightClass} w-auto block object-contain drop-shadow-[0_20px_32px_rgba(0,0,0,0.26)] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] origin-bottom group-hover:scale-[1.10] group-hover:-translate-y-4 group-hover:drop-shadow-[0_32px_48px_rgba(0,0,0,0.4)] group-hover/stage:scale-[1.14] group-hover/stage:-translate-y-5 [transform:perspective(1000px)_rotateX(2deg)]`}
                           />
                         </div>
 
                         {/* Precision Contact Shadow directly touching the bottom of the object */}
                         <div className="w-full relative h-0 pointer-events-none z-20">
                           <div
-                            className="w-[88%] h-[5px] bg-black/95 blur-[1.5px] rounded-full mx-auto -mt-[2px] transition-all duration-300 group-hover:scale-80 group-hover:opacity-50"
+                            className="w-[88%] h-[5px] bg-black rounded-full mx-auto -mt-[2px] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-75 group-hover:opacity-20 group-hover:blur-[5px] group-hover:translate-y-1 blur-[1.5px] opacity-95"
                           />
                           <div
-                            className="w-[78%] h-[10px] bg-black/45 blur-[4px] rounded-full mx-auto -mt-[2px] transition-all duration-300 group-hover:scale-85 group-hover:opacity-40"
+                            className="w-[78%] h-[10px] bg-black rounded-full mx-auto -mt-[2px] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-80 group-hover:opacity-15 group-hover:blur-[8px] group-hover:translate-y-1.5 blur-[4px] opacity-45"
                           />
                         </div>
 
@@ -537,24 +483,24 @@ export default function CollectionsPage() {
                       {/* Grounded Physical Display Plinth Stage (No Card Background Behind Book, No Clipping on Zoom) */}
                       <Link
                         href={`/products/${product.slug}`}
-                        className="block relative w-full h-[360px] sm:h-[390px] md:h-[415px] pt-10 sm:pt-14 flex flex-col justify-end items-center cursor-pointer select-none overflow-visible group/stage"
+                        className="block relative w-full h-[360px] sm:h-[390px] md:h-[415px] pt-10 sm:pt-14 flex flex-col justify-end items-center cursor-pointer select-none overflow-visible group/stage [perspective:1000px]"
                       >
                         {/* Product Asset Firmly Resting on Floor (Scales up smoothly on hover without cut off) */}
                         <div className="relative w-full flex-grow flex items-end justify-center pb-0 z-10 overflow-visible">
                           <img
                             src={encodeURI(product.image)}
                             alt={product.title}
-                            className={`${product.heightClass} w-auto block object-contain drop-shadow-[0_20px_32px_rgba(0,0,0,0.26)] transition-all duration-300 origin-bottom group-hover:scale-[1.10] group-hover:-translate-y-4 group-hover:drop-shadow-[0_32px_48px_rgba(0,0,0,0.4)] group-hover/stage:scale-[1.14] group-hover/stage:-translate-y-5`}
+                            className={`${product.heightClass} w-auto block object-contain drop-shadow-[0_20px_32px_rgba(0,0,0,0.26)] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] origin-bottom group-hover:scale-[1.10] group-hover:-translate-y-4 group-hover:drop-shadow-[0_32px_48px_rgba(0,0,0,0.4)] group-hover/stage:scale-[1.14] group-hover/stage:-translate-y-5 [transform:perspective(1000px)_rotateX(2deg)]`}
                           />
                         </div>
 
                         {/* Precision Contact Shadow directly touching the bottom of the object */}
                         <div className="w-full relative h-0 pointer-events-none z-20">
                           <div
-                            className="w-[88%] h-[5px] bg-black/95 blur-[1.5px] rounded-full mx-auto -mt-[2px] transition-all duration-300 group-hover:scale-80 group-hover:opacity-50"
+                            className="w-[88%] h-[5px] bg-black rounded-full mx-auto -mt-[2px] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-75 group-hover:opacity-20 group-hover:blur-[5px] group-hover:translate-y-1 blur-[1.5px] opacity-95"
                           />
                           <div
-                            className="w-[78%] h-[10px] bg-black/45 blur-[4px] rounded-full mx-auto -mt-[2px] transition-all duration-300 group-hover:scale-85 group-hover:opacity-40"
+                            className="w-[78%] h-[10px] bg-black rounded-full mx-auto -mt-[2px] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-80 group-hover:opacity-15 group-hover:blur-[8px] group-hover:translate-y-1.5 blur-[4px] opacity-45"
                           />
                         </div>
 
@@ -603,9 +549,7 @@ export default function CollectionsPage() {
           </div>
         </section>
 
-        {/* ============================================================== */}
-        {/* SECTION 5: FIND YOUR STARTING POINT (VERBATIM FROM DOCS)       */}
-        {/* ============================================================== */}
+        {/* Section 5: Find Your Starting Point */}
         <section id="starting-point" className="px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24 mb-24 sm:mb-32">
           <motion.div
             {...fadeIn}
@@ -629,9 +573,7 @@ export default function CollectionsPage() {
           </motion.div>
         </section>
 
-        {/* ============================================================== */}
-        {/* SECTION 6: MORE COLLECTIONS ARE COMING (VERBATIM FROM DOCS)     */}
-        {/* ============================================================== */}
+        {/* Section 6: More Collections Are Coming */}
         <section
           id="future-collections"
           className="px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24 mb-24 sm:mb-32 border-t border-mist-grey/60 pt-20"
@@ -732,9 +674,7 @@ export default function CollectionsPage() {
           </div>
         </section>
 
-        {/* ============================================================== */}
-        {/* SECTION 7: COMMUNITY (VERBATIM FROM DOCS)                       */}
-        {/* ============================================================== */}
+        {/* Section 7: Community */}
         <section id="community" className="px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24">
           <motion.div
             {...fadeIn}
@@ -770,7 +710,8 @@ export default function CollectionsPage() {
                 setNotifyModalOpen(false);
                 setNotifySubmitted(false);
               }}
-              className="absolute top-4 right-4 text-gray-400 hover:text-gray-700 text-lg cursor-pointer"
+              className="absolute top-4 right-4 w-11 h-11 flex items-center justify-center rounded-full text-neutral-600 hover:text-neutral-950 hover:bg-neutral-100 transition-colors text-lg cursor-pointer"
+              aria-label="Close modal"
             >
               ✕
             </button>

@@ -34,8 +34,8 @@ export default function CommunitySection() {
   };
 
   return (
-    <section className="py-24 sm:py-36 bg-gradient-to-b from-editorial-white to-soft-white text-ink-black text-center relative overflow-hidden" id="community">
-      <div className="w-full px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24">
+    <section className="pt-24 sm:pt-36 pb-36 sm:pb-48 bg-gradient-to-b from-[#FBF9F5] to-editorial-white text-ink-black text-center relative overflow-hidden" id="community">
+      <div className="w-full px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24 relative z-10">
         <motion.div {...fadeIn} className="space-y-6 sm:space-y-8">
           <h2 className="font-serif-heading text-4xl sm:text-6xl md:text-7xl text-[#0E2E1E] leading-[1.05] tracking-tight">
             There’s More To <strong className="font-bold lowercase">mani</strong>

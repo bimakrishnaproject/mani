@@ -3,6 +3,8 @@
 import React, { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform, useMotionValueEvent } from "framer-motion";
 
+import MaskedReveal from "@/components/MaskedReveal";
+
 const differentiators = [
   {
     number: "01",
@@ -130,7 +132,7 @@ export default function DifferentiatorsSection() {
     <section
       id="differentiators"
       ref={containerRef}
-      className="relative bg-[#FBF9F5] text-ink-black w-full border-t border-b border-mist-grey/70 select-none"
+      className="relative bg-[#FBF9F5] text-ink-black w-full select-none"
     >
       {/* ========================================================================= */}
       {/* DESKTOP VIEW: Pinned Horizontal Scrollytelling Track                      */}
@@ -142,14 +144,16 @@ export default function DifferentiatorsSection() {
           <div className="w-full px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24 flex items-end justify-between gap-8 z-20">
             <div className="max-w-2xl space-y-1.5">
               <div className="flex items-center gap-2.5">
-                <span className="w-2 h-2 rounded-full bg-[#0E2E1E] animate-pulse" />
+                <span className="w-2 h-2 rounded-full bg-[#0E2E1E]" />
                 <span className="text-xs font-bold tracking-widest text-[#0E2E1E] uppercase">
                   WHAT MAKES US DIFFERENT
                 </span>
               </div>
-              <h2 className="font-serif-heading text-4xl xl:text-5xl 2xl:text-6xl text-[#0E2E1E] leading-[1.05] tracking-tight">
-                Simple Doesn&apos;t Mean Simplistic
-              </h2>
+              <MaskedReveal>
+                <h2 className="font-serif-heading text-4xl xl:text-5xl 2xl:text-6xl text-[#0E2E1E] leading-[1.05] tracking-tight">
+                  Simple Doesn&apos;t Mean Simplistic
+                </h2>
+              </MaskedReveal>
               <p className="text-xs sm:text-sm text-[#0B1710] font-normal leading-relaxed pt-1">
                 Everything we create is informed by decades of experience, research, and practical insight to help people better understand themselves and the challenges they face.
               </p>
@@ -172,29 +176,43 @@ export default function DifferentiatorsSection() {
                 return (
                   <motion.div
                     key={idx}
+                    tabIndex={0}
+                    role="button"
+                    aria-label={`Slide ${item.number}: ${item.title}`}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault();
+                        scrollToSlide(idx);
+                      }
+                    }}
                     onMouseEnter={() => setHoveredSlide(idx)}
                     onClick={() => scrollToSlide(idx)}
                     animate={{
                       backgroundColor: isFocused ? "#081F14" : "#FFFFFF",
                       color: isFocused ? "#FDF0D5" : "#0B1710",
-                      scale: isFocused ? 1.02 : 0.98,
-                      opacity: isFocused ? 1 : 0.8,
+                      scale: isFocused ? 1.025 : 0.98,
+                      opacity: isFocused ? 1 : 0.82,
                     }}
-                    transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                    className={`w-[540px] xl:w-[600px] 2xl:w-[640px] h-[380px] sm:h-[400px] xl:h-[430px] 2xl:h-[450px] rounded-3xl p-8 xl:p-10 2xl:p-11 border flex flex-col justify-between relative overflow-hidden cursor-pointer transition-shadow duration-300 ${
+                    transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                    className={`w-[540px] xl:w-[600px] 2xl:w-[640px] h-[380px] sm:h-[400px] xl:h-[430px] 2xl:h-[450px] rounded-3xl p-8 xl:p-10 2xl:p-11 border flex flex-col justify-between relative overflow-hidden cursor-pointer transition-shadow duration-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#0E2E1E] ${
                       isFocused
                         ? "border-cream-logo/30 shadow-[0_30px_70px_rgba(8,31,20,0.35)]"
                         : "border-mist-grey/90 shadow-[0_15px_35px_rgba(0,0,0,0.03)] hover:border-[#0E2E1E]/30"
                     }`}
                   >
-                    {/* Big Decorative Number Watermark */}
-                    <span
-                      className={`absolute -bottom-6 -right-2 text-[160px] xl:text-[200px] font-mono font-bold leading-none pointer-events-none select-none transition-colors duration-300 ${
-                        isFocused ? "text-cream-logo/[0.06]" : "text-[#0E2E1E]/[0.04]"
+                    {/* Big Decorative Number Watermark with Unseen Studio Micro-Parallax */}
+                    <motion.span
+                      animate={{
+                        x: isFocused ? -14 : 0,
+                        y: isFocused ? -8 : 0,
+                      }}
+                      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                      className={`absolute -bottom-6 -right-2 text-[160px] xl:text-[200px] font-serif-heading font-medium leading-none pointer-events-none select-none transition-colors duration-500 ${
+                        isFocused ? "text-cream-logo/[0.07]" : "text-[#0E2E1E]/[0.05]"
                       }`}
                     >
                       {item.number}
-                    </span>
+                    </motion.span>
 
                     {/* Card Header */}
                     <div className="space-y-6 relative z-10">
@@ -262,13 +280,11 @@ export default function DifferentiatorsSection() {
         </div>
       </div>
 
-      {/* ========================================================================= */}
-      {/* MOBILE & TABLET VIEW (< lg): Responsive Vertical Stack                     */}
-      {/* ========================================================================= */}
+      {/* Mobile & Tablet View: Responsive Vertical Stack */}
       <div className="lg:hidden py-16 sm:py-20 px-4 sm:px-8 space-y-10">
         <div className="space-y-3">
           <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-[#0E2E1E] animate-pulse" />
+            <span className="w-2 h-2 rounded-full bg-[#0E2E1E]" />
             <span className="text-[11px] font-bold tracking-widest text-[#0E2E1E] uppercase">
               WHAT MAKES US DIFFERENT
             </span>

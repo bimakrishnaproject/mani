@@ -40,7 +40,7 @@ export default function InteractiveHeroStage3D() {
       <motion.div variants={itemVariants} className="md:col-span-4 h-full">
         <div className="h-full">
           <Link
-            href="/collections/bye-bye-narcissist"
+            href="/collections#featured-collection"
             className="group block relative bg-gradient-to-br from-[#F7F8F6] via-[#E9ECE8] to-[#DFE3DD] border-2 border-mist-grey rounded-3xl p-8 flex flex-col justify-between h-full shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden"
           >
             <div className="absolute top-0 right-0 w-32 h-32 bg-soft-signal-green/40 rounded-bl-full pointer-events-none" />

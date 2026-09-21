@@ -17,25 +17,31 @@ export default function JoinCommunityPage() {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) return;
     setLoading(true);
+    setErrorMessage(null);
     trackCommunitySignup(email);
 
     try {
-      await fetch("/api/klaviyo/subscribe", {
+      const res = await fetch("/api/klaviyo/subscribe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, type: "community" }),
       });
-    } catch (err) {
+      if (!res.ok) {
+        throw new Error("Unable to complete signup right now. Please try again.");
+      }
+      setSubmitted(true);
+    } catch (err: any) {
       console.error("Klaviyo CRM sync error:", err);
+      setErrorMessage(err?.message || "Something went wrong. Please check your connection and try again.");
+    } finally {
+      setLoading(false);
     }
-
-    setLoading(false);
-    setSubmitted(true);
   };
 
   return (
@@ -118,6 +124,16 @@ export default function JoinCommunityPage() {
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-5">
+                    {errorMessage && (
+                      <div className="p-4 bg-red-50 border border-red-200 text-red-700 rounded-xl text-sm flex items-center gap-3">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 text-red-600">
+                          <circle cx="12" cy="12" r="10" />
+                          <line x1="12" y1="8" x2="12" y2="12" />
+                          <line x1="12" y1="16" x2="12.01" y2="16" />
+                        </svg>
+                        <span>{errorMessage}</span>
+                      </div>
+                    )}
                     <div>
                       <label className="block text-xs font-bold text-[#0E2E1E] uppercase tracking-wider mb-2">
                         Email Address

@@ -160,7 +160,17 @@ export default function ProductDetailPage({ params }: { params: Promise<{ slug: 
   };
 
   const cleanSlug = rawSlug.replace("bye-bye-narcissist-", "");
-  const product = productCatalog[rawSlug] || productCatalog[cleanSlug] || productCatalog["book"];
+  const normalizedKey =
+    cleanSlug === "journal"
+      ? "coloring-book"
+      : cleanSlug === "poster-set"
+      ? "posters"
+      : cleanSlug;
+  const product =
+    productCatalog[rawSlug] ||
+    productCatalog[normalizedKey] ||
+    productCatalog[cleanSlug] ||
+    productCatalog["book"];
 
   const handleAddToCart = () => {
     for (let i = 0; i < quantity; i++) {
@@ -189,7 +199,7 @@ export default function ProductDetailPage({ params }: { params: Promise<{ slug: 
               Collections
             </Link>
             <span>/</span>
-            <Link href="/collections/bye-bye-narcissist" className="hover:text-[#0E2E1E] transition-colors">
+            <Link href="/collections#featured-collection" className="hover:text-[#0E2E1E] transition-colors">
               Bye Bye Narcissist
             </Link>
             <span>/</span>
@@ -366,7 +376,7 @@ export default function ProductDetailPage({ params }: { params: Promise<{ slug: 
                     onClick={handleAddToCart}
                     className="flex-grow py-4 px-8 bg-[#0E2E1E] text-cream-logo font-semibold rounded-xl hover:bg-[#143d28] active:scale-[0.99] transition-all text-base shadow-md cursor-pointer flex items-center justify-center gap-2"
                   >
-                    {addedToCart ? "✓ Added to Bag" : `Add to Bag — $${(product.numericPrice * quantity).toFixed(2)}`}
+                    {addedToCart ? "✓ Added to Bag" : `Add to Bag · $${(product.numericPrice * quantity).toFixed(2)}`}
                   </button>
                 </div>
 

@@ -29,14 +29,16 @@ export default function JoinBetaPage() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.email || !formData.consent) return;
     setIsSubmitting(true);
+    setErrorMessage(null);
 
     try {
-      await fetch("/api/klaviyo/subscribe", {
+      const res = await fetch("/api/klaviyo/subscribe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -49,21 +51,26 @@ export default function JoinBetaPage() {
           },
         }),
       });
-    } catch (err) {
+      if (!res.ok) {
+        throw new Error("Unable to complete reservation right now. Please try again.");
+      }
+      setSubmitted(true);
+    } catch (err: any) {
       console.warn("Klaviyo Beta sync warning:", err);
+      // Fallback: If network is offline or API fails, still provide friendly error feedback
+      setErrorMessage(err?.message || "Something went wrong. Please check your connection and try again.");
+    } finally {
+      setIsSubmitting(false);
     }
-
-    setIsSubmitting(false);
-    setSubmitted(true);
   };
 
   return (
-    <div className="min-h-screen bg-editorial-white text-ink-black flex flex-col justify-between overflow-x-hidden">
+    <div className="min-h-screen bg-[#FAF9F6] text-ink-black flex flex-col justify-between selection:bg-[#0E2E1E] selection:text-white">
       <Header />
 
-      <main className="flex-grow pt-36 md:pt-48 pb-32">
+      <main className="flex-grow pt-32 sm:pt-40 md:pt-48 pb-32">
         <section className="w-full px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24">
-          <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 xl:gap-24 items-center">
             
             {/* Left Column: Editorial Beta Application */}
             <motion.div
@@ -74,9 +81,9 @@ export default function JoinBetaPage() {
             >
               <div className="space-y-4">
                 <span className="text-xs font-bold tracking-widest uppercase text-[#0E2E1E] block">
-                  BETA ACCESS
+                  BETA PROGRAM
                 </span>
-                <h1 className="font-serif-heading text-4xl sm:text-6xl lg:text-7xl text-[#0E2E1E] leading-[1.02] tracking-tight">
+                <h1 className="font-serif-heading text-4xl sm:text-6xl lg:text-7xl text-[#0E2E1E] tracking-tight leading-[1.02]">
                   Shape <strong className="font-bold lowercase">mani</strong>’s Future
                 </h1>
                 <p className="text-base sm:text-lg text-[#0B1710] font-medium leading-relaxed max-w-xl">
@@ -86,7 +93,11 @@ export default function JoinBetaPage() {
 
               {submitted ? (
                 <div className="p-8 bg-white rounded-2xl border border-[#0E2E1E]/30 text-[#0E2E1E] space-y-4 text-center shadow-sm">
-                  <span className="text-4xl">✨</span>
+                  <div className="w-16 h-16 rounded-full bg-[#0E2E1E]/10 text-[#0E2E1E] flex items-center justify-center mx-auto">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M20 6 9 17l-5-5" />
+                    </svg>
+                  </div>
                   <h3 className="font-serif-heading text-3xl">Beta Application Received</h3>
                   <p className="text-sm sm:text-base text-[#0B1710] font-medium max-w-md mx-auto">
                     We have reserved your spot for <strong className="text-[#0E2E1E]">{formData.email}</strong>. As soon as a testing slot opens, you will receive an invitation.
@@ -94,6 +105,17 @@ export default function JoinBetaPage() {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-5 max-w-xl">
+                  {errorMessage && (
+                    <div className="p-4 bg-red-50 border border-red-200 text-red-700 rounded-xl text-sm flex items-center gap-3">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 text-red-600">
+                        <circle cx="12" cy="12" r="10" />
+                        <line x1="12" y1="8" x2="12" y2="12" />
+                        <line x1="12" y1="16" x2="12.01" y2="16" />
+                      </svg>
+                      <span>{errorMessage}</span>
+                    </div>
+                  )}
+
                   <div>
                     <label className="block text-xs font-bold text-[#0E2E1E] uppercase tracking-wider mb-1.5">
                       Your Full Name *

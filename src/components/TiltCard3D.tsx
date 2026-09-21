@@ -1,59 +1,89 @@
 "use client";
 
-import React, { useState, useRef, MouseEvent } from "react";
+import React, { useRef, useState } from "react";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 
 interface TiltCard3DProps {
   children: React.ReactNode;
   className?: string;
-  maxDegree?: number;
+  maxTilt?: number; // Maximum tilt angle in degrees
+  glare?: boolean;
   scale?: number;
+  dataCursor?: string;
 }
 
 export default function TiltCard3D({
   children,
   className = "",
-  maxDegree = 8,
+  maxTilt = 12,
+  glare = true,
   scale = 1.02,
+  dataCursor,
 }: TiltCard3DProps) {
-  const [style, setStyle] = useState<React.CSSProperties>({});
   const cardRef = useRef<HTMLDivElement>(null);
+  const [isHovered, setIsHovered] = useState(false);
 
-  const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
+  // Motion values for normalized mouse coordinates (-0.5 to 0.5)
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  // Glare position percentage (0% to 100%)
+  const glareX = useMotionValue(50);
+  const glareY = useMotionValue(50);
+
+  // Buttery-smooth spring physics for tilt
+  const springConfig = { damping: 20, stiffness: 220, mass: 0.6 };
+  const rotateX = useSpring(useTransform(y, [-0.5, 0.5], [maxTilt, -maxTilt]), springConfig);
+  const rotateY = useSpring(useTransform(x, [-0.5, 0.5], [-maxTilt, maxTilt]), springConfig);
+  const cardScale = useSpring(isHovered ? scale : 1, springConfig);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!cardRef.current) return;
     const rect = cardRef.current.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
 
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
 
-    const rotateX = ((y - centerY) / centerY) * -maxDegree;
-    const rotateY = ((x - centerX) / centerX) * maxDegree;
+    const normX = mouseX / rect.width - 0.5;
+    const normY = mouseY / rect.height - 0.5;
 
-    setStyle({
-      transform: `perspective(1000px) rotateX(${rotateX.toFixed(
-        2
-      )}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(${scale}, ${scale}, ${scale})`,
-      transition: "transform 0.1s ease-out",
-    });
+    x.set(normX);
+    y.set(normY);
+
+    glareX.set((mouseX / rect.width) * 100);
+    glareY.set((mouseY / rect.height) * 100);
+  };
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
   };
 
   const handleMouseLeave = () => {
-    setStyle({
-      transform: `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`,
-      transition: "transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)",
-    });
+    setIsHovered(false);
+    x.set(0);
+    y.set(0);
   };
 
   return (
     <div
       ref={cardRef}
       onMouseMove={handleMouseMove}
+      onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      style={style}
-      className={`will-change-transform ${className}`}
+      data-cursor={dataCursor}
+      className={`relative [perspective:1200px] select-none ${className}`}
     >
-      {children}
+      <motion.div
+        style={{
+          rotateX,
+          rotateY,
+          scale: cardScale,
+          transformStyle: "preserve-3d",
+        }}
+        className="relative w-full h-full"
+      >
+        {children}
+      </motion.div>
     </div>
   );
 }
