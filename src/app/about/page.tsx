@@ -113,6 +113,7 @@ const processSteps = [
 export default function AboutPage() {
   const [email, setEmail] = useState("");
   const [joined, setJoined] = useState(false);
+  const [isCommunityModalOpen, setIsCommunityModalOpen] = useState(false);
 
   const handleJoin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -427,48 +428,57 @@ export default function AboutPage() {
               </motion.h2>
             </motion.div>
 
-            {/* Clean Horizontal Progression: Identify → Research → Develop → Evaluate */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 relative">
-              {processSteps.map((step, idx) => (
-                <motion.div
-                  key={step.step}
-                  initial={{ opacity: 0, y: 24, filter: "blur(4px)" }}
-                  whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                  viewport={{ once: true, margin: "-30px" }}
-                  transition={{ duration: 0.65, delay: idx * 0.1, ease: appleEase }}
-                  className="bg-white border-t-2 border-t-[#0E2E1E] border-x border-b border-mist-grey/70 rounded-2xl p-7 sm:p-9 space-y-5 shadow-xs hover:shadow-lg hover:-translate-y-1 transition-all duration-400 relative"
-                >
-                  <div className="flex items-center justify-between">
-                    <span className="font-serif-heading text-2xl sm:text-3xl text-[#0E2E1E] font-bold opacity-60">
-                      {step.step}
-                    </span>
-                    {idx < 3 && (
-                      <span className="hidden lg:block text-[#0E2E1E]/40 text-xl font-light">
-                        &rarr;
+            {/* Clean Connected Horizontal Progression: Identify → Research → Develop → Evaluate (Slide 40) */}
+            <div className="relative pt-6">
+              {/* Horizontal Connecting Progression Line on Desktop */}
+              <div
+                className="hidden lg:block absolute top-[42px] left-[6%] right-[6%] h-[1.5px] bg-gradient-to-r from-[#0E2E1E]/20 via-[#0E2E1E]/40 to-[#0E2E1E]/20 pointer-events-none"
+                aria-hidden="true"
+              />
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8 relative z-10">
+                {processSteps.map((step, idx) => (
+                  <motion.div
+                    key={step.step}
+                    initial={{ opacity: 0, y: 24, filter: "blur(4px)" }}
+                    whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                    viewport={{ once: true, margin: "-30px" }}
+                    transition={{ duration: 0.65, delay: idx * 0.1, ease: appleEase }}
+                    className="space-y-4 pt-2 relative group"
+                  >
+                    {/* Step Number with Sequence Dot */}
+                    <div className="flex items-center gap-3">
+                      <span className="w-8 h-8 rounded-full bg-[#0E2E1E] text-cream-logo text-xs font-mono font-bold flex items-center justify-center shrink-0 shadow-sm group-hover:scale-110 transition-transform duration-300">
+                        {step.step}
                       </span>
-                    )}
-                  </div>
-                  <h3 className="font-serif-heading text-2xl sm:text-3xl text-[#0E2E1E]">
-                    {step.title}
-                  </h3>
-                  <p className="text-sm sm:text-base text-[#0B1710] leading-relaxed font-normal">
-                    {step.desc}
-                  </p>
-                </motion.div>
-              ))}
+                      <span className="text-xs font-mono font-semibold tracking-widest text-[#0E2E1E]/60 uppercase">
+                        Stage {idx + 1}
+                      </span>
+                    </div>
+
+                    <h3 className="font-serif-heading text-2xl sm:text-3xl text-[#0E2E1E] tracking-tight group-hover:text-[#143d28] transition-colors">
+                      {step.title}
+                    </h3>
+
+                    <p className="text-sm sm:text-base text-[#0B1710] leading-relaxed font-normal">
+                      {step.desc}
+                    </p>
+                  </motion.div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
 
-        {/* SECTION 6: THERE’S MORE TO MANI (Full-Bleed Editorial Invitation) */}
-        <section className="w-full px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-28 border-t border-[#0E2E1E]/15 pt-24 sm:pt-32 pb-24 sm:pb-32 bg-gradient-to-b from-[#FDFCFA] to-[#F5F2EB]/50">
+        {/* SECTION 6: THERE’S MORE TO MANI (Expansive Editorial Invitation - Slide 41) */}
+        <section className="w-full px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-28 border-t border-[#0E2E1E]/15 pt-28 sm:pt-40 pb-28 sm:pb-40 bg-gradient-to-b from-[#FDFCFA] to-[#F5F2EB]/50">
           <div className="max-w-[1850px] w-full mx-auto">
             <motion.div
               variants={containerVariants}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-40px" }}
-              className="max-w-4xl mx-auto text-center space-y-8"
+              className="max-w-4xl mx-auto text-center space-y-10"
             >
               <motion.h2
                 variants={itemFadeUp}
@@ -484,55 +494,106 @@ export default function AboutPage() {
                 Join our community and stay connected as new collections, videos, app features, and resources are released.
               </motion.p>
 
-              {/* Action Buttons: Exact Docs CTA */}
+              {/* Action Buttons: Exact Docs CTAs (Expansive Open Presence per Slide 41) */}
               <motion.div
                 variants={itemFadeUp}
                 className="pt-4 flex flex-wrap justify-center items-center gap-4 sm:gap-6"
               >
-                <Link
-                  href="/join-community"
-                  className="px-9 py-4 bg-[#0E2E1E] text-cream-logo font-semibold rounded-xl hover:bg-[#143d28] active:scale-98 transition-all text-base sm:text-lg shadow-lg hover:shadow-xl cursor-pointer"
+                <button
+                  type="button"
+                  onClick={() => setIsCommunityModalOpen(true)}
+                  className="px-10 py-4.5 bg-[#0E2E1E] text-cream-logo font-semibold rounded-full hover:bg-[#143d28] active:scale-98 transition-all text-base sm:text-lg shadow-lg hover:shadow-xl cursor-pointer"
                 >
-                  Join Our Community &rarr;
-                </Link>
+                  Join Our Community
+                </button>
                 <a
                   href="mailto:contact@mymani.ai"
-                  className="px-9 py-4 bg-white text-[#0E2E1E] border-2 border-[#0E2E1E] font-semibold rounded-xl hover:bg-soft-white active:scale-98 transition-all shadow-xs hover:shadow-md text-base sm:text-lg cursor-pointer"
+                  className="px-10 py-4.5 bg-white text-[#0E2E1E] border-2 border-[#0E2E1E] font-semibold rounded-full hover:bg-soft-white active:scale-98 transition-all shadow-xs hover:shadow-md text-base sm:text-lg cursor-pointer"
                 >
                   Contact Us
                 </a>
-              </motion.div>
-
-              {/* Quick Inline Community Form Option */}
-              <motion.div variants={itemFadeUp} className="pt-6 max-w-md mx-auto">
-                {joined ? (
-                  <div className="p-4 rounded-xl bg-[#0E2E1E]/10 border border-[#0E2E1E]/20 text-[#0E2E1E] font-semibold text-sm">
-                    Thank you for joining the <strong className="font-bold lowercase">mani</strong> community!
-                  </div>
-                ) : (
-                  <form onSubmit={handleJoin} className="flex flex-col sm:flex-row gap-3">
-                    <input
-                      type="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder="Enter your email"
-                      required
-                      className="flex-grow px-5 py-3.5 rounded-xl border border-[#0E2E1E]/25 bg-white text-ink-black text-sm focus:outline-none focus:ring-2 focus:ring-[#0E2E1E]"
-                    />
-                    <button
-                      type="submit"
-                      className="px-6 py-3.5 bg-[#0E2E1E] text-cream-logo rounded-xl font-semibold text-sm hover:bg-[#143d28] transition-colors cursor-pointer"
-                    >
-                      Subscribe
-                    </button>
-                  </form>
-                )}
               </motion.div>
             </motion.div>
           </div>
         </section>
 
       </main>
+
+      {/* EXPANSIVE COMMUNITY MODAL (Per Slide 41 & Website Copy) */}
+      {isCommunityModalOpen && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-10 bg-black/60 backdrop-blur-md transition-all duration-300"
+          onClick={() => setIsCommunityModalOpen(false)}
+        >
+          <div
+            className="relative w-full max-w-2xl bg-white border-2 border-[#0E2E1E]/20 rounded-3xl p-8 sm:p-12 md:p-16 shadow-2xl space-y-8"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setIsCommunityModalOpen(false)}
+              className="absolute top-6 right-6 p-2.5 rounded-full bg-[#0E2E1E]/5 hover:bg-[#0E2E1E]/10 text-[#0E2E1E] transition-colors cursor-pointer"
+              aria-label="Close modal"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+            </button>
+
+            <div className="space-y-4">
+              <span className="text-xs font-bold tracking-widest uppercase text-[#0E2E1E]/70 block">
+                COMMUNITY INVITATION
+              </span>
+              <h2 className="font-serif-heading text-3xl sm:text-5xl text-[#0E2E1E] leading-tight">
+                Join The <strong className="font-bold lowercase">mani</strong> Community
+              </h2>
+              <p className="text-lg sm:text-xl text-[#0B1710] font-normal leading-relaxed">
+                Be the first to hear about new collections, videos, app updates, and resources.
+              </p>
+            </div>
+
+            {joined ? (
+              <div className="p-6 bg-[#0E2E1E] text-cream-logo rounded-2xl space-y-3 shadow-md">
+                <span className="text-3xl block">✓</span>
+                <h3 className="font-serif-heading text-xl sm:text-2xl text-cream-logo">Welcome to the Community</h3>
+                <p className="text-sm text-[#FAF5EB] leading-relaxed font-medium">
+                  We&apos;ve reserved your place. Watch your inbox for incoming resources and early release updates.
+                </p>
+              </div>
+            ) : (
+              <form onSubmit={handleJoin} className="space-y-6">
+                <div>
+                  <label className="block text-xs font-bold text-[#0E2E1E] uppercase tracking-wider mb-2">
+                    Email Address
+                  </label>
+                  <input
+                    type="email"
+                    required
+                    placeholder="your.email@domain.com"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="w-full px-5 py-4 bg-[#F8F9FA] border border-mist-grey rounded-xl text-base text-[#0B1710] font-medium placeholder-neutral-400 focus:outline-none focus:border-[#0E2E1E] focus:bg-white transition-all shadow-xs"
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="w-full py-4 bg-[#0E2E1E] text-cream-logo font-semibold text-base sm:text-lg rounded-xl hover:bg-[#143d28] active:scale-98 transition-all shadow-lg cursor-pointer"
+                >
+                  Join The Community
+                </button>
+              </form>
+            )}
+
+            <div className="pt-2 border-t border-mist-grey/60 flex items-center justify-between text-xs text-[#0B1710]/70">
+              <span>Emotional Support Made Simple&trade;</span>
+              <Link href="/join-community" className="underline hover:text-[#0E2E1E] transition-colors">
+                Dedicated Community Page
+              </Link>
+            </div>
+          </div>
+        </div>
+      )}
 
       <Footer />
     </div>

@@ -15,7 +15,7 @@ export default function WatchLearnPage() {
   const [activeVideoModal, setActiveVideoModal] = useState<VideoItem | null>(null);
   const [visibleCount, setVisibleCount] = useState<number>(30);
 
-  const videos: VideoItem[] = VIDEOS_DATA;
+  const videos: VideoItem[] = [...VIDEOS_DATA].reverse();
 
   useEffect(() => {
     setVisibleCount(30);
@@ -247,7 +247,7 @@ export default function WatchLearnPage() {
                   href="/join-community"
                   className="inline-flex px-8 py-4 bg-cream-logo text-[#0E2E1E] font-semibold rounded-xl hover:bg-white transition-all text-sm shadow-md cursor-pointer"
                 >
-                  Join Our Community &rarr;
+                  Join Our Community
                 </Link>
               </div>
             </div>

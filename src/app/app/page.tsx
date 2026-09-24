@@ -50,7 +50,7 @@ export default function AppPage() {
                   href="/join-beta"
                   className="inline-flex px-8 py-4 bg-[#0E2E1E] text-cream-logo font-semibold rounded-xl hover:bg-[#143d28] transition-all text-sm sm:text-base shadow-md cursor-pointer"
                 >
-                  Join the App Beta &rarr;
+                  Join the App Beta
                 </Link>
               </div>
             </motion.div>
@@ -301,7 +301,7 @@ export default function AppPage() {
                 href="/join-beta"
                 className="inline-flex px-10 py-4 bg-[#0E2E1E] text-cream-logo font-semibold rounded-xl hover:bg-[#143d28] active:scale-98 transition-all text-base shadow-lg cursor-pointer"
               >
-                Join the App Beta &rarr;
+                Join the App Beta
               </Link>
             </div>
           </motion.div>

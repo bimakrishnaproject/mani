@@ -125,7 +125,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 16 }}
             animate={typingDone ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-            className="text-lg sm:text-xl md:text-2xl text-[#0B1710] leading-relaxed max-w-2xl mx-auto font-medium px-2"
+            className="text-base sm:text-lg md:text-xl text-[#0B1710] leading-relaxed max-w-2xl mx-auto font-medium px-2"
           >
             <strong className="font-bold lowercase">mani</strong>{" "}brings together expert-guided collections, daily videos, and a new app in development to help you better understand yourself and navigate life&apos;s challenges.
           </motion.p>

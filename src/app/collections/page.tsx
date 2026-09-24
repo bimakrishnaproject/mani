@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useCart } from "@/context/CartContext";
+import { trackCommunitySignup } from "@/lib/analytics";
 
 const fadeIn = {
   initial: { opacity: 0, y: 20 },
@@ -25,7 +26,7 @@ const products = [
     numericPrice: 24.99,
     image:
       "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/trimmed/Solo_Book_Clean.png",
-    heightClass: "h-[260px] sm:h-[295px] md:h-[330px]",
+    heightClass: "h-[240px] sm:h-[270px] md:h-[295px]",
   },
   {
     id: "workbook",
@@ -37,7 +38,7 @@ const products = [
     numericPrice: 29.99,
     image:
       "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/trimmed/Solo_Workbook_Clean.png",
-    heightClass: "h-[250px] sm:h-[285px] md:h-[320px]",
+    heightClass: "h-[240px] sm:h-[270px] md:h-[295px]",
   },
   {
     id: "coloring-book",
@@ -49,7 +50,7 @@ const products = [
     numericPrice: 14.99,
     image:
       "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/trimmed/Coloring Book.png",
-    heightClass: "h-[260px] sm:h-[295px] md:h-[330px]",
+    heightClass: "h-[235px] sm:h-[265px] md:h-[290px]",
   },
   {
     id: "posters",
@@ -60,8 +61,8 @@ const products = [
     price: "$29.99",
     numericPrice: 29.99,
     image:
-      "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/trimmed/Grounded_Poster.png",
-    heightClass: "h-[260px] sm:h-[295px] md:h-[330px]",
+      "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/trimmed/Poster_Collection_Set_10.png",
+    heightClass: "h-[195px] sm:h-[220px] md:h-[245px] max-w-full",
   },
   {
     id: "affirmation-cards",
@@ -73,7 +74,7 @@ const products = [
     numericPrice: 19.99,
     image:
       "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/trimmed/Solo_Cards_Tray.png",
-    heightClass: "h-[210px] sm:h-[240px] md:h-[270px]",
+    heightClass: "h-[180px] sm:h-[205px] md:h-[230px]",
   },
 ];
 
@@ -156,6 +157,26 @@ export default function CollectionsPage() {
     setTimeout(() => setAddedItem(null), 2000);
   };
 
+  const [communityEmail, setCommunityEmail] = useState("");
+  const [communitySubmitted, setCommunitySubmitted] = useState(false);
+
+  const handleCommunitySubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!communityEmail) return;
+    setCommunitySubmitted(true);
+    trackCommunitySignup(communityEmail);
+    try {
+      await fetch("/api/klaviyo/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: communityEmail, type: "community" }),
+      });
+    } catch (err) {
+      console.error("Klaviyo CRM sync error:", err);
+    }
+    setCommunityEmail("");
+  };
+
   const handleNotifySubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!notifyEmail) return;
@@ -180,9 +201,12 @@ export default function CollectionsPage() {
         {/* Section 1: What Are Collections? */}
         <section className="px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24 mb-20 sm:mb-28 text-center">
           <motion.div {...fadeIn} className="max-w-4xl mx-auto space-y-6 sm:space-y-8">
-            <span className="text-xs font-mono font-bold tracking-widest uppercase text-[#0E2E1E] block">
-              WHAT ARE COLLECTIONS?
-            </span>
+            <div className="flex items-center justify-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-[#0E2E1E]" />
+              <span className="text-xs font-bold tracking-widest text-[#0E2E1E] uppercase">
+                WHAT ARE COLLECTIONS?
+              </span>
+            </div>
 
             <h1 className="font-serif-heading text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#0E2E1E] leading-[0.98] tracking-tight">
               Life Doesn&apos;t Come With Instructions
@@ -216,9 +240,12 @@ export default function CollectionsPage() {
         <section className="w-full px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24 mb-20 sm:mb-28 border-t border-mist-grey/60 pt-16 sm:pt-24">
           <div className="w-full text-center space-y-8">
             <motion.div {...fadeIn} className="space-y-4">
-              <span className="text-xs font-mono font-bold tracking-widest uppercase text-[#0E2E1E] block">
-                WHY OUR COLLECTIONS EXIST
-              </span>
+              <div className="flex items-center justify-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-[#0E2E1E]" />
+                <span className="text-xs font-bold tracking-widest text-[#0E2E1E] uppercase">
+                  WHY OUR COLLECTIONS EXIST
+                </span>
+              </div>
 
               <h2 className="font-serif-heading text-4xl sm:text-5xl lg:text-6xl text-[#0E2E1E] leading-[1.08]">
                 People learn differently.
@@ -280,32 +307,15 @@ export default function CollectionsPage() {
                   {/* Soft ambient back glow */}
                   <div className="absolute inset-0 bg-[#0E2E1E]/5 blur-3xl rounded-full pointer-events-none group-hover:bg-[#0E2E1E]/10 transition-all duration-700" />
 
-                  {/* Complete Collection Mockup Asset */}
+                  {/* Complete Collection Mockup Asset (Naturally Grounded with Photorealistic Contact Shadows) */}
                   <div className="relative w-full flex items-end justify-center pb-0 z-10 overflow-visible pt-8 sm:pt-12">
                     <img
                       src={encodeURI(
-                        "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/Collection/Collection.png"
+                        "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/trimmed/Collection_Naturally_Grounded.png"
                       )}
                       alt="The Bye Bye Narcissist Complete Collection"
-                      className="w-full max-h-[360px] sm:max-h-[440px] md:max-h-[500px] object-contain relative z-10 drop-shadow-[0_18px_32px_rgba(0,0,0,0.22)] transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.02] group-hover:-translate-y-2 group-hover:drop-shadow-[0_30px_45px_rgba(14,46,30,0.28)]"
+                      className="w-full max-h-[360px] sm:max-h-[440px] md:max-h-[500px] object-contain relative z-10 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.02] group-hover:-translate-y-1.5"
                     />
-                  </div>
-
-                  {/* Overall Grounding Contact Shadow Baseline */}
-                  <div className="w-full relative h-0 z-20 pointer-events-none">
-                    <div className="w-[94%] h-[4.5px] bg-black/95 blur-[1.5px] rounded-full mx-auto -mt-[2px] transition-all duration-700 group-hover:scale-95 group-hover:opacity-75" />
-                    <div className="w-[86%] h-[10px] bg-black/45 blur-[4px] rounded-full mx-auto -mt-[2px] transition-all duration-700 group-hover:scale-90 group-hover:opacity-25" />
-                  </div>
-
-                  {/* Architectural Shelf Plinth with Perspective Surface Plane */}
-                  <div className="w-full z-20 -mt-1">
-                    {/* Shelf Top Surface Plane */}
-                    <div className="w-full h-6 sm:h-7 bg-gradient-to-b from-[#EAE2D5] via-[#DFD6C7] to-[#D5CAB9] border-t border-white/95 shadow-[inset_0_2px_4px_rgba(255,255,255,0.95)] relative">
-                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent pointer-events-none" />
-                      <div className="absolute bottom-0 inset-x-0 h-[1.5px] bg-gradient-to-r from-white/30 via-white to-white/30" />
-                    </div>
-                    {/* Shelf Front Fascia Bevel Drop */}
-                    <div className="w-full h-5 sm:h-6 bg-gradient-to-b from-[#C4B59F] via-[#B8A891] to-[#A08F77] border-t border-[#B8A790] shadow-[0_16px_28px_rgba(14,46,30,0.2)]" />
                   </div>
                 </div>
               </div>
@@ -313,9 +323,12 @@ export default function CollectionsPage() {
               {/* Storytelling & Framing (Verbatim from Docs) */}
               <div className="lg:col-span-6 space-y-6">
                 <div className="space-y-3">
-                  <span className="text-xs font-mono font-bold tracking-widest uppercase text-[#0E2E1E] block">
-                    FEATURED COLLECTION
-                  </span>
+                  <div className="flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-[#0E2E1E]" />
+                    <span className="text-xs font-bold tracking-widest text-[#0E2E1E] uppercase">
+                      FEATURED COLLECTION
+                    </span>
+                  </div>
 
                   <h2 className="font-serif-heading text-4xl sm:text-5xl lg:text-6xl text-[#0E2E1E] leading-[1.05] tracking-tight">
                     Bye Bye Narcissist
@@ -357,9 +370,12 @@ export default function CollectionsPage() {
         >
           <div className="w-full space-y-12">
             <motion.div {...fadeIn} className="max-w-4xl space-y-3">
-              <span className="text-xs font-mono font-bold tracking-widest uppercase text-[#0E2E1E] block">
-                WHAT’S INCLUDED?
-              </span>
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-[#0E2E1E]" />
+                <span className="text-xs font-bold tracking-widest text-[#0E2E1E] uppercase">
+                  WHAT’S INCLUDED?
+                </span>
+              </div>
               <h3 className="font-serif-heading text-3xl sm:text-5xl lg:text-6xl text-[#0E2E1E] leading-[1.08] tracking-tight">
                 Five Resources. One Connected Experience.
               </h3>
@@ -368,7 +384,7 @@ export default function CollectionsPage() {
               </p>
             </motion.div>
 
-            {/* Spacious 3 + 2 Grid (Bigger cards, large books, no card background behind book, no cut off on hover) */}
+            {/* Spacious 3 + 2 Grid (Clean tactile Etsy-style stage, grounded contact shadow, direct product page links) */}
             <div className="space-y-8 w-full">
               {/* Row 1: 3 Cards (Foundation, Action, Calm) */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full items-stretch">
@@ -392,36 +408,23 @@ export default function CollectionsPage() {
                         </span>
                       </div>
 
-                      {/* Grounded Physical Display Plinth Stage (No Card Background Behind Book, No Clipping on Zoom) */}
+                      {/* Grounded Physical Display Stage (Tactile, Clean, No Fake Wooden Shelf) */}
                       <Link
                         href={`/products/${product.slug}`}
-                        className="block relative w-full h-[360px] sm:h-[390px] md:h-[415px] pt-10 sm:pt-14 flex flex-col justify-end items-center cursor-pointer select-none overflow-visible group/stage [perspective:1000px]"
+                        className="block relative w-full h-[320px] sm:h-[350px] md:h-[370px] bg-[#FAF9F5] rounded-2xl border border-mist-grey/60 group-hover:border-[#0E2E1E]/25 transition-all p-4 flex flex-col justify-end items-center cursor-pointer select-none overflow-hidden group/stage"
                       >
-                        {/* Product Asset Firmly Resting on Floor (Scales up smoothly on hover without cut off) */}
-                        <div className="relative w-full flex-grow flex items-end justify-center pb-0 z-10 overflow-visible">
+                        {/* Product Asset Firmly Resting on Ground */}
+                        <div className="relative w-full flex-grow flex items-end justify-center pb-2 z-10">
                           <img
                             src={encodeURI(product.image)}
                             alt={product.title}
-                            className={`${product.heightClass} w-auto block object-contain drop-shadow-[0_20px_32px_rgba(0,0,0,0.26)] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] origin-bottom group-hover:scale-[1.10] group-hover:-translate-y-4 group-hover:drop-shadow-[0_32px_48px_rgba(0,0,0,0.4)] group-hover/stage:scale-[1.14] group-hover/stage:-translate-y-5 [transform:perspective(1000px)_rotateX(2deg)]`}
+                            className={`${product.heightClass} w-auto block object-contain transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] origin-bottom group-hover:-translate-y-2 group-hover:scale-[1.04]`}
                           />
                         </div>
 
-                        {/* Precision Contact Shadow directly touching the bottom of the object */}
-                        <div className="w-full relative h-0 pointer-events-none z-20">
-                          <div
-                            className="w-[88%] h-[5px] bg-black rounded-full mx-auto -mt-[2px] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-75 group-hover:opacity-20 group-hover:blur-[5px] group-hover:translate-y-1 blur-[1.5px] opacity-95"
-                          />
-                          <div
-                            className="w-[78%] h-[10px] bg-black rounded-full mx-auto -mt-[2px] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-80 group-hover:opacity-15 group-hover:blur-[8px] group-hover:translate-y-1.5 blur-[4px] opacity-45"
-                          />
-                        </div>
-
-                        {/* Physical Plinth Ledge Surface ("Tatakan Nyata" Edge-to-Edge) */}
-                        <div className="relative z-20 w-full -mt-1">
-                          {/* Floor Surface */}
-                          <div className="w-full h-5 bg-gradient-to-r from-[#D7CBBA] via-[#EAE0D0] to-[#D7CBBA] border-t border-white/90 shadow-[inset_0_1.5px_2px_rgba(255,255,255,0.9)] rounded-t-xs" />
-                          {/* Front Bevel */}
-                          <div className="w-full h-5 bg-gradient-to-b from-[#C4B59F] via-[#B8A891] to-[#A4937B] border-t border-[#BFAA94] shadow-[0_8px_16px_rgba(0,0,0,0.15)]" />
+                        {/* Precision Photorealistic Contact Shadow */}
+                        <div className="w-full relative h-3 pointer-events-none z-0 flex items-center justify-center">
+                          <div className="w-[75%] h-[8px] bg-black/25 rounded-full blur-[6px] transition-all duration-500 group-hover:scale-90 group-hover:opacity-15" />
                         </div>
                       </Link>
 
@@ -480,36 +483,23 @@ export default function CollectionsPage() {
                         </span>
                       </div>
 
-                      {/* Grounded Physical Display Plinth Stage (No Card Background Behind Book, No Clipping on Zoom) */}
+                      {/* Grounded Physical Display Stage (Tactile, Clean, No Fake Wooden Shelf) */}
                       <Link
                         href={`/products/${product.slug}`}
-                        className="block relative w-full h-[360px] sm:h-[390px] md:h-[415px] pt-10 sm:pt-14 flex flex-col justify-end items-center cursor-pointer select-none overflow-visible group/stage [perspective:1000px]"
+                        className="block relative w-full h-[320px] sm:h-[350px] md:h-[370px] bg-[#FAF9F5] rounded-2xl border border-mist-grey/60 group-hover:border-[#0E2E1E]/25 transition-all p-4 flex flex-col justify-end items-center cursor-pointer select-none overflow-hidden group/stage"
                       >
-                        {/* Product Asset Firmly Resting on Floor (Scales up smoothly on hover without cut off) */}
-                        <div className="relative w-full flex-grow flex items-end justify-center pb-0 z-10 overflow-visible">
+                        {/* Product Asset Firmly Resting on Ground */}
+                        <div className="relative w-full flex-grow flex items-end justify-center pb-2 z-10">
                           <img
                             src={encodeURI(product.image)}
                             alt={product.title}
-                            className={`${product.heightClass} w-auto block object-contain drop-shadow-[0_20px_32px_rgba(0,0,0,0.26)] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] origin-bottom group-hover:scale-[1.10] group-hover:-translate-y-4 group-hover:drop-shadow-[0_32px_48px_rgba(0,0,0,0.4)] group-hover/stage:scale-[1.14] group-hover/stage:-translate-y-5 [transform:perspective(1000px)_rotateX(2deg)]`}
+                            className={`${product.heightClass} w-auto block object-contain transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] origin-bottom group-hover:-translate-y-2 group-hover:scale-[1.04]`}
                           />
                         </div>
 
-                        {/* Precision Contact Shadow directly touching the bottom of the object */}
-                        <div className="w-full relative h-0 pointer-events-none z-20">
-                          <div
-                            className="w-[88%] h-[5px] bg-black rounded-full mx-auto -mt-[2px] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-75 group-hover:opacity-20 group-hover:blur-[5px] group-hover:translate-y-1 blur-[1.5px] opacity-95"
-                          />
-                          <div
-                            className="w-[78%] h-[10px] bg-black rounded-full mx-auto -mt-[2px] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-80 group-hover:opacity-15 group-hover:blur-[8px] group-hover:translate-y-1.5 blur-[4px] opacity-45"
-                          />
-                        </div>
-
-                        {/* Physical Plinth Ledge Surface ("Tatakan Nyata" Edge-to-Edge) */}
-                        <div className="relative z-20 w-full -mt-1">
-                          {/* Floor Surface */}
-                          <div className="w-full h-5 bg-gradient-to-r from-[#D7CBBA] via-[#EAE0D0] to-[#D7CBBA] border-t border-white/90 shadow-[inset_0_1.5px_2px_rgba(255,255,255,0.9)] rounded-t-xs" />
-                          {/* Front Bevel */}
-                          <div className="w-full h-5 bg-gradient-to-b from-[#C4B59F] via-[#B8A891] to-[#A4937B] border-t border-[#BFAA94] shadow-[0_8px_16px_rgba(0,0,0,0.15)]" />
+                        {/* Precision Photorealistic Contact Shadow */}
+                        <div className="w-full relative h-3 pointer-events-none z-0 flex items-center justify-center">
+                          <div className="w-[75%] h-[8px] bg-black/25 rounded-full blur-[6px] transition-all duration-500 group-hover:scale-90 group-hover:opacity-15" />
                         </div>
                       </Link>
 
@@ -555,9 +545,12 @@ export default function CollectionsPage() {
             {...fadeIn}
             className="w-full bg-[#FAF9F5] border border-mist-grey/80 rounded-3xl p-8 sm:p-14 lg:p-20 shadow-sm text-center space-y-6"
           >
-            <span className="text-xs font-mono font-bold tracking-widest uppercase text-[#0E2E1E] block">
-              FIND YOUR STARTING POINT
-            </span>
+            <div className="flex items-center justify-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-[#0E2E1E]" />
+              <span className="text-xs font-bold tracking-widest uppercase text-[#0E2E1E]">
+                FIND YOUR STARTING POINT
+              </span>
+            </div>
 
             <h3 className="font-serif-heading text-3xl sm:text-5xl text-[#0E2E1E] leading-[1.1]">
               Begin With What You Need Most
@@ -580,9 +573,12 @@ export default function CollectionsPage() {
         >
           <div className="w-full space-y-16">
             <motion.div {...fadeIn} className="max-w-4xl space-y-3">
-              <span className="text-xs font-mono font-bold tracking-widest uppercase text-[#0E2E1E] block">
-                MORE COLLECTIONS ARE COMING
-              </span>
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-[#0E2E1E]" />
+                <span className="text-xs font-bold tracking-widest uppercase text-[#0E2E1E]">
+                  MORE COLLECTIONS ARE COMING
+                </span>
+              </div>
               <h3 className="font-serif-heading text-3xl sm:text-5xl lg:text-6xl text-[#0E2E1E] leading-[1.08] tracking-tight">
                 Support For Every Stage Of Growth
               </h3>
@@ -675,24 +671,40 @@ export default function CollectionsPage() {
         </section>
 
         {/* Section 7: Community */}
-        <section id="community" className="px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24">
+        <section id="community" className="px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24 mb-24 sm:mb-32">
           <motion.div
             {...fadeIn}
-            className="w-full bg-gradient-to-b from-editorial-white to-soft-white border border-mist-grey/80 rounded-3xl p-10 sm:p-16 lg:p-20 text-center space-y-6 shadow-sm"
+            className="w-full bg-[#FAF9F5] border border-mist-grey/80 rounded-3xl py-20 sm:py-28 lg:py-32 px-6 sm:px-12 lg:px-16 text-center space-y-6 sm:space-y-8 shadow-xs"
           >
             <h3 className="font-serif-heading text-3xl sm:text-5xl lg:text-6xl text-[#0E2E1E] leading-[1.08] tracking-tight">
               Be Part Of What <strong className="font-bold lowercase">mani</strong> Creates Next
             </h3>
-            <p className="text-base sm:text-lg text-[#0B1710] font-normal leading-relaxed max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl text-[#0B1710] font-normal leading-relaxed max-w-2xl mx-auto">
               Receive early access to new Collections, invitations to experience the app, and Watch &amp; Learn videos with practical guidance for everyday life.
             </p>
-            <div className="pt-2">
-              <Link
-                href="/join-community"
-                className="inline-flex px-8 py-3.5 bg-[#0E2E1E] text-cream-logo font-semibold rounded-full hover:bg-[#143d28] transition-all text-sm sm:text-base shadow-md cursor-pointer"
-              >
-                Join Our Community
-              </Link>
+            <div className="pt-2 max-w-xl mx-auto w-full">
+              {communitySubmitted ? (
+                <div className="p-5 bg-[#0E2E1E] text-cream-logo rounded-2xl font-semibold text-base shadow-md">
+                  ✓ Welcome to the <strong className="font-bold lowercase">mani</strong> Community! Updates will be sent to your inbox.
+                </div>
+              ) : (
+                <form onSubmit={handleCommunitySubmit} className="flex flex-col sm:flex-row gap-3">
+                  <input
+                    type="email"
+                    value={communityEmail}
+                    onChange={(e) => setCommunityEmail(e.target.value)}
+                    placeholder="Enter Email"
+                    required
+                    className="flex-grow px-6 py-4 rounded-xl text-sm sm:text-base text-ink-black bg-white border border-mist-grey focus:outline-none focus:border-[#0E2E1E] shadow-xs"
+                  />
+                  <button
+                    type="submit"
+                    className="px-8 py-4 bg-[#0E2E1E] text-cream-logo font-semibold rounded-xl hover:bg-[#143d28] transition-all whitespace-nowrap text-sm sm:text-base shadow-md cursor-pointer"
+                  >
+                    Join Our Community
+                  </button>
+                </form>
+              )}
             </div>
           </motion.div>
         </section>

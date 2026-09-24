@@ -65,7 +65,6 @@ export default function AppShowcaseSection() {
                 className="inline-flex items-center gap-2.5 px-8 py-3.5 bg-cream-logo text-[#0E2E1E] font-semibold rounded-full hover:bg-white hover:-translate-y-0.5 hover:shadow-2xl active:scale-[0.97] active:brightness-95 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cream-logo transition-all shadow-xl text-sm sm:text-base tracking-wide text-center cursor-pointer group"
               >
                 <span>Join the App Beta</span>
-                <span className="inline-block transition-transform duration-200 group-hover:translate-x-1 group-active:translate-x-2">&rarr;</span>
               </Link>
             </div>
           </motion.div>

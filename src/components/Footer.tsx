@@ -99,7 +99,7 @@ export default function Footer() {
         </div>
 
         <div className="pt-8 flex flex-col md:flex-row items-start md:items-center justify-between text-xs text-[#E8F0EC] gap-4">
-          <p className="font-medium shrink-0">&copy; 2026 <strong className="font-bold lowercase">mani</strong>&trade;. All rights reserved.</p>
+          <p className="font-medium shrink-0">&copy; 2026 MANI&trade;. All rights reserved.</p>
           <p className="text-[11px] text-[#D8E6DE] leading-relaxed max-w-3xl">
             <strong>Disclaimer:</strong> <strong className="font-bold lowercase">mani</strong>&trade; provides educational and informational content intended to support learning and personal growth. <strong className="font-bold lowercase">mani</strong>&trade; is not therapy, counseling, mental health treatment, crisis support, medical care, or a substitute for professional advice, diagnosis, or treatment.
           </p>

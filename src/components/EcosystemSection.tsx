@@ -8,7 +8,7 @@ import { VIDEOS_DATA } from "@/data/videos";
 
 import MaskedReveal from "@/components/MaskedReveal";
 
-const newestVideo = VIDEOS_DATA[0];
+const newestVideo = VIDEOS_DATA[VIDEOS_DATA.length - 1];
 
 interface CollectionBook {
   id: string;
@@ -28,10 +28,10 @@ const ECOSYSTEM_BOOKS: CollectionBook[] = [
     name: "Coloring Book & Journal",
     image: "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/trimmed/Coloring Book.png",
     alt: "The Bye Bye Narcissist Coloring Book and Daily Journal",
-    baseRotation: "-rotate-[5deg]",
-    hoverRotation: "-rotate-[1deg]",
-    baseMargin: "-mr-3 sm:-mr-4 lg:-mr-5",
-    heightClass: "h-[220px] sm:h-[255px] md:h-[285px] lg:h-[310px] xl:h-[345px] 2xl:h-[370px]",
+    baseRotation: "-rotate-[6deg]",
+    hoverRotation: "-rotate-[2deg]",
+    baseMargin: "-mr-4 sm:-mr-5 md:-mr-6 lg:-mr-7 xl:-mr-8",
+    heightClass: "h-[240px] sm:h-[280px] md:h-[315px] lg:h-[350px] xl:h-[385px] 2xl:h-[410px]",
     zIndex: 10,
   },
   {
@@ -42,7 +42,7 @@ const ECOSYSTEM_BOOKS: CollectionBook[] = [
     baseRotation: "rotate-0",
     hoverRotation: "rotate-0",
     baseMargin: "z-20",
-    heightClass: "h-[255px] sm:h-[295px] md:h-[335px] lg:h-[365px] xl:h-[400px] 2xl:h-[425px]",
+    heightClass: "h-[275px] sm:h-[320px] md:h-[360px] lg:h-[400px] xl:h-[440px] 2xl:h-[465px]",
     zIndex: 20,
   },
   {
@@ -50,10 +50,10 @@ const ECOSYSTEM_BOOKS: CollectionBook[] = [
     name: "Guided Workbook",
     image: "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/trimmed/Solo_Workbook_Clean.png",
     alt: "The Bye Bye Narcissist Guided Workbook",
-    baseRotation: "rotate-[5deg]",
-    hoverRotation: "rotate-[1deg]",
-    baseMargin: "-ml-3 sm:-ml-4 lg:-ml-5",
-    heightClass: "h-[230px] sm:h-[265px] md:h-[300px] lg:h-[325px] xl:h-[360px] 2xl:h-[385px]",
+    baseRotation: "rotate-[6deg]",
+    hoverRotation: "rotate-[2deg]",
+    baseMargin: "-ml-4 sm:-ml-5 md:-ml-6 lg:-ml-7 xl:-ml-8",
+    heightClass: "h-[250px] sm:h-[290px] md:h-[330px] lg:h-[365px] xl:h-[405px] 2xl:h-[430px]",
     zIndex: 10,
   },
 ];
@@ -75,324 +75,467 @@ export default function EcosystemSection() {
     <section
       ref={sectionRef}
       id="how-mani-helps"
-      className="w-full bg-editorial-white py-10 sm:py-16 lg:py-24 select-none overflow-hidden relative"
+      className="w-full bg-[#06180F] text-cream-logo py-16 sm:py-20 lg:py-28 select-none relative"
     >
-      {/* Outer Canvas Container: Provides responsive side gutters on the light editorial background */}
-      <div className="w-full max-w-[1880px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 2xl:px-16">
+      {/* Internal Cinematic Ambient Stage Lighting */}
+      <div
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[1400px] h-[600px] bg-radial from-emerald-500/10 via-[#0E2E1E]/20 to-transparent blur-3xl pointer-events-none"
+        aria-hidden="true"
+      />
+
+      {/* Main Content Container: Full Width Expansive Architectural Layout */}
+      <div className="w-full max-w-[1780px] mx-auto px-6 sm:px-10 md:px-14 lg:px-16 xl:px-20 relative z-10 space-y-12 lg:space-y-16">
         
-        {/* Architectural Showroom Island Card (Apple Pro / Koto craftsmanship) */}
-        <div className="relative rounded-[32px] sm:rounded-[44px] lg:rounded-[56px] bg-[#06180F] text-cream-logo px-6 sm:px-10 md:px-14 lg:px-16 xl:px-20 pt-14 sm:pt-18 lg:pt-22 pb-16 sm:pb-24 shadow-[0_30px_90px_-20px_rgba(6,24,15,0.38),0_10px_30px_-10px_rgba(6,24,15,0.2)] border border-emerald-950/50 overflow-hidden">
-          
-          {/* Internal Cinematic Ambient Stage Lighting */}
-          <div
-            className="absolute top-0 left-1/2 -translate-x-1/2 w-[1200px] h-[550px] bg-radial from-emerald-500/12 via-[#0E2E1E]/20 to-transparent blur-3xl pointer-events-none"
-            aria-hidden="true"
-          />
+        {/* Section Header */}
+        <div className="space-y-3">
+          <div className="flex items-center gap-2.5">
+            <span className="w-2 h-2 rounded-full bg-emerald-400" />
+            <span className="text-xs font-mono font-bold tracking-widest text-emerald-400 uppercase">
+              HOW <strong className="font-bold lowercase">mani</strong> HELPS
+            </span>
+          </div>
 
-          <div className="w-full space-y-12 lg:space-y-16 relative z-10">
-            
-            {/* Section Header with Koto Masked Typography Reveal */}
-            <div className="space-y-3">
-              <div className="flex items-center gap-2.5">
-                <span className="w-2 h-2 rounded-full bg-emerald-400" />
-                <span className="text-xs font-mono font-bold tracking-widest text-emerald-400 uppercase">
-                  HOW <strong className="font-bold lowercase">mani</strong> HELPS
-                </span>
-              </div>
-
-          <MaskedReveal>
-            <h2 className="font-serif-heading text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-cream-logo leading-[1.05] tracking-tight">
-              Three Ways We Can Help
-            </h2>
-          </MaskedReveal>
+          <h2 className="font-serif-heading text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-cream-logo leading-[1.05] tracking-tight">
+            Three Ways We Can Help
+          </h2>
         </div>
 
-        {/* Three Pillars: Visual Stage and Grounded Shelf */}
-        <div className="w-full space-y-0">
+        {/* Three Pillars: Responsive Stage and Grounded Shelf */}
+        <div className="w-full">
           
-          {/* Visual Showcase Row: Books, Phone, Video sitting side-by-side with 14islands 3D Tilt */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-8 xl:gap-12 items-end">
-            
-            {/* Pillar 1 Visual: Collections Books with Scroll-Triggered & Hover Physical Deck Fanning */}
-            <div className="w-full">
-              <Link
-                href="/collections"
-                onMouseEnter={() => setIsPillar1Hovered(true)}
-                onMouseLeave={() => {
-                  setIsPillar1Hovered(false);
-                  setHoveredBookId(null);
-                }}
-                className="w-full flex flex-col items-center justify-end cursor-pointer group/pillar1"
-              >
-                <div className="w-full flex items-end justify-center pb-0 relative">
-                  {ECOSYSTEM_BOOKS.map((book, bIdx) => {
-                    const isIndivHovered = hoveredBookId === book.id;
-
-                    // Physical card deck fanning physics:
-                    // Automatically fans when section enters view; elevates further when hovered
-                    let fanTransform = "";
-                    let zIndex = book.zIndex;
-
-                    if (bIdx === 0) {
-                      // Coloring Book (Left)
-                      fanTransform = isIndivHovered
-                        ? "-rotate-[14deg] -translate-x-6 -translate-y-5 scale-[1.08]"
-                        : isDeckFanned
-                        ? "-rotate-[10deg] -translate-x-4 -translate-y-2 scale-[1.02]"
-                        : "-rotate-[5deg] translate-x-0 translate-y-0 scale-100";
-                      if (isIndivHovered) zIndex = 50;
-                    } else if (bIdx === 1) {
-                      // Hardcover Book (Center)
-                      fanTransform = isIndivHovered
-                        ? "rotate-0 -translate-y-7 scale-[1.12]"
-                        : isDeckFanned
-                        ? "rotate-0 -translate-y-4 scale-[1.06]"
-                        : "rotate-0 translate-y-0 scale-100";
-                      zIndex = isIndivHovered ? 50 : 30;
-                    } else {
-                      // Guided Workbook (Right)
-                      fanTransform = isIndivHovered
-                        ? "rotate-[14deg] translate-x-6 -translate-y-5 scale-[1.08]"
-                        : isDeckFanned
-                        ? "rotate-[10deg] translate-x-4 -translate-y-2 scale-[1.02]"
-                        : "rotate-[5deg] translate-x-0 translate-y-0 scale-100";
-                      if (isIndivHovered) zIndex = 50;
-                    }
-
-                    return (
-                      <div
-                        key={book.id}
-                        onMouseEnter={() => setHoveredBookId(book.id)}
-                        onMouseLeave={() => setHoveredBookId(null)}
-                        className={`relative flex flex-col items-center justify-end cursor-pointer transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] origin-bottom select-none ${book.baseMargin}`}
-                        style={{ zIndex }}
-                      >
-                        {/* Ambient Shadow Behind Book */}
-                        <div
-                          className={`absolute inset-0 bg-black/50 blur-2xl rounded-2xl pointer-events-none transition-all duration-500 ${
-                            isIndivHovered ? "opacity-70 scale-120" : isDeckFanned ? "opacity-45 scale-110" : "opacity-25 scale-100"
-                          }`}
-                        />
-
-                        {/* The Book Mockup with Dynamic Deck Fan */}
-                        <img
-                          src={encodeURI(book.image)}
-                          alt={book.alt}
-                          className={`${book.heightClass} w-auto object-contain transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] relative z-10 origin-bottom ${fanTransform} ${
-                            isDeckFanned
-                              ? "drop-shadow-[0_32px_50px_rgba(0,0,0,0.98)]"
-                              : "drop-shadow-[0_12px_22px_rgba(0,0,0,0.7)]"
-                          }`}
-                        />
-
-                        {/* Contact Shadow Grounded Directly on the Shelf Floor */}
-                        <div className="w-full relative h-0 pointer-events-none z-20">
-                          <div
-                            className={`w-[90%] h-[4px] bg-black/95 rounded-full mx-auto -mt-[2px] transition-all duration-500 ${
-                              isDeckFanned ? "scale-60 opacity-20 blur-[6px]" : "scale-100 opacity-95 blur-[1.5px]"
-                            }`}
-                          />
-                          <div
-                            className={`w-[80%] h-[8px] bg-black/50 rounded-full mx-auto -mt-[2px] transition-all duration-500 ${
-                              isDeckFanned ? "scale-70 opacity-15 blur-[9px]" : "scale-100 opacity-50 blur-[4px]"
-                            }`}
-                          />
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </Link>
-            </div>
-
-            {/* Pillar 2 Visual: App Companion Phone with Scroll-Triggered Lift & Glow */}
-            <div className="w-full">
-              <Link
-                href="/join-beta"
-                onMouseEnter={() => setIsPillar2Hovered(true)}
-                onMouseLeave={() => setIsPillar2Hovered(false)}
-                className="w-full flex flex-col items-center justify-end cursor-pointer group"
-              >
-                <div
-                  className={`relative w-[215px] sm:w-[240px] lg:w-[260px] xl:w-[285px] 2xl:w-[310px] h-[300px] sm:h-[340px] lg:h-[375px] xl:h-[410px] 2xl:h-[435px] bg-[#020A06] border-[2.5px] rounded-t-[34px] p-2.5 sm:p-3 flex flex-col justify-between origin-bottom transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] overflow-hidden ${
-                    isPillar2Hovered
-                      ? "-translate-y-6 scale-[1.05] border-emerald-400 shadow-[0_38px_75px_rgba(16,185,129,0.3)]"
-                      : isPillar2Active
-                      ? "-translate-y-4 scale-[1.03] border-emerald-400/80 shadow-[0_30px_60px_rgba(16,185,129,0.22)]"
-                      : "border-[#1d4a32] shadow-[0_25px_50px_rgba(0,0,0,0.85)] scale-100"
-                  }`}
-                >
-                  {/* Top App Header */}
-                  <div className="w-full flex items-center justify-center px-2 pt-1 pb-2 border-b border-editorial-white/10 shrink-0">
-                    <div className="flex items-center gap-1.5">
+          {/* DESKTOP LAYOUT (md: and up) - Exact Slide 3 Architecture: 3 Pillars Side-by-Side on Continuous Shelf */}
+          <div className="hidden md:block w-full space-y-0">
+            {/* Visual Showcase Row: Books, Phone, Video sitting side-by-side */}
+            <div className="grid grid-cols-3 gap-8 lg:gap-12 xl:gap-16 2xl:gap-24 items-end">
+              
+              {/* Pillar 1 Visual: Complete 5-Product Collection Layered Stack (Grounded, Individually Hoverable) */}
+              <div className="w-full flex flex-col items-center justify-end">
+                <div className="w-full flex items-end justify-center pb-0 relative h-[330px] sm:h-[370px] md:h-[405px] lg:h-[445px] xl:h-[480px]">
+                  <div className="relative w-full h-full max-w-[580px] flex items-end justify-center select-none">
+                    
+                    {/* Layer 1: Framed Poster (Background Layer, z-10) */}
+                    <Link
+                      href="/collections"
+                      className="absolute bottom-0 left-[20%] sm:left-[22%] md:left-[19%] lg:left-[22%] h-[92%] w-auto z-10 group/poster block cursor-pointer transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-2 hover:scale-[1.02] hover:z-40"
+                      title="Framed Poster: What You Can and Cannot Control"
+                    >
                       <img
-                        src="/assets/Mani Logos/mani cream logo.png"
-                        alt="mani"
-                        className="h-3 w-auto object-contain"
+                        src={encodeURI(
+                          "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/trimmed/Clean_Framed_Poster_Transparent.png"
+                        )}
+                        alt="Framed Poster"
+                        className="h-full w-auto object-contain object-bottom drop-shadow-[0_12px_24px_rgba(0,0,0,0.7)] group-hover/poster:drop-shadow-[0_20px_35px_rgba(0,0,0,0.9)]"
+                      />
+                    </Link>
+
+                    {/* Layer 2: Affirmation Cards Tray (Far Left Layer, z-20) */}
+                    <Link
+                      href="/collections"
+                      className="absolute bottom-0 left-[0%] sm:left-[1%] h-[38%] w-auto z-20 group/cards block cursor-pointer transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-2.5 hover:scale-105 hover:z-40"
+                      title="Bye Bye Narcissist Affirmation Cards"
+                    >
+                      <img
+                        src={encodeURI(
+                          "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/trimmed/Solo_Cards_Tray.png"
+                        )}
+                        alt="Affirmation Cards"
+                        className="h-full w-auto object-contain object-bottom drop-shadow-[0_10px_18px_rgba(0,0,0,0.65)] group-hover/cards:drop-shadow-[0_18px_28px_rgba(0,0,0,0.85)]"
+                      />
+                    </Link>
+
+                    {/* Layer 3: Coloring Book (Left-Center Layer, z-25) */}
+                    <Link
+                      href="/collections"
+                      className="absolute bottom-0 left-[18%] sm:left-[20%] md:left-[17%] lg:left-[20%] h-[48%] w-auto z-25 group/coloring block cursor-pointer transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-3 hover:scale-105 hover:z-40"
+                      title="Bye Bye Narcissist Coloring Book and Daily Journal"
+                    >
+                      <img
+                        src={encodeURI(
+                          "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/trimmed/Coloring Book.png"
+                        )}
+                        alt="Coloring Book"
+                        className="h-full w-auto object-contain object-bottom drop-shadow-[0_12px_20px_rgba(0,0,0,0.65)] group-hover/coloring:drop-shadow-[0_22px_32px_rgba(0,0,0,0.85)]"
+                      />
+                    </Link>
+
+                    {/* Layer 4: Main Hardcover Book (Center-Hero Layer, z-35) */}
+                    <Link
+                      href="/collections"
+                      className="absolute bottom-0 left-[39%] sm:left-[41%] md:left-[37%] lg:left-[40%] h-[56%] w-auto z-35 group/book block cursor-pointer transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-3.5 hover:scale-105 hover:z-40"
+                      title="Bye Bye Narcissist Hardcover Book"
+                    >
+                      <img
+                        src={encodeURI(
+                          "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/trimmed/Solo_Book_Clean.png"
+                        )}
+                        alt="Bye Bye Narcissist Book"
+                        className="h-full w-auto object-contain object-bottom drop-shadow-[0_16px_28px_rgba(0,0,0,0.8)] group-hover/book:drop-shadow-[0_25px_40px_rgba(0,0,0,0.95)]"
+                      />
+                    </Link>
+
+                    {/* Layer 5: Workbook (Right Layer, z-30) */}
+                    <Link
+                      href="/collections"
+                      className="absolute bottom-0 right-[0%] sm:right-[1%] h-[54%] w-auto z-30 group/workbook block cursor-pointer transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-3 hover:scale-105 hover:z-40"
+                      title="Bye Bye Narcissist Workbook"
+                    >
+                      <img
+                        src={encodeURI(
+                          "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/trimmed/Solo_Workbook_Clean.png"
+                        )}
+                        alt="Bye Bye Narcissist Workbook"
+                        className="h-full w-auto object-contain object-bottom drop-shadow-[0_12px_20px_rgba(0,0,0,0.65)] group-hover/workbook:drop-shadow-[0_22px_32px_rgba(0,0,0,0.85)]"
+                      />
+                    </Link>
+                  </div>
+                </div>
+              </div>
+
+              {/* Pillar 2 Visual: App Companion Phone */}
+              <div className="w-full flex flex-col items-center justify-end">
+                <Link
+                  href="/join-beta"
+                  onMouseEnter={() => setIsPillar2Hovered(true)}
+                  onMouseLeave={() => setIsPillar2Hovered(false)}
+                  className="w-full flex flex-col items-center justify-end cursor-pointer group"
+                >
+                  <div
+                    className={`relative w-[230px] sm:w-[260px] md:w-[285px] lg:w-[315px] xl:w-[345px] h-[330px] sm:h-[370px] md:h-[405px] lg:h-[445px] xl:h-[480px] bg-[#020A06] border-[2px] rounded-t-[34px] p-2.5 sm:p-3.5 flex flex-col justify-between origin-bottom transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] overflow-hidden ${
+                      isPillar2Hovered
+                        ? "-translate-y-3 scale-[1.02] border-emerald-400 shadow-[0_38px_75px_rgba(16,185,129,0.3)]"
+                        : "border-[#1d4a32] shadow-[0_25px_50px_rgba(0,0,0,0.85)] scale-100"
+                    }`}
+                  >
+                    <div className="w-full flex items-center justify-center px-2 pt-1 pb-2 border-b border-editorial-white/10 shrink-0">
+                      <div className="flex items-center gap-1.5">
+                        <img
+                          src="/assets/Mani Logos/mani cream logo.png"
+                          alt="mani"
+                          className="h-3 w-auto object-contain"
+                        />
+                      </div>
+                    </div>
+                    <div className="flex-1 overflow-hidden py-1.5">
+                      <ChatSimulator />
+                    </div>
+                    <div className="w-full relative h-0 pointer-events-none z-20">
+                      <div
+                        className={`w-[88%] h-[4px] bg-black/95 rounded-full mx-auto -mt-[2px] transition-all duration-500 ${
+                          isPillar2Hovered ? "scale-70 opacity-20 blur-[5px]" : "blur-[1px]"
+                        }`}
+                      />
+                      <div
+                        className={`w-[78%] h-[8px] bg-black/50 rounded-full mx-auto -mt-[2px] transition-all duration-500 ${
+                          isPillar2Hovered ? "scale-75 opacity-15 blur-[8px]" : "blur-[3px]"
+                        }`}
                       />
                     </div>
                   </div>
+                </Link>
+              </div>
 
-                  {/* Live Conversation Simulator */}
-                  <div className="flex-1 overflow-hidden py-1.5">
-                    <ChatSimulator />
-                  </div>
-
-                  {/* Contact Shadow at Phone Base */}
-                  <div className="w-full relative h-0 pointer-events-none z-20">
-                    <div
-                      className={`w-[88%] h-[4px] bg-black/95 rounded-full mx-auto -mt-[2px] transition-all duration-500 ${
-                        isPillar2Active ? "scale-70 opacity-20 blur-[5px]" : "blur-[1px]"
+              {/* Pillar 3 Visual: Watch & Learn Video */}
+              <div className="w-full flex flex-col items-center justify-end">
+                <Link
+                  href="/watch-learn"
+                  onMouseEnter={() => setIsPillar3Hovered(true)}
+                  onMouseLeave={() => setIsPillar3Hovered(false)}
+                  className="w-full flex flex-col items-center justify-end cursor-pointer group"
+                >
+                  <div
+                    className={`relative w-[230px] sm:w-[260px] md:w-[285px] lg:w-[315px] xl:w-[345px] h-[330px] sm:h-[370px] md:h-[405px] lg:h-[445px] xl:h-[480px] rounded-t-2xl overflow-hidden border-t border-x border-white/20 origin-bottom transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                      isPillar3Hovered
+                        ? "-translate-y-3 scale-[1.02] shadow-[0_38px_75px_rgba(0,0,0,0.95)] border-cream-logo/60"
+                        : "shadow-[0_25px_50px_rgba(0,0,0,0.85)] scale-100"
+                    }`}
+                  >
+                    <img
+                      src={newestVideo.thumbnailUrl}
+                      alt={newestVideo.title}
+                      className={`w-full h-full object-cover transition-transform duration-700 ease-out ${
+                        isPillar3Hovered ? "scale-106" : "scale-100"
                       }`}
                     />
-                    <div
-                      className={`w-[78%] h-[8px] bg-black/50 rounded-full mx-auto -mt-[2px] transition-all duration-500 ${
-                        isPillar2Active ? "scale-75 opacity-15 blur-[8px]" : "blur-[3px]"
-                      }`}
-                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/35 to-black/40" />
+                    <div className="absolute inset-0 flex items-center justify-center z-10">
+                      <div
+                        className={`w-14 h-14 rounded-full bg-cream-logo text-[#06180F] flex items-center justify-center shadow-2xl transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                          isPillar3Hovered
+                            ? "scale-120 shadow-[0_0_35px_rgba(253,240,213,0.7)] bg-white"
+                            : "scale-100"
+                        }`}
+                      >
+                        <svg
+                          width="18"
+                          height="18"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                          className="translate-x-0.5"
+                        >
+                          <path d="M8 5v14l11-7z" />
+                        </svg>
+                      </div>
+                    </div>
+                    <div className="absolute bottom-3 left-3 right-3 z-10">
+                      <h4
+                        className={`text-xs sm:text-sm font-serif-heading font-medium line-clamp-2 leading-snug transition-colors duration-300 ${
+                          isPillar3Hovered ? "text-white" : "text-cream-logo"
+                        }`}
+                      >
+                        {newestVideo.title}
+                      </h4>
+                    </div>
+                    <div className="w-full relative h-0 pointer-events-none z-20">
+                      <div
+                        className={`w-[88%] h-[4px] bg-black/95 rounded-full mx-auto -mt-[2px] transition-all duration-500 ${
+                          isPillar3Hovered ? "scale-70 opacity-20 blur-[5px]" : "blur-[1px]"
+                        }`}
+                      />
+                      <div
+                        className={`w-[78%] h-[8px] bg-black/50 rounded-full mx-auto -mt-[2px] transition-all duration-500 ${
+                          isPillar3Hovered ? "scale-75 opacity-15 blur-[8px]" : "blur-[3px]"
+                        }`}
+                      />
+                    </div>
                   </div>
+                </Link>
+              </div>
+
+            </div>
+
+            {/* Continuous Architectural Shelf Ledge (Tatakan Nyata - Edge-to-Edge) */}
+            <div className="relative z-20 w-full mt-0">
+              <div className="w-full h-4 sm:h-5 bg-gradient-to-r from-[#0d2618] via-[#1a4028] to-[#0d2618] border-t border-cream-logo/25 shadow-[inset_0_2px_4px_rgba(255,255,255,0.12)] relative">
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-emerald-400/10 to-transparent pointer-events-none" />
+                <div className="absolute bottom-0 inset-x-0 h-[1.5px] bg-gradient-to-r from-transparent via-cream-logo/50 to-transparent" />
+              </div>
+              <div className="w-full h-5 sm:h-6 bg-gradient-to-b from-[#0b2114] via-[#07150d] to-[#030a06] border-t border-black/80 shadow-[0_12px_24px_rgba(0,0,0,0.8)]" />
+            </div>
+
+            {/* Three Visual Cards Text: Verbatim from website_copy.md */}
+            <div className="grid grid-cols-3 gap-8 lg:gap-12 xl:gap-16 2xl:gap-24 pt-6 sm:pt-8">
+              
+              {/* Pillar 1: Collections */}
+              <Link href="/collections" className="space-y-3 block group cursor-pointer">
+                <h3 className="font-serif-heading text-2xl sm:text-3xl lg:text-[2.1rem] text-cream-logo tracking-tight leading-snug group-hover:text-white transition-colors">
+                  Collections
+                </h3>
+                <p className="text-sm sm:text-base text-cream-logo/80 font-normal leading-relaxed">
+                  Digital books, workbooks, and tools that help you explore a specific challenge and put what you learn into practice.
+                </p>
+              </Link>
+
+              {/* Pillar 2: App */}
+              <Link href="/join-beta" className="space-y-3 block group cursor-pointer">
+                <h3 className="font-serif-heading text-2xl sm:text-3xl lg:text-[2.1rem] text-cream-logo tracking-tight leading-snug group-hover:text-white transition-colors">
+                  App
+                </h3>
+                <p className="text-sm sm:text-base text-cream-logo/80 font-normal leading-relaxed">
+                  Guided conversations, breathwork, meditations, stories, and expert-created resources designed to support you whenever you need it.
+                </p>
+              </Link>
+
+              {/* Pillar 3: Watch & Learn */}
+              <Link href="/watch-learn" className="space-y-3 block group cursor-pointer">
+                <h3 className="font-serif-heading text-2xl sm:text-3xl lg:text-[2.1rem] text-cream-logo tracking-tight leading-snug group-hover:text-white transition-colors">
+                  Watch & Learn
+                </h3>
+                <p className="text-sm sm:text-base text-cream-logo/80 font-normal leading-relaxed">
+                  Daily videos that turn psychology, relationships, and personal growth into practical insights you can use every day.
+                </p>
+              </Link>
+
+            </div>
+          </div>
+
+          {/* MOBILE / SMALL-SCREEN LAYOUT (< md) - Clean Self-Contained Grounded Cards */}
+          <div className="block md:hidden w-full space-y-12">
+            
+            {/* Mobile Pillar 1: Collections */}
+            <div className="w-full flex flex-col items-center">
+              <div className="w-full flex items-end justify-center pb-0 relative h-[270px] sm:h-[320px]">
+                <div className="relative w-full h-full max-w-[420px] flex items-end justify-center select-none">
+                  
+                  {/* Layer 1: Framed Poster (Background Layer, z-10) */}
+                  <Link
+                    href="/collections"
+                    className="absolute bottom-0 left-[20%] sm:left-[22%] h-[92%] w-auto z-10 block cursor-pointer transition-all duration-300 active:scale-95"
+                    title="Framed Poster"
+                  >
+                    <img
+                      src={encodeURI(
+                        "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/trimmed/Clean_Framed_Poster_Transparent.png"
+                      )}
+                      alt="Framed Poster"
+                      className="h-full w-auto object-contain object-bottom drop-shadow-[0_10px_20px_rgba(0,0,0,0.7)]"
+                    />
+                  </Link>
+
+                  {/* Layer 2: Affirmation Cards Tray (Far Left Layer, z-20) */}
+                  <Link
+                    href="/collections"
+                    className="absolute bottom-0 left-[0%] sm:left-[1%] h-[38%] w-auto z-20 block cursor-pointer transition-all duration-300 active:scale-95"
+                    title="Affirmation Cards"
+                  >
+                    <img
+                      src={encodeURI(
+                        "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/trimmed/Solo_Cards_Tray.png"
+                      )}
+                      alt="Affirmation Cards"
+                      className="h-full w-auto object-contain object-bottom drop-shadow-[0_8px_14px_rgba(0,0,0,0.65)]"
+                    />
+                  </Link>
+
+                  {/* Layer 3: Coloring Book (Left-Center Layer, z-25) */}
+                  <Link
+                    href="/collections"
+                    className="absolute bottom-0 left-[18%] sm:left-[20%] h-[48%] w-auto z-25 block cursor-pointer transition-all duration-300 active:scale-95"
+                    title="Bye Bye Narcissist Coloring Book"
+                  >
+                    <img
+                      src={encodeURI(
+                        "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/trimmed/Coloring Book.png"
+                      )}
+                      alt="Coloring Book"
+                      className="h-full w-auto object-contain object-bottom drop-shadow-[0_10px_16px_rgba(0,0,0,0.65)]"
+                    />
+                  </Link>
+
+                  {/* Layer 4: Main Hardcover Book (Center-Hero Layer, z-35) */}
+                  <Link
+                    href="/collections"
+                    className="absolute bottom-0 left-[39%] sm:left-[41%] h-[56%] w-auto z-35 block cursor-pointer transition-all duration-300 active:scale-95"
+                    title="Bye Bye Narcissist Hardcover Book"
+                  >
+                    <img
+                      src={encodeURI(
+                        "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/trimmed/Solo_Book_Clean.png"
+                      )}
+                      alt="Bye Bye Narcissist Book"
+                      className="h-full w-auto object-contain object-bottom drop-shadow-[0_14px_24px_rgba(0,0,0,0.8)]"
+                    />
+                  </Link>
+
+                  {/* Layer 5: Workbook (Right Layer, z-30) */}
+                  <Link
+                    href="/collections"
+                    className="absolute bottom-0 right-[0%] sm:right-[1%] h-[54%] w-auto z-30 block cursor-pointer transition-all duration-300 active:scale-95"
+                    title="Bye Bye Narcissist Workbook"
+                  >
+                    <img
+                      src={encodeURI(
+                        "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/trimmed/Solo_Workbook_Clean.png"
+                      )}
+                      alt="Bye Bye Narcissist Workbook"
+                      className="h-full w-auto object-contain object-bottom drop-shadow-[0_10px_16px_rgba(0,0,0,0.65)]"
+                    />
+                  </Link>
                 </div>
+              </div>
+
+              {/* Pillar 1 Grounded Shelf */}
+              <div className="relative z-20 w-full -mt-2">
+                <div className="w-full h-3.5 bg-gradient-to-r from-[#0d2618] via-[#1a4028] to-[#0d2618] border-t border-cream-logo/25" />
+                <div className="w-full h-4 bg-gradient-to-b from-[#0b2114] via-[#07150d] to-[#030a06] border-t border-black/80 shadow-[0_8px_16px_rgba(0,0,0,0.8)]" />
+              </div>
+
+              {/* Pillar 1 Text */}
+              <Link href="/collections" className="space-y-2 block w-full pt-4 text-center sm:text-left">
+                <h3 className="font-serif-heading text-2xl sm:text-3xl text-cream-logo tracking-tight leading-snug">
+                  Collections
+                </h3>
+                <p className="text-sm sm:text-base text-cream-logo/80 font-normal leading-relaxed">
+                  Digital books, workbooks, and tools that help you explore a specific challenge and put what you learn into practice.
+                </p>
               </Link>
             </div>
 
-            {/* Pillar 3 Visual: Watch & Learn Video with Scroll-Triggered Lift & Play Pulse */}
-            <div className="w-full">
-              <Link
-                href="/watch-learn"
-                onMouseEnter={() => setIsPillar3Hovered(true)}
-                onMouseLeave={() => setIsPillar3Hovered(false)}
-                className="w-full flex flex-col items-center justify-end cursor-pointer group"
-              >
-                <div
-                  className={`relative w-[215px] sm:w-[240px] lg:w-[260px] xl:w-[285px] 2xl:w-[310px] h-[300px] sm:h-[340px] lg:h-[375px] xl:h-[410px] 2xl:h-[435px] rounded-t-2xl overflow-hidden border-t border-x border-white/20 origin-bottom transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-                    isPillar3Hovered
-                      ? "-translate-y-6 scale-[1.05] shadow-[0_38px_75px_rgba(0,0,0,0.95)] border-cream-logo/60"
-                      : isPillar3Active
-                      ? "-translate-y-4 scale-[1.03] shadow-[0_30px_60px_rgba(0,0,0,0.92)] border-cream-logo/40"
-                      : "shadow-[0_25px_50px_rgba(0,0,0,0.85)] scale-100"
-                  }`}
-                >
+            {/* Mobile Pillar 2: App */}
+            <div className="w-full flex flex-col items-center">
+              <Link href="/join-beta" className="w-full flex flex-col items-center cursor-pointer group">
+                <div className="relative w-[230px] sm:w-[260px] h-[320px] sm:h-[350px] bg-[#020A06] border-[2.5px] border-[#1d4a32] rounded-t-[34px] p-2.5 sm:p-3 flex flex-col justify-between origin-bottom shadow-[0_25px_50px_rgba(0,0,0,0.85)] overflow-hidden">
+                  <div className="w-full flex items-center justify-center px-2 pt-1 pb-2 border-b border-editorial-white/10 shrink-0">
+                    <img
+                      src="/assets/Mani Logos/mani cream logo.png"
+                      alt="mani"
+                      className="h-3 w-auto object-contain"
+                    />
+                  </div>
+                  <div className="flex-1 overflow-hidden py-1.5">
+                    <ChatSimulator />
+                  </div>
+                  <div className="w-full relative h-0 pointer-events-none z-20">
+                    <div className="w-[88%] h-[4px] bg-black/95 rounded-full mx-auto -mt-[2px] blur-[1px]" />
+                  </div>
+                </div>
+              </Link>
+
+              {/* Pillar 2 Grounded Shelf */}
+              <div className="relative z-20 w-full -mt-2">
+                <div className="w-full h-3.5 bg-gradient-to-r from-[#0d2618] via-[#1a4028] to-[#0d2618] border-t border-cream-logo/25" />
+                <div className="w-full h-4 bg-gradient-to-b from-[#0b2114] via-[#07150d] to-[#030a06] border-t border-black/80 shadow-[0_8px_16px_rgba(0,0,0,0.8)]" />
+              </div>
+
+              {/* Pillar 2 Text */}
+              <Link href="/join-beta" className="space-y-2 block w-full pt-4 text-center sm:text-left">
+                <h3 className="font-serif-heading text-2xl sm:text-3xl text-cream-logo tracking-tight leading-snug">
+                  App
+                </h3>
+                <p className="text-sm sm:text-base text-cream-logo/80 font-normal leading-relaxed">
+                  Guided conversations, breathwork, meditations, stories, and expert-created resources designed to support you whenever you need it.
+                </p>
+              </Link>
+            </div>
+
+            {/* Mobile Pillar 3: Watch & Learn */}
+            <div className="w-full flex flex-col items-center">
+              <Link href="/watch-learn" className="w-full flex flex-col items-center cursor-pointer group">
+                <div className="relative w-[230px] sm:w-[260px] h-[320px] sm:h-[350px] rounded-t-2xl overflow-hidden border-t border-x border-white/20 origin-bottom shadow-[0_25px_50px_rgba(0,0,0,0.85)]">
                   <img
                     src={newestVideo.thumbnailUrl}
                     alt={newestVideo.title}
-                    className={`w-full h-full object-cover transition-transform duration-700 ease-out ${
-                      isPillar3Active ? "scale-106" : "scale-100"
-                    }`}
+                    className="w-full h-full object-cover"
                   />
-
                   <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/35 to-black/40" />
-
-                  {/* Play Button with Tangible Expanding Pulse */}
                   <div className="absolute inset-0 flex items-center justify-center z-10">
-                    <div
-                      className={`w-14 h-14 rounded-full bg-cream-logo text-[#06180F] flex items-center justify-center shadow-2xl transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-                        isPillar3Hovered
-                          ? "scale-120 shadow-[0_0_35px_rgba(253,240,213,0.7)] bg-white"
-                          : "scale-100"
-                      }`}
-                    >
-                      <svg
-                        width="18"
-                        height="18"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                        className="translate-x-0.5"
-                      >
+                    <div className="w-14 h-14 rounded-full bg-cream-logo text-[#06180F] flex items-center justify-center shadow-2xl">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" className="translate-x-0.5">
                         <path d="M8 5v14l11-7z" />
                       </svg>
                     </div>
                   </div>
-
-                  {/* Video Title */}
                   <div className="absolute bottom-3 left-3 right-3 z-10">
-                    <h4
-                      className={`text-xs sm:text-sm font-serif-heading font-medium line-clamp-2 leading-snug transition-colors duration-300 ${
-                        isPillar3Hovered ? "text-white" : "text-cream-logo"
-                      }`}
-                    >
+                    <h4 className="text-xs sm:text-sm font-serif-heading font-medium line-clamp-2 leading-snug text-cream-logo">
                       {newestVideo.title}
                     </h4>
                   </div>
-
-                  {/* Contact Shadow at Video Base */}
                   <div className="w-full relative h-0 pointer-events-none z-20">
-                    <div
-                      className={`w-[88%] h-[4px] bg-black/95 rounded-full mx-auto -mt-[2px] transition-all duration-500 ${
-                        isPillar3Hovered ? "scale-70 opacity-20 blur-[5px]" : "blur-[1px]"
-                      }`}
-                    />
-                    <div
-                      className={`w-[78%] h-[8px] bg-black/50 rounded-full mx-auto -mt-[2px] transition-all duration-500 ${
-                        isPillar3Hovered ? "scale-75 opacity-15 blur-[8px]" : "blur-[3px]"
-                      }`}
-                    />
+                    <div className="w-[88%] h-[4px] bg-black/95 rounded-full mx-auto -mt-[2px] blur-[1px]" />
                   </div>
                 </div>
+              </Link>
+
+              {/* Pillar 3 Grounded Shelf */}
+              <div className="relative z-20 w-full -mt-2">
+                <div className="w-full h-3.5 bg-gradient-to-r from-[#0d2618] via-[#1a4028] to-[#0d2618] border-t border-cream-logo/25" />
+                <div className="w-full h-4 bg-gradient-to-b from-[#0b2114] via-[#07150d] to-[#030a06] border-t border-black/80 shadow-[0_8px_16px_rgba(0,0,0,0.8)]" />
+              </div>
+
+              {/* Pillar 3 Text */}
+              <Link href="/watch-learn" className="space-y-2 block w-full pt-4 text-center sm:text-left">
+                <h3 className="font-serif-heading text-2xl sm:text-3xl text-cream-logo tracking-tight leading-snug">
+                  Watch & Learn
+                </h3>
+                <p className="text-sm sm:text-base text-cream-logo/80 font-normal leading-relaxed">
+                  Daily videos that turn psychology, relationships, and personal growth into practical insights you can use every day.
+                </p>
               </Link>
             </div>
 
           </div>
 
-          {/* Continuous Architectural Shelf Ledge (Tatakan Nyata - Edge-to-Edge) */}
-          <div className="relative z-20 w-full -mt-2.5 sm:-mt-3">
-            {/* Shelf Floor Surface Plane */}
-            <div className="w-full h-4 sm:h-5 bg-gradient-to-r from-[#0d2618] via-[#1a4028] to-[#0d2618] border-t border-cream-logo/25 shadow-[inset_0_2px_4px_rgba(255,255,255,0.12)] relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-emerald-400/10 to-transparent pointer-events-none" />
-              <div className="absolute bottom-0 inset-x-0 h-[1.5px] bg-gradient-to-r from-transparent via-cream-logo/50 to-transparent" />
-            </div>
-
-            {/* Shelf Front Fascia */}
-            <div className="w-full h-5 sm:h-6 bg-gradient-to-b from-[#0b2114] via-[#07150d] to-[#030a06] border-t border-black/80 shadow-[0_12px_24px_rgba(0,0,0,0.8)]" />
-          </div>
-
         </div>
 
-        {/* Three Visual Cards: Verbatim from website_copy.md */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-8 xl:gap-12 2xl:gap-14 pt-4 sm:pt-6">
-          
-          {/* Pillar 1: Collections */}
-          <Link
-            href="/collections"
-            className="space-y-3 block group cursor-pointer"
-          >
-            <h3 className="font-serif-heading text-2xl sm:text-3xl lg:text-[2.1rem] text-cream-logo tracking-tight leading-snug group-hover:text-white transition-colors">
-              Collections
-            </h3>
-            <p className="text-sm sm:text-base text-cream-logo/80 font-normal leading-relaxed">
-              Digital books, workbooks, and tools that help you explore a specific challenge and put what you learn into practice.
-            </p>
-          </Link>
-
-          {/* Pillar 2: App */}
-          <Link
-            href="/join-beta"
-            className="space-y-3 block group cursor-pointer"
-          >
-            <h3 className="font-serif-heading text-2xl sm:text-3xl lg:text-[2.1rem] text-cream-logo tracking-tight leading-snug group-hover:text-white transition-colors">
-              App
-            </h3>
-            <p className="text-sm sm:text-base text-cream-logo/80 font-normal leading-relaxed">
-              Guided conversations, breathwork, meditations, stories, and expert-created resources designed to support you whenever you need it.
-            </p>
-          </Link>
-
-          {/* Pillar 3: Watch & Learn */}
-          <Link
-            href="/watch-learn"
-            className="space-y-3 block group cursor-pointer"
-          >
-            <h3 className="font-serif-heading text-2xl sm:text-3xl lg:text-[2.1rem] text-cream-logo tracking-tight leading-snug group-hover:text-white transition-colors">
-              Watch & Learn
-            </h3>
-            <p className="text-sm sm:text-base text-cream-logo/80 font-normal leading-relaxed">
-              Daily videos that turn psychology, relationships, and personal growth into practical insights you can use every day.
-            </p>
-          </Link>
-
-        </div>
-
-      </div>
-        </div>
       </div>
     </section>
   );

@@ -114,7 +114,7 @@ export default function ProductDetailPage({ params }: { params: Promise<{ slug: 
       badge: "REINFORCEMENT",
       description:
         "A complete set of 10 frameable 8×10 art prints featuring clear, grounded reminders designed to anchor your recovery and keep self-trust visible in your everyday environment.",
-      image: "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/Posters/1 Framed.png",
+      image: "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/trimmed/Poster_Collection_Set_10.png",
       posterGrid: true,
       specs: [
         "Complete Set of 10 Art Prints",

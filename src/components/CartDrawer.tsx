@@ -14,10 +14,6 @@ export default function CartDrawer() {
   const { cart, isOpen, closeCart, removeFromCart, updateQuantity, subtotal, totalItems } = useCart();
   const [showProgressModal, setShowProgressModal] = useState(false);
 
-  const freeShippingThreshold = 100;
-  const shippingProgress = Math.min((subtotal / freeShippingThreshold) * 100, 100);
-  const remainingForFreeShipping = Math.max(freeShippingThreshold - subtotal, 0);
-
   const handleCheckout = (e: React.MouseEvent) => {
     e.preventDefault();
     if (SITE_LOCKS.ACTIONS_LOCKED) {
@@ -65,31 +61,10 @@ export default function CartDrawer() {
               <button
                 onClick={closeCart}
                 className="w-10 h-10 rounded-full bg-editorial-white/10 text-cream-logo flex items-center justify-center hover:bg-editorial-white/20 transition-colors text-base font-bold cursor-pointer"
+                aria-label="Close cart"
               >
                 ✕
               </button>
-            </div>
-
-            {/* Free Shipping Progress Bar */}
-            <div className="px-6 sm:px-8 py-3.5 bg-[#081F14]/90 border-b border-editorial-white/10">
-              <div className="flex justify-between items-center text-xs mb-2 font-medium">
-                {remainingForFreeShipping > 0 ? (
-                  <span className="text-[#E8F0EC]">
-                    Add <strong className="text-cream-logo font-serif-heading font-semibold text-sm">${remainingForFreeShipping.toFixed(2)}</strong> more for Free Shipping
-                  </span>
-                ) : (
-                  <span className="text-cream-logo font-semibold flex items-center gap-1.5">
-                    ✓ Unlocked Free Express Shipping!
-                  </span>
-                )}
-                <span className="text-[#D8E6DE] text-[11px] font-mono">{Math.round(shippingProgress)}%</span>
-              </div>
-              <div className="w-full bg-editorial-white/10 h-2 rounded-full overflow-hidden">
-                <div
-                  className="bg-cream-logo h-full transition-all duration-500 rounded-full shadow-[0_0_12px_rgba(247,236,214,0.6)]"
-                  style={{ width: `${shippingProgress}%` }}
-                />
-              </div>
             </div>
 
             {/* Cart Items List */}
@@ -105,8 +80,17 @@ export default function CartDrawer() {
                   </div>
                   <h3 className="font-serif-heading text-2xl text-cream-logo">Your Cart is Empty</h3>
                   <p className="text-xs text-[#E8F0EC] max-w-xs mx-auto leading-relaxed">
-                    Explore our Bye Bye Narcissist collection to start your journey.
+                    You haven&apos;t added any items to your cart yet.
                   </p>
+                  <div className="pt-2">
+                    <Link
+                      href="/collections"
+                      onClick={closeCart}
+                      className="inline-block px-6 py-2.5 bg-cream-logo text-[#0E2E1E] text-xs font-semibold rounded-xl hover:bg-[#f2e1bd] transition-colors"
+                    >
+                      Browse Collections
+                    </Link>
+                  </div>
                 </div>
               ) : (
                 cart.map((item) => (
@@ -188,29 +172,29 @@ export default function CartDrawer() {
                     <span>Subtotal</span>
                     <span className="text-cream-logo font-serif-heading text-lg">${subtotal.toFixed(2)}</span>
                   </div>
-                  <div className="flex justify-between">
-                    <span>Estimated Shipping</span>
-                    <span className="text-cream-logo">{remainingForFreeShipping === 0 ? "FREE" : "$4.99"}</span>
+                  <div className="flex justify-between text-[#D8E6DE]">
+                    <span>Shipping</span>
+                    <span>Calculated at checkout</span>
                   </div>
                 </div>
 
                 <div className="pt-3 border-t border-editorial-white/15 flex justify-between items-baseline">
                   <span className="text-base font-bold text-cream-logo">Total</span>
                   <span className="text-4xl font-serif-heading text-cream-logo">
-                    ${(subtotal + (remainingForFreeShipping === 0 ? 0 : 4.99)).toFixed(2)}
+                    ${subtotal.toFixed(2)}
                   </span>
                 </div>
 
                 <Link
                   href="/checkout"
                   onClick={handleCheckout}
-                  className="w-full py-5 bg-cream-logo text-[#0E2E1E] font-semibold rounded-xl hover:bg-[#f2e1bd] transition-all transform hover:scale-[1.01] shadow-2xl text-base flex items-center justify-center gap-2 cursor-pointer text-center"
+                  className="w-full py-5 bg-cream-logo text-[#0E2E1E] font-semibold rounded-xl hover:bg-[#f2e1bd] transition-all transform hover:scale-[1.01] shadow-2xl text-base flex items-center justify-center cursor-pointer text-center"
                 >
-                  Proceed to Checkout →
+                  Proceed to Checkout
                 </Link>
 
                 <p className="text-[11px] text-center text-[#D8E6DE]">
-                  🔒 256-Bit SSL Encrypted • 30-Day Money-Back Guarantee
+                  Shipping and taxes calculated during checkout
                 </p>
               </div>
             )}

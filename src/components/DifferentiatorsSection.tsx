@@ -1,8 +1,6 @@
 "use client";
 
-import React, { useRef, useState, useEffect } from "react";
-import { motion, useScroll, useTransform, useMotionValueEvent } from "framer-motion";
-
+import React from "react";
 import MaskedReveal from "@/components/MaskedReveal";
 
 const differentiators = [
@@ -12,7 +10,7 @@ const differentiators = [
     description:
       "Created with insights drawn from decades of experience helping people navigate relationships, emotions, and personal growth.",
     icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="12" cy="12" r="10" />
         <polyline points="12 6 12 12 16 14" />
       </svg>
@@ -24,7 +22,7 @@ const differentiators = [
     description:
       "Our tools and resources draw from behavioral science, emotional intelligence, cognitive behavioral therapy, and neuroscience.",
     icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M10 2v7.31M14 2v7.31" />
         <path d="M8.5 2h7" />
         <path d="M14 9.3a6.5 6.5 0 1 1-4 0" />
@@ -40,7 +38,7 @@ const differentiators = [
     description:
       "Complex topics explained in ways that are practical, approachable, and easy to apply.",
     icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
         <polyline points="9 22 9 12 15 12 15 22" />
       </svg>
@@ -52,7 +50,7 @@ const differentiators = [
     description:
       "Lasting change begins with understanding what you're experiencing and why.",
     icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="12" cy="12" r="4" />
         <line x1="12" y1="2" x2="12" y2="4" />
         <line x1="12" y1="20" x2="12" y2="22" />
@@ -68,284 +66,75 @@ const differentiators = [
 ];
 
 export default function DifferentiatorsSection() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const trackRef = useRef<HTMLDivElement>(null);
-  const [scrollDistance, setScrollDistance] = useState<number>(1600);
-  const [activeSlide, setActiveSlide] = useState<number>(0);
-  const [hoveredSlide, setHoveredSlide] = useState<number | null>(null);
-
-  const currentFocused = hoveredSlide !== null ? hoveredSlide : activeSlide;
-
-  // Dynamically calculate horizontal overflow travel distance on resize
-  useEffect(() => {
-    const calculateDistance = () => {
-      if (trackRef.current) {
-        const trackWidth = trackRef.current.scrollWidth;
-        const windowWidth = window.innerWidth;
-        const dist = Math.max(0, trackWidth - windowWidth + 120);
-        setScrollDistance(dist);
-      }
-    };
-
-    calculateDistance();
-    window.addEventListener("resize", calculateDistance);
-    return () => window.removeEventListener("resize", calculateDistance);
-  }, []);
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"],
-  });
-
-  // Smooth horizontal slide driven by vertical page scroll
-  const x = useTransform(scrollYProgress, [0, 1], [0, -scrollDistance]);
-
-  // Update active slide indicator as user scrolls
-  useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    if (latest < 0.25) {
-      setActiveSlide(0);
-    } else if (latest < 0.52) {
-      setActiveSlide(1);
-    } else if (latest < 0.78) {
-      setActiveSlide(2);
-    } else {
-      setActiveSlide(3);
-    }
-  });
-
-  // Programmatic smooth scroll to target slide
-  const scrollToSlide = (targetIndex: number) => {
-    if (!containerRef.current) return;
-    const rect = containerRef.current.getBoundingClientRect();
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    const sectionTop = rect.top + scrollTop;
-    const totalScrollable = containerRef.current.offsetHeight - window.innerHeight;
-    const progress = Math.max(0, Math.min(1, targetIndex / 3));
-
-    window.scrollTo({
-      top: sectionTop + progress * totalScrollable,
-      behavior: "smooth",
-    });
-  };
-
   return (
     <section
       id="differentiators"
-      ref={containerRef}
-      className="relative bg-[#FBF9F5] text-ink-black w-full select-none"
+      className="relative bg-[#FBF9F5] text-ink-black py-20 sm:py-24 lg:py-28 w-full select-none"
     >
-      {/* ========================================================================= */}
-      {/* DESKTOP VIEW: Pinned Horizontal Scrollytelling Track                      */}
-      {/* ========================================================================= */}
-      <div className="hidden lg:block relative h-[260vh]">
-        <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-between pt-28 lg:pt-32 xl:pt-36 pb-8 xl:pb-10 select-none">
-          
-          {/* Top Bar: Section Title & Interactive Controls */}
-          <div className="w-full px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24 flex items-end justify-between gap-8 z-20">
-            <div className="max-w-2xl space-y-1.5">
-              <div className="flex items-center gap-2.5">
-                <span className="w-2 h-2 rounded-full bg-[#0E2E1E]" />
-                <span className="text-xs font-bold tracking-widest text-[#0E2E1E] uppercase">
-                  WHAT MAKES US DIFFERENT
-                </span>
-              </div>
-              <MaskedReveal>
-                <h2 className="font-serif-heading text-4xl xl:text-5xl 2xl:text-6xl text-[#0E2E1E] leading-[1.05] tracking-tight">
-                  Simple Doesn&apos;t Mean Simplistic
-                </h2>
-              </MaskedReveal>
-              <p className="text-xs sm:text-sm text-[#0B1710] font-normal leading-relaxed pt-1">
-                Everything we create is informed by decades of experience, research, and practical insight to help people better understand themselves and the challenges they face.
-              </p>
-            </div>
-          </div>
-
-          {/* Center Stage: Horizontal Motion Track */}
-          <div
-            onMouseLeave={() => setHoveredSlide(null)}
-            className="w-full relative my-auto py-2 overflow-visible"
-          >
-            <motion.div
-              ref={trackRef}
-              style={{ x }}
-              className="flex items-stretch gap-8 xl:gap-10 2xl:gap-12 pl-8 md:pl-12 lg:px-16 xl:pl-20 2xl:pl-24 w-max"
-            >
-              {differentiators.map((item, idx) => {
-                const isFocused = currentFocused === idx;
-
-                return (
-                  <motion.div
-                    key={idx}
-                    tabIndex={0}
-                    role="button"
-                    aria-label={`Slide ${item.number}: ${item.title}`}
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter" || e.key === " ") {
-                        e.preventDefault();
-                        scrollToSlide(idx);
-                      }
-                    }}
-                    onMouseEnter={() => setHoveredSlide(idx)}
-                    onClick={() => scrollToSlide(idx)}
-                    animate={{
-                      backgroundColor: isFocused ? "#081F14" : "#FFFFFF",
-                      color: isFocused ? "#FDF0D5" : "#0B1710",
-                      scale: isFocused ? 1.025 : 0.98,
-                      opacity: isFocused ? 1 : 0.82,
-                    }}
-                    transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-                    className={`w-[540px] xl:w-[600px] 2xl:w-[640px] h-[380px] sm:h-[400px] xl:h-[430px] 2xl:h-[450px] rounded-3xl p-8 xl:p-10 2xl:p-11 border flex flex-col justify-between relative overflow-hidden cursor-pointer transition-shadow duration-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#0E2E1E] ${
-                      isFocused
-                        ? "border-cream-logo/30 shadow-[0_30px_70px_rgba(8,31,20,0.35)]"
-                        : "border-mist-grey/90 shadow-[0_15px_35px_rgba(0,0,0,0.03)] hover:border-[#0E2E1E]/30"
-                    }`}
-                  >
-                    {/* Big Decorative Number Watermark with Unseen Studio Micro-Parallax */}
-                    <motion.span
-                      animate={{
-                        x: isFocused ? -14 : 0,
-                        y: isFocused ? -8 : 0,
-                      }}
-                      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                      className={`absolute -bottom-6 -right-2 text-[160px] xl:text-[200px] font-serif-heading font-medium leading-none pointer-events-none select-none transition-colors duration-500 ${
-                        isFocused ? "text-cream-logo/[0.07]" : "text-[#0E2E1E]/[0.05]"
-                      }`}
-                    >
-                      {item.number}
-                    </motion.span>
-
-                    {/* Card Header */}
-                    <div className="space-y-6 relative z-10">
-                      <div className="flex items-center justify-between">
-                        <span
-                          className={`text-xs font-mono font-bold tracking-widest uppercase px-3.5 py-1.5 rounded-full border transition-colors duration-300 ${
-                            isFocused
-                              ? "bg-editorial-white/10 text-cream-logo border-cream-logo/25"
-                              : "bg-[#0E2E1E]/5 text-[#0E2E1E] border-[#0E2E1E]/15"
-                          }`}
-                        >
-                          {item.number}
-                        </span>
-
-                        <div
-                          className={`w-10 h-10 rounded-full flex items-center justify-center transition-colors duration-300 ${
-                            isFocused
-                              ? "bg-cream-logo/15 text-cream-logo"
-                              : "bg-[#0E2E1E]/5 text-[#0E2E1E]"
-                          }`}
-                        >
-                          {item.icon}
-                        </div>
-                      </div>
-
-                      <div className="space-y-4">
-                        <h3
-                          className={`font-serif-heading text-2xl xl:text-3xl 2xl:text-4xl font-normal leading-tight tracking-tight transition-colors duration-300 ${
-                            isFocused ? "text-cream-logo" : "text-[#0E2E1E]"
-                          }`}
-                        >
-                          {item.title}
-                        </h3>
-
-                        <p
-                          className={`text-base xl:text-lg leading-relaxed transition-colors duration-300 ${
-                            isFocused ? "text-[#FDF0D5]/90" : "text-[#0B1710]/85"
-                          }`}
-                        >
-                          {item.description}
-                        </p>
-                      </div>
-                    </div>
-                  </motion.div>
-                );
-              })}
-            </motion.div>
-          </div>
-
-          {/* Bottom Bar: Slide Indicator Dots */}
-          <div className="w-full px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24 flex items-center justify-center text-xs font-semibold text-[#0E2E1E]/60 z-20">
-            <div className="flex items-center gap-2">
-              {differentiators.map((_, dotIdx) => (
-                <button
-                  key={dotIdx}
-                  onClick={() => scrollToSlide(dotIdx)}
-                  className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
-                    activeSlide === dotIdx ? "w-8 bg-[#0E2E1E]" : "w-2 bg-mist-grey/90 hover:bg-[#0E2E1E]/40"
-                  }`}
-                  aria-label={`Go to slide ${dotIdx + 1}`}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile & Tablet View: Responsive Vertical Stack */}
-      <div className="lg:hidden py-16 sm:py-20 px-4 sm:px-8 space-y-10">
-        <div className="space-y-3">
-          <div className="flex items-center gap-2">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16">
+        
+        {/* Section Header */}
+        <div className="max-w-3xl space-y-3">
+          <div className="flex items-center gap-2.5">
             <span className="w-2 h-2 rounded-full bg-[#0E2E1E]" />
-            <span className="text-[11px] font-bold tracking-widest text-[#0E2E1E] uppercase">
+            <span className="text-xs font-bold tracking-widest text-[#0E2E1E] uppercase">
               WHAT MAKES US DIFFERENT
             </span>
           </div>
-          <h2 className="font-serif-heading text-3xl sm:text-4xl text-[#0E2E1E] leading-tight">
-            Simple Doesn&apos;t Mean Simplistic
-          </h2>
-          <p className="text-sm text-[#0B1710] leading-relaxed">
+
+          <MaskedReveal>
+            <h2 className="font-serif-heading text-3xl sm:text-4xl lg:text-5xl text-[#0E2E1E] leading-[1.12] tracking-tight">
+              Simple Doesn&apos;t Mean Simplistic
+            </h2>
+          </MaskedReveal>
+
+          <p className="text-base sm:text-lg text-[#0B1710] font-normal leading-relaxed pt-1">
             Everything we create is informed by decades of experience, research, and practical insight to help people better understand themselves and the challenges they face.
           </p>
         </div>
 
-        <div className="space-y-6">
+        {/* 4 Cards Grid - 100% Vertical Responsive Flow (No Horizontal Scroll) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 items-stretch">
           {differentiators.map((item, idx) => (
             <div
               key={idx}
-              className={`rounded-2xl p-7 sm:p-8 border space-y-5 ${
-                idx === 0
-                  ? "bg-[#081F14] text-[#FDF0D5] border-cream-logo/25 shadow-md"
-                  : "bg-white text-[#0B1710] border-mist-grey/80 shadow-xs"
-              }`}
+              className="bg-white rounded-2xl lg:rounded-3xl p-7 sm:p-8 lg:p-9 border border-[#0E2E1E]/12 shadow-[0_4px_24px_rgba(0,0,0,0.03)] hover:shadow-[0_16px_40px_rgba(14,46,30,0.08)] hover:border-[#0E2E1E]/30 transition-all duration-300 flex flex-col justify-between relative overflow-hidden group"
             >
-              <div className="flex items-center justify-between">
-                <span
-                  className={`text-[11px] font-mono font-bold tracking-wider uppercase px-3 py-1 rounded-full border ${
-                    idx === 0
-                      ? "bg-white/10 text-cream-logo border-white/20"
-                      : "bg-[#0E2E1E]/5 text-[#0E2E1E] border-[#0E2E1E]/15"
-                  }`}
-                >
-                  {item.number}
-                </span>
+              {/* Subtle Decorative Number Watermark in Background */}
+              <span
+                className="absolute -bottom-6 -right-2 text-[120px] lg:text-[140px] font-serif-heading font-medium leading-none pointer-events-none select-none text-[#0E2E1E]/[0.03] group-hover:text-[#0E2E1E]/[0.06] transition-colors duration-500"
+                aria-hidden="true"
+              >
+                {item.number}
+              </span>
 
-                <div
-                  className={`w-9 h-9 rounded-full flex items-center justify-center ${
-                    idx === 0 ? "bg-cream-logo/15 text-cream-logo" : "bg-[#0E2E1E]/5 text-[#0E2E1E]"
-                  }`}
-                >
-                  {item.icon}
+              <div className="space-y-6 relative z-10">
+                {/* Card Top: Number pill & Icon */}
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-mono font-bold tracking-wider uppercase px-3.5 py-1.5 rounded-full bg-[#0E2E1E]/5 text-[#0E2E1E] border border-[#0E2E1E]/15">
+                    {item.number}
+                  </span>
+
+                  <div className="w-10 h-10 rounded-full flex items-center justify-center bg-[#0E2E1E]/5 text-[#0E2E1E] group-hover:bg-[#0E2E1E] group-hover:text-cream-logo transition-colors duration-300">
+                    {item.icon}
+                  </div>
                 </div>
-              </div>
 
-              <div className="space-y-2">
-                <h3
-                  className={`font-serif-heading text-2xl font-normal leading-snug ${
-                    idx === 0 ? "text-cream-logo" : "text-[#0E2E1E]"
-                  }`}
-                >
-                  {item.title}
-                </h3>
-                <p
-                  className={`text-sm sm:text-base leading-relaxed ${
-                    idx === 0 ? "text-cream-logo/90" : "text-[#0B1710]"
-                  }`}
-                >
-                  {item.description}
-                </p>
+                {/* Card Body: Title & Description */}
+                <div className="space-y-3">
+                  <h3 className="font-serif-heading text-xl sm:text-2xl font-medium text-[#0E2E1E] leading-snug tracking-tight">
+                    {item.title}
+                  </h3>
+
+                  <p className="text-sm sm:text-base text-[#0B1710]/85 leading-relaxed font-normal">
+                    {item.description}
+                  </p>
+                </div>
               </div>
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );
