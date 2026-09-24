@@ -95,11 +95,6 @@ export default function WatchLearnSpotlight() {
                     </svg>
                   </div>
                 </div>
-
-                {/* Duration Badge Bottom Right */}
-                <div className="absolute bottom-2.5 right-2.5 z-10 bg-black/70 backdrop-blur-xs text-white text-[10px] font-mono px-2 py-0.5 rounded-md border border-white/15">
-                  {video.duration}
-                </div>
               </div>
             </div>
           ))}

@@ -107,7 +107,6 @@ export default function InteractiveHeroStage3D() {
                 </div>
                 <div className="absolute bottom-4 left-4 right-4 flex justify-between items-center text-xs font-bold text-cream-logo z-10 bg-ink-black/85 px-4 py-2.5 rounded-xl backdrop-blur-md">
                   <span>EMOTIONAL INTELLIGENCE</span>
-                  <span>1:30 min</span>
                 </div>
               </div>
             </div>

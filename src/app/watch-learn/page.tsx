@@ -184,9 +184,6 @@ export default function WatchLearnPage() {
                     <span className="text-[8px] font-bold tracking-wider uppercase bg-[#0E2E1E]/85 text-cream-logo px-2 py-0.5 rounded-full border border-editorial-white/15 truncate max-w-[65%] shadow-xs">
                       {video.category}
                     </span>
-                    <span className="text-[8px] font-bold text-cream-logo bg-black/70 backdrop-blur-xs px-2 py-0.5 rounded-full shrink-0 shadow-xs">
-                      {video.duration}
-                    </span>
                   </div>
 
                   {/* Center Play Icon */}

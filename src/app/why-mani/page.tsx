@@ -405,7 +405,7 @@ export default function WhyManiPage() {
                     href="/collections"
                     className="inline-flex items-center gap-2 px-7 py-4 bg-[#0E2E1E] text-cream-logo text-xs sm:text-sm font-semibold rounded-xl hover:bg-[#143d28] transition-all shadow-sm group-hover:shadow-md"
                   >
-                    <span>Explore Collections</span>
+                    <span>Explore Collections &rarr;</span>
                   </Link>
                 </div>
               </motion.div>
@@ -435,12 +435,12 @@ export default function WhyManiPage() {
                     href="/watch-learn"
                     className="inline-flex items-center gap-2 px-7 py-4 bg-[#0E2E1E] text-cream-logo text-xs sm:text-sm font-semibold rounded-xl hover:bg-[#143d28] transition-all shadow-sm group-hover:shadow-md"
                   >
-                    <span>Watch Videos</span>
+                    <span>Watch Videos &rarr;</span>
                   </Link>
                 </div>
               </motion.div>
 
-              {/* Column 3: mani APP */}
+              {/* Column 3: MANI APP */}
               <motion.div
                 initial={{ opacity: 0, y: 32, filter: "blur(6px)" }}
                 whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
@@ -450,7 +450,7 @@ export default function WhyManiPage() {
               >
                 <div className="space-y-4">
                   <span className="text-xs font-bold tracking-[0.2em] uppercase text-[#0E2E1E]/70 block group-hover:text-[#0E2E1E] transition-colors">
-                    03 &middot; <strong className="font-bold lowercase">mani</strong>
+                    03 &middot; <strong className="font-bold lowercase">mani</strong> APP
                   </span>
                   <h3 className="font-serif-heading text-2xl sm:text-3xl lg:text-4xl text-[#0E2E1E] leading-snug group-hover:translate-x-1 transition-transform duration-300">
                     Support Wherever You Are
@@ -465,7 +465,7 @@ export default function WhyManiPage() {
                     href="/app"
                     className="inline-flex items-center gap-2 px-7 py-4 bg-[#0E2E1E] text-cream-logo text-xs sm:text-sm font-semibold rounded-xl hover:bg-[#143d28] transition-all shadow-sm group-hover:shadow-md"
                   >
-                    <span>Learn About <strong className="font-bold lowercase">mani</strong></span>
+                    <span>Learn About <strong className="font-bold lowercase">mani</strong> &rarr;</span>
                   </Link>
                 </div>
               </motion.div>

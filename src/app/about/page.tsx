@@ -504,7 +504,7 @@ export default function AboutPage() {
                   onClick={() => setIsCommunityModalOpen(true)}
                   className="px-10 py-4.5 bg-[#0E2E1E] text-cream-logo font-semibold rounded-full hover:bg-[#143d28] active:scale-98 transition-all text-base sm:text-lg shadow-lg hover:shadow-xl cursor-pointer"
                 >
-                  Join Our Community
+                  Join Our Community &rarr;
                 </button>
                 <a
                   href="mailto:contact@mymani.ai"
