@@ -69,9 +69,6 @@ export default function VideoModal({ video, onClose }: VideoModalProps) {
             <span className="text-xs font-bold tracking-widest uppercase bg-soft-signal-green text-deep-green px-3 py-1 rounded-full">
               {video.category}
             </span>
-            <span className="text-xs font-semibold text-[#22332A]">
-              {video.duration}
-            </span>
           </div>
 
           <h2 className="font-serif-heading text-3xl md:text-4xl text-deep-green">

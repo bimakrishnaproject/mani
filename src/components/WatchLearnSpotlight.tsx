@@ -124,7 +124,7 @@ export default function WatchLearnSpotlight() {
               <div className="flex items-center justify-between">
                 <div>
                   <span className="text-xs font-bold text-cream-logo uppercase tracking-widest block">
-                    {activeVideoModal.category} &bull; {activeVideoModal.duration}
+                    {activeVideoModal.category}
                   </span>
                   <h3 className="font-serif-heading text-xl sm:text-2xl text-cream-logo mt-0.5">
                     {activeVideoModal.title}
