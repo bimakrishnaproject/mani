@@ -45,11 +45,11 @@ export default function AppShowcaseSection() {
               </span>
             </div>
 
-            <MaskedReveal>
+            {/* <MaskedReveal> */}
               <h2 className="font-serif-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-cream-logo leading-[1.02] tracking-tight">
                 Support Wherever You Are
               </h2>
-            </MaskedReveal>
+            {/* </MaskedReveal> */}
 
             <p className="text-base sm:text-lg text-[#FAF5EB] font-normal leading-relaxed max-w-xl">
               When your thoughts won’t slow down, emotions feel overwhelming, or you need to talk something through, <strong className="font-bold lowercase">mani</strong> offers guided support to help you pause, reflect, and work through what’s on your mind.

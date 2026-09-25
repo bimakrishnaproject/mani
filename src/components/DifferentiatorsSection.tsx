@@ -82,11 +82,9 @@ export default function DifferentiatorsSection() {
             </span>
           </div>
 
-          <MaskedReveal>
-            <h2 className="font-serif-heading text-3xl sm:text-4xl lg:text-5xl text-[#0E2E1E] leading-[1.12] tracking-tight">
-              Simple Doesn&apos;t Mean Simplistic
-            </h2>
-          </MaskedReveal>
+          <h2 className="font-serif-heading text-3xl sm:text-4xl lg:text-5xl text-[#0E2E1E] leading-[1.12] tracking-tight">
+            Simple Doesn&apos;t Mean Simplistic
+          </h2>
 
           <p className="text-base sm:text-lg text-[#0B1710] font-normal leading-relaxed pt-1">
             Everything we create is informed by decades of experience, research, and practical insight to help people better understand themselves and the challenges they face.

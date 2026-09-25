@@ -79,47 +79,83 @@ export default function AnimatedPhoneChat({
   const [visibleCount, setVisibleCount] = useState<number>(2);
   const [isTyping, setIsTyping] = useState<boolean>(false);
   const [typingSender, setTypingSender] = useState<"mani" | "user">("mani");
+  const [typedInputText, setTypedInputText] = useState<string>("");
+  const [isSending, setIsSending] = useState<boolean>(false);
   const [isUserInteracting, setIsUserInteracting] = useState<boolean>(false);
   const chatScrollRef = useRef<HTMLDivElement>(null);
 
-  // Progressive typing and message reveal loop
+  // Progressive authentic typewriter & chat sequence
   useEffect(() => {
-    let timeoutId: NodeJS.Timeout;
+    let isCancelled = false;
 
-    const playNextStep = (currentCount: number) => {
-      if (currentCount >= CONVERSATION_SCRIPT.length) {
-        // Conversation complete, pause for 5s then restart from message 2
-        timeoutId = setTimeout(() => {
+    const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
+    const runConversation = async () => {
+      let currentCount = 2;
+
+      while (!isCancelled) {
+        if (currentCount >= CONVERSATION_SCRIPT.length) {
+          // Pause at complete conversation, then loop back
+          await wait(6000);
+          if (isCancelled) break;
           setVisibleCount(2);
-          playNextStep(2);
-        }, 5500);
-        return;
+          currentCount = 2;
+          await wait(1500);
+        }
+
+        const nextMsg = CONVERSATION_SCRIPT[currentCount];
+
+        if (nextMsg.sender === "user") {
+          // Authentic letter-by-letter typing into the input bar
+          setTypedInputText("");
+          await wait(600);
+          if (isCancelled) break;
+
+          for (let i = 1; i <= nextMsg.text.length; i++) {
+            if (isCancelled) break;
+            setTypedInputText(nextMsg.text.slice(0, i));
+            // Slight natural variance in typing rhythm (30ms - 55ms)
+            await wait(28 + (i % 3) * 12);
+          }
+
+          if (isCancelled) break;
+          // Pause briefly after finishing typing before hitting send
+          await wait(450);
+          if (isCancelled) break;
+
+          // Click / Send effect
+          setIsSending(true);
+          await wait(180);
+          if (isCancelled) break;
+
+          // Message sends into stream
+          setTypedInputText("");
+          setIsSending(false);
+          setVisibleCount((prev) => prev + 1);
+          currentCount++;
+
+          await wait(1200);
+        } else {
+          // Mani's turn: thoughtful reflection indicator
+          setIsTyping(true);
+          setTypingSender("mani");
+          await wait(1400);
+          if (isCancelled) break;
+
+          setIsTyping(false);
+          setVisibleCount((prev) => prev + 1);
+          currentCount++;
+
+          await wait(1800);
+        }
       }
-
-      const nextMessage = CONVERSATION_SCRIPT[currentCount];
-      setIsTyping(true);
-      setTypingSender(nextMessage.sender);
-
-      // Realistic typing duration based on text length
-      const typingTime = Math.min(2200, Math.max(1300, nextMessage.text.length * 22));
-
-      timeoutId = setTimeout(() => {
-        setIsTyping(false);
-        setVisibleCount(currentCount + 1);
-
-        // Interval before next response
-        const pauseTime = nextMessage.sender === "user" ? 1400 : 2200;
-        timeoutId = setTimeout(() => {
-          playNextStep(currentCount + 1);
-        }, pauseTime);
-      }, typingTime);
     };
 
-    timeoutId = setTimeout(() => {
-      playNextStep(2);
-    }, 1800);
+    runConversation();
 
-    return () => clearTimeout(timeoutId);
+    return () => {
+      isCancelled = true;
+    };
   }, []);
 
   // Smooth autoscroll to the latest message
@@ -130,7 +166,7 @@ export default function AnimatedPhoneChat({
         behavior: "smooth",
       });
     }
-  }, [visibleCount, isTyping, isUserInteracting]);
+  }, [visibleCount, isTyping, typedInputText, isUserInteracting]);
 
   const displayedMessages = CONVERSATION_SCRIPT.slice(0, visibleCount);
 
@@ -274,19 +310,36 @@ export default function AnimatedPhoneChat({
 
         {/* Bottom App Interaction Bar & Home Indicator */}
         <div className="w-full shrink-0 pt-2 pb-1 border-t border-editorial-white/10 bg-[#080D0A]/95 backdrop-blur-md">
-          {/* Simulated Input Bar */}
+          {/* Simulated Input Bar with Authentic Real-Time Typewriter Typing */}
           <div
-            className="flex items-center justify-between bg-[#111B15] border border-editorial-white/15 rounded-full px-3.5 py-2 text-xs text-cream-logo/60"
+            className={`flex items-center justify-between bg-[#111B15] border rounded-full px-3.5 py-2 text-xs transition-colors duration-200 ${
+              typedInputText ? "border-emerald-500/50 bg-[#0d1a12]" : "border-editorial-white/15"
+            }`}
           >
-            <span>Type a reflection...</span>
-            <div
-              className="w-6 h-6 rounded-full bg-[#1C422E] text-cream-logo flex items-center justify-center shadow-xs"
+            <div className="flex-1 overflow-hidden pr-2 flex items-center">
+              {typedInputText ? (
+                <span className="text-[#FAF5EB] font-normal text-[11.5px] sm:text-xs truncate">
+                  {typedInputText}
+                  <span className="inline-block w-[1.5px] h-3 bg-emerald-400 ml-0.5 animate-pulse align-middle" />
+                </span>
+              ) : (
+                <span className="text-cream-logo/50 text-[11px] sm:text-xs">Type a reflection...</span>
+              )}
+            </div>
+            <motion.div
+              animate={isSending ? { scale: [1, 0.85, 1.15, 1] } : {}}
+              transition={{ duration: 0.2 }}
+              className={`w-6 h-6 rounded-full flex items-center justify-center shadow-xs shrink-0 transition-all duration-200 ${
+                typedInputText || isSending
+                  ? "bg-emerald-500 text-[#05150D] shadow-[0_0_10px_rgba(16,185,129,0.5)] cursor-pointer"
+                  : "bg-[#1C422E] text-cream-logo/60"
+              }`}
             >
               <svg width={12} height={12} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <line x1="12" y1="19" x2="12" y2="5" />
                 <polyline points="5 12 12 5 19 12" />
               </svg>
-            </div>
+            </motion.div>
           </div>
 
           {/* iOS Home Indicator */}

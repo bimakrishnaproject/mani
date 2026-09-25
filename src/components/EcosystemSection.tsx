@@ -108,86 +108,22 @@ export default function EcosystemSection() {
             {/* Visual Showcase Row: Books, Phone, Video sitting side-by-side */}
             <div className="grid grid-cols-3 gap-8 lg:gap-12 xl:gap-16 2xl:gap-24 items-end">
               
-              {/* Pillar 1 Visual: Complete 5-Product Collection Layered Stack (Grounded, Individually Hoverable) */}
+              {/* Pillar 1 Visual: Complete 5-Product Collection (Grounded & Tangible) */}
               <div className="w-full flex flex-col items-center justify-end">
                 <div className="w-full flex items-end justify-center pb-0 relative h-[330px] sm:h-[370px] md:h-[405px] lg:h-[445px] xl:h-[480px]">
-                  <div className="relative w-full h-full max-w-[580px] flex items-end justify-center select-none">
-                    
-                    {/* Layer 1: Framed Poster (Background Layer, z-10) */}
-                    <Link
-                      href="/collections"
-                      className="absolute bottom-0 left-[20%] sm:left-[22%] md:left-[19%] lg:left-[22%] h-[92%] w-auto z-10 group/poster block cursor-pointer transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-2 hover:scale-[1.02] hover:z-40"
-                      title="Framed Poster: What You Can and Cannot Control"
-                    >
-                      <img
-                        src={encodeURI(
-                          "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/trimmed/Clean_Framed_Poster_Transparent.png"
-                        )}
-                        alt="Framed Poster"
-                        className="h-full w-auto object-contain object-bottom drop-shadow-[0_12px_24px_rgba(0,0,0,0.7)] group-hover/poster:drop-shadow-[0_20px_35px_rgba(0,0,0,0.9)]"
-                      />
-                    </Link>
-
-                    {/* Layer 2: Affirmation Cards Tray (Far Left Layer, z-20) */}
-                    <Link
-                      href="/collections"
-                      className="absolute bottom-0 left-[0%] sm:left-[1%] h-[38%] w-auto z-20 group/cards block cursor-pointer transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-2.5 hover:scale-105 hover:z-40"
-                      title="Bye Bye Narcissist Affirmation Cards"
-                    >
-                      <img
-                        src={encodeURI(
-                          "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/trimmed/Solo_Cards_Tray.png"
-                        )}
-                        alt="Affirmation Cards"
-                        className="h-full w-auto object-contain object-bottom drop-shadow-[0_10px_18px_rgba(0,0,0,0.65)] group-hover/cards:drop-shadow-[0_18px_28px_rgba(0,0,0,0.85)]"
-                      />
-                    </Link>
-
-                    {/* Layer 3: Coloring Book (Left-Center Layer, z-25) */}
-                    <Link
-                      href="/collections"
-                      className="absolute bottom-0 left-[18%] sm:left-[20%] md:left-[17%] lg:left-[20%] h-[48%] w-auto z-25 group/coloring block cursor-pointer transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-3 hover:scale-105 hover:z-40"
-                      title="Bye Bye Narcissist Coloring Book and Daily Journal"
-                    >
-                      <img
-                        src={encodeURI(
-                          "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/trimmed/Coloring Book.png"
-                        )}
-                        alt="Coloring Book"
-                        className="h-full w-auto object-contain object-bottom drop-shadow-[0_12px_20px_rgba(0,0,0,0.65)] group-hover/coloring:drop-shadow-[0_22px_32px_rgba(0,0,0,0.85)]"
-                      />
-                    </Link>
-
-                    {/* Layer 4: Main Hardcover Book (Center-Hero Layer, z-35) */}
-                    <Link
-                      href="/collections"
-                      className="absolute bottom-0 left-[39%] sm:left-[41%] md:left-[37%] lg:left-[40%] h-[56%] w-auto z-35 group/book block cursor-pointer transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-3.5 hover:scale-105 hover:z-40"
-                      title="Bye Bye Narcissist Hardcover Book"
-                    >
-                      <img
-                        src={encodeURI(
-                          "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/trimmed/Solo_Book_Clean.png"
-                        )}
-                        alt="Bye Bye Narcissist Book"
-                        className="h-full w-auto object-contain object-bottom drop-shadow-[0_16px_28px_rgba(0,0,0,0.8)] group-hover/book:drop-shadow-[0_25px_40px_rgba(0,0,0,0.95)]"
-                      />
-                    </Link>
-
-                    {/* Layer 5: Workbook (Right Layer, z-30) */}
-                    <Link
-                      href="/collections"
-                      className="absolute bottom-0 right-[0%] sm:right-[1%] h-[54%] w-auto z-30 group/workbook block cursor-pointer transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-3 hover:scale-105 hover:z-40"
-                      title="Bye Bye Narcissist Workbook"
-                    >
-                      <img
-                        src={encodeURI(
-                          "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/trimmed/Solo_Workbook_Clean.png"
-                        )}
-                        alt="Bye Bye Narcissist Workbook"
-                        className="h-full w-auto object-contain object-bottom drop-shadow-[0_12px_20px_rgba(0,0,0,0.65)] group-hover/workbook:drop-shadow-[0_22px_32px_rgba(0,0,0,0.85)]"
-                      />
-                    </Link>
-                  </div>
+                  <Link
+                    href="/collections"
+                    className="relative w-full h-full max-w-[560px] flex items-end justify-center group cursor-pointer"
+                    title="Explore Bye Bye Narcissist Collection"
+                  >
+                    <img
+                      src={encodeURI(
+                        "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/trimmed/Complete_Collection_Etsy_Bundle.png"
+                      )}
+                      alt="Bye Bye Narcissist Complete Collection with Poster Set"
+                      className="w-auto h-full max-h-[98%] object-contain object-bottom select-none drop-shadow-[0_16px_32px_rgba(0,0,0,0.85)] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.02]"
+                    />
+                  </Link>
                 </div>
               </div>
 
@@ -354,83 +290,19 @@ export default function EcosystemSection() {
             {/* Mobile Pillar 1: Collections */}
             <div className="w-full flex flex-col items-center">
               <div className="w-full flex items-end justify-center pb-0 relative h-[270px] sm:h-[320px]">
-                <div className="relative w-full h-full max-w-[420px] flex items-end justify-center select-none">
-                  
-                  {/* Layer 1: Framed Poster (Background Layer, z-10) */}
-                  <Link
-                    href="/collections"
-                    className="absolute bottom-0 left-[20%] sm:left-[22%] h-[92%] w-auto z-10 block cursor-pointer transition-all duration-300 active:scale-95"
-                    title="Framed Poster"
-                  >
-                    <img
-                      src={encodeURI(
-                        "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/trimmed/Clean_Framed_Poster_Transparent.png"
-                      )}
-                      alt="Framed Poster"
-                      className="h-full w-auto object-contain object-bottom drop-shadow-[0_10px_20px_rgba(0,0,0,0.7)]"
-                    />
-                  </Link>
-
-                  {/* Layer 2: Affirmation Cards Tray (Far Left Layer, z-20) */}
-                  <Link
-                    href="/collections"
-                    className="absolute bottom-0 left-[0%] sm:left-[1%] h-[38%] w-auto z-20 block cursor-pointer transition-all duration-300 active:scale-95"
-                    title="Affirmation Cards"
-                  >
-                    <img
-                      src={encodeURI(
-                        "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/trimmed/Solo_Cards_Tray.png"
-                      )}
-                      alt="Affirmation Cards"
-                      className="h-full w-auto object-contain object-bottom drop-shadow-[0_8px_14px_rgba(0,0,0,0.65)]"
-                    />
-                  </Link>
-
-                  {/* Layer 3: Coloring Book (Left-Center Layer, z-25) */}
-                  <Link
-                    href="/collections"
-                    className="absolute bottom-0 left-[18%] sm:left-[20%] h-[48%] w-auto z-25 block cursor-pointer transition-all duration-300 active:scale-95"
-                    title="Bye Bye Narcissist Coloring Book"
-                  >
-                    <img
-                      src={encodeURI(
-                        "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/trimmed/Coloring Book.png"
-                      )}
-                      alt="Coloring Book"
-                      className="h-full w-auto object-contain object-bottom drop-shadow-[0_10px_16px_rgba(0,0,0,0.65)]"
-                    />
-                  </Link>
-
-                  {/* Layer 4: Main Hardcover Book (Center-Hero Layer, z-35) */}
-                  <Link
-                    href="/collections"
-                    className="absolute bottom-0 left-[39%] sm:left-[41%] h-[56%] w-auto z-35 block cursor-pointer transition-all duration-300 active:scale-95"
-                    title="Bye Bye Narcissist Hardcover Book"
-                  >
-                    <img
-                      src={encodeURI(
-                        "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/trimmed/Solo_Book_Clean.png"
-                      )}
-                      alt="Bye Bye Narcissist Book"
-                      className="h-full w-auto object-contain object-bottom drop-shadow-[0_14px_24px_rgba(0,0,0,0.8)]"
-                    />
-                  </Link>
-
-                  {/* Layer 5: Workbook (Right Layer, z-30) */}
-                  <Link
-                    href="/collections"
-                    className="absolute bottom-0 right-[0%] sm:right-[1%] h-[54%] w-auto z-30 block cursor-pointer transition-all duration-300 active:scale-95"
-                    title="Bye Bye Narcissist Workbook"
-                  >
-                    <img
-                      src={encodeURI(
-                        "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/trimmed/Solo_Workbook_Clean.png"
-                      )}
-                      alt="Bye Bye Narcissist Workbook"
-                      className="h-full w-auto object-contain object-bottom drop-shadow-[0_10px_16px_rgba(0,0,0,0.65)]"
-                    />
-                  </Link>
-                </div>
+                <Link
+                  href="/collections"
+                  className="relative w-full h-full max-w-[420px] flex items-end justify-center select-none cursor-pointer transition-transform duration-300 active:scale-95"
+                  title="Explore Bye Bye Narcissist Collection"
+                >
+                  <img
+                    src={encodeURI(
+                      "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/trimmed/Complete_Collection_Etsy_Bundle.png"
+                    )}
+                    alt="Bye Bye Narcissist Complete Collection with Poster Set"
+                    className="w-auto h-full max-h-[98%] object-contain object-bottom drop-shadow-[0_12px_24px_rgba(0,0,0,0.85)]"
+                  />
+                </Link>
               </div>
 
               {/* Pillar 1 Grounded Shelf */}

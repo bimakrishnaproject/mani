@@ -43,11 +43,11 @@ export default function WatchLearnSpotlight() {
               </span>
             </div>
 
-            <MaskedReveal>
+            {/* <MaskedReveal> */}
               <h2 className="font-serif-heading text-3xl sm:text-4xl lg:text-5xl text-[#0E2E1E] leading-[1.12] tracking-tight">
                 Support In Minutes
               </h2>
-            </MaskedReveal>
+            {/* </MaskedReveal> */}
 
             <p className="text-base sm:text-lg text-[#0B1710] font-normal leading-relaxed">
               Understand why you react the way you do, recognize patterns in your relationships, and learn new ways to respond through short, practical videos.

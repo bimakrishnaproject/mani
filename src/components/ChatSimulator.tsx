@@ -66,41 +66,67 @@ export default function ChatSimulator() {
   const [step, setStep] = useState<number>(3); // start with first 3 messages visible immediately
   const [isTyping, setIsTyping] = useState<boolean>(false);
   const [typingSender, setTypingSender] = useState<"user" | "mani">("user");
+  const [typingText, setTypingText] = useState<string>("");
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  // Progressive conversation reveal loop
+  // Progressive conversation reveal loop with authentic typewriter effect
   useEffect(() => {
-    let timer: NodeJS.Timeout;
+    let isCancelled = false;
+    const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
-    const advanceStep = (currentStep: number) => {
-      if (currentStep >= chatMessages.length) {
-        // Pause at full conversation then reset
-        timer = setTimeout(() => {
+    const runChat = async () => {
+      let currentStep = 3;
+
+      while (!isCancelled) {
+        if (currentStep >= chatMessages.length) {
+          await wait(5000);
+          if (isCancelled) break;
           setStep(2);
-          advanceStep(2);
-        }, 5000);
-        return;
+          currentStep = 2;
+          await wait(1200);
+        }
+
+        const nextMsg = chatMessages[currentStep];
+
+        if (nextMsg.sender === "user") {
+          setIsTyping(true);
+          setTypingSender("user");
+          setTypingText("");
+
+          for (let i = 1; i <= nextMsg.text.length; i++) {
+            if (isCancelled) break;
+            setTypingText(nextMsg.text.slice(0, i));
+            await wait(32 + (i % 3) * 12);
+          }
+
+          if (isCancelled) break;
+          await wait(400);
+          if (isCancelled) break;
+
+          setIsTyping(false);
+          setTypingText("");
+          setStep((prev) => prev + 1);
+          currentStep++;
+          await wait(1200);
+        } else {
+          setIsTyping(true);
+          setTypingSender("mani");
+          await wait(1400);
+          if (isCancelled) break;
+
+          setIsTyping(false);
+          setStep((prev) => prev + 1);
+          currentStep++;
+          await wait(1800);
+        }
       }
-
-      const nextMsg = chatMessages[currentStep];
-      setIsTyping(true);
-      setTypingSender(nextMsg.sender);
-
-      timer = setTimeout(() => {
-        setIsTyping(false);
-        setStep(currentStep + 1);
-
-        timer = setTimeout(() => {
-          advanceStep(currentStep + 1);
-        }, 2200);
-      }, 1600);
     };
 
-    timer = setTimeout(() => {
-      advanceStep(3);
-    }, 2500);
+    runChat();
 
-    return () => clearTimeout(timer);
+    return () => {
+      isCancelled = true;
+    };
   }, []);
 
   const [isHovered, setIsHovered] = useState<boolean>(false);
@@ -162,28 +188,36 @@ export default function ChatSimulator() {
           ))}
         </AnimatePresence>
 
-        {/* Animated Progressive Typing Dots */}
+        {/* Animated Progressive Typing Dots or Live Typewriter Bubble */}
         {isTyping && (
           <motion.div
             initial={{ opacity: 0, y: 6, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
-            className={`p-2 rounded-xl flex items-center gap-1.5 w-fit shadow-md border ${
+            className={`p-2 rounded-xl flex items-center gap-1.5 max-w-[92%] shadow-md border ${
               typingSender === "user"
-                ? "bg-[#143D28] border-emerald-400/30 self-end rounded-br-xs"
-                : "bg-[#0E2E1E] border-editorial-white/20 self-start rounded-bl-xs"
+                ? "bg-[#143D28] text-cream-logo border-emerald-400/30 self-end rounded-br-xs text-[11px] font-medium"
+                : "bg-[#0E2E1E] text-editorial-white border-editorial-white/20 self-start rounded-bl-xs"
             }`}
           >
             {typingSender === "mani" && (
-              <div className="w-4 h-4 rounded-full bg-cream-logo text-[#0E2E1E] flex items-center justify-center shrink-0 font-bold text-[8px]">
-                M
-              </div>
+              <>
+                <div className="w-4 h-4 rounded-full bg-cream-logo text-[#0E2E1E] flex items-center justify-center shrink-0 font-bold text-[8px]">
+                  M
+                </div>
+                <div className="flex items-center gap-1 px-1">
+                  <span className="w-1.5 h-1.5 bg-cream-logo rounded-full animate-bounce" style={{ animationDelay: "0ms" }} />
+                  <span className="w-1.5 h-1.5 bg-cream-logo rounded-full animate-bounce" style={{ animationDelay: "150ms" }} />
+                  <span className="w-1.5 h-1.5 bg-cream-logo rounded-full animate-bounce" style={{ animationDelay: "300ms" }} />
+                </div>
+              </>
             )}
-            <div className="flex items-center gap-1 px-1">
-              <span className="w-1.5 h-1.5 bg-cream-logo rounded-full animate-bounce" style={{ animationDelay: "0ms" }} />
-              <span className="w-1.5 h-1.5 bg-cream-logo rounded-full animate-bounce" style={{ animationDelay: "150ms" }} />
-              <span className="w-1.5 h-1.5 bg-cream-logo rounded-full animate-bounce" style={{ animationDelay: "300ms" }} />
-            </div>
+            {typingSender === "user" && (
+              <span className="truncate">
+                {typingText}
+                <span className="inline-block w-[1.5px] h-2.5 bg-emerald-400 ml-0.5 animate-pulse align-middle" />
+              </span>
+            )}
           </motion.div>
         )}
       </div>

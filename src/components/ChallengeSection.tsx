@@ -20,11 +20,9 @@ export default function ChallengeSection() {
           <span className="text-xs font-bold tracking-widest text-[#0E2E1E] uppercase block">
             THE CHALLENGE
           </span>
-          <MaskedReveal>
-            <h2 className="font-serif-heading text-3xl xs:text-4xl sm:text-5xl md:text-6xl text-[#0E2E1E] leading-[1.08] tracking-tight">
-              No One Should Have To Struggle Alone
-            </h2>
-          </MaskedReveal>
+          <h2 className="font-serif-heading text-3xl xs:text-4xl sm:text-5xl md:text-6xl text-[#0E2E1E] leading-[1.08] tracking-tight">
+            No One Should Have To Struggle Alone
+          </h2>
           <p className="text-lg sm:text-xl md:text-2xl text-[#0B1710] font-medium leading-relaxed">
             Stress, self-doubt, relationship challenges, uncertainty, and overwhelming emotions are part of being human. Yet finding meaningful support is not always easy.
           </p>

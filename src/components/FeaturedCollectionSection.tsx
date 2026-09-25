@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
-import MaskedReveal from "@/components/MaskedReveal";
 
 export default function FeaturedCollectionSection() {
   const [notifyModalOpen, setNotifyModalOpen] = useState(false);
@@ -31,9 +30,8 @@ export default function FeaturedCollectionSection() {
       className="pt-16 sm:pt-24 md:pt-28 pb-36 sm:pb-48 bg-editorial-white text-ink-black w-full relative overflow-hidden scroll-mt-20 select-none"
       id="collections"
     >
-      <div className="w-full max-w-[1760px] mx-auto px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24 space-y-12 sm:space-y-16">
-
-        {/* 1. Header */}
+      {/* 1. Header */}
+      <div className="w-full max-w-[1760px] mx-auto px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24">
         <div className="space-y-4">
           <div className="flex items-center gap-2">
             <span className="w-2.5 h-2.5 rounded-full bg-[#0E2E1E]" />
@@ -44,16 +42,14 @@ export default function FeaturedCollectionSection() {
 
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
             <div className="space-y-3 max-w-3xl">
-              <MaskedReveal>
-                <h2 className="font-serif-heading text-4xl sm:text-5xl md:text-6xl text-[#0E2E1E] leading-[1.05] tracking-tight">
-                  Bye Bye Narcissist
-                </h2>
-              </MaskedReveal>
+              <h2 className="font-serif-heading text-4xl sm:text-5xl md:text-6xl text-[#0E2E1E] leading-[1.05] tracking-tight">
+                Bye Bye Narcissist
+              </h2>
               <p className="text-base sm:text-lg text-[#0B1710] font-normal leading-relaxed">
                 <strong>The Bye Bye Narcissist</strong> Collection helps you recognize harmful relationship patterns, rebuild trust in yourself, and find the confidence to move forward.
               </p>
               <p className="text-xs sm:text-sm font-mono text-[#0E2E1E]/70 font-semibold tracking-wide">
-                Book &bull; Workbook &bull; Coloring Book &bull; Posters &bull; Affirmation Cards
+                Book &bull; Workbook &bull; Coloring Book &amp; Journal &bull; Set of 10 Framed Posters &bull; Affirmation Cards
               </p>
             </div>
 
@@ -67,69 +63,66 @@ export default function FeaturedCollectionSection() {
             </div>
           </div>
         </div>
+      </div>
 
-        {/* 2. Architectural Gallery Exhibition Stage */}
-        <div className="w-full">
-          {/* Architectural Cream Plinth Tray */}
-          <div className="relative w-full rounded-[28px] sm:rounded-[40px] bg-gradient-to-b from-[#FBF8F2] via-[#F3ECE0] to-[#E8DDD0] border border-[#DDD1BE] shadow-[0_22px_55px_-12px_rgba(14,46,30,0.12),0_8px_20px_-6px_rgba(0,0,0,0.06)] overflow-hidden">
-            
-            {/* Gallery Overhead Soft Illumination */}
-            <div className="absolute top-0 left-0 right-0 h-64 bg-[radial-gradient(ellipse_80%_60%_at_50%_0%,rgba(255,255,255,0.95),transparent_75%)] pointer-events-none z-10" />
+      {/* 2. Full-Width Architectural Gallery Exhibition Stage */}
+      <div className="w-full my-12 sm:my-16 bg-gradient-to-b from-[#FBF8F2] via-[#F4EDE2] to-[#EAE0D2] border-y border-[#DDD1BE] relative overflow-hidden">
+        {/* Gallery Overhead Soft Illumination */}
+        <div className="absolute top-0 left-0 right-0 h-80 bg-[radial-gradient(ellipse_80%_60%_at_50%_0%,rgba(255,255,255,0.95),transparent_75%)] pointer-events-none z-10" />
 
-            {/* Subtle Gallery Picture Rail Shadow on the Back Wall */}
-            <div className="absolute top-10 left-12 right-12 h-[1px] bg-gradient-to-r from-transparent via-[#D6C7B2]/60 to-transparent pointer-events-none" />
+        {/* Subtle Gallery Picture Rail Shadow on the Back Wall */}
+        <div className="absolute top-10 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#D6C7B2]/60 to-transparent pointer-events-none" />
 
-            {/* UNIFIED COMPLETE COLLECTION HERO PRESENTATION (Slides 4 & 5: All 5 resources including posters) */}
-            <div className="relative z-10 w-full pt-8 sm:pt-12 md:pt-16 pb-0 px-4 sm:px-8 flex flex-col items-center justify-end">
-              <motion.div
-                initial={{ opacity: 0, y: 30, scale: 0.96 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                className="relative w-full max-w-5xl flex flex-col items-center justify-end group cursor-pointer"
-              >
-                {/* Soft ambient back glow */}
-                <div className="absolute inset-0 bg-[#0E2E1E]/5 blur-3xl rounded-full pointer-events-none group-hover:bg-[#0E2E1E]/10 transition-all duration-700" />
+        {/* UNIFIED COMPLETE COLLECTION HERO PRESENTATION (Centered with Generous Whitespace) */}
+        <div className="relative z-10 w-full max-w-[1760px] mx-auto pt-10 sm:pt-14 md:pt-18 lg:pt-22 pb-0 px-4 sm:px-8 flex flex-col items-center justify-end">
+          <motion.div
+            initial={{ opacity: 0, y: 30, scale: 0.98 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="relative w-full max-w-4xl lg:max-w-5xl xl:max-w-[1180px] flex flex-col items-center justify-end group cursor-pointer"
+          >
+            {/* Ambient back glow */}
+            <div className="absolute inset-0 bg-[#0E2E1E]/5 blur-3xl rounded-full pointer-events-none group-hover:bg-[#0E2E1E]/10 transition-all duration-700" />
 
-                {/* Complete Collection Bundle Mockup Image (Includes Book, Workbook, Coloring Book, Affirmation Cards, Posters) */}
-                <img
-                  src={encodeURI(
-                    "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/Complete_Collection_Bundle.png"
-                  )}
-                  alt="The Bye Bye Narcissist Complete Collection"
-                  className="w-full max-h-[380px] sm:max-h-[460px] md:max-h-[540px] lg:max-h-[600px] object-contain relative z-10 drop-shadow-[0_20px_35px_rgba(0,0,0,0.18)] transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.02] group-hover:-translate-y-2 group-hover:drop-shadow-[0_32px_50px_rgba(14,46,30,0.25)]"
-                />
-
-                {/* Grounding Contact Shadow Baseline */}
-                <div className="w-full relative h-0 pointer-events-none z-20">
-                  <div className="w-[94%] h-[4px] bg-black/90 rounded-full mx-auto -mt-[2px] blur-[1.5px] group-hover:scale-95 group-hover:opacity-75 transition-all duration-700" />
-                  <div className="w-[88%] h-[14px] bg-black/30 rounded-full mx-auto -mt-[2px] blur-[6px] group-hover:scale-90 group-hover:opacity-20 transition-all duration-700" />
-                </div>
-              </motion.div>
-            </div>
-
-            {/* THE "TATAKAN" (PHYSICAL 3D SHELF LEDGE WITH INTEGRATED SURFACE) */}
-            <div className="relative z-20 w-full">
-              {/* SHELF FLOOR PLANE: The surface the bundle stands on */}
-              <div className="w-full h-4 sm:h-5 bg-gradient-to-r from-[#D7CBBA] via-[#EAE0D0] to-[#D7CBBA] border-t border-white/90 shadow-[inset_0_2px_4px_rgba(255,255,255,0.9)] relative">
-                {/* Crisp Horizon Bevel Edge Reflection */}
-                <div className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-white/30 via-white to-white/30" />
-              </div>
-
-              {/* SHELF FRONT FASCIA: The vertical thickness of the tatakan plinth */}
-              <div className="w-full h-5 sm:h-6 bg-gradient-to-b from-[#C4B59F] via-[#B8A891] to-[#A4937B] border-t border-[#BFAA94] shadow-[0_6px_14px_rgba(0,0,0,0.14)]" />
-            </div>
-
-          </div>
+            {/* Cohesive Complete Collection Bundle Mockup (Etsy-Style Physical Staging with Grounded Contact Shadows) */}
+            <Link
+              href="/collections#featured-collection"
+              className="relative w-full flex items-end justify-center block"
+              title="Explore The Bye Bye Narcissist Complete Collection"
+            >
+              <img
+                src={encodeURI(
+                  "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/trimmed/Complete_Collection_Etsy_Bundle.png"
+                )}
+                alt="The Bye Bye Narcissist Complete Collection - Hardcover Book, Guided Workbook, Coloring Book, Affirmation Cards, and Framed Poster Collection"
+                className="w-auto h-auto max-h-[440px] sm:max-h-[520px] md:max-h-[580px] lg:max-h-[640px] xl:max-h-[680px] object-contain object-bottom relative z-10 drop-shadow-[0_20px_45px_rgba(0,0,0,0.14)] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.01]"
+              />
+            </Link>
+          </motion.div>
         </div>
 
-        {/* 3. Future Releases */}
-        <div className="max-w-3xl mx-auto text-center space-y-6 pt-8 sm:pt-12 border-t border-mist-grey/70">
-          <MaskedReveal>
+        {/* THE "TATAKAN" (CONTINUOUS PHYSICAL 3D SHELF LEDGE - EDGE-TO-EDGE) */}
+        <div className="relative z-20 w-full">
+          {/* SHELF FLOOR PLANE: The surface the bundle stands on */}
+          <div className="w-full h-4 sm:h-5 bg-gradient-to-r from-[#D7CBBA] via-[#EAE0D0] to-[#D7CBBA] border-t border-white/90 shadow-[inset_0_2px_4px_rgba(255,255,255,0.9)] relative">
+            {/* Crisp Horizon Bevel Edge Reflection */}
+            <div className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-white/30 via-white to-white/30" />
+          </div>
+
+          {/* SHELF FRONT FASCIA: The vertical thickness of the tatakan plinth */}
+          <div className="w-full h-5 sm:h-6 bg-gradient-to-b from-[#C4B59F] via-[#B8A891] to-[#A4937B] border-t border-[#BFAA94] shadow-[0_6px_14px_rgba(0,0,0,0.14)]" />
+        </div>
+      </div>
+
+      {/* 3. Future Releases */}
+      <div className="w-full max-w-[1760px] mx-auto px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24">
+        <div className="max-w-3xl mx-auto text-center space-y-6 pt-4 sm:pt-8 border-t border-mist-grey/70">
+          {/* <MaskedReveal> */}
             <h3 className="font-serif-heading text-3xl sm:text-4xl lg:text-5xl text-[#0E2E1E] leading-[1.1]">
               More Collections Are Coming
             </h3>
-          </MaskedReveal>
+          {/* </MaskedReveal> */}
 
           <p className="text-base sm:text-lg text-[#0B1710] font-normal leading-relaxed">
             We’re developing new collections, including Love Done Right, along with collections on emotional intelligence, boundaries, anxiety, relationships, shadow work, inner child healing, and more.

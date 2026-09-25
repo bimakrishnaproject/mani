@@ -50,7 +50,7 @@ export default function AppPage() {
                   href="/join-beta"
                   className="inline-flex px-8 py-4 bg-[#0E2E1E] text-cream-logo font-semibold rounded-xl hover:bg-[#143d28] transition-all text-sm sm:text-base shadow-md cursor-pointer"
                 >
-                  Join the App Beta
+                  Join the App Beta &rarr;
                 </Link>
               </div>
             </motion.div>

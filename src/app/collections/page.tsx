@@ -56,8 +56,9 @@ const products = [
     id: "posters",
     slug: "bye-bye-narcissist-posters",
     badge: "REINFORCEMENT",
-    title: "Bye Bye Narcissist Poster Collection",
-    description: "Daily reminders that strengthen boundaries and self-worth.",
+    title: "Bye Bye Narcissist Poster Collection (Set of 10)",
+    description:
+      "Daily reminders that strengthen boundaries and self-worth. Includes all 10 framed reinforcement prints.",
     price: "$29.99",
     numericPrice: 29.99,
     image:
@@ -311,10 +312,10 @@ export default function CollectionsPage() {
                   <div className="relative w-full flex items-end justify-center pb-0 z-10 overflow-visible pt-8 sm:pt-12">
                     <img
                       src={encodeURI(
-                        "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/trimmed/Collection_Naturally_Grounded.png"
+                        "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/trimmed/Complete_Collection_Etsy_Bundle.png"
                       )}
-                      alt="The Bye Bye Narcissist Complete Collection"
-                      className="w-full max-h-[360px] sm:max-h-[440px] md:max-h-[500px] object-contain relative z-10 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.02] group-hover:-translate-y-1.5"
+                      alt="The Bye Bye Narcissist Complete Collection with Poster Set"
+                      className="w-full max-h-[380px] sm:max-h-[460px] md:max-h-[520px] object-contain relative z-10 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.01]"
                     />
                   </div>
                 </div>
@@ -418,13 +419,13 @@ export default function CollectionsPage() {
                           <img
                             src={encodeURI(product.image)}
                             alt={product.title}
-                            className={`${product.heightClass} w-auto block object-contain transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] origin-bottom group-hover:-translate-y-2 group-hover:scale-[1.04]`}
+                            className={`${product.heightClass} w-auto block object-contain transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] origin-bottom group-hover:scale-[1.02]`}
                           />
                         </div>
 
                         {/* Precision Photorealistic Contact Shadow */}
                         <div className="w-full relative h-3 pointer-events-none z-0 flex items-center justify-center">
-                          <div className="w-[75%] h-[8px] bg-black/25 rounded-full blur-[6px] transition-all duration-500 group-hover:scale-90 group-hover:opacity-15" />
+                          <div className="w-[75%] h-[8px] bg-black/25 rounded-full blur-[6px] transition-all duration-500 group-hover:opacity-30" />
                         </div>
                       </Link>
 
@@ -493,13 +494,13 @@ export default function CollectionsPage() {
                           <img
                             src={encodeURI(product.image)}
                             alt={product.title}
-                            className={`${product.heightClass} w-auto block object-contain transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] origin-bottom group-hover:-translate-y-2 group-hover:scale-[1.04]`}
+                            className={`${product.heightClass} w-auto block object-contain transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] origin-bottom group-hover:scale-[1.02]`}
                           />
                         </div>
 
                         {/* Precision Photorealistic Contact Shadow */}
                         <div className="w-full relative h-3 pointer-events-none z-0 flex items-center justify-center">
-                          <div className="w-[75%] h-[8px] bg-black/25 rounded-full blur-[6px] transition-all duration-500 group-hover:scale-90 group-hover:opacity-15" />
+                          <div className="w-[75%] h-[8px] bg-black/25 rounded-full blur-[6px] transition-all duration-500 group-hover:opacity-30" />
                         </div>
                       </Link>
 
