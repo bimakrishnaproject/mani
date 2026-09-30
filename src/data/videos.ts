@@ -29,32 +29,32 @@ export const TOPIC_GROUPS = [
     topics: [
       "Psychology",
       "Emotional Intelligence",
-      "Stress & Overwhelm",
-      "Overthinking"
+      "Stress",
+      "Overthinking",
     ],
   },
   {
     pillar: "Relationships",
     topics: [
-      "Love & Relationships",
-      "Narcissistic Abuse",
-      "Toxic Relationship Patterns"
+      "Relationships",
+      "Healthy & Narcissistic Relationships",
     ],
   },
   {
     pillar: "Personal Growth",
     topics: [
-      "Self-Sabotage",
+      "Life & Motivation",
+      "Self Sabotage",
       "Shadow Work",
-      "Inner Child Healing",
-      "Motivation & Purpose"
+      "Inner Child",
     ],
   },
   {
-    pillar: "Understanding Behavior",
+    pillar: "Behavioral Insights",
     topics: [
-      "Psychological Paradoxes & Effects",
-      "Childhood & Family Patterns"
+      "Paradoxes & Effects",
+      "Childhood",
+      "Listicles",
     ],
   },
 ];
@@ -63,24 +63,24 @@ export const CATEGORIES = [
   "All Videos",
   "Psychology",
   "Emotional Intelligence",
-  "Stress & Overwhelm",
+  "Childhood",
+  "Paradoxes & Effects",
+  "Listicles",
+  "Relationships",
+  "Life & Motivation",
+  "Inner Child",
   "Overthinking",
-  "Love & Relationships",
-  "Narcissistic Abuse",
-  "Toxic Relationship Patterns",
-  "Self-Sabotage",
+  "Self Sabotage",
   "Shadow Work",
-  "Inner Child Healing",
-  "Motivation & Purpose",
-  "Psychological Paradoxes & Effects",
-  "Childhood & Family Patterns",
+  "Stress",
+  "Healthy & Narcissistic Relationships",
 ];
 
 export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-1",
     "title": "Choose People Who Choose You",
-    "category": "Love & Relationships",
+    "category": "Life & Motivation",
     "duration": "2:15 min",
     "summary": "The right people make connections feel safe instead of lonely. A healthy circle is built with people who respect someone’s worth and choose them without conditions.",
     "keywords": [
@@ -96,7 +96,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-2",
     "title": "When Loyalty Becomes A Cage",
-    "category": "Love & Relationships",
+    "category": "Relationships",
     "duration": "2:15 min",
     "summary": "Loyalty becomes unhealthy when staying silent feels safer than being honest. Real love allows loyalty to be chosen freely without making someone lose themselves.",
     "keywords": [
@@ -112,7 +112,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-3",
     "title": "6 Signs Of Power Tripping",
-    "category": "Emotional Intelligence",
+    "category": "Listicles",
     "duration": "2:05 min",
     "summary": "Power tripping shows up when authority turns into control instead of responsibility. Recognizing the signs early can make it easier to set boundaries and respond with clarity.",
     "keywords": [
@@ -128,7 +128,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-4",
     "title": "Why Courage Feels So Difficult",
-    "category": "Psychological Paradoxes & Effects",
+    "category": "Paradoxes & Effects",
     "duration": "1:30 min",
     "summary": "Courage feels difficult because the things that matter most often come with fear. Real courage is moving forward with that fear instead of waiting for it to disappear.",
     "keywords": [
@@ -144,7 +144,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-5",
     "title": "When Being Seen Feels Dangerous",
-    "category": "Childhood & Family Patterns",
+    "category": "Childhood",
     "duration": "1:30 min",
     "summary": "Being invisible can feel safer when being noticed once felt dangerous. What protected someone in childhood can later keep them silent when their voice deserves space.",
     "keywords": [
@@ -192,7 +192,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-8",
     "title": "The Only Opinions That Matter",
-    "category": "Motivation & Purpose",
+    "category": "Life & Motivation",
     "duration": "1:15 min",
     "summary": "Worrying about everyone else’s opinion can make people forget what kind of life actually feels true to them. The opinions that matter most come from the person they once were and the person they are still becoming.",
     "keywords": [
@@ -208,7 +208,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-9",
     "title": "Why Intimacy Feels So Scary",
-    "category": "Love & Relationships",
+    "category": "Relationships",
     "duration": "2:15 min",
     "summary": "Intimacy can feel frightening because it means letting someone see the parts that are usually hidden. Guarding against vulnerability may feel safer at first, but it can also keep real closeness out of reach.",
     "keywords": [
@@ -224,7 +224,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-10",
     "title": "Loneliness Hides Behind Independence",
-    "category": "Psychological Paradoxes & Effects",
+    "category": "Listicles",
     "duration": "2:05 min",
     "summary": "Independence can feel like strength when relying on people has led to disappointment. Doing everything alone can become so familiar that loneliness starts to feel normal.",
     "keywords": [
@@ -240,7 +240,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-11",
     "title": "Why Your Problems Feel Harder",
-    "category": "Psychological Paradoxes & Effects",
+    "category": "Paradoxes & Effects",
     "duration": "2:05 min",
     "summary": "Personal problems often feel harder because emotions make it difficult to see clearly. Solomon’s Paradox shows why people can give wise advice to others while struggling to apply the same wisdom to themselves.",
     "keywords": [
@@ -256,7 +256,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-12",
     "title": "Your Childhood Still Controls You",
-    "category": "Stress & Overwhelm",
+    "category": "Childhood",
     "duration": "2:15 min",
     "summary": "Mistakes can feel overwhelming when someone grew up believing that being wrong could cost them love or approval. What looks like overthinking in adulthood may actually be an old fear that never had the chance to heal.",
     "keywords": [
@@ -288,7 +288,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-14",
     "title": "Why You Push People Away",
-    "category": "Toxic Relationship Patterns",
+    "category": "Psychology",
     "duration": "1:10 min",
     "summary": "Pushing people away can feel safer when love has felt uncertain before. Healing starts when people stop testing who will stay and begin recognizing steady connection as something safe.",
     "keywords": [
@@ -304,7 +304,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-15",
     "title": "You Keep Second Guessing Yourself",
-    "category": "Overthinking",
+    "category": "Life & Motivation",
     "duration": "1:30 min",
     "summary": "Fear of making the wrong choice can keep people stuck searching for certainty that life cannot promise. Real regret often comes from ignoring what feels honest and never giving growth a chance.",
     "keywords": [
@@ -320,7 +320,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-16",
     "title": "Love Gets Hard Before Real",
-    "category": "Love & Relationships",
+    "category": "Relationships",
     "duration": "1:10 min",
     "summary": "Love feels easy when everything is going well, but real relationships are revealed during difficult moments. This video looks at how genuine connection grows when two people stop expecting perfection and learn to accept each other as they are.",
     "keywords": [
@@ -336,7 +336,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-17",
     "title": "3 Way Depression Hides Itself",
-    "category": "Psychological Paradoxes & Effects",
+    "category": "Listicles",
     "duration": "1:15 min",
     "summary": "Most people think depression is easy to spot, but sometimes it hides behind a smile or constant frustration. Three common signs reveal how depression can show up without looking like depression at all.",
     "keywords": [
@@ -352,7 +352,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-18",
     "title": "When Fear Keeps You Stuck",
-    "category": "Motivation & Purpose",
+    "category": "Psychology",
     "duration": "1:10 min",
     "summary": "Fear of loss can keep people stuck in situations they've already outgrown. Loss aversion helps explain why letting go often feels harder than staying, even when change could lead to something better.",
     "keywords": [
@@ -368,7 +368,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-19",
     "title": "Your Inner Child Runs Everything",
-    "category": "Inner Child Healing",
+    "category": "Childhood",
     "duration": "1:30 min",
     "summary": "Many of the reactions that shape your life today were learned long ago. Childhood coping patterns can continue influencing your relationships, decisions, and self-talk until you become aware of them.",
     "keywords": [
@@ -384,7 +384,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-20",
     "title": "Why Your Friendship Feels Lonely",
-    "category": "Psychological Paradoxes & Effects",
+    "category": "Psychology",
     "duration": "1:30 min",
     "summary": "Some friendships can leave you feeling alone even when you're surrounded by people. The floater friend effect highlights why being included isn't always the same as feeling like you truly belong.",
     "keywords": [
@@ -401,7 +401,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-21",
     "title": "Your Purpose May Be Changing",
-    "category": "Motivation & Purpose",
+    "category": "Life & Motivation",
     "duration": "1:45 min",
     "summary": "Sometimes feeling disconnected from a goal isn't a sign that you failed. Purpose can evolve over time, leaving even long-held ambitions feeling out of step with who you've become.",
     "keywords": [
@@ -417,7 +417,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-22",
     "title": "You’re Still Afraid To love",
-    "category": "Love & Relationships",
+    "category": "Relationships",
     "duration": "2:05 min",
     "summary": "After heartbreak, protecting yourself can feel easier than opening up again. Healing can reshape your relationship with love, while trust is rebuilt through consistency rather than intensity.",
     "keywords": [
@@ -434,7 +434,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-23",
     "title": "4 Habits Fix Most Problems",
-    "category": "Stress & Overwhelm",
+    "category": "Listicles",
     "duration": "2:05 min",
     "summary": "Small habits can affect how you handle stress and conflict. Four simple practices can help improve your reactions, mood, and communication.",
     "keywords": [
@@ -451,7 +451,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-24",
     "title": "Why Group Projects Feel Unfair",
-    "category": "Psychological Paradoxes & Effects",
+    "category": "Paradoxes & Effects",
     "duration": "1:10 min",
     "summary": "Group projects often leave one person carrying more of the workload than everyone else. Social loafing helps explain why people tend to contribute less when responsibility is shared across a group.",
     "keywords": [
@@ -467,7 +467,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-25",
     "title": "You Were The Family Therapist",
-    "category": "Childhood & Family Patterns",
+    "category": "Childhood",
     "duration": "1:20 min",
     "summary": "Some children grow up feeling responsible for the emotions of the adults around them. This video explores how that experience can shape the way they relate to themselves and others later in life.",
     "keywords": [
@@ -499,7 +499,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-27",
     "title": "Your Brain Deleted Parts Of You",
-    "category": "Childhood & Family Patterns",
+    "category": "Psychology",
     "duration": "1:45 min",
     "summary": "Some people remember very little of their childhood and assume it does not mean anything. This video explores why memory gaps can develop and how they can affect the way people relate to themselves later in life.",
     "keywords": [
@@ -531,7 +531,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-29",
     "title": "You Lost Yourself Loving Them",
-    "category": "Love & Relationships",
+    "category": "Relationships",
     "duration": "2:05 min",
     "summary": "Heartbreak can leave you grieving more than the relationship itself. This video explores what it means to reconnect with yourself after losing sight of who you were within a relationship.",
     "keywords": [
@@ -548,7 +548,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-30",
     "title": "10 Signs You’re Just Surviving",
-    "category": "Psychological Paradoxes & Effects",
+    "category": "Listicles",
     "duration": "1:15 min",
     "summary": "Many people live in survival mode without realizing it. This video highlights ten signs that your mind and body may still be operating from a place of protection rather than safety.",
     "keywords": [
@@ -565,7 +565,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-31",
     "title": "You Crave What’s Forbidden",
-    "category": "Shadow Work",
+    "category": "Paradoxes & Effects",
     "duration": "2:05 min",
     "summary": "The more people feel forced, pressured, or restricted, the more likely they are to resist. This video explores reactance and why being told \"no\" can make something even harder to ignore.",
     "keywords": [
@@ -581,7 +581,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-32",
     "title": "Sorry Was Your Survival Strategy",
-    "category": "Childhood & Family Patterns",
+    "category": "Psychology",
     "duration": "1:15 min",
     "summary": "Constantly apologizing can be about more than manners. This video explores why some people say sorry for things that are not their fault and how that pattern can be connected to earlier experiences.",
     "keywords": [
@@ -613,7 +613,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-34",
     "title": "Good People Feel Guilty First",
-    "category": "Love & Relationships",
+    "category": "Psychology",
     "duration": "1:10 min",
     "summary": "Many people feel guilty when they start setting boundaries, even when those boundaries are reasonable. This video explores why saying no can feel uncomfortable and how boundaries help create healthier relationships.",
     "keywords": [
@@ -629,7 +629,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-35",
     "title": "You Outgrew Your Old Life",
-    "category": "Motivation & Purpose",
+    "category": "Life & Motivation",
     "duration": "1:10 min",
     "summary": "Outgrowing an old version of yourself can change the way you see your relationships, priorities, and future. This video explores what happens when the life that once fit no longer feels aligned with who you're becoming.",
     "keywords": [
@@ -645,7 +645,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-36",
     "title": "Love Lost But Fear Won",
-    "category": "Love & Relationships",
+    "category": "Relationships",
     "duration": "2:15 min",
     "summary": "Heartbreak can make self-protection feel safer than connection. This video explores how fear can linger after trust is broken and why healing means learning to let people in again.",
     "keywords": [
@@ -662,7 +662,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-37",
     "title": "5 Rules You Should Break",
-    "category": "Psychological Paradoxes & Effects",
+    "category": "Listicles",
     "duration": "1:15 min",
     "summary": "Some of the advice people grow up hearing can become limiting over time. This video looks at five common rules that may be worth questioning as you learn more about yourself.",
     "keywords": [
@@ -678,7 +678,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-38",
     "title": "Your Brain Hates Good News",
-    "category": "Psychological Paradoxes & Effects",
+    "category": "Paradoxes & Effects",
     "duration": "2:05 min",
     "summary": "One negative experience can stick with you longer than many positive ones. This video explores negativity dominance and why the brain tends to give more weight to bad news than good news.",
     "keywords": [
@@ -694,7 +694,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-39",
     "title": "You Grew Up Too Soon",
-    "category": "Childhood & Family Patterns",
+    "category": "Childhood",
     "duration": "1:15 min",
     "summary": "Some children take on responsibilities that were never meant to be theirs. This video explores what happens when a child becomes the emotional support system in a family and how that experience can carry into adulthood.",
     "keywords": [
@@ -726,7 +726,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-41",
     "title": "You Overthink Every Small Reaction",
-    "category": "Overthinking",
+    "category": "Psychology",
     "duration": "2:15 min",
     "summary": "Overthinking often starts with assigning meaning to every text, delay, or change in someone's behavior. This video explores why some people become hyperaware of small reactions and how that pattern can affect relationships.",
     "keywords": [
@@ -742,7 +742,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-42",
     "title": "Why Your Mind Turns Against",
-    "category": "Motivation & Purpose",
+    "category": "Life & Motivation",
     "duration": "1:45 min",
     "summary": "Many people are harder on themselves than they would ever be on someone else. This video explores why self-criticism can become an automatic response to mistakes and how it affects confidence over time.",
     "keywords": [
@@ -758,7 +758,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-43",
     "title": "Questions That Create Real Connection",
-    "category": "Love & Relationships",
+    "category": "Relationships",
     "duration": "2:05 min",
     "summary": "Strong relationships are built through conversations that go beyond the surface. This video shares questions that can help partners better understand each other's needs, fears, and experiences.",
     "keywords": [
@@ -775,7 +775,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-44",
     "title": "6 Thoughts Trigger Social Anxiety",
-    "category": "Psychological Paradoxes & Effects",
+    "category": "Listicles",
     "duration": "1:10 min",
     "summary": "Certain thought patterns can make social situations feel much harder than they need to be. This video covers six common ways people unintentionally fuel social anxiety.",
     "keywords": [
@@ -792,7 +792,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-45",
     "title": "Why You Feel Drained Often",
-    "category": "Psychological Paradoxes & Effects",
+    "category": "Paradoxes & Effects",
     "duration": "2:15 min",
     "summary": "Feeling drained or out of place is a common experience for people with a melancholic temperament. This video looks at what that temperament is and how it shapes a person's experience of life.",
     "keywords": [
@@ -808,7 +808,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-46",
     "title": "Stop Proving You Are Enough",
-    "category": "Childhood & Family Patterns",
+    "category": "Childhood",
     "duration": "1:15 min",
     "summary": "Some people feel like they always have to prove themselves. This video explores how self-worth can become tied to achievement and why that belief can be difficult to let go of.",
     "keywords": [
@@ -856,7 +856,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-49",
     "title": "Why You Doubt Every Decision",
-    "category": "Stress & Overwhelm",
+    "category": "Psychology",
     "duration": "1:10 min",
     "summary": "Constantly second-guessing yourself can make even small choices feel overwhelming. This video looks at where decision doubt comes from and how self-trust is built over time.",
     "keywords": [
@@ -872,7 +872,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-50",
     "title": "Stop Trying To Fix People",
-    "category": "Love & Relationships",
+    "category": "Psychology",
     "duration": "1:45 min",
     "summary": "Caring about someone does not mean taking responsibility for their healing. This video explores the difference between supporting someone and trying to change them.",
     "keywords": [
@@ -888,7 +888,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-51",
     "title": "Signs You’re Secretly Depressed",
-    "category": "Stress & Overwhelm",
+    "category": "Psychology",
     "duration": "2:15 min",
     "summary": "Depression does not always look like sadness. This video highlights several signs that can appear when someone is struggling, even if they do not recognize it themselves.",
     "keywords": [
@@ -904,7 +904,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-52",
     "title": "You Learned To Avoid People",
-    "category": "Childhood & Family Patterns",
+    "category": "Childhood",
     "duration": "1:45 min",
     "summary": "Avoidant attachment can make closeness feel uncomfortable, even when connection is wanted. This video explores how early experiences can shape the way people approach relationships later in life.",
     "keywords": [
@@ -936,7 +936,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-54",
     "title": "Your Ex Still Controls You",
-    "category": "Love & Relationships",
+    "category": "Relationships",
     "duration": "1:15 min",
     "summary": "Checking an ex's social media can keep a breakup feeling unfinished. This video explores why the brain continues searching for connection after a relationship ends and how that can make it harder to move on.",
     "keywords": [
@@ -953,7 +953,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-55",
     "title": "Chasing Is Costing You Everything",
-    "category": "Motivation & Purpose",
+    "category": "Psychology",
     "duration": "1:10 min",
     "summary": "Constantly chasing love, success, or approval can make it harder to feel satisfied with where you are. This video explores the relationship between self-worth and the need to pursue validation.",
     "keywords": [
@@ -969,7 +969,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-56",
     "title": "Motivation Is A Lie",
-    "category": "Motivation & Purpose",
+    "category": "Life & Motivation",
     "duration": "1:30 min",
     "summary": "Motivation is often treated as the starting point for action when it is usually the result of taking action first. This video explores why momentum matters more than waiting to feel ready.",
     "keywords": [
@@ -985,7 +985,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-57",
     "title": "5 Burnout Signs You Miss",
-    "category": "Stress & Overwhelm",
+    "category": "Listicles",
     "duration": "1:45 min",
     "summary": "Burnout often develops gradually before people recognize what is happening. This video covers five signs that can signal you're running on empty.",
     "keywords": [
@@ -1001,7 +1001,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-58",
     "title": "How To Persuade Without Pushing",
-    "category": "Psychological Paradoxes & Effects",
+    "category": "Paradoxes & Effects",
     "duration": "2:05 min",
     "summary": "The harder people feel pushed, the more likely they are to resist. This video explains the boomerang effect and why questions are often more persuasive than arguments.",
     "keywords": [
@@ -1017,7 +1017,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-59",
     "title": "When Love Feels Like Danger",
-    "category": "Childhood & Family Patterns",
+    "category": "Psychology",
     "duration": "1:45 min",
     "summary": "Growing up in an abusive home can change the way safety and connection are experienced later in life. This video explores how those experiences can continue to affect relationships in adulthood.",
     "keywords": [
@@ -1065,7 +1065,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-62",
     "title": "How Self-Trust Actually Looks",
-    "category": "Motivation & Purpose",
+    "category": "Life & Motivation",
     "duration": "1:30 min",
     "summary": "Self-trust is not about always knowing the right answer. This video looks at what self-trust can look like in everyday decisions and moments of uncertainty.",
     "keywords": [
@@ -1081,7 +1081,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-63",
     "title": "Stop Settling For Less",
-    "category": "Love & Relationships",
+    "category": "Relationships",
     "duration": "1:20 min",
     "summary": "Many people stay in relationships that do not meet their needs because of fear, self-doubt, or familiarity. This video explores why settling happens and what it can cost over time.",
     "keywords": [
@@ -1097,7 +1097,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-64",
     "title": "5 Signs Of Hidden Stress",
-    "category": "Stress & Overwhelm",
+    "category": "Listicles",
     "duration": "2:05 min",
     "summary": "Stress often shows up in ways people do not immediately recognize. This video covers five common signs that stress may be affecting your mind and body.",
     "keywords": [
@@ -1113,7 +1113,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-65",
     "title": "The Secret To Making Friends",
-    "category": "Psychological Paradoxes & Effects",
+    "category": "Psychology",
     "duration": "1:30 min",
     "summary": "The Ben Franklin Effect suggests that helping someone can actually make you like them more. This video explains why doing favors can strengthen social connections.",
     "keywords": [
@@ -1129,7 +1129,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-66",
     "title": "When Rules Become A Cage",
-    "category": "Childhood & Family Patterns",
+    "category": "Paradoxes & Effects",
     "duration": "1:15 min",
     "summary": "Growing up with strict control can make it difficult to trust your own decisions later in life. This video looks at how control shapes self-trust and why choosing for yourself matters.",
     "keywords": [
@@ -1145,7 +1145,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-67",
     "title": "Why You Push Love Away",
-    "category": "Emotional Intelligence",
+    "category": "Relationships",
     "duration": "2:05 min",
     "summary": "Pulling away from people you care about is often driven by fear rather than a lack of love. This video explores why some people create distance when relationships start to feel important.",
     "keywords": [
@@ -1161,7 +1161,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-68",
     "title": "The Child Blamed For Everything",
-    "category": "Childhood & Family Patterns",
+    "category": "Childhood",
     "duration": "1:45 min",
     "summary": "Scapegoating happens when one child becomes the target of a family's problems and frustrations. This video explores how that role can shape self-worth and identity long into adulthood.",
     "keywords": [
@@ -1177,7 +1177,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-69",
     "title": "When Kindness Turns Into A Trap",
-    "category": "Love & Relationships",
+    "category": "Psychology",
     "duration": "1:20 min",
     "summary": "Inconsistent kindness can make it difficult to see a relationship clearly. This video explores why people often hold on to brief moments of connection while overlooking a larger pattern.",
     "keywords": [
@@ -1193,7 +1193,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-70",
     "title": "Why You Pushed Them Away",
-    "category": "Love & Relationships",
+    "category": "Relationships",
     "duration": "2:15 min",
     "summary": "Sometimes the people we walk away from are the ones we end up missing most. This video explores why relationships can seem different after they end and how perspective changes with time.",
     "keywords": [
@@ -1209,7 +1209,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-71",
     "title": "6 Ways Isolation Damages Romance",
-    "category": "Psychological Paradoxes & Effects",
+    "category": "Listicles",
     "duration": "1:15 min",
     "summary": "Emotional isolation can slowly weaken even the closest relationships. This video covers six ways withdrawing from others can affect connection, trust, and intimacy.",
     "keywords": [
@@ -1225,7 +1225,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-72",
     "title": "When Targets Miss What Matters",
-    "category": "Psychological Paradoxes & Effects",
+    "category": "Paradoxes & Effects",
     "duration": "1:30 min",
     "summary": "The things we use to measure success can sometimes end up replacing the reason we started in the first place. This video explores Goodhart's Law and how chasing metrics can distort priorities.",
     "keywords": [
@@ -1241,7 +1241,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-73",
     "title": "The Kid Who Never Spoke",
-    "category": "Inner Child Healing",
+    "category": "Childhood",
     "duration": "2:15 min",
     "summary": "Some children learn that staying quiet earns approval and avoids conflict. This video explores how growing up as the child who never speaks up can affect self-expression and boundaries later in life.",
     "keywords": [
@@ -1289,7 +1289,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-76",
     "title": "How To Outsmart Your Brain",
-    "category": "Motivation & Purpose",
+    "category": "Life & Motivation",
     "duration": "1:45 min",
     "summary": "Progress rarely comes from feeling ready first. This video explores why the brain resists change and how small actions can create momentum before confidence ever shows up.",
     "keywords": [
@@ -1305,7 +1305,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-77",
     "title": "Stop Guessing If They Care",
-    "category": "Love & Relationships",
+    "category": "Relationships",
     "duration": "2:15 min",
     "summary": "Strong relationships are built on more than love alone. This video explores the emotional needs that help people feel secure, valued, and connected in a relationship.",
     "keywords": [
@@ -1321,7 +1321,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-78",
     "title": "Why You Stay Stuck",
-    "category": "Overthinking",
+    "category": "Listicles",
     "duration": "1:30 min",
     "summary": "Waiting until you feel ready can keep you stuck longer than taking action ever will. This video explores five ways overthinking turns into self-sabotage and prevents people from moving forward.",
     "keywords": [
@@ -1337,7 +1337,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-79",
     "title": "Your Brain Is Lying",
-    "category": "Psychological Paradoxes & Effects",
+    "category": "Paradoxes & Effects",
     "duration": "1:10 min",
     "summary": "We often make decisions based on how we feel in the moment without realizing those feelings will change. This video explains projection bias and why today's emotions can distort the choices we make for our future selves.",
     "keywords": [
@@ -1353,7 +1353,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-80",
     "title": "You Shut Down Fast",
-    "category": "Overthinking",
+    "category": "Childhood",
     "duration": "1:15 min",
     "summary": "The way you respond to authority is often shaped long before adulthood. This video explores how childhood experiences can influence the reactions you have to criticism, correction, and power dynamics today.",
     "keywords": [
@@ -1369,7 +1369,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-81",
     "title": "Mastering Love You Never Had",
-    "category": "Childhood & Family Patterns",
+    "category": "Psychology",
     "duration": "1:20 min",
     "summary": "Learning to love yourself can be difficult when love was not consistently modeled in childhood. This video explores how self-love is developed and why it can feel unfamiliar at first.",
     "keywords": [
@@ -1417,7 +1417,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-84",
     "title": "Why Stress Feels Normal",
-    "category": "Stress & Overwhelm",
+    "category": "Psychology",
     "duration": "1:20 min",
     "summary": "Some people become so used to stress that it stops feeling unusual. This video explores how the brain adapts to chronic stress and why overwhelm can start to feel normal over time.",
     "keywords": [
@@ -1433,7 +1433,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-85",
     "title": "Control Is Not Love",
-    "category": "Love & Relationships",
+    "category": "Relationships",
     "duration": "1:15 min",
     "summary": "Controlling relationships often create self-doubt before people recognize what is happening. This video explores how control can affect a person's sense of self and why healing begins with trusting your own voice again.",
     "keywords": [
@@ -1449,7 +1449,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-86",
     "title": "Your Gut Is Lying",
-    "category": "Psychological Paradoxes & Effects",
+    "category": "Paradoxes & Effects",
     "duration": "1:20 min",
     "summary": "People often feel certain they are right long before they have enough evidence to support it. This video explores the illusion of validity and why confidence can sometimes be mistaken for accuracy.",
     "keywords": [
@@ -1465,7 +1465,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-87",
     "title": "Is Anxiety Choosing For You?",
-    "category": "Psychological Paradoxes & Effects",
+    "category": "Listicles",
     "duration": "1:15 min",
     "summary": "Anxiety can influence decisions in ways that feel completely normal at first. This video explores five everyday habits that may be driven more by anxiety than personal preference.",
     "keywords": [
@@ -1513,7 +1513,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-90",
     "title": "Why Being Alone Is Healthy",
-    "category": "Motivation & Purpose",
+    "category": "Life & Motivation",
     "duration": "2:05 min",
     "summary": "Many people confuse being alone with being lonely, even though they are not the same thing. This video explores how spending time alone can strengthen self-awareness and create healthier relationships.",
     "keywords": [
@@ -1529,7 +1529,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-91",
     "title": "Why You Became Emotionally Dependent",
-    "category": "Love & Relationships",
+    "category": "Relationships",
     "duration": "1:30 min",
     "summary": "Emotional dependence can develop when a person's sense of security becomes tied to someone else's approval or attention. This video explores how that pattern forms and why it is often mistaken for love.",
     "keywords": [
@@ -1545,7 +1545,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-92",
     "title": "4 Signs You Are Quietly Isolating",
-    "category": "Psychological Paradoxes & Effects",
+    "category": "Listicles",
     "duration": "1:15 min",
     "summary": "Isolation does not always mean being physically alone. This video explores four signs that someone may be becoming disconnected from others without fully realizing it.",
     "keywords": [
@@ -1561,7 +1561,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-93",
     "title": "The Pain Of Unproud Parents",
-    "category": "Childhood & Family Patterns",
+    "category": "Childhood",
     "duration": "1:30 min",
     "summary": "Some people spend years searching for a sense of accomplishment that never feels complete. This video explores how growing up without parental validation can continue to affect self-worth in adulthood.",
     "keywords": [
@@ -1593,7 +1593,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-95",
     "title": "Why Anxious Attachment Chases Love",
-    "category": "Love & Relationships",
+    "category": "Relationships",
     "duration": "1:15 min",
     "summary": "People with anxious attachment often experience closeness and distance more intensely than others. This video explores why love can start to feel like something that must be chased rather than something that can be trusted.",
     "keywords": [
@@ -1609,7 +1609,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-96",
     "title": "For Everyone Who Feels Everything Too Deeply",
-    "category": "Motivation & Purpose",
+    "category": "Life & Motivation",
     "duration": "2:05 min",
     "summary": "Some people experience emotions more intensely and struggle with feeling misunderstood because of it. This video explores sensitivity and why feeling deeply is not something that needs to be changed or hidden.",
     "keywords": [
@@ -1625,7 +1625,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-97",
     "title": "Why Breadcrumbing Hurts More Than Rejection",
-    "category": "Love & Relationships",
+    "category": "Relationships",
     "duration": "1:15 min",
     "summary": "Uncertainty can be harder to move on from than a clear ending. This video explores why breadcrumbing keeps people emotionally invested and why mixed signals often hurt more than rejection.",
     "keywords": [
@@ -1657,7 +1657,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-99",
     "title": "Stop Calling It Coping You’re Compartmentalizing",
-    "category": "Self-Sabotage",
+    "category": "Psychology",
     "duration": "1:15 min",
     "summary": "Some coping habits can look healthy on the surface while keeping difficult emotions out of reach. This video explores compartmentalization and the difference between avoiding feelings and working through them.",
     "keywords": [
@@ -1673,7 +1673,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-100",
     "title": "The Barnum Effect: Why Vague Statements Feel Deeply Personal",
-    "category": "Psychological Paradoxes & Effects",
+    "category": "Paradoxes & Effects",
     "duration": "1:15 min",
     "summary": "Some statements feel deeply personal even when they could apply to almost anyone. This video explores the Barnum Effect and why people are naturally drawn to vague descriptions that seem uniquely true.",
     "keywords": [
@@ -1689,7 +1689,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-101",
     "title": "Why Being Compared To Siblings Hurts More Than You Think",
-    "category": "Childhood & Family Patterns",
+    "category": "Childhood",
     "duration": "1:10 min",
     "summary": "Being compared to a sibling can leave lasting doubts about your own value and identity. This video explores how those comparisons can shape self-worth long after childhood ends.",
     "keywords": [
@@ -1721,7 +1721,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-103",
     "title": "Why We Sometimes Miss Chances To Help Others",
-    "category": "Psychological Paradoxes & Effects",
+    "category": "Paradoxes & Effects",
     "duration": "2:15 min",
     "summary": "Most people like to think they would help someone in need, yet circumstances can influence behavior more than expected. This video explores the Good Samaritan Effect and how pressure can affect our willingness to act.",
     "keywords": [
@@ -1737,7 +1737,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-104",
     "title": "Why Forgiveness Isn’t Required To Heal Childhood Pain",
-    "category": "Childhood & Family Patterns",
+    "category": "Childhood",
     "duration": "1:30 min",
     "summary": "Many people are told that forgiveness is necessary for healing, but that is not always how recovery works. This video explores why acknowledging pain and moving forward can happen with or without forgiveness.",
     "keywords": [
@@ -1785,7 +1785,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-107",
     "title": "Why Good Hearts Break The Most",
-    "category": "Love & Relationships",
+    "category": "Life & Motivation",
     "duration": "2:05 min",
     "summary": "People who stay open to others often experience heartbreak differently than those who keep their guard up. This video explores why deep compassion can make loss more painful while also shaping wisdom over time.",
     "keywords": [
@@ -1801,7 +1801,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-108",
     "title": "The Hidden Trap Of Love Bombing",
-    "category": "Toxic Relationship Patterns",
+    "category": "Relationships",
     "duration": "1:10 min",
     "summary": "Love bombing often feels like intense affection at the beginning, making it difficult to recognize what is happening. This video explores how excessive attention can sometimes be used to create attachment and control.",
     "keywords": [
@@ -1817,7 +1817,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-109",
     "title": "5 Signs You Grew Up Feeling Unwanted",
-    "category": "Childhood & Family Patterns",
+    "category": "Childhood",
     "duration": "1:20 min",
     "summary": "Feeling unwanted in childhood can shape the way people view themselves and their relationships long into adulthood. This video explores how early experiences of rejection can continue influencing connection, trust, and self-worth.",
     "keywords": [
@@ -1833,7 +1833,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-110",
     "title": "Why You See It Everywhere",
-    "category": "Psychological Paradoxes & Effects",
+    "category": "Paradoxes & Effects",
     "duration": "1:20 min",
     "summary": "Learning something new can make it feel like it suddenly appears all around you. This video explores the Baader–Meinhof phenomenon and how attention shapes what stands out in everyday life.",
     "keywords": [
@@ -1849,7 +1849,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-111",
     "title": "You Finally Let Someone Care",
-    "category": "Childhood & Family Patterns",
+    "category": "Psychology",
     "duration": "2:15 min",
     "summary": "Receiving care can feel unfamiliar for people who spent years taking care of everyone else. This video explores what happens when someone learns they do not have to earn love through sacrifice.",
     "keywords": [
@@ -1897,7 +1897,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-114",
     "title": "Why Your Brain Goes Blank",
-    "category": "Stress & Overwhelm",
+    "category": "Psychology",
     "duration": "1:20 min",
     "summary": "Many people blame themselves when they freeze under pressure without realizing their brain is responding to stress. This video explores why overwhelming situations can make it harder to think clearly in the moment.",
     "keywords": [
@@ -1913,7 +1913,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-115",
     "title": "You Worry They Will Leave",
-    "category": "Love & Relationships",
+    "category": "Relationships",
     "duration": "1:30 min",
     "summary": "Some people live with a constant fear of abandonment, even in relationships that feel secure. This video explores anxious attachment and why reassurance can feel so important when connection feels uncertain.",
     "keywords": [
@@ -1929,7 +1929,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-116",
     "title": "6 Traps Keeping You lonely",
-    "category": "Psychological Paradoxes & Effects",
+    "category": "Listicles",
     "duration": "2:15 min",
     "summary": "Loneliness is not always caused by being alone. This video explores six habits that can quietly create distance from others and make connection harder to find.",
     "keywords": [
@@ -1945,7 +1945,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-117",
     "title": "How Your Thoughts Cause Pain",
-    "category": "Psychological Paradoxes & Effects",
+    "category": "Paradoxes & Effects",
     "duration": "1:15 min",
     "summary": "What we expect can have a powerful effect on how we feel. This video explores the nocebo effect and how negative expectations can influence physical symptoms in ways most people do not realize.",
     "keywords": [
@@ -1961,7 +1961,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-118",
     "title": "Safe People Help You Heal",
-    "category": "Childhood & Family Patterns",
+    "category": "Childhood",
     "duration": "1:10 min",
     "summary": "Healing often happens in the presence of people who make you feel accepted, understood, and safe. This video explores how supportive relationships can help rebuild trust after difficult childhood experiences.",
     "keywords": [
@@ -1977,7 +1977,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-119",
     "title": "4 Signs You Are Healing",
-    "category": "Psychological Paradoxes & Effects",
+    "category": "Listicles",
     "duration": "2:15 min",
     "summary": "Healing does not always feel dramatic or obvious while it is happening. This video explores four subtle signs that often show up when someone is beginning to move forward.",
     "keywords": [
@@ -2009,7 +2009,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-121",
     "title": "When They Flip The Blame",
-    "category": "Narcissistic Abuse",
+    "category": "Psychology",
     "duration": "1:45 min",
     "summary": "Some people avoid responsibility by making others question themselves instead. This video explores how blame-shifting works and why it can leave people carrying guilt that was never theirs to begin with.",
     "keywords": [
@@ -2025,7 +2025,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-122",
     "title": "Love Should Not Have Strings",
-    "category": "Childhood & Family Patterns",
+    "category": "Relationships",
     "duration": "1:15 min",
     "summary": "The way we learn about love in childhood often shapes what we accept in adulthood. This video explores how conditional love can influence relationships and why healthy love does not have to be earned.",
     "keywords": [
@@ -2073,7 +2073,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-125",
     "title": "Why You Want To Disappear",
-    "category": "Stress & Overwhelm",
+    "category": "Psychology",
     "duration": "2:05 min",
     "summary": "Wanting to withdraw from the world is not always about giving up or avoiding responsibility. This video explores how the urge to disappear can be a response to feeling overwhelmed for too long.",
     "keywords": [
@@ -2089,7 +2089,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-126",
     "title": "The Cost Of Being Kind",
-    "category": "Love & Relationships",
+    "category": "Life & Motivation",
     "duration": "1:10 min",
     "summary": "People who love deeply often feel heartbreak more deeply too. This video explores why staying open to others can bring both pain and growth.",
     "keywords": [
@@ -2105,7 +2105,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-127",
     "title": "Why You Love A Maybe",
-    "category": "Love & Relationships",
+    "category": "Relationships",
     "duration": "1:20 min",
     "summary": "Sometimes the hardest relationships to move on from are the ones that never fully happened. This video explores why people often stay attached to possibility long after reality has moved on.",
     "keywords": [
@@ -2121,7 +2121,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-128",
     "title": "4 Habits That Saved You",
-    "category": "Childhood & Family Patterns",
+    "category": "Listicles",
     "duration": "1:10 min",
     "summary": "The habits that once helped you feel safe can continue shaping your life long after childhood ends. This video explores four common survival patterns that often follow people into adulthood.",
     "keywords": [
@@ -2137,7 +2137,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-129",
     "title": "You Keep Loving What Hurts",
-    "category": "Psychological Paradoxes & Effects",
+    "category": "Paradoxes & Effects",
     "duration": "1:20 min",
     "summary": "People often stay attached to things that are no longer working because of the time and effort they have already invested. This video explores the IKEA Effect and how past investment can influence present decisions.",
     "keywords": [
@@ -2153,7 +2153,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-130",
     "title": "When Your Truth Gets Taken",
-    "category": "Narcissistic Abuse",
+    "category": "Childhood",
     "duration": "1:15 min",
     "summary": "Growing up with gaslighting can make it difficult to trust your own thoughts, feelings, and memories. When a child's reality is consistently questioned, the impact can extend far beyond childhood.",
     "keywords": [
@@ -2185,7 +2185,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-132",
     "title": "Why You Repeat Toxic Cycles",
-    "category": "Toxic Relationship Patterns",
+    "category": "Psychology",
     "duration": "1:15 min",
     "summary": "Some people know exactly why they keep repeating the same patterns but still struggle to break them. Awareness alone does not always provide the tools needed to change behavior.",
     "keywords": [
@@ -2201,7 +2201,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-133",
     "title": "You Are Erasing Your Story",
-    "category": "Self-Sabotage",
+    "category": "Life & Motivation",
     "duration": "1:30 min",
     "summary": "Constant comparison can make it difficult to recognize how far you have come. Focusing on other people's lives often distracts from your own growth and progress.",
     "keywords": [
@@ -2217,7 +2217,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-134",
     "title": "When Love Turns Into Testing",
-    "category": "Love & Relationships",
+    "category": "Relationships",
     "duration": "1:10 min",
     "summary": "Some people look for reassurance in relationships by creating tests instead of building trust. Fear of rejection can lead to controlling behaviors that ultimately push people away.",
     "keywords": [
@@ -2233,7 +2233,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-135",
     "title": "Can Trust Be Rebuilt After Cheating",
-    "category": "Love & Relationships",
+    "category": "Relationships",
     "duration": "1:45 min",
     "summary": "Cheating leaves people with a difficult choice: rebuild or walk away. Whether trust returns depends less on promises and more on accountability, consistency, and what each person needs to heal.",
     "keywords": [
@@ -2249,7 +2249,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-136",
     "title": "Why We Think Luck Owes Us And How To Break Free",
-    "category": "Psychological Paradoxes & Effects",
+    "category": "Paradoxes & Effects",
     "duration": "1:15 min",
     "summary": "After enough setbacks, it's easy to believe success is finally due. The gambler's fallacy reveals why our brains expect life to balance itself out, even when chance does not work that way.",
     "keywords": [
@@ -2265,7 +2265,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-137",
     "title": "When You Were Praised For Being “Mature For Your Age”",
-    "category": "Childhood & Family Patterns",
+    "category": "Childhood",
     "duration": "2:05 min",
     "summary": "Being mature for your age is often treated as a strength, but it can also be a sign that a child had to grow up too quickly. Many adults are still carrying responsibilities that were never meant to be theirs.",
     "keywords": [
@@ -2281,7 +2281,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-138",
     "title": "Why Your Body Rejects Toxic People Instantly",
-    "category": "Toxic Relationship Patterns",
+    "category": "Psychology",
     "duration": "2:15 min",
     "summary": "Not every warning sign shows up as a thought. Sometimes your body reacts to unhealthy people before your mind fully understands why, making those early feelings worth paying attention to.",
     "keywords": [
@@ -2297,7 +2297,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-139",
     "title": "How Do I Decide What Really Deserves My Energy",
-    "category": "Motivation & Purpose",
+    "category": "Life & Motivation",
     "duration": "1:30 min",
     "summary": "Not everything that demands your attention deserves it. Knowing the difference between a drain and an investment can change where your time, focus, and energy go.",
     "keywords": [
@@ -2313,7 +2313,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-140",
     "title": "The Damage Of Parents Who Never Apologize",
-    "category": "Childhood & Family Patterns",
+    "category": "Childhood",
     "duration": "1:30 min",
     "summary": "A parent who never admits fault can leave a child questioning their own reality. The effects often show up years later in the form of self-doubt, over-apologizing, and difficulty trusting their own feelings.",
     "keywords": [
@@ -2329,7 +2329,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-141",
     "title": "Why You Snap At Those You Love",
-    "category": "Emotional Intelligence",
+    "category": "Psychology",
     "duration": "1:15 min",
     "summary": "Stress rarely stays where it started. When pressure builds up, the people closest to us often end up carrying emotions that were never about them in the first place.",
     "keywords": [
@@ -2345,7 +2345,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-142",
     "title": "When Your Life Feels Like A Movie",
-    "category": "Stress & Overwhelm",
+    "category": "Psychology",
     "duration": "2:15 min",
     "summary": "Some people go through periods where life feels distant, unreal, or like they are watching it from the outside. Derealization is a stress response that can create that feeling of disconnection, even when nothing appears wrong on the surface.",
     "keywords": [
@@ -2361,7 +2361,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-143",
     "title": "5 Signs You’re Learning To Trust Yourself Already",
-    "category": "Psychological Paradoxes & Effects",
+    "category": "Listicles",
     "duration": "1:45 min",
     "summary": "Learning to trust yourself often happens gradually rather than all at once. These five signs reveal how self-trust starts showing up in everyday decisions, mistakes, and moments of uncertainty.",
     "keywords": [
@@ -2377,7 +2377,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-144",
     "title": "What To Do After Leaving A Toxic Relationship",
-    "category": "Toxic Relationship Patterns",
+    "category": "Relationships",
     "duration": "2:15 min",
     "summary": "Healing after a toxic relationship rarely happens all at once. Moving forward often involves working through difficult emotions, rebuilding confidence, and gradually reconnecting with yourself.",
     "keywords": [
@@ -2393,7 +2393,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-145",
     "title": "Why It’s Okay For Your Purpose To Change",
-    "category": "Motivation & Purpose",
+    "category": "Life & Motivation",
     "duration": "2:15 min",
     "summary": "Purpose is not something people discover once and keep forever. As life changes, goals, values, and priorities often change too, making it natural for a sense of purpose to evolve over time.",
     "keywords": [
@@ -2409,7 +2409,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-146",
     "title": "Why Being Sure Doesn’t Always Make You Right",
-    "category": "Psychological Paradoxes & Effects",
+    "category": "Paradoxes & Effects",
     "duration": "2:15 min",
     "summary": "Confidence and accuracy are not always the same thing. The overconfidence effect helps explain why people can feel certain about a belief or decision while overlooking evidence that challenges it.",
     "keywords": [
@@ -2441,7 +2441,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-148",
     "title": "Stop Waiting For The Perfect Moment",
-    "category": "Motivation & Purpose",
+    "category": "Life & Motivation",
     "duration": "2:05 min",
     "summary": "Some people spend so much time waiting to feel ready that they never begin. This explores why progress comes from taking action before conditions feel perfect and how small steps create momentum over time.",
     "keywords": [
@@ -2457,7 +2457,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-149",
     "title": "How To Turn Childhood Pain Into Adult Strength",
-    "category": "Childhood & Family Patterns",
+    "category": "Childhood",
     "duration": "1:45 min",
     "summary": "Childhood pain can shape the way people see themselves long after the experience is over. This explores how qualities developed through adversity, such as resilience and empathy, can become strengths during healing.",
     "keywords": [
@@ -2489,7 +2489,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-151",
     "title": "How To Find Yourself After Another Heartbreak",
-    "category": "Love & Relationships",
+    "category": "Relationships",
     "duration": "1:15 min",
     "summary": "Heartbreak can make people feel disconnected from who they are outside of a relationship. Reconnecting with neglected parts of yourself is often where healing begins.",
     "keywords": [
@@ -2505,7 +2505,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-152",
     "title": "How To Build Real Connection Instead Of Just Company",
-    "category": "Love & Relationships",
+    "category": "Life & Motivation",
     "duration": "1:10 min",
     "summary": "Being around people is not the same as feeling understood. Real connection grows when people show up honestly, take emotional risks, and allow themselves to be seen.",
     "keywords": [
@@ -2521,7 +2521,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-153",
     "title": "7 Habits That Quietly Kill Romantic Attraction",
-    "category": "Psychological Paradoxes & Effects",
+    "category": "Listicles",
     "duration": "1:30 min",
     "summary": "Attraction is shaped by everyday behavior more than most people realize. These seven habits can slowly create distance in a relationship, even when feelings are still there.",
     "keywords": [
@@ -2537,7 +2537,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-154",
     "title": "Why It’s Okay To Grieve The Parents You Never Had",
-    "category": "Childhood & Family Patterns",
+    "category": "Childhood",
     "duration": "1:20 min",
     "summary": "Some losses are about what never happened rather than what did. Grieving the love or protection you needed from your parents can be an important part of healing.",
     "keywords": [
@@ -2553,7 +2553,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-155",
     "title": "Why More Options Makes Us Less Happy",
-    "category": "Psychological Paradoxes & Effects",
+    "category": "Paradoxes & Effects",
     "duration": "2:05 min",
     "summary": "Having more choices sounds like freedom, but it often creates more doubt and second-guessing. The paradox of choice explains why endless options can make satisfaction harder to find.",
     "keywords": [
@@ -2601,7 +2601,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-158",
     "title": "How Your Father Wounds Affect Your Relationships Today",
-    "category": "Inner Child Healing",
+    "category": "Childhood",
     "duration": "1:10 min",
     "summary": "Early experiences with a father can shape the way people approach trust, intimacy, and self-worth in adulthood. Recognizing those patterns is often the first step toward changing them.",
     "keywords": [
@@ -2617,7 +2617,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-159",
     "title": "Why Givers Are The Strongest People You’ll Ever Meet",
-    "category": "Motivation & Purpose",
+    "category": "Life & Motivation",
     "duration": "1:45 min",
     "summary": "Choosing kindness after being disappointed is harder than becoming bitter. Some of the strongest people are those who continue to give, care, and stay open without losing themselves in the process.",
     "keywords": [
@@ -2633,7 +2633,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-160",
     "title": "6 Behaviors That Secretly Push People Away",
-    "category": "Toxic Relationship Patterns",
+    "category": "Listicles",
     "duration": "1:15 min",
     "summary": "Some relationship habits seem harmless on the surface but can create distance over time. These six behaviors reveal how small social patterns can affect connection without people realizing it.",
     "keywords": [
@@ -2649,7 +2649,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-161",
     "title": "Why Small Choices Can Change Everything",
-    "category": "Psychological Paradoxes & Effects",
+    "category": "Paradoxes & Effects",
     "duration": "1:30 min",
     "summary": "The butterfly effect suggests that small actions can lead to much bigger outcomes over time. Tiny decisions and daily habits often shape the future in ways that are impossible to see in the moment.",
     "keywords": [
@@ -2665,7 +2665,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-162",
     "title": "Happy New Year\\!",
-    "category": "Motivation & Purpose",
+    "category": "Life & Motivation",
     "duration": "1:15 min",
     "summary": "Every New Year brings a wave of resolutions, but lasting change is rarely created by a date on the calendar. Real growth comes from taking action consistently, starting before you feel ready, and continuing even after motivation fades.",
     "keywords": [
@@ -2697,7 +2697,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-164",
     "title": "Why Some People Fall In Love After Just Two Weeks",
-    "category": "Love & Relationships",
+    "category": "Relationships",
     "duration": "2:15 min",
     "summary": "Falling in love quickly is often misunderstood as neediness or desperation. Accelerated attachment explores why some people form deep connections faster than others and why that is not necessarily a bad thing.",
     "keywords": [
@@ -2713,7 +2713,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-165",
     "title": "How Your Reactions Becomes Their Weapon",
-    "category": "Motivation & Purpose",
+    "category": "Life & Motivation",
     "duration": "2:15 min",
     "summary": "Strong reactions can give other people more influence over your emotions than they deserve. Learning to pause before responding can help you regain control and choose how you want to show up in difficult moments.",
     "keywords": [
@@ -2729,7 +2729,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-166",
     "title": "Have You Ever Wondered Why You Attract Toxic Relationships?",
-    "category": "Toxic Relationship Patterns",
+    "category": "Relationships",
     "duration": "1:15 min",
     "summary": "Unhealthy relationships often feel familiar for a reason. Early experiences can shape what feels like love, making it easier to confuse chaos, inconsistency, or intensity with genuine connection.",
     "keywords": [
@@ -2745,7 +2745,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-167",
     "title": "How Insecure People Act When They’re in Charge",
-    "category": "Psychological Paradoxes & Effects",
+    "category": "Listicles",
     "duration": "1:10 min",
     "summary": "Power does not always reveal confidence. These six behaviors show how insecurity can show up through control, double standards, and the need to protect an inflated ego.",
     "keywords": [
@@ -2761,7 +2761,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-168",
     "title": "The Ostrich Effect: Why We Avoid The Truth",
-    "category": "Psychological Paradoxes & Effects",
+    "category": "Paradoxes & Effects",
     "duration": "1:15 min",
     "summary": "Avoiding a problem can feel easier in the moment, but it often makes the situation harder to face later. The ostrich effect explains why people look away from uncomfortable truths and what that avoidance can cost.",
     "keywords": [
@@ -2777,7 +2777,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-169",
     "title": "Why You Still Feel Like The Parent In Your Family",
-    "category": "Childhood & Family Patterns",
+    "category": "Childhood",
     "duration": "1:45 min",
     "summary": "Some children grow up feeling responsible for everyone else's needs. This explores how being forced into a caretaker role can follow people into adulthood and make it difficult to accept care from others.",
     "keywords": [
@@ -2825,7 +2825,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-172",
     "title": "Why Disappointing People Is The Key To Your Happiness",
-    "category": "Motivation & Purpose",
+    "category": "Life & Motivation",
     "duration": "1:45 min",
     "summary": "Trying to please everyone often means abandoning your own needs in the process. Learning when to disappoint others can be an important step toward building a life that feels true to you.",
     "keywords": [
@@ -2841,7 +2841,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-173",
     "title": "The Childhood Wound That Follows You Into Love",
-    "category": "Inner Child Healing",
+    "category": "Relationships",
     "duration": "2:05 min",
     "summary": "Early experiences with love can shape what feels familiar in adulthood. This explores why people sometimes mistake unhealthy relationship patterns for connection and how awareness can help break the cycle.",
     "keywords": [
@@ -2857,7 +2857,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-174",
     "title": "The Healing Power Of Saying “It Wasn’t My Fault”",
-    "category": "Inner Child Healing",
+    "category": "Childhood",
     "duration": "1:10 min",
     "summary": "Children often blame themselves for neglect, criticism, or rejection they could not control. Understanding where that guilt comes from can be an important step toward self-compassion and healing.",
     "keywords": [
@@ -2873,7 +2873,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-175",
     "title": "4 Smart Ways To Outsmart A Manipulator",
-    "category": "Toxic Relationship Patterns",
+    "category": "Listicles",
     "duration": "1:30 min",
     "summary": "Manipulation becomes less effective when you know how to recognize and respond to it. These four strategies can help you stay grounded, protect your boundaries, and keep difficult conversations from being turned against you.",
     "keywords": [
@@ -2889,7 +2889,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-176",
     "title": "Why Some Kids Grow Distant From Their Parents",
-    "category": "Childhood & Family Patterns",
+    "category": "Childhood",
     "duration": "1:10 min",
     "summary": "Some people pull away from their parents as they get older, but that distance often starts in childhood. This explores how emotional neglect, criticism, and control can shape avoidant attachment and make closeness feel difficult later in life.",
     "keywords": [
@@ -2921,7 +2921,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-178",
     "title": "The Real Reason You Still Stalk Your Ex’s Profile",
-    "category": "Love & Relationships",
+    "category": "Relationships",
     "duration": "2:15 min",
     "summary": "Checking an ex’s social media is often less about curiosity and more about searching for closure. Understanding the cycle behind that behavior can make it easier to let go and move forward.",
     "keywords": [
@@ -2937,7 +2937,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-179",
     "title": "When Even Small Tasks Feel Like Heavy Lifting",
-    "category": "Stress & Overwhelm",
+    "category": "Psychology",
     "duration": "2:05 min",
     "summary": "Stress can make simple tasks feel much harder than they actually are. Understanding mental load can help explain why overwhelm builds up and why small steps are often the best place to start.",
     "keywords": [
@@ -2953,7 +2953,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-180",
     "title": "Why We Confuse Pain With Passion",
-    "category": "Love & Relationships",
+    "category": "Relationships",
     "duration": "1:10 min",
     "summary": "Intensity and emotional ups and downs are often mistaken for deep connection. This explores why unhealthy relationship patterns can feel exciting and how real intimacy differs from emotional chaos.",
     "keywords": [
@@ -2969,7 +2969,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-181",
     "title": "5 Ways Isolation Rewires Your Personality Over Time",
-    "category": "Psychological Paradoxes & Effects",
+    "category": "Listicles",
     "duration": "1:10 min",
     "summary": "Isolation affects more than social life. These five changes show how long periods of disconnection can influence the way people think, feel, relate to others, and see themselves over time.",
     "keywords": [
@@ -2985,7 +2985,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-182",
     "title": "The Truth About Why Negativity Feels Stronger Than Positivity",
-    "category": "Shadow Work",
+    "category": "Paradoxes & Effects",
     "duration": "1:20 min",
     "summary": "Negativity often feels more powerful than positivity, even when the good outweighs the bad. This explores negativity dominance and why the brain tends to focus on mistakes, criticism, and setbacks more than positive experiences.",
     "keywords": [
@@ -3001,7 +3001,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-183",
     "title": "Why Family Secrets Still Haunt You As An Adult",
-    "category": "Childhood & Family Patterns",
+    "category": "Childhood",
     "duration": "2:15 min",
     "summary": "Family secrets often affect more than the people directly involved. This explores how growing up around unspoken problems can shape trust, self-expression, and the way people relate to their own experiences later in life.",
     "keywords": [
@@ -3033,7 +3033,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-185",
     "title": "Why Some People Get Attached Too Fast",
-    "category": "Love & Relationships",
+    "category": "Relationships",
     "duration": "1:15 min",
     "summary": "Quick attachment is often misunderstood as clinginess, but it can be rooted in emotional deprivation and a deep need for safety. Understanding where that urgency for connection comes from can help people build healthier relationships with themselves and others.",
     "keywords": [
@@ -3049,7 +3049,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-186",
     "title": "How To Figure Out What Matters To You",
-    "category": "Motivation & Purpose",
+    "category": "Life & Motivation",
     "duration": "1:15 min",
     "summary": "It can be difficult to tell the difference between what genuinely matters and what simply demands your attention. This explores how everyday reactions and experiences can reveal what is most meaningful to you.",
     "keywords": [
@@ -3065,7 +3065,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-187",
     "title": "You Don’t Know Love Until It’s Tested",
-    "category": "Love & Relationships",
+    "category": "Relationships",
     "duration": "1:10 min",
     "summary": "Love often reveals itself during difficult moments, not easy ones. This explores how stress, vulnerability, and challenges can deepen connection and show what a relationship is truly built on.",
     "keywords": [
@@ -3081,7 +3081,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-188",
     "title": "How The Mind Has The Hidden Power to Heal",
-    "category": "Psychological Paradoxes & Effects",
+    "category": "Paradoxes & Effects",
     "duration": "1:45 min",
     "summary": "The placebo effect demonstrates how expectations can influence both the mind and body. Understanding this phenomenon reveals the powerful role belief can play in shaping experiences and outcomes.",
     "keywords": [
@@ -3097,7 +3097,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-189",
     "title": "Why Your Inner Child Still Needs You",
-    "category": "Inner Child Healing",
+    "category": "Childhood",
     "duration": "1:45 min",
     "summary": "Childhood needs do not disappear simply because people grow up. Learning how to give yourself the care, safety, and compassion that were once missing can be an important part of healing.",
     "keywords": [
@@ -3129,7 +3129,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-191",
     "title": "Why Is It So Hard To Make The Right Decision",
-    "category": "Overthinking",
+    "category": "Psychology",
     "duration": "1:15 min",
     "summary": "The hardest decisions often involve uncertainty, not obvious right or wrong answers. Learning to let go of perfect certainty can help people make choices with more confidence and less fear of regret.",
     "keywords": [
@@ -3161,7 +3161,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-193",
     "title": "The 80/20 Rule And Why It Shapes Almost Everything",
-    "category": "Psychological Paradoxes & Effects",
+    "category": "Paradoxes & Effects",
     "duration": "1:15 min",
     "summary": "Most people assume effort and results are evenly distributed, but they rarely are. The 80/20 rule shows why a small number of actions often create the biggest outcomes and why focusing on the right priorities can be more effective than simply doing more.",
     "keywords": [
@@ -3177,7 +3177,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-194",
     "title": "Why Affection In Childhood Matters More Thank You Think",
-    "category": "Childhood & Family Patterns",
+    "category": "Childhood",
     "duration": "1:20 min",
     "summary": "When affection is missing in childhood, people often learn to protect themselves through distance and self-reliance. Those early adaptations can shape trust, intimacy, and relationships long into adulthood.",
     "keywords": [
@@ -3225,7 +3225,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-197",
     "title": "Are You Living Your Life Or Someone Else’s?",
-    "category": "Motivation & Purpose",
+    "category": "Life & Motivation",
     "duration": "1:15 min",
     "summary": "Chasing approval can make it difficult to tell whether your goals are truly yours. Recognizing the difference between external expectations and personal values can help you build a life that feels more authentic.",
     "keywords": [
@@ -3257,7 +3257,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-199",
     "title": "When Life Feels Like Nothing Makes You Happy",
-    "category": "Stress & Overwhelm",
+    "category": "Psychology",
     "duration": "1:30 min",
     "summary": "Stress can affect more than mood. Anhedonia helps explain why activities that once felt enjoyable can start to feel distant, flat, or emotionally unrewarding.",
     "keywords": [
@@ -3273,7 +3273,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-200",
     "title": "What Happens When You Grow Up Without Boundaries",
-    "category": "Childhood & Family Patterns",
+    "category": "Childhood",
     "duration": "2:05 min",
     "summary": "A lack of boundaries in childhood can make it difficult to separate your needs from everyone else's. Those early experiences often shape how people handle guilt, closeness, and self-protection in adult relationships.",
     "keywords": [
@@ -3305,7 +3305,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-202",
     "title": "Gaslighting: How To Spot It As It Happens",
-    "category": "Narcissistic Abuse",
+    "category": "Psychology",
     "duration": "1:15 min",
     "summary": "Gaslighting often starts with small moments that make people question their own memories, feelings, or judgment. Recognizing these patterns can help protect your sense of reality and strengthen trust in your own voice.",
     "keywords": [
@@ -3337,7 +3337,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-204",
     "title": "The Hidden Cost Of Having A Savior Complex",
-    "category": "Love & Relationships",
+    "category": "Psychology",
     "duration": "2:15 min",
     "summary": "Some people learn early that being needed is the safest way to feel loved. Over time, that belief can lead them to prioritize other people's problems while ignoring their own, leaving them exhausted and unseen.",
     "keywords": [
@@ -3385,7 +3385,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-207",
     "title": "When Forgiveness Feels Like Self-Betrayal",
-    "category": "Emotional Intelligence",
+    "category": "Psychology",
     "duration": "1:15 min",
     "summary": "Some people struggle to stay angry because they quickly understand where others are coming from. Cognitive empathy can make it difficult to separate compassion from self-protection, especially after being hurt.",
     "keywords": [
@@ -3401,7 +3401,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-208",
     "title": "5 Hidden Patterns Of The Constantly Criticized Child",
-    "category": "Childhood & Family Patterns",
+    "category": "Childhood",
     "duration": "2:15 min",
     "summary": "Constant criticism in childhood can shape the way people view themselves long after they grow up. Certain habits that look like personality traits may actually be old survival strategies.",
     "keywords": [
@@ -3417,7 +3417,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-209",
     "title": "When Love Feels Safe And Scary Too",
-    "category": "Love & Relationships",
+    "category": "Relationships",
     "duration": "2:05 min",
     "summary": "Disorganized attachment can make closeness feel both comforting and threatening at the same time. Learning where these patterns come from is often the first step toward building safer, more secure relationships.",
     "keywords": [
@@ -3433,7 +3433,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-210",
     "title": "Why You Perform Better When Someone’s Watching",
-    "category": "Psychological Paradoxes & Effects",
+    "category": "Psychology",
     "duration": "1:45 min",
     "summary": "The Hawthorne Effect explains why people often work harder when they know they are being observed. Awareness alone can change behavior, motivation, and performance.",
     "keywords": [
@@ -3449,7 +3449,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-211",
     "title": "How Childhood Criticism Replays In Adulthood",
-    "category": "Childhood & Family Patterns",
+    "category": "Childhood",
     "duration": "1:10 min",
     "summary": "Childhood criticism can become an inner voice that follows people into adulthood. Recognizing that pattern is often the first step toward developing greater self-compassion and self-trust.",
     "keywords": [
@@ -3481,7 +3481,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-213",
     "title": "The Hidden Reason You Cry During Arguments",
-    "category": "Stress & Overwhelm",
+    "category": "Psychology",
     "duration": "1:30 min",
     "summary": "Crying during conflict is not always a sign of weakness. For many people, it reflects emotional overwhelm, deep sensitivity, or old experiences that make disagreement feel especially painful.",
     "keywords": [
@@ -3497,7 +3497,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-214",
     "title": "Is Your Fear Of Missing Out Ruining Your Life?",
-    "category": "Motivation & Purpose",
+    "category": "Psychology",
     "duration": "1:15 min",
     "summary": "Fear of missing out can keep people chasing experiences while feeling disconnected from their own lives. Slowing down and becoming more present often reveals what truly matters.",
     "keywords": [
@@ -3513,7 +3513,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-215",
     "title": "The Real Reason You Push Good People Away",
-    "category": "Love & Relationships",
+    "category": "Relationships",
     "duration": "1:10 min",
     "summary": "Past hurt can make genuine connection feel risky, even when someone treats you well. Understanding how fear influences relationships can help break the cycle of pushing away people who care.",
     "keywords": [
@@ -3529,7 +3529,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-216",
     "title": "Why People Don’t Help In Emergencies",
-    "category": "Psychological Paradoxes & Effects",
+    "category": "Paradoxes & Effects",
     "duration": "1:20 min",
     "summary": "The Bystander Effect explains why people are often less likely to help when others are present. Understanding this phenomenon reveals how responsibility can quietly disappear in a crowd.",
     "keywords": [
@@ -3577,7 +3577,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-219",
     "title": "Why You Never Feel Like You Belong",
-    "category": "Love & Relationships",
+    "category": "Psychology",
     "duration": "1:30 min",
     "summary": "Feeling like an outsider is not always a sign that you are in the wrong place. Sometimes it reflects the difference between being included and being genuinely valued by the people around you.",
     "keywords": [
@@ -3609,7 +3609,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-221",
     "title": "Stop Chasing People Who Don’t Choose You",
-    "category": "Love & Relationships",
+    "category": "Relationships",
     "duration": "2:05 min",
     "summary": "Healthy relationships are built on mutual effort, not constant pursuit. Paying attention to how people consistently show up can make it easier to recognize the difference between genuine connection and one-sided investment.",
     "keywords": [
@@ -3625,7 +3625,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-222",
     "title": "3 Subtle Signs You’re Emotionally Drained",
-    "category": "Stress & Overwhelm",
+    "category": "Psychology",
     "duration": "1:30 min",
     "summary": "Emotional exhaustion does not always show up as stress or sadness. Certain behaviors and emotional shifts can reveal when your mind and body are running low on energy and need time to recover.",
     "keywords": [
@@ -3641,7 +3641,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-223",
     "title": "The Black Sheep Effect",
-    "category": "Psychological Paradoxes & Effects",
+    "category": "Psychology",
     "duration": "1:15 min",
     "summary": "Being misunderstood is sometimes the price of challenging unhealthy patterns. The black sheep effect explains why the people who speak uncomfortable truths are often treated as the problem instead of the messenger.",
     "keywords": [
@@ -3657,7 +3657,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-224",
     "title": "Why You Still Feel Responsible For Everyone’s Happiness",
-    "category": "Childhood & Family Patterns",
+    "category": "Childhood",
     "duration": "1:20 min",
     "summary": "Feeling responsible for other people's emotions often begins long before adulthood. Understanding where this pattern comes from can help create healthier boundaries and let go of guilt that was never yours to carry.",
     "keywords": [
@@ -3673,7 +3673,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-225",
     "title": "Why Narcissists Don’t Have Real Emotional Intelligence",
-    "category": "Emotional Intelligence",
+    "category": "Psychology",
     "duration": "1:15 min",
     "summary": "Narcissism and emotional intelligence are often mistaken for each other because both can appear confident on the surface. This explores the difference between genuine empathy and self-awareness versus behaviors that are rooted in control, image, and self-protection.",
     "keywords": [
@@ -3689,7 +3689,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-226",
     "title": "Why You Always Think Of The Perfect Comeback Too Late",
-    "category": "Motivation & Purpose",
+    "category": "Psychology",
     "duration": "1:20 min",
     "summary": "The perfect response often arrives after a difficult conversation has ended. Learning why the brain processes pressure this way can help reframe delayed reactions as thoughtful reflection rather than weakness.",
     "keywords": [
@@ -3705,7 +3705,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-227",
     "title": "Why Do You Keep Comparing Yourself To Everyone Else?",
-    "category": "Motivation & Purpose",
+    "category": "Psychology",
     "duration": "1:15 min",
     "summary": "Comparing yourself to others can distort the way you see your own progress. Understanding why the brain fixates on other people's successes can make it easier to focus on your own path instead.",
     "keywords": [
@@ -3721,7 +3721,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-228",
     "title": "Stop Chasing Potential And See What’s Really There",
-    "category": "Love & Relationships",
+    "category": "Relationships",
     "duration": "1:10 min",
     "summary": "Relationships become clearer when you pay attention to actions instead of possibilities. Focusing on how people consistently show up can help separate genuine connection from wishful thinking.",
     "keywords": [
@@ -3737,7 +3737,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-229",
     "title": "4 Signs Your Anxiety Has Turned Into Avoidance",
-    "category": "Psychological Paradoxes & Effects",
+    "category": "Listicles",
     "duration": "1:20 min",
     "summary": "Anxiety does not always look obvious. Sometimes it shows up through habits that feel safe in the moment but slowly make life smaller. Recognizing when anxiety has shifted into avoidance can help break patterns that keep fear in control.",
     "keywords": [
@@ -3753,7 +3753,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-230",
     "title": "Why Expectations Shape Performance",
-    "category": "Psychological Paradoxes & Effects",
+    "category": "Psychology",
     "duration": "1:10 min",
     "summary": "The Pygmalion Effect explores how expectations can shape performance. When people are believed in, supported, and encouraged, they often rise to meet those expectations.",
     "keywords": [
@@ -3769,7 +3769,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-231",
     "title": "The Cost Of Always Avoiding Conflict",
-    "category": "Childhood & Family Patterns",
+    "category": "Childhood",
     "duration": "1:15 min",
     "summary": "Avoiding conflict can feel like keeping the peace, but it often comes at the expense of your own needs and voice. Recognizing this pattern can help build healthier communication and more honest relationships.",
     "keywords": [
@@ -3785,7 +3785,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-232",
     "title": "Why Confirmation Bias Blinds You To Truth",
-    "category": "Psychological Paradoxes & Effects",
+    "category": "Psychology",
     "duration": "1:20 min",
     "summary": "Confirmation bias influences the way people interpret information by favoring evidence that supports existing beliefs. Recognizing this tendency can encourage more balanced thinking and better decision-making.",
     "keywords": [
@@ -3801,7 +3801,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-233",
     "title": "The Hidden Struggle Behind Asking For Help",
-    "category": "Love & Relationships",
+    "category": "Psychology",
     "duration": "2:05 min",
     "summary": "Asking for help can feel difficult when past experiences taught you that vulnerability was unsafe. Exploring the fears and beliefs that make support hard to accept can help build healthier connections and make it easier to reach out when you need it.",
     "keywords": [
@@ -3817,7 +3817,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-234",
     "title": "Overthinking Or Intuition?",
-    "category": "Overthinking",
+    "category": "Paradoxes & Effects",
     "duration": "1:15 min",
     "summary": "Are you listening to your intuition or getting trapped in a cycle of overthinking? In this video, we break down the key differences between instinct and anxiety, how to recognize each one, and why learning to trust the right signals can lead to clearer decisions and greater peace of mind.",
     "keywords": [
@@ -3833,7 +3833,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-235",
     "title": "The Hard Truth About Love Nobody Wants To Hear",
-    "category": "Love & Relationships",
+    "category": "Relationships",
     "duration": "2:05 min",
     "summary": "Giving love does not guarantee that it will be returned. Accepting that reality can help people approach relationships with healthier expectations, deeper self-awareness, and a greater sense of emotional freedom.",
     "keywords": [
@@ -3849,7 +3849,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-236",
     "title": "5 Ways Trauma Sneaks Into Good Relationships",
-    "category": "Love & Relationships",
+    "category": "Relationships",
     "duration": "2:15 min",
     "summary": "Past trauma does not disappear when a healthy relationship begins. Learning how old protective patterns influence trust, safety, and connection can make it easier to build relationships that feel secure instead of familiar.",
     "keywords": [
@@ -3865,7 +3865,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-237",
     "title": "How To Recognize A Narcissist",
-    "category": "Narcissistic Abuse",
+    "category": "Relationships",
     "duration": "1:15 min",
     "summary": "Narcissism is often easier to recognize through repeated patterns than first impressions. Understanding how narcissistic behavior affects the people around it can help you identify unhealthy dynamics with greater clarity and trust your own experiences.",
     "keywords": [
@@ -3881,7 +3881,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-238",
     "title": "The Hidden Cost of Being Your Parent’s Confidant",
-    "category": "Childhood & Family Patterns",
+    "category": "Childhood",
     "duration": "1:15 min",
     "summary": "Children are not meant to carry the emotional weight of their parents. Exploring how these early roles shape boundaries, self-worth, and adult relationships can help explain why receiving support often feels harder than giving it.",
     "keywords": [
@@ -3929,7 +3929,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-241",
     "title": "Are You Secretly Sabotaging Your Own Happiness?",
-    "category": "Self-Sabotage",
+    "category": "Life & Motivation",
     "duration": "1:15 min",
     "summary": "Happiness can be hard to accept when the mind keeps preparing for something to go wrong. Real joy has more room to stay when people stop treating peace like something they have to earn.",
     "keywords": [
@@ -3945,7 +3945,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-242",
     "title": "What No Contact Really Does To A Narcissist",
-    "category": "Narcissistic Abuse",
+    "category": "Relationships",
     "duration": "1:30 min",
     "summary": "What happens when a narcissist loses access to your attention, validation, and emotional energy? In this video, we break down what the no-contact rule really does to a narcissist, why they often react the way they do, and how maintaining boundaries can help you regain control and heal.",
     "keywords": [
@@ -3960,7 +3960,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-243",
     "title": "7 Subtle Signs You Might Be Emotionally Drained",
-    "category": "Stress & Overwhelm",
+    "category": "Listicles",
     "duration": "1:45 min",
     "summary": "Emotional exhaustion often builds gradually before it becomes obvious. Recognizing the early signs can help you understand what burnout looks like and when it may be time to slow down, recharge, and take care of yourself.",
     "keywords": [
@@ -3976,7 +3976,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-244",
     "title": "The Crab Effect: Why People Pull You Down",
-    "category": "Psychological Paradoxes & Effects",
+    "category": "Paradoxes & Effects",
     "duration": "1:15 min",
     "summary": "Not everyone is comfortable watching others grow. The crab effect explains why personal progress can sometimes trigger criticism, resistance, or discouragement from people who feel threatened by change.",
     "keywords": [
@@ -3992,7 +3992,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-245",
     "title": "The Truth About The Child Who Was Called “Difficult”",
-    "category": "Childhood & Family Patterns",
+    "category": "Childhood",
     "duration": "1:30 min",
     "summary": "Children who are labeled difficult are often misunderstood rather than defiant. Looking at what drives their sensitivity, emotions, and willingness to speak up can reveal strengths that are often overlooked.",
     "keywords": [
@@ -4024,7 +4024,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-247",
     "title": "How Insecurity Distorts Love And How Trust Heals It",
-    "category": "Love & Relationships",
+    "category": "Relationships",
     "duration": "2:15 min",
     "summary": "Insecurity can change the way people interpret everyday interactions, making fear feel more convincing than reality. Understanding how trust helps challenge those fears can create healthier and more secure relationships.",
     "keywords": [
@@ -4040,7 +4040,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-248",
     "title": "How Do You Find Purpose When You Feel Lost?",
-    "category": "Stress & Overwhelm",
+    "category": "Life & Motivation",
     "duration": "1:15 min",
     "summary": "Purpose is often built through small moments of curiosity, meaning, and growth rather than one life-changing discovery. Exploring how purpose develops over time can make feeling lost feel less overwhelming and more like part of the process.",
     "keywords": [
@@ -4056,7 +4056,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-249",
     "title": "Do Narcissists Really Know What They’re Doing?",
-    "category": "Narcissistic Abuse",
+    "category": "Psychology",
     "duration": "1:15 min",
     "summary": "One of the biggest questions about narcissistic behavior is whether it is intentional or unconscious. Exploring the difference between awareness and accountability can help explain why these patterns are often so difficult to change.",
     "keywords": [
@@ -4072,7 +4072,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-250",
     "title": "6 Habits That Make You Easy To Manipulate",
-    "category": "Toxic Relationship Patterns",
+    "category": "Listicles",
     "duration": "1:45 min",
     "summary": "Some habits that seem kind or considerate can quietly make it easier for others to take advantage of you. Understanding how people-pleasing behaviors weaken boundaries can help you protect your time, energy, and sense of self.",
     "keywords": [
@@ -4088,7 +4088,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-251",
     "title": "Why So Many People Remember Things That Never Happened",
-    "category": "Psychological Paradoxes & Effects",
+    "category": "Paradoxes & Effects",
     "duration": "1:45 min",
     "summary": "The Mandela Effect challenges the idea that memory works like a recording. Exploring how false memories form can reveal how easily repetition, suggestion, and social influence shape what people believe to be true.",
     "keywords": [
@@ -4104,7 +4104,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-252",
     "title": "How Parents Pass Down Their Unhealed Wounds",
-    "category": "Inner Child Healing",
+    "category": "Childhood",
     "duration": "1:15 min",
     "summary": "Unresolved pain often affects the way people parent, even when they do not intend to cause harm. Understanding how emotional wounds are passed from one generation to the next can help explain inherited patterns and how healing can break the cycle.",
     "keywords": [
@@ -4152,7 +4152,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-255",
     "title": "Why Motivation Disappears When You Need It The Most",
-    "category": "Stress & Overwhelm",
+    "category": "Life & Motivation",
     "duration": "2:15 min",
     "summary": "What feels like laziness is often a response to burnout, overwhelm, or emotional exhaustion. Recognizing the difference can help explain why motivation disappears and why small actions are often the first step toward rebuilding momentum.",
     "keywords": [
@@ -4168,7 +4168,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-256",
     "title": "The Shocking Truth About Love And Pain That No One Tells You",
-    "category": "Love & Relationships",
+    "category": "Relationships",
     "duration": "1:45 min",
     "summary": "Love does more than bring comfort, it often reveals the fears, wounds, and patterns that still need attention. Understanding why relationships trigger personal growth can help make sense of the challenges that come with deep connection.",
     "keywords": [
@@ -4184,7 +4184,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-257",
     "title": "7 Everyday Habits That Can Improve Focus",
-    "category": "Psychological Paradoxes & Effects",
+    "category": "Listicles",
     "duration": "1:20 min",
     "summary": "Focus is shaped more by daily habits than by willpower alone. Small adjustments to routines, energy management, and attention can make it easier to stay productive and mentally engaged throughout the day.",
     "keywords": [
@@ -4200,7 +4200,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-258",
     "title": "Why Unfinished Tasks Haunt Your Mind",
-    "category": "Overthinking",
+    "category": "Paradoxes & Effects",
     "duration": "2:05 min",
     "summary": "Unfinished tasks tend to stay active in your mind long after you've stepped away from them. The Zeigarnik Effect reveals why unresolved work creates mental clutter and how small actions can help your brain finally let go.",
     "keywords": [
@@ -4216,7 +4216,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-259",
     "title": "The Silent Burden Of Being The Strong Child",
-    "category": "Childhood & Family Patterns",
+    "category": "Childhood",
     "duration": "2:05 min",
     "summary": "Children who are expected to be the strong one often learn to hide their own needs while caring for everyone else. Understanding how this role carries into adulthood can help explain struggles with vulnerability, support, and emotional connection.",
     "keywords": [
@@ -4248,7 +4248,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-261",
     "title": "Why Focusing On Failure Makes You Fail",
-    "category": "Psychological Paradoxes & Effects",
+    "category": "Paradoxes & Effects",
     "duration": "1:20 min",
     "summary": "The Carl Wallenda Effect shows how fear of failure can interfere with performance when attention shifts from the process to the outcome. Learning why this happens can help reduce pressure and improve focus when the stakes feel high.",
     "keywords": [
@@ -4264,7 +4264,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-262",
     "title": "When Empathy Hurts More Than It Helps",
-    "category": "Emotional Intelligence",
+    "category": "Psychology",
     "duration": "1:45 min",
     "summary": "Deep empathy can make it easier to understand people, even when they cause harm. Exploring the balance between compassion and self-protection can help explain why some empathetic people struggle to recognize when a boundary is needed.",
     "keywords": [
@@ -4280,7 +4280,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-263",
     "title": "Why Letting Go Doesn’t Make You Heartless",
-    "category": "Love & Relationships",
+    "category": "Relationships",
     "duration": "1:30 min",
     "summary": "Not every relationship is meant to stay in your life forever. Recognizing when a connection is harming your well-being can help create healthier boundaries and make it easier to choose self-respect without guilt.",
     "keywords": [
@@ -4296,7 +4296,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-264",
     "title": "The Real Reason “Laziness” Isn’t What You Think",
-    "category": "Stress & Overwhelm",
+    "category": "Psychology",
     "duration": "1:15 min",
     "summary": "People are often labeled lazy when they are actually overwhelmed, exhausted, or running on empty. Looking beyond the label can help explain why motivation disappears and why recovery often starts with self-understanding rather than self-criticism.",
     "keywords": [
@@ -4312,7 +4312,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-265",
     "title": "Why You Give Better Advice Than You Take",
-    "category": "Psychological Paradoxes & Effects",
+    "category": "Paradoxes & Effects",
     "duration": "1:15 min",
     "summary": "The Solomon Paradox explains why people often see other people's problems more clearly than their own. Creating emotional distance from a situation can improve decision-making and make it easier to find clarity when emotions get in the way.",
     "keywords": [
@@ -4328,7 +4328,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-266",
     "title": "4 Behaviors Linked To Chronic Overthinking",
-    "category": "Stress & Overwhelm",
+    "category": "Psychology",
     "duration": "1:15 min",
     "summary": "Overthinking does more than create stress,it can drain energy, fuel anxiety, and make everyday decisions feel overwhelming. Recognizing how these thought patterns affect mental well-being is the first step toward creating more peace of mind.",
     "keywords": [
@@ -4344,7 +4344,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-267",
     "title": "5 Habits That Can Lower Your Self Confidence",
-    "category": "Psychological Paradoxes & Effects",
+    "category": "Listicles",
     "duration": "1:10 min",
     "summary": "Confidence is often shaped by the small things you do every day. Understanding the habits that quietly reinforce self-doubt can help you build a stronger sense of self-worth and trust in yourself.",
     "keywords": [
@@ -4360,7 +4360,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-268",
     "title": "5 Signs You Struggle To Say What You Need",
-    "category": "Psychological Paradoxes & Effects",
+    "category": "Listicles",
     "duration": "1:30 min",
     "summary": "Struggling to express your needs often has less to do with communication and more to do with what you've learned about asking for support. This video explores why speaking up can feel uncomfortable, even when what you're asking for is completely reasonable.",
     "keywords": [
@@ -4376,7 +4376,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     "id": "v-269",
     "title": "6 Habits Silently Destroying Your Mental Health",
-    "category": "Psychological Paradoxes & Effects",
+    "category": "Listicles",
     "duration": "1:30 min",
     "summary": "Some habits become so familiar that we mistake them for normal, even when they're quietly wearing down our mental health. The hardest part is realizing the behaviors hurting you may be the same ones you've relied on for years.",
     "keywords": [

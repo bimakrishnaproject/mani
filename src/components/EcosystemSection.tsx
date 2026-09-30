@@ -118,9 +118,9 @@ export default function EcosystemSection() {
                   >
                     <img
                       src={encodeURI(
-                        "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/trimmed/Complete_Collection_Etsy_Bundle.png"
+                        "/assets/Product Collections/Product Mockups/Bye Bye Narcissist Collection/trimmed/Collections_Pillar_Grounded_Physical.png"
                       )}
-                      alt="Bye Bye Narcissist Complete Collection with Poster Set"
+                      alt="Bye Bye Narcissist Books, Workbook, and Framed Poster"
                       className="w-auto h-full max-h-[98%] object-contain object-bottom select-none drop-shadow-[0_16px_32px_rgba(0,0,0,0.85)] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.02]"
                     />
                   </Link>

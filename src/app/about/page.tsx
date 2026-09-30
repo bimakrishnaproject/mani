@@ -85,6 +85,16 @@ const specialists: {
     ),
     image: "/assets/Team Photos/Michelle Falanga.png",
   },
+  {
+    name: "Muhammad Umer",
+    role: "Lead Engineer",
+    bio: (
+      <>
+        Muhammad Umer leads engineering and technical architecture across <strong className="font-bold lowercase">mani</strong>, building responsive, accessible, and intuitive digital experiences that deliver supportive tools whenever people need them.
+      </>
+    ),
+    image: "",
+  },
 ];
 
 const processSteps = [
@@ -364,9 +374,9 @@ export default function AboutPage() {
               </div>
             </motion.div>
 
-            {/* SEAMLESS TRANSITION INTO THE THREE SPECIALISTS (Per Designer Note: Transition without another headline) */}
+            {/* SEAMLESS TRANSITION INTO THE SPECIALISTS (Per Designer Note: Transition without another headline) */}
             <div className="pt-8 sm:pt-12">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-8">
                 {specialists.map((expert, idx) => (
                   <motion.div
                     key={expert.name}
@@ -377,12 +387,23 @@ export default function AboutPage() {
                     className="bg-white border-t-2 border-t-[#0E2E1E] border-x border-b border-mist-grey/80 rounded-2xl p-7 sm:p-9 flex flex-col justify-between shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-500 group"
                   >
                     <div className="space-y-6">
-                      <div className="w-full aspect-[4/4.5] rounded-xl overflow-hidden bg-[#0E2E1E] border border-mist-grey">
-                        <img
-                          src={expert.image}
-                          alt={expert.name}
-                          className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
-                        />
+                      <div className="w-full aspect-[4/4.5] rounded-xl overflow-hidden bg-[#0E2E1E] border border-mist-grey flex items-center justify-center">
+                        {expert.image ? (
+                          <img
+                            src={expert.image}
+                            alt={expert.name}
+                            className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
+                          />
+                        ) : (
+                          <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-[#081F14] via-[#0E2E1E] to-[#143D28] text-cream-logo">
+                            <span className="font-serif-heading text-4xl sm:text-5xl tracking-wider text-cream-logo/90">
+                              MU
+                            </span>
+                            <span className="text-[10px] tracking-widest uppercase font-semibold text-cream-logo/60 mt-2">
+                              Lead Engineer
+                            </span>
+                          </div>
+                        )}
                       </div>
                       <div className="space-y-3">
                         <h4 className="font-serif-heading text-2xl sm:text-3xl text-[#0E2E1E]">

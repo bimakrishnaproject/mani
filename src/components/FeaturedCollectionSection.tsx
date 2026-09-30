@@ -115,9 +115,9 @@ export default function FeaturedCollectionSection() {
         </div>
       </div>
 
-      {/* 3. Future Releases */}
+      {/* 3. Future Releases (Seamlessly integrated as part of Section 4) */}
       <div className="w-full max-w-[1760px] mx-auto px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24">
-        <div className="max-w-3xl mx-auto text-center space-y-6 pt-4 sm:pt-8 border-t border-mist-grey/70">
+        <div className="max-w-3xl mx-auto text-center space-y-6 pt-16 sm:pt-20 md:pt-24 pb-4">
           {/* <MaskedReveal> */}
             <h3 className="font-serif-heading text-3xl sm:text-4xl lg:text-5xl text-[#0E2E1E] leading-[1.1]">
               More Collections Are Coming
@@ -138,7 +138,6 @@ export default function FeaturedCollectionSection() {
             </button>
           </div>
         </div>
-
       </div>
 
       {/* NOTIFY MODAL */}
